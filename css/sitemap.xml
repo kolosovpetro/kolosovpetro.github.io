@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://kolosovpetro.github.io/</loc>
+  <lastmod>2019-12-01T00:48:00+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://kolosovpetro.github.io/research/binomial-theorem-and-convolution/</loc>
+  <lastmod>2019-12-01T00:48:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kolosovpetro.github.io/pdf/relation_between_pascal_triangle_and_volume_of_hypercubes.pdf</loc>
+  <lastmod>2019-12-01T00:48:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kolosovpetro.github.io/pdf/on_the_numerical_expansion_of_monomials.pdf</loc>
+  <lastmod>2019-12-01T00:48:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kolosovpetro.github.io/donations/</loc>
+  <lastmod>2019-12-01T00:48:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kolosovpetro.github.io/pdf/Sums_of_powers_of_positive_integers_and_their_recurrence_relations.pdf</loc>
+  <lastmod>2019-12-01T00:48:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>

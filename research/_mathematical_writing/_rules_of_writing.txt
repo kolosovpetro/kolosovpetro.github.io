@@ -1,0 +1,7 @@
+0) EVERITHING SHOULD BE DEFINED AND DESCRIBED IN VERY FORMAL WAY, WITHOUT ANY FLOOD INFORMATION
+1) Quite clear explanaition. Minimum of huge formulas.
+2) Clear notation, no any excess of variables.
+3) Don't try to look extra-smart, use clear definitions w/o any unclear or confusing symbols.
+4) The work should be organized such way, that even 5 y.o child can understand it for 5 minutes.
+5) Never work for pride.
+6) Before you explain something, you have to know it perfectly.

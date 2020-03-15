@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Petro Kolosov's Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+                content="This page is personal website of Petro Kolosov, dedicated to his research in topics of power expansions in Mathematics, Binomial Theorem, Multinomial Theorem, Faulhaber's Formula, Bernoulli Numbers, Worpitzky Identity, Stirling Numbers, Falling Factorials.">
+        <meta name="author" content="Petro Kolosov">
+        <meta name="keywords" content="petro kolosov, kolosov petro, personal page, kolosov, petro">
+        <meta name="revisit-after" content="5 days">
+        <link rel="icon" type="image/png" href="css/favicon-16x16.png" sizes="16x16" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/newver.css">
+        <link rel="canonical" href="https://kolosovpetro.github.io/" />
+
+        <!-- MathJax Script -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85607318-2"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+
+                gtag('config', 'UA-85607318-2');
+        </script>
+
+        <!-- Insert MathJax -->
+        <script src="js/main_script.js"></script>
+
+        <!-- Begin insert JSON markup -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+                $.getJSON("js/main_page_script.jsonld", function (data) { $("<script/>", { "type": "application/ld+json", html: JSON.stringify(data) }).appendTo("head"); });
+        </script>
+
+        <script type="text/javascript">
+                $(document).ready(function () {
+                        $("container").load("txt/12.txt");
+                });
+        </script>
+
+        <!-- Yandex.Metrika counter -->
+        <script
+                type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function () { try { w.yaCounter50991995 = new Ya.Metrika2({ id: 50991995, clickmap: true, trackLinks: true, accurateTrackBounce: true }); } catch (e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script>
+        <noscript>
+                <div><img src="https://mc.yandex.ru/watch/50991995" style="position:absolute; left:-9999px;" alt="" />
+                </div>
+        </noscript>
+        <!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body>
+        <header>
+                <!-- Begin right info bar -->
+                <span class="twitter0">
+                        <h1>
+                                <font color="black" size="6"><strong>Petro Kolosov</strong></font>
+                        </h1>
+                        <br>
+                        <font color="#2771ec"><i>Mathematics is the language, where lie not exist</i></font>
+                        <br>
+                        <font color="#2771ec"></font>
+                        <br>
+                        <font color="black"><b>kolosovp94@gmail.com</b></font>
+                        <br>
+                        <br>
+                        <a href="https://www.linkedin.com/in/petrokolosov/" title="ORCID" target="_blank">
+                                <img src="css/linkedin_logo.png" width="30" height="30"></a>
+
+                        <a href="https://github.com/kolosovpetro" title="Github" target="_blank">
+                                <img src="css/github.png" width="30" height="30"></a>
+                </span>
+                <!-- End right info bar -->
+        </header>
+
+        <!-- Begin Resume -->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont1','icon1')">
+                        <img src="css/open.gif" id="icon1" alt="expand/collapse category">
+                        <h2>About Me</h2>
+                </div>
+                <div class="cont" id="cont1">
+                        Very interested in Computer Science, in particular, in .NET enviroment. During my free time I do
+                        Math, my interests in math are about Faulhaber's formula, Binomial theorem and other realted to
+                        power identities topics.
+                </div>
+        </article>
+        <!-- End Resume -->
+
+        <!-- Begin Publications -->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont2','icon2')">
+                        <img src="css/open.gif" id="icon2" alt="expand/collapse category">
+                        <h2>Publications</h2>
+                </div>
+                <div class="cont" id="cont2">
+                        <!-- main list begins here -->
+                        <ul>
+                                <li>
+                                        <h3><a href="/research/binomial-theorem-and-convolution" target="_blank">
+                                                        On the link between Binomial Theorem and Discrete Convolution of
+                                                        Power Function
+                                                </a></h3>
+                                        <br>
+                                        <small>
+                                                <!-- Begin Abstract -->
+                                                In this manuscript we establish a relation between Binomial theorem and
+                                                discrete convolution of power function. We show that Binomial expansion
+                                                of \(s\)-powered binomial \((x+y)^s, \ s\geq1, \ x+y\geq 1\),
+                                                \(x,y,s\in\mathbb{N}\) is equivalent to the sum of the products of
+                                                discrete convolved power function and certain real coefficient. In
+                                                addition, we generalise the relation between Binomial theorem and
+                                                discrete convolution of power function to Multinomial case.
+                                                <!-- End Abstract -->
+                                                <ul>
+                                                        <li><strong>
+                                                                        <font color="#2124af">Related OEIS sequences:
+                                                                        </font>
+                                                                </strong>
+                                                                Numerators and Denominators of \(A_{m,r}\): <a
+                                                                        href="https://oeis.org/A302971"
+                                                                        target="_blank">A302971</a>,
+                                                                <a href="https://oeis.org/A304042"
+                                                                        target="_blank">A304042</a></li>
+                                                        <li><strong>
+                                                                        <font color="#2124af">MSC classes:</font>
+                                                                </strong> 11C08, 44A35</li>
+                                                        <li><strong>
+                                                                        <font color="#2124af">Comments:</font>
+                                                                </strong> 18 pages</li>
+                                                        <li><strong>
+                                                                        <font color="#2124af">arXiv:</font>
+                                                                </strong> <a href="https://arxiv.org/abs/1603.02468"
+                                                                        target="_blank">1603.02468</a></li>
+                                                </ul>
+                                        </small>
+                                </li>
+                                <li>
+                                        <h3>
+                                                Some notes and short reviews
+                                        </h3>
+                                        <ul>
+
+                                                <li>
+                                                        <a href="https://arxiv.org/abs/1608.00801" target="_blank">
+                                                                On the link between finite differences and derivatives
+                                                                of polynomials</a>
+                                                        <br>
+                                                        The main aim of this paper to establish the relations between
+                                                        forward, backward and central finite difference and divided
+                                                        difference
+                                                        (that is discrete analog of the derivative) and partial and
+                                                        ordinary high-order derivatives of the polynomials.
+                                                </li>
+
+                                                <li>
+                                                        <a href="https://arxiv.org/abs/1705.02516" target="_blank">
+                                                                On the quantum differentiation of smooth real-valued
+                                                                functions</a>
+                                                        <br>
+                                                        Calculating the value of \(C^{k\in\{1,\infty\}}\) class of
+                                                        smoothness real-valued function's derivative in point of
+                                                        \(\mathbb{R}^+\) in radius of convergence of its aylor
+                                                        polynomial (or series), applying an analog of Newton's binomial
+                                                        theorem and \(q\)-difference operator. \((P,q)\)-power
+                                                        difference introduced in section 5. Additionally, by means of
+                                                        Newton's interpolation formula, the discrete analog of Taylor
+                                                        series interpolation using \(q\)-difference and \(p,q\)-power
+                                                        difference is shown.
+                                                </li>
+
+                                                <li>
+                                                        <a href="pdf/relation_between_pascal_triangle_and_volume_of_hypercubes.pdf"
+                                                                target="_blank">Relation between Pascal's Triangle and
+                                                                volumes of Hypercubes</a> - In this short report a
+                                                        relation between Pascal’s triangle and volume of \(m\)-dimension
+                                                        \(n\)-length Hypercube, where \((m, n)\) are positive integers.
+                                                </li>
+
+                                                <li>
+                                                        <a href="pdf/on_the_numerical_expansion_of_monomials.pdf"
+                                                                target="_blank">On the numerical expansion of
+                                                                monomials</a>
+                                                </li>
+
+                                                <li>
+                                                        <a href="https://zenodo.org/record/1476418" target="_blank">On
+                                                                the Eulerian numbers and Power Sums</a> - In this short
+                                                        report we discuss a relation between Triangle of Eulerian
+                                                        Numbers and Power sums of the form \(\Sigma_k^n k^m\), where
+                                                        \(n,m\) are positive integers. This manuscript shows that <a
+                                                                href="https://arxiv.org/abs/1805.11445"
+                                                                target="_blank">arXiv:1805.11445</a> another time proves
+                                                        the Worpitzky Identity.
+                                                </li>
+                                        </ul>
+                                </li>
+                        </ul>
+                </div>
+        </article>
+        <!-- End Publications -->
+
+        <!-- Begin Mathematica codes-->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont8','icon8')">
+                        <img src="css/open.gif" id="icon8" alt="expand/collapse category">
+                        <h2>Mathematica Programs</h2>
+                </div>
+                <div class="cont" id="cont8">
+                        In order to verify the main results of the work
+                        <a href="/research/binomial-theorem-and-convolution" target="_blank">
+                                On the link between Binomial Theorem and Discrete Convolution of Power Function
+                        </a>
+                        the following Mathematica packages provided as well as documentation to them, visit
+                        <ul>
+                                <li>
+                                        <a href="https://github.com/kolosovpetro/research_unit_tests"
+                                                target="_blank">Git repository</a>
+                                </li>
+
+                        </ul>
+                </div>
+        </article>
+        <!-- End Mathematice codes -->
+
+        <!-- Begin OEIS contributions -->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont3','icon3')">
+                        <img src="css/open.gif" id="icon3" alt="expand/collapse category">
+                        <h2>Contributions to the OEIS</h2>
+                </div>
+                <div class="cont" id="cont3">
+                        OIES stands for the On-Line Encyclopedia of Integer Sequences, established by Neil J. Sloane in
+                        1965 and since 1996 is published online. Here are some sequences contributed by me.
+                        <ul>
+                                <li>
+                                        <a href="https://oeis.org/A306548" target="_blank">A306548</a> - Table of
+                                        convolutions of powers.
+                                </li>
+                                <li>
+                                        <a href="https://oeis.org/A287326" target="_blank">A287326</a> - Numerical
+                                        triangle, row sums give \(n^3\).
+                                </li>
+
+                                <li>
+                                        <a href="https://oeis.org/A300656" target="_blank">A300656</a> - Numerical
+                                        triangle, row sums give \(n^5\).
+                                </li>
+
+                                <li>
+                                        <a href="https://oeis.org/A300785" target="_blank">A300785</a> - Numerical
+                                        triangle, row sums give \(n^7\).
+                                </li>
+
+                                <li>
+                                        Coefficients \(A_{m,r}\) from <a href="https://arxiv.org/abs/1603.02468"
+                                                target="_blank">arXiv:1603.02468</a>
+                                        <br>
+                                        <a href="https://oeis.org/A302971" target="_blank">A302971</a> - Numerators of
+                                        \(A_{m,r}\),
+                                        <br>
+                                        <a href="https://oeis.org/A304042" target="_blank">A304042</a> - Denominators of
+                                        \(A_{m,r}\).
+                                </li>
+
+                                <li>
+                                        <a href="https://oeis.org/A303675" target="_blank">A303675</a> - Coefficients
+                                        \((2k-1)!T(2m,2k)\) in the <a href="https://arxiv.org/abs/math/9207222"
+                                                target="_blank">Faulhaber's sum</a>
+                                        $$
+                                        \Sigma n^{2m-1}=\sum_{k=1}^{m}(2k-1)!T(2m,2k)\binom{n+k}{2k}.
+                                        $$
+                                </li>
+
+                                <li>
+                                        <a href="https://oeis.org/A320047" target="_blank">A320047</a> - Coefficients
+                                        \(U_{m=1}(\ell, k)\) from <a href="https://arxiv.org/abs/1603.02468v15"
+                                                target="_blank">arXiv:1603.02468v15</a>, p. 4.
+                                </li>
+
+                                <li>
+                                        <a href="https://oeis.org/A316349" target="_blank">A316349</a> - Coefficients
+                                        \(U_{m=2}(\ell, k)\) from <a href="https://arxiv.org/abs/1603.02468v15"
+                                                target="_blank">arXiv:1603.02468v15</a>, p. 7.
+                                </li>
+
+                                <li>
+                                        <a href="https://oeis.org/A316387" target="_blank">A316387</a> - Coefficients
+                                        \(U_{m=3}(\ell, k)\) from <a href="https://arxiv.org/abs/1603.02468v15"
+                                                target="_blank">arXiv:1603.02468v15</a>, p. 9.
+                                </li>
+                        </ul>
+                </div>
+        </article>
+        <!-- End OEIS contributions -->
+
+        <!-- Begin CS studies -->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont9','icon9')">
+                        <img src="css/open.gif" id="icon1" alt="expand/collapse category">
+                        <h2>CS studies</h2>
+                </div>
+                <div class="cont" id="cont9" style="color: #000000">
+                        CS studies complete course <a href="cs/" target="_blank">CS</a>
+                </div>
+        </article>
+        <!-- End CS studies -->
+
+
+        <!-- Begin Support my research -->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont5','icon5')">
+                        <img src="css/open.gif" id="icon5" alt="expand/collapse category">
+                        <h2>
+                                <font color="#e5fe40">Support my research</font>
+                        </h2>
+                </div>
+                <div class="cont" id="cont5">
+                        <font color="#d7034e">Dear readers!</font> If you found my research interesting and progressive,
+                        you are free to help me by donations. Since mathematics is not my main affiliation,
+                        I don't receive any money for my work - <b>I work for idea</b>. I never care about money, but I
+                        have to live :) Each collected donation will be spend only to
+                        proceed my research without delays.
+                        <ul>
+                                <strong>
+                                        <li>
+                                                <font color="#2124af">For more info and details concerning donation,
+                                                        proceed by the link</font>
+                                </strong>
+                                <ul>
+                                        <li><a href="donations"
+                                                        target="_blank">https://kolosovpetro.github.io/donations</a>
+                                        </li>
+                                </ul>
+                                </li>
+                        </ul>
+                </div>
+        </article>
+        <!-- End Support my research -->
+
+        <!-- Begin Interesting links -->
+        <article>
+                <div class="cat" onclick="toggleVisibility('cont6','icon6')">
+                        <img src="css/open.gif" id="icon6" alt="expand/collapse category">
+                        <h2>Interesting links</h2>
+                </div>
+                <div class="cont" id="cont6">
+                        <ul>
+                                <li>
+                                        <a href="http://digital.slub-dresden.de/fileadmin/data/272635758/272635758_tif/jpegs/272635758.pdf"
+                                                target="_blank">Academia Algebræ</a>, by Johann Faulhaber, 1631.
+                                </li>
+                                <li>
+                                        Theoretical Computer Science <a href="pdf/cs_cheat_sheet.pdf"
+                                                target="_blank">Cheat Sheet</a>.
+                                </li>
+                                <li>
+                                        <a href="https://mathoverflow.net/questions/297900/coefficients-in-the-sum-sum-k-0n-1-sum-j-0ma-j-mn-kjkj-n2m1"
+                                                target="_blank">
+                                                Mathoverflow</a> - discussion on \(A_{m,j}\) coefficients, 2018.
+                                </li>
+                                <li>
+                                        <a href="https://www.cut-the-knot.org/arithmetic/combinatorics/PascalTriangleProperties.shtml"
+                                                target="_blank">
+                                                Patterns in Pascal's Triangle</a> by Alexander Bogomolny.
+                                </li>
+                                <li>
+                                        <a href="http://eudml.org/doc/148532" target="_blank">Studien über die
+                                                Bernoullischen und Eulerschen Zahlen</a> by J. Worpitzky. - Worpitzky
+                                        Identity (original reference), 1883.
+                                </li>
+                                <li>
+                                        <a href="https://mathoverflow.net/questions/304130/coefficients-u-mn-k-in-the-identity-n2m1-sum-limits-0-leq-k-leq-m"
+                                                target="_blank">
+                                                Mathoverflow</a> - discussion on \(U_{m}(n,k)\) coefficients, 2018.
+                                </li>
+                                <li>
+                                        The Pascal's identity from <a href="https://arxiv.org/abs/1011.0076"
+                                                target="_blank">arXiv:1011.0076</a>
+                                        <small>
+                                                $$
+                                                (n+1)^{k+1}-1=\sum_{m=1}^{n}[(m+1)^{k+1}-m^{k+1}]=\sum_{p=0}^{k}\binom{k+1}{p}(1^p+2^p+\cdots+n^p).
+                                                $$
+                                        </small>
+                                </li>
+                                <li>
+                                        <a href="pdf/Sums_of_powers_of_positive_integers_and_their_recurrence_relations.pdf"
+                                                target="_blank">
+                                                Sums of powers of positive integers and their recurrence relations</a>.
+                                </li>
+                                <li>
+                                        <a href="http://www.cs.columbia.edu/~cs4205/files/CM4.pdf"
+                                                target="_blank">Comprehensive list of binomial identities</a>.
+                                </li>
+                                <li>
+                                        <a href="https://math.stackexchange.com/questions/3091598" target="_blank">How
+                                                to write the sum of binomial coefficients in terms of polynomials in
+                                                (n,k)</a>.
+                                </li>
+                                <li>D. E. Knuth, Johann Faulhaber and sums of powers,
+                                        <a href="https://arxiv.org/abs/math/9207222"
+                                                target="_blank">arXiv:math/9207222</a>.
+                                </li>
+                                <li>
+                                        <a href="https://www.linkedin.com/pulse/problem-triangle-developing-polynomial-function-fn-nm-albert-tkaczyk/"
+                                                target="_blank">Albert Tkaczyk</a>. About the problem of a triangle
+                                        developing the polynomial function f(n)= n^m, 2018.
+                                        <a href="https://drive.google.com/file/d/1DfP4ED3sNsQlzaNEHoXRxWhr-b3lkPxK/view"
+                                                target="_blank">Google Drive link.</a>
+                                </li>
+                                <li>
+                                        <a href="https://www.linkedin.com/pulse/problem-triangle-developing-polynomial-function-f-n-m-albert-tkaczyk/"
+                                                target="_blank">Albert Tkaczyk</a>. On the problem of a triangle
+                                        developing the polynomial function f (n) = n ^ m - continuation, 2018.
+                                        <a href="https://drive.google.com/file/d/1OYR7A7M4LIsRxjOEiuJtrUl8Xjw6C1bj/view"
+                                                target="_blank">Google Drive link.</a>
+                                </li>
+                        </ul>
+                </div>
+        </article>
+        <!-- End Interesting links -->
+
+        <!-- Begin Footer -->
+        <div class="foot">
+                <a href="https://oeis.org/wiki/User:Kolosov_Petro" target="_blank">
+                        <img src="css/OEIS.png" width="30" height="30">
+                </a>
+
+                <a href="https://arxiv.org/a/kolosov_p_1.html" target="_blank">
+                        <img src="css/arxiv.png" width="30" height="30">
+                </a>
+        </div>
+</body>
+</html>

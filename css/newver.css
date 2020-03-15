@@ -1,0 +1,231 @@
+* {
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			background-color: #fff;
+			height: 100% 
+		}
+		body {
+			background-color: #fff;
+			height: 100%;
+			color: #003f5a;
+			font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+			font-size: 18px;
+			line-height: 30px;
+			margin: 0 auto;
+			overflow-x: hidden;
+			min-width: 240px;
+			max-width: 850px;
+			width: 100%;
+		}
+		
+		body.c_sharp {
+			background-color: #fff;
+			height: 100%;
+			color: #000;
+			font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+			font-size: 14px;
+			line-height: 30px;
+			margin: 0 auto;
+			overflow-x: hidden;
+			min-width: 240px;
+			max-width: 1000px;
+			width: 100%;
+		}
+		
+		header {
+			background-color: #FFF;
+			background-image: url("/css/butterfly_background.png");
+			background-position: left center;
+			background-repeat: no-repeat;
+			color: #686767;
+			padding: 0;
+			width: 100%;
+			min-height: 10em;
+			height: 300px;
+			overflow: hidden;
+			font-size: 0.8em;
+		}
+		article {
+			display: block;
+			overflow: auto;
+		}
+		
+		footer {
+			margin-left:auto; 
+			display: inline;
+			background-color: #4b4b4b;
+			color: #888;
+			display: block;
+			min-height: 1em;
+			border: 2px soild black;
+			padding: 1em;
+			text-align: center;
+			font-size: 0.75em;
+			margin-top:2%;
+		}
+		footer a {
+			color: #888;
+			text-decoration: none;
+		}
+		.twitter0 {
+			float: right;
+			margin-right: 21px;
+			height: 300px;
+			width: 300px;
+			overflow-x: hidden;
+			overflow-y: hidden;
+			margin-top:25px;
+		}
+		
+		DIV.cat {
+			padding: 2%;
+			width: 96%;
+			background-color: #396c9b;
+			color: #eee;
+			cursor: pointer;
+			margin-top:2%;
+		}
+		H2 { 
+			font-family: Georgia, serif;
+			font-weight: normal;
+			font-size: 1.3em;
+			letter-spacing: 1px;
+		}
+		
+		H2.c_sharp { 
+			font-family: Georgia, serif;
+			font-size: 1.3em;
+			margin-bottom: -15px;
+			letter-spacing: 1px;
+		}
+		DIV.cat img { float:right; text-aligh:right } 
+		DIV.cont {
+			padding: 2%;
+			width: 96%;
+			background-color: #eee;
+			color: #000000;
+			border-bottom-left-radius: 5px;
+			-moz-border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			-moz-border-bottom-right-radius: 5px;
+			margin-bottom:2%;
+		}
+		a {
+			color: #d7034e;
+			text-decoration: underline;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		a.anchor {
+			color: #000;
+			size: 1222 px;
+			text-decoration: none;
+		}
+		
+		ul {
+			margin: 5px;
+			list-style-type: square;
+			padding-left: 20px;
+		}
+		
+		ul.c_sharp {
+			margin: 5px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			list-style-type: square;
+			padding-left: 20px;
+		}
+		li {
+			line-height: 24px;
+			padding: 5px;
+		}
+		H1 {
+			font-family: Georgia, Times, serif;
+			font-weight: 100;
+			color: #000;
+			letter-spacing: 0pt;
+			line-height:20pt; 
+			font-size: 20pt;
+			margin-top: 20px;
+		}
+		
+		pre {
+			display: block;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			padding: 10px;
+			font-size: 75%;
+			border: 1px dashed #817f7f;
+			width: 760px;
+		}
+
+		
+		DIV.bib {
+			     padding:15px; 
+                 border:1px solid #605f5f; 
+                 margin:auto; 
+                 text-align:center; 
+                 background-color:#ccc; 
+                 margin-top:15px; 
+                 margin-bottom:25px; 
+                 border-radius:7px; 
+                 width:90%
+		}
+
+
+              .fig {
+                     text-align: center; /* Выравнивание по центру */ 
+		     margin-right: 40px
+                 }
+             p {
+			margin: 0;
+			padding-top: 15px;
+			color: #000000;
+		        margin-right: 20px
+                }		
+
+             DIV.contt {
+			padding: 2%;
+			width: 96%;
+			background-color: #eee;
+			color: #000000;
+			border-bottom-left-radius: 5px;
+			-moz-border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			-moz-border-bottom-right-radius: 5px;
+			margin-bottom:2%;
+		        }
+				
+			br
+			{
+				margin-bottom: -5px;
+			}
+
+            img
+			{
+				text-decoration: none;
+				margin-left:15px;
+			}
+			
+			a.first
+			{
+				text-decoration: none;
+			}
+			
+			div.foot 
+			{
+				margin-left:auto;
+                background-color: #837d7f;
+                color: #000;
+                display: block;
+                min-height: 1em;
+                border: 2px soild black;
+                padding: 1em;
+                text-align: center;
+                font-size: 0.75em;
+                margin-top:2%;	
+			}
+			

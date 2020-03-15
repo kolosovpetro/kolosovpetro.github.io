@@ -1,0 +1,63 @@
+
+P[m_, n_, a_, b_] := Expand[Sum[L[m, n, k], {k, a, b}]];
+
+X[m_, t_, a_, b_] := Expand[(-1)^m Sum[Sum[Binomial[j, t] CoeffA[m, j] k^(2 j - t) (-1)^j, {j, t, m}], {k, a, b}]];
+
+Expand[Sum[(-1)^(1 - j) U[1, j, a, T] * n^j, {j, 0, 1}]];
+
+U[m_, t_, a_, b_] := Expand[(-1)^m Sum[Sum[Binomial[j, t] CoeffA[m, j] k^(2 j - t) (-1)^j, {j, t, m}], {k, a, b}]];
+
+H[m_, t_, k_] := Sum[Binomial[j, t] * CoeffA[m, j] * (-1)^j / (2 j - t + 1) * Binomial[2 j - t + 1, k]*BernoulliB[2 j - t + 1 - k], {j, t, m}];
+
+X[m_, t_, a_, b_] := (-1)^m Sum[H[m, t, k]* b^k, {k, 1, 2 m - t + 1}];
+
+UNIT TESTS:
+
+Column[Table[Expand[P[m, t, a, b] == P[m, t, 0, b] - P[m, t, 0, a - 1]], {m, 0, 10}, {t, 0, 10}], Left]
+
+Column[Table[Expand[P[m, t, a, b] == Sum[(-1)^(m - j) X[m, j, a, b] t^j, {j, 0, m}]], {m, 0, 3}, {t, 0, 10}], Left]
+
+Column[Table[Expand[X[m, t, a, b] == X[m, t, 0, b] - X[m, t, 0, a - 1]], {m, 0, 10}, {t, 0, 10}], Left]
+
+Column[Table[Simplify[X[m, t, a, b] == (-1)^m Sum[H[m, t, k]* ((b + 1)^k - a^k), {k, 1, 2 m - t + 1}]], {m, 0, 10}, {t, 0, 10}], Left]
+
+Table[Expand[n^s ==  1/n^(KDelta[Mod[s, 2]])*Sum[CoeffA[Floor[s/2], r]*Q[r, n, 1, n], {r, 0, Floor[s/2]}]], {s, 0, 50}]
+
+Column[Table[FullSimplify[n^t == n^KDelta[Mod[t, 2]] P[Floor[(t - 1)/2], n, 0, n - 1]], {t, 1, 10}, {n, 0, 7}], Left]
+
+Column[Table[Expand[P[m, t, a, b] == Sum[(-1)^(m - j) (-1)^m  Sum[H[m, j, k]* ((b + 1)^k - a^k), {k, 1, 2 m - j + 1}] t^j, {j, 0, m}]], {m, 0, 10}, {t, 0, 10}], Left]
+
+Column[Table[FullSimplify[Q[r, n, t, b] == Q[r, n, 0, b] - Q[r, n, 0, t - 1]], {r, 0, 10}, {n, 0, 7}], Left]
+
+CONVOLUTION AND POWER SUM UNIT TESTS
+
+Column[Table[FullSimplify[Convf[r, t, n] == Q[r, n, t, n - t]], {t, 0, 5}, {n, 0, 5}], Left]
+
+Column[Table[FullSimplify[n^(2 m + 1) + 1 == Sum[CoeffA[m, r] * Convf[r, 0, n], {r, 0, m}]], {n, 1, 5}, {m, 0, 3}], Left]
+
+Column[Table[FullSimplify[n^(2 m + 1) - 1 == Sum[CoeffA[m, r] * Convf[r, 1, n], {r, 0, m}]], {n, 0, 5}, {m, 0, 3}], Left]
+
+Column[Table[FullSimplify[X[m, t, a, b] == (-1)^m Sum[CoeffA[m, j] (-1)^j Binomial[j, t] (S[2 j - t, b] - S[2 j - t, a]), {j, t, m}]], {m, 0, 10}, {t, 0, 10}], Left]
+
+Column[Table[FullSimplify[P[m, n, a, b] == Sum[Sum[(-1)^(2 m + j - k) CoeffA[m, j] Binomial[j, k] (S[2 j - k, b] - S[2 j - k, a])*n^k, {j, k, m}], {k, 0, m}]], {m, 0, 10}, {n, 0, 10}], Left]
+
+Column[Table[Expand[(a + b)^(2 m + 1)] == P[m, a + b, 0, a + b], {m, 0, 10}, {a, 0, 10}], Left]
+
+Column[Table[FullSimplify[n^t == n^(Boole[Mod[t, 2] == 0]) P[Floor[(t - 1)/2], n, 0, n]], {t, 0, 10}, {n, 0, 10}], Left]
+
+Column[Table[FullSimplify[n^t == n^(-Boole[Mod[t, 2] == 0]) P[Floor[t/2], n, 0, n]], {t, 0, 10}, {n, 0, 10}], Left]
+
+Column[Table[FullSimplify[Convf[r, t, n] == Q[r, n, t, n - t + 1]], {t, 0, 10}, {n, 0, 5}], Left]
+
+Column[Table[FullSimplify[P[m, n, t, n - t + 1] == Sum[CoeffA[m, r] * Convf[r, t, n], {r, 0, m}]], {m, 0, 2}, {n, 0, 10}, {t, 0, 10}], Left]
+
+Column[Table[FullSimplify[n^(2 m + 1) + 1 == Sum[CoeffA[m, r] * Convf[r, 0, n], {r, 0, m}]], {m, 0, 5}, {n, 0, 10}], Left]
+
+Column[Table[Expand[(a + b)^(2 m + 1)] == -1 + Sum[CoeffA[m, r] * Convf[r, 0, a + b], {r, 0, m}], {m, 0, 5}, {a, 0, 3}, {b, 0, a}], Left]
+
+Column[Table[FullSimplify[1 == P[m, n, 0, n] - P[m, n, 1, n]], {m, 0, 10}, {n, 0, 10}], Left]
+
+Column[Table[FullSimplify[1 == P[m, n, 0, n + 1] - P[m, n, 0, n]], {m, 0, 10}, {n, 0, 10}], Left] 
+
+Column[Table[FullSimplify[P[m, n + h, a, b] - P[m, n, a, b] == Sum[CoeffA[m, k] (Q[k, n + h, a, b] - Q[k, n, a, b]), {k, 0, m}]], {m, 0, 5}, {n, 0, 5}], Left]
+

@@ -1,0 +1,157 @@
+\documentclass[12pt, letterpaper]{amsart}
+\usepackage[left=1in,right=1in,bottom=1in,top=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amssymb}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[pdfpagelabels,hyperindex,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=green]{hyperref}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{mathrsfs}
+\usepackage{colonequals}
+\usepackage{natbib}
+
+\hypersetup{
+pdftitle={Manuscript title},
+pdfsubject={Mathematics},
+pdfauthor={Petro Kolosov},
+pdfkeywords={}
+}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{ppty}[thm]{Property}
+\newtheorem{ppties}[thm]{Properties}
+\newtheorem{claim}[thm]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{limit}[thm]{Limitation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+\makeatletter
+\let\c@equation\c@thm
+\raggedbottom
+\makeatother
+\numberwithin{equation}{section}
+%--------Meta Data: Fill in your info------
+%&#1043;&#1086;&#1089;&#1087;&#1086;&#1076;&#1080;, &#1048;&#1080;&#1089;&#1091;&#1089;&#1077; &#1061;&#1088;&#1080;&#1089;&#1090;&#1077;, &#1057;&#1099;&#1085;&#1077; &#1041;&#1086;&#1078;&#1080;&#1081;, &#1084;&#1086;&#1083;&#1080;&#1090;&#1074;&#1072;&#1084;&#1080; &#1055;&#1088;&#1077;&#1095;&#1080;&#1089;&#1090;&#1099;&#1103; &#1058;&#1074;&#1086;&#1077;&#1103; &#1052;&#1072;&#1090;&#1077;&#1088;&#1080; &#1080; &#1042;&#1089;&#1077;&#1093; &#1057;&#1074;&#1103;&#1090;&#1099;&#1093; &#1058;&#1074;&#1086;&#1080;&#1093;, &#1087;&#1086;&#1084;&#1080;&#1083;&#1091;&#1081; &#1085;&#1072;&#1089;. &#1040;&#1084;&#1080;&#1085;&#1100;.
+\usepackage{microtype}
+\begin{document}
+\setlength{\abovedisplayskip}{10pt}
+\setlength{\belowdisplayskip}{10pt}
+\section{Introduction}
+We'd like to begin our discussion from defined above polynomial $\mathbf{P}^{m}_{a,b}(n)$. Polynomial $\mathbf{P}^{m}_{a,b}(n)$ is $2m+1$ degree polynomial in $a,b,n$. Polynomial $\mathbf{P}^{m}_{a,b}(n)$ is defined as finite sum of $2m$ degree polynomial $\mathbf{L}_m(n,k)$ over $k$. Being a summation, by means of associativity the polynomials $\mathbf{P}^{m}_{a,b}(n)$ can be split
+\begin{equation*}
+\mathbf{P}^{m}_{a,b}(n)=\mathbf{P}^{m}_{b}(n)-\mathbf{P}^{m}_{a}(n).
+\end{equation*}
+Polynomials $\mathbf{P}^{m}_{a,b}(n)$ implicitly involve the polynomials $\mathbf{Q}^{r}_{a,b}(n), \ \mathbf{X}^{m}_{t}(a,b), \ \mathbf{H}_{m,t}(k)$ and common power sum $S_p(n)$, see Notation and conventions. In extended form the polynomials $\mathbf{P}^{m}_{a,b}(n)$ are
+\begin{equation}
+\begin{split}
+\mathbf{P}^{m}_{a,b}(n)
+&=\sum_{a \leq k < b}\mathbf{L}_m(n,k)
+ =\sum\limits_{k}\mathbf{A}_{m,k}\mathbf{Q}^{k}_{a,b}(n)
+ =\sum\limits_{k}\mathbf{A}_{m,k}(\mathbf{Q}^{k}_{b}(n)-\mathbf{Q}^{k}_{a}(n)) \\
+&=\sum_{k}\mathbf{X}^{m}_{k}(a,b) (-1)^{m-k} n^k
+ =\sum_{k} (\mathbf{X}^{m}_{k}(b)-\mathbf{X}^{m}_{k}(a)) (-1)^{m-k} n^k \\
+&=\sum_{k} \sum\limits_{j\geq k}(-1)^{2m+j-k} \mathbf{A}_{m,j} \binom{j}{k}(S_{2j-k}(b)-S_{2j-k}(a)) n^k \\
+&=\sum_{k} (-1)^{2m-k} \sum_{\ell=1}^{2m-k+1} \mathbf{H}_{m,k}(\ell)(b^\ell - a^\ell)n^k. \\
+\end{split}
+\end{equation}
+Last line of the expression (1.1) clearly states why $\mathbf{P}^{m}_{a,b}(n)$ are polynomials in $a,b,n$. Let's show a few examples of polynomials $\mathbf{P}^{m}_{a,b}(n)$
+\begin{equation*}
+\begin{split}
+\mathbf{P}^{0}_{a,b}(n)
+&=-a+b.\\
+\mathbf{P}^{1}_{a,b}(n)
+& =-3 a^2 + 2 a^3 \\
+&\quad + 3 b^2 - 2 b^3 \\
+&\quad + 3 a n - 3 a^2 n \\
+&\quad - 3 b n + 3 b^2 n. \\
+\mathbf{P}^{2}_{a,b}(n)
+&=- 10 a^3 + 15 a^4 - 6 a^5 \\
+&\quad + 10 b^3 - 15 b^4 + 6 b^5 \\
+&\quad + 15 a^2 n - 30 a^3 n + 15 a^4 n \\
+&\quad - 15 b^2 n + 30 b^3 n - 15 b^4 n \\
+&\quad - 5 a n^2 + 15 a^2 n^2 - 10 a^3 n^2 \\
+&\quad + 5 b n^2 - 15 b^2 n^2 + 10 b^3 n^2. \\
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+\mathbf{P}^{2}_{a,b}(n)
+&= \quad 7 a^2 - 28 a^3 + 70 a^5 - 70 a^6 + 20 a^7 \\
+&\quad - 7 b^2 + 28 b^3 - 70 b^5 + 70 b^6 - 20 b^7 \\
+&\quad - 7 a n + 42 a^2 n - 175 a^4 n + 210 a^5 n -70 a^6 n \\
+&\quad + 7 b n - 42 b^2 n + 175 b^4 n - 210 b^5 n + 70 b^6 n \\
+&\quad - 14 a n^2 + 140 a^3 n^2 - 210 a^4 n^2 + 84 a^5 n^2 \\
+&\quad + 14 b n^2 - 140 b^3 n^2 + 210 b^4 n^2 - 84 b^5 n^2 \\
+&\quad - 35 a^2 n^3 + 70 a^3 n^3 - 35 a^4 n^3 \\
+&\quad + 35 b^2 n^3 - 70 b^3 n^3 + 35 b^4 n^3.
+\end{split}
+\end{equation*}
+We consider the polynomials $\mathbf{P}^{m}_{a,b}(n)$ because of their usefulness in revealing the main topic of the work. By means of partial cases of the polynomial $\mathbf{P}^{m}_{a,b}(n)$ we establish a relation between the power sum $\mathbf{Q}^{r}_{a,b}(n)$ and Binomial theorem. For instance, odd powers of $n$ are
+\begin{equation*}
+n^{2m+1} = \mathbf{P}^{m}_{n}(n) = \sum\limits_{k}\mathbf{A}_{m,k}\mathbf{Q}^{k}_{n}(n), \quad m\geq 0.
+\end{equation*}
+Moreover, the Binomial expansion $(a+b)^{2m+1}$ of odd powers can be reached similarly
+\begin{equation*}
+(a+b)^{2m+1}=\sum_{k} \binom{2m+1}{k} a^{2m+1-k} b^k \equiv \mathbf{P}^{m}_{a+b}(a+b) \equiv \sum\limits_{k}\mathbf{A}_{m,k}\mathbf{Q}^{k}_{a+b}(a+b), \quad m\geq 0.
+\end{equation*}
+It clearly follows that Multinomial expansion of odd-powered $t$-fold sum $(a_1+a_2+\cdots+a_t)^{2m+1}$ can be reached by $\mathbf{P}^{m}_{a,b}(n)$ as well
+\begin{equation*}
+\begin{split}
+(a_1+a_2+\cdots+a_t)^{2m+1} 
+&=\sum_{k_1+k_2+\cdots+k_t=2m+1}\binom{2m+1}{k_1, k_2,\ldots, k_t} \prod_{s=1}^{t}a_t^{k_t} \\
+\\
+&\equiv\mathbf{P}^{m}_{a_1+a_2+\cdots+a_t}(a_1+a_2+\cdots+a_t)\\
+\\
+&\equiv\sum_{k}\mathbf{A}_{m,k}\mathbf{Q}^{k}_{a_1+a_2+\cdots+a_t}(a_1+a_2+\cdots+a_t), \quad m\geq 0.
+\end{split}
+\end{equation*}
+
+Since the $n^s = n^{[s \ \mathrm{is} \ \mathrm{even}]} n^{\lfloor (s-1)/2 \rfloor}$, it is easy to generalise previously obtained odd power identity for all exponents $s\in\mathbb{N}$
+\begin{equation}
+n^s
+= n^{[s \ \mathrm{is} \ \mathrm{even}]} \mathbf{P}^{\lfloor \tfrac{s-1}{2} \rfloor}_{n}(n)
+= n^{[s \ \mathrm{is} \ \mathrm{even}]}\sum_{k}^{ \ }\mathbf{A}_{\lfloor \tfrac{s-1}{2} \rfloor, k}\mathbf{Q}^{k}_{n}(n), \quad s>0.
+\end{equation}
+The binomial expansion of $(a+b)^s$ for every integer $s>0$ is
+\begin{equation*}
+\begin{split}
+(a+b)^s=\sum_{k} \binom{s}{k} a^{s-k} b^k
+&\equiv(a+b)^{[s \ \mathrm{is} \ \mathrm{even}]} \mathbf{P}^{\lfloor \tfrac{s-1}{2} \rfloor}_{a+b}(a+b) \\
+&\equiv(a+b)^{[s \ \mathrm{is} \ \mathrm{even}]}\sum_{k}^{ \ }\mathbf{A}_{\lfloor \tfrac{s-1}{2} \rfloor, k}\mathbf{Q}^{k}_{a+b}(a+b).
+\end{split}
+\end{equation*}
+Now we are able to generalise the expression (1.2) even more. For the $t$-fold $s$-powered sum $(a_1+a_2+\cdots+a_t)^s, \quad s>0$ we have following Multinomial expansion
+\begin{equation*}
+\begin{split}
+(a_1+a_2+\cdots+a_t)^s 
+&=\sum_{k_1+k_2+\cdots+k_t=s}\binom{s}{k_1, k_2,\ldots, k_t} \prod_{\ell=1}^{t}a_\ell^{k_\ell}\\
+\\
+&\equiv (a_1+a_2+\cdots+a_t)^{[s \ \mathrm{is} \ \mathrm{even}]} 
+\mathbf{P}^{\lfloor \tfrac{s-1}{2} \rfloor}_{a_1+a_2+\cdots+a_t}(a_1+a_2+\cdots+a_t) \\
+\\
+&\equiv (a_1+a_2+\cdots+a_t)^{[s \ \mathrm{is} \ \mathrm{even}]} 
+\sum_{k}^{ \ }\mathbf{A}_{\lfloor \tfrac{s-1}{2} \rfloor, k}\mathbf{Q}^{k}_{a_1+\cdots+a_t}(a_1+\cdots+a_t).
+\end{split}
+\end{equation*}
+\end{document}

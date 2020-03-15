@@ -1,0 +1,67 @@
+\documentclass[12pt, letterpaper]{amsart}
+\usepackage[left=1in,right=1in,bottom=1in,top=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amssymb}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[pdfpagelabels,hyperindex,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=green]{hyperref}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{mathrsfs}
+\usepackage{colonequals}
+\usepackage{natbib}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{ppty}[thm]{Property}
+\newtheorem{ppties}[thm]{Properties}
+\newtheorem{claim}[thm]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{limit}[thm]{Limitation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+\newenvironment{myitemize}
+{ \begin{itemize}
+    \setlength{\itemsep}{4pt}
+    \setlength{\parskip}{4pt}
+    \setlength{\parsep}{4pt}     }
+{ \end{itemize}                  }
+
+\makeatletter
+\let\c@equation\c@thm
+\raggedbottom
+\makeatother
+\numberwithin{equation}{section}
+%--------Meta Data: Fill in your info------
+%&#1043;&#1086;&#1089;&#1087;&#1086;&#1076;&#1080;, &#1048;&#1080;&#1089;&#1091;&#1089;&#1077; &#1061;&#1088;&#1080;&#1089;&#1090;&#1077;, &#1057;&#1099;&#1085;&#1077; &#1041;&#1086;&#1078;&#1080;&#1081;, &#1084;&#1086;&#1083;&#1080;&#1090;&#1074;&#1072;&#1084;&#1080; &#1055;&#1088;&#1077;&#1095;&#1080;&#1089;&#1090;&#1099;&#1103; &#1058;&#1074;&#1086;&#1077;&#1103; &#1052;&#1072;&#1090;&#1077;&#1088;&#1080; &#1080; &#1042;&#1089;&#1077;&#1093; &#1057;&#1074;&#1103;&#1090;&#1099;&#1093; &#1058;&#1074;&#1086;&#1080;&#1093;, &#1087;&#1086;&#1084;&#1080;&#1083;&#1091;&#1081; &#1085;&#1072;&#1089;. &#1040;&#1084;&#1080;&#1085;&#1100;.
+\title{Acknowledgements}
+\usepackage{microtype}
+\begin{document}
+\maketitle
+
+\section{Acknowledgements}
+We would like to thank to Dr. Max Alekseyev (Department of Mathematics and Computational Biology,
+George Washington University) for sufficient help in the derivation of $\mathbf{A}_{m,r}$ coefficients,
+Also, we'd like to thank to OEIS editors Michel Marcus, Peter Luschny, Jon E. Schoenfield and others
+for their patient, faithful volunteer work and for their useful comments and suggestions during
+the editing of the sequences connected with this manuscript.
+
+\end{document}
