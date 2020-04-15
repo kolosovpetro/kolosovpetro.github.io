@@ -1,88 +1,59 @@
-\documentclass[12pt, letterpaper]{amsart}
-\usepackage[left=1in,right=1in,bottom=1in,top=1in]{geometry}
+\documentclass[12pt,letterpaper,oneside,reqno]{amsart}
 \usepackage{amsfonts}
-\usepackage{amsmath, amssymb}
-\usepackage[font=small,labelfont=bf]{caption}
-\usepackage[pdfpagelabels,hyperindex,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=green]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{float}
 \usepackage{mathrsfs}
 \usepackage{colonequals}
-\usepackage{natbib}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[left=1in,right=1in,bottom=1in,top=1in]{geometry}
+\usepackage[pdfpagelabels,hyperindex,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=green]{hyperref}
+\emergencystretch=1em
 
-\hypersetup{
-pdftitle={Manuscript title},
-pdfsubject={Mathematics},
-pdfauthor={Petro Kolosov},
-pdfkeywords={}
-}
-
+\newcommand \anglePower [2]{\langle #1 \rangle \sp{#2}}
+\newcommand \bernoulli [2][B] {{#1}\sb{#2}}
+\newcommand \multifoldSum [2][x]{{#1}\sb{1} + {#1}\sb{2} + \cdots + {#1}\sb{#2}}
+\newcommand \curvePower [2]{\{#1\}\sp{#2}}
+\newcommand \iversonBracket [1][s]{[#1 \; \mathrm{is} \; \mathrm{even}]}
+\newcommand \floor [1]{\lfloor #1 \rfloor}
+\newcommand \coeffA [3][A] {{\mathbf{#1}} \sb{#2,#3}}
+\newcommand \coeffH [4][H] {{\mathbf{#1}} \sb{#2,#3} (#4)}
+\newcommand \polynomialX [4][X] {{\mathbf{#1}}\sb{#2,#3} (#4)}
+\newcommand \polynomialP [4][P]{{\mathbf{#1}}\sp{#2} \sb{#3}(#4)}
+\newcommand \polynomialL [4][L]{{\mathbf{#1}}\sb{#2}(#3,#4)}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{lem}[thm]{Lemma}
-\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{quest}[thm]{Question}
 \newtheorem{ppty}[thm]{Property}
-\newtheorem{ppties}[thm]{Properties}
-\newtheorem{claim}[thm]{Claim}
 
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{defns}[thm]{Definitions}
-\newtheorem{con}[thm]{Construction}
-\newtheorem{exmp}[thm]{Example}
-\newtheorem{exmps}[thm]{Examples}
-\newtheorem{notn}[thm]{Notation}
-\newtheorem{notns}[thm]{Notations}
-\newtheorem{addm}[thm]{Addendum}
-\newtheorem{exer}[thm]{Exercise}
-\newtheorem{limit}[thm]{Limitation}
-
-\theoremstyle{remark}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{rems}[thm]{Remarks}
-\newtheorem{warn}[thm]{Warning}
-\newtheorem{sch}[thm]{Scholium}
-
-\newenvironment{myitemize}
-{ \begin{itemize}
-    \setlength{\itemsep}{4pt}
-    \setlength{\parskip}{4pt}
-    \setlength{\parsep}{4pt}     }
-{ \end{itemize}                  }
-
-\makeatletter
-\let\c@equation\c@thm
-\raggedbottom
-\makeatother
 \numberwithin{equation}{section}
 %--------Meta Data: Fill in your info------
-%&#1043;&#1086;&#1089;&#1087;&#1086;&#1076;&#1080;, &#1048;&#1080;&#1089;&#1091;&#1089;&#1077; &#1061;&#1088;&#1080;&#1089;&#1090;&#1077;, &#1057;&#1099;&#1085;&#1077; &#1041;&#1086;&#1078;&#1080;&#1081;, &#1084;&#1086;&#1083;&#1080;&#1090;&#1074;&#1072;&#1084;&#1080; &#1055;&#1088;&#1077;&#1095;&#1080;&#1089;&#1090;&#1099;&#1103; &#1058;&#1074;&#1086;&#1077;&#1103; &#1052;&#1072;&#1090;&#1077;&#1088;&#1080; &#1080; &#1042;&#1089;&#1077;&#1093; &#1057;&#1074;&#1103;&#1090;&#1099;&#1093; &#1058;&#1074;&#1086;&#1080;&#1093;, &#1087;&#1086;&#1084;&#1080;&#1083;&#1091;&#1081; &#1085;&#1072;&#1089;. &#1040;&#1084;&#1080;&#1085;&#1100;.
+\title[Template]
+{Template}
 \author[Petro Kolosov]{Petro Kolosov}
 \email{kolosovp94@gmail.com}
-\keywords{keyword1, keyword2, ... }
+\keywords{word1, word2}
 \urladdr{https://kolosovpetro.github.io}
-\subjclass[2010]{AAAAA (primary), BBBBB (secondary)}
-\title{Manuscript title}
-\usepackage{microtype}
+\subjclass[2010]{(primary), (secondary)}
+\date{\today}
+\hypersetup{
+    pdftitle={Template},
+    pdfsubject={Discrete Mathematics, Number Theory, Combinatorics},
+    pdfauthor={Petro Kolosov},
+    pdfkeywords={Binomial theorem, Discrete convolution, Power function, Polynomials, Convolution,
+    Multinomial theorem, Binomial coefficient, Bernoulli number, Pascal's triangle, Faulhaber's formula,
+    Power sum, Worpitzky identity, Macaulay's method, Macaulay brackets, Iverson's bracket, Binomial expansion}
+}
 \begin{document}
+    \begin{abstract} This is abs
+    \end{abstract}
+    \maketitle
+    \tableofcontents
 
-\begin{abstract}
 
-\end{abstract}
-
-\maketitle
-
-\section{Notation and conventions}
-
-\section{Introduction}
-
-\section{Conclusion}
-
-\section{Acknowledgements}
-
-\bibliographystyle{alpha}
-\bibliography{references}
+    \section{Introduction}
+    
 \end{document}
