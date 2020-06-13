@@ -1,7 +1,0 @@
-1) Page 18 - Do hyperlinks for A287326, A300656 - done
-2) Express power indentity in terms of bin power (2m+1) of half;
-3) Short mathematica commends, use ones from mathematica package;
-4) Write detailed and accurate documentation for git repository;
-5) Revise equations and missing theorem enviroments labels data;
-6) Arrange excel file logic_structure, add missing theorem enviroments, equation labels/links;
-7) Create a work structure tree;
