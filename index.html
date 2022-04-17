@@ -2,270 +2,145 @@
 <html lang="en">
 
 <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>Petro Kolosov's Page</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Some cs and maths">
-        <meta name="author" content="Petro Kolosov">
-        <meta name="revisit-after" content="5 days">
-        <link rel="icon" type="image/png" href="css/favicon-16x16.png" sizes="16x16" />
-        <link rel="stylesheet" type="text/css" media="screen" href="css/newver.css">
-        <link rel="canonical" href="https://kolosovpetro.github.io/" />
-
-        <!-- MathJax Script -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85607318-2"></script>
-        <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag() { dataLayer.push(arguments); }
-                gtag('js', new Date());
-
-                gtag('config', 'UA-85607318-2');
-        </script>
-
-        <!-- Insert MathJax -->
-        <script src="js/main_script.js"></script>
-
-        <!-- Begin insert JSON markup -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script>
-                $.getJSON("js/main_page_script.jsonld", function (data) { $("<script/>", { "type": "application/ld+json", html: JSON.stringify(data) }).appendTo("head"); });
-        </script>
-
-        <script type="text/javascript">
-                $(document).ready(function () {
-                        $("container").load("txt/12.txt");
-                });
-        </script>
-
-        <!-- Yandex.Metrika counter -->
-        <script
-                type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function () { try { w.yaCounter50991995 = new Ya.Metrika2({ id: 50991995, clickmap: true, trackLinks: true, accurateTrackBounce: true }); } catch (e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script>
-        <noscript>
-                <div><img src="https://mc.yandex.ru/watch/50991995" style="position:absolute; left:-9999px;" alt="" />
-                </div>
-        </noscript>
-        <!-- /Yandex.Metrika counter -->
-
+    <title>@razumovsky_r</title>
+    <link rel="icon" type="image/png" href="main_ava.jpg" sizes="32x32"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
 </head>
 
-<body>
-        <header>
-                <!-- Begin right info bar -->
-                <span class="twitter0">
-                        <h1>
-                                <font color="black" size="6"><strong>Petro Kolosov</strong></font>
-                        </h1>
-                        <br>
-                        <font color="#2771ec"><i>Mathematics is the language where lie does not exist</i></font>
-                        <br>
-                        <font color="#2771ec"></font>
-                        <br>
-                        <font color="black"><b>kolosovp94@gmail.com</b></font>
-                </span>
-                <!-- End right info bar -->
-        </header>
+<body class="body">
 
-        <!-- Begin Publications -->
-        <article>
-                <div class="cat" onclick="toggleVisibility('cont2','icon2')">
-                        <img src="css/open.gif" id="icon2" alt="expand/collapse category">
-                        <h2>Maths</h2>
-                </div>
-                <div class="cont" id="cont2">
-                        <ul>
-                                <li><a href="https://arxiv.org/abs/1608.00801">https://arxiv.org/abs/1608.00801</a></li>
-                                <li><a href="https://arxiv.org/abs/1603.02468">https://arxiv.org/abs/1603.02468</a></li>
-                        </ul>
-                </div>
-        </article>
-        <!-- End Publications -->
-
-        <!-- Code-->
-        <article>
-                <div class="cat" onclick="toggleVisibility('cont8','icon8')">
-                        <img src="css/open.gif" id="icon8" alt="expand/collapse category">
-                        <h2>Code</h2>
-                </div>
-                <div class="cont" id="cont8">
-                        <ul>
-                                <li><a href="https://github.com/kolosovpetro">https://github.com/kolosovpetro</a></li>
-                        </ul>
-                </div>
-        </article>
-        <!-- End Mathematice codes -->
-
-        <!-- Begin OEIS contributions -->
-        <article>
-                <div class="cat" onclick="toggleVisibility('cont3','icon3')">
-                        <img src="css/open.gif" id="icon3" alt="expand/collapse category">
-                        <h2>Contributions to the OEIS</h2>
-                </div>
-                <div class="cont" id="cont3">
-                        OIES stands for the On-Line Encyclopedia of Integer Sequences, established by Neil J. Sloane in
-                        1965 and since 1996 is published online. Here are some sequences contributed by me.
-                        <ul>
-                                <li><a href="https://oeis.org/A306548" target="_blank">A306548</a> - Table of
-                                        convolutions of powers</li>
-                                <li><a href="https://oeis.org/A287326" target="_blank">A287326</a> - Numerical triangle,
-                                        row sums give \(n^3\)</li>
-                                <li><a href="https://oeis.org/A300656" target="_blank">A300656</a> - Numerical triangle,
-                                        row sums give \(n^5\)</li>
-                                <li><a href="https://oeis.org/A300785" target="_blank">A300785</a> - Numerical triangle,
-                                        row sums give \(n^7\)</li>
-                                <li>Coefficients \(A_{m,r}\) from <a href="https://arxiv.org/abs/1603.02468"
-                                                target="_blank">arXiv:1603.02468</a>
-                                        <ul>
-                                                <li> <a href="https://oeis.org/A302971" target="_blank">A302971</a> -
-                                                        Numerators of \(A_{m,r}\)</li>
-                                                <li><a href="https://oeis.org/A304042" target="_blank">A304042</a> -
-                                                        Denominators of \(A_{m,r}\)</li>
-                                        </ul>
-                                </li>
-
-                                <li>
-                                        <a href="https://oeis.org/A303675" target="_blank">A303675</a> - Coefficients
-                                        \((2k-1)!T(2m,2k)\) in the <a href="https://arxiv.org/abs/math/9207222"
-                                                target="_blank">Faulhaber's sum</a>
-                                        $$
-                                        \Sigma n^{2m-1}=\sum_{k=1}^{m}(2k-1)!T(2m,2k)\binom{n+k}{2k}.
-                                        $$
-                                </li>
-
-                                <li><a href="https://oeis.org/A320047" target="_blank">A320047</a></li>
-                                <li><a href="https://oeis.org/A316349" target="_blank">A316349</a></li>
-                                <li><a href="https://oeis.org/A316387" target="_blank">A316387</a></li>
-                        </ul>
-                </div>
-        </article>
-        <!-- End OEIS contributions -->
-
-        <!-- Begin Support my research -->
-        <article>
-                <div class="cat" onclick="toggleVisibility('cont5','icon5')">
-                        <img src="css/open.gif" id="icon5" alt="expand/collapse category">
-                        <h2>
-                                <font color="#e5fe40">Donate</font>
-                        </h2>
-                </div>
-                <div class="cont" id="cont5">
-                        <font color="#d7034e">Dear readers!</font> If you found my research interesting and progressive,
-                        you are free to help me by donations. Since mathematics is not my main affiliation,
-                        I don't receive any money for my work - <b>I work for idea</b>. I never care about money, but I
-                        have to live :) Each collected donation will be spend only to
-                        proceed my research without delays.
-                        <ul>
-                                <strong>
-                                        <li>
-                                                <font color="#2124af">For more info and details concerning donation,
-                                                        proceed by the link</font>
-                                </strong>
-                                <ul>
-                                        <li><a href="donations"
-                                                        target="_blank">https://kolosovpetro.github.io/donations</a>
-                                        </li>
-                                </ul>
-                                </li>
-                        </ul>
-                </div>
-        </article>
-        <!-- End Support my research -->
-
-        <!-- Begin Interesting links -->
-        <article>
-                <div class="cat" onclick="toggleVisibility('cont6','icon6')">
-                        <img src="css/open.gif" id="icon6" alt="expand/collapse category">
-                        <h2>Interesting links</h2>
-                </div>
-                <div class="cont" id="cont6">
-                        <ul>
-                                <li>
-                                        <a href="http://digital.slub-dresden.de/fileadmin/data/272635758/272635758_tif/jpegs/272635758.pdf"
-                                                target="_blank">Academia Algebræ</a>, by Johann Faulhaber, 1631.
-                                </li>
-                                <li>
-                                        Theoretical Computer Science <a href="pdf/cs_cheat_sheet.pdf"
-                                                target="_blank">Cheat Sheet</a>.
-                                </li>
-                                <li>
-                                        <a href="https://mathoverflow.net/questions/297900/coefficients-in-the-sum-sum-k-0n-1-sum-j-0ma-j-mn-kjkj-n2m1"
-                                                target="_blank">
-                                                Mathoverflow</a> - discussion on \(A_{m,j}\) coefficients, 2018.
-                                </li>
-                                <li>
-                                        <a href="https://www.cut-the-knot.org/arithmetic/combinatorics/PascalTriangleProperties.shtml"
-                                                target="_blank">
-                                                Patterns in Pascal's Triangle</a> by Alexander Bogomolny.
-                                </li>
-                                <li>
-                                        <a href="http://eudml.org/doc/148532" target="_blank">Studien über die
-                                                Bernoullischen und Eulerschen Zahlen</a> by J. Worpitzky. - Worpitzky
-                                        Identity (original reference), 1883.
-                                </li>
-                                <li>
-                                        <a href="https://mathoverflow.net/questions/304130/coefficients-u-mn-k-in-the-identity-n2m1-sum-limits-0-leq-k-leq-m"
-                                                target="_blank">
-                                                Mathoverflow</a> - discussion on \(U_{m}(n,k)\) coefficients, 2018.
-                                </li>
-                                <li>
-                                        The Pascal's identity from <a href="https://arxiv.org/abs/1011.0076"
-                                                target="_blank">arXiv:1011.0076</a>
-                                        <small>
-                                                $$
-                                                (n+1)^{k+1}-1=\sum_{m=1}^{n}[(m+1)^{k+1}-m^{k+1}]=\sum_{p=0}^{k}\binom{k+1}{p}(1^p+2^p+\cdots+n^p).
-                                                $$
-                                        </small>
-                                </li>
-                                <li>
-                                        <a href="pdf/Sums_of_powers_of_positive_integers_and_their_recurrence_relations.pdf"
-                                                target="_blank">
-                                                Sums of powers of positive integers and their recurrence relations</a>.
-                                </li>
-                                <li>
-                                        <a href="http://www.cs.columbia.edu/~cs4205/files/CM4.pdf"
-                                                target="_blank">Comprehensive list of binomial identities</a>.
-                                </li>
-                                <li>
-                                        <a href="https://math.stackexchange.com/questions/3091598" target="_blank">How
-                                                to write the sum of binomial coefficients in terms of polynomials in
-                                                (n,k)</a>.
-                                </li>
-                                <li>D. E. Knuth, Johann Faulhaber and sums of powers,
-                                        <a href="https://arxiv.org/abs/math/9207222"
-                                                target="_blank">arXiv:math/9207222</a>.
-                                </li>
-                                <li>
-                                        <a href="https://www.linkedin.com/pulse/problem-triangle-developing-polynomial-function-fn-nm-albert-tkaczyk/"
-                                                target="_blank">Albert Tkaczyk</a>. About the problem of a triangle
-                                        developing the polynomial function f(n)= n^m, 2018.
-                                        <a href="https://drive.google.com/file/d/1DfP4ED3sNsQlzaNEHoXRxWhr-b3lkPxK/view"
-                                                target="_blank">Google Drive link.</a>
-                                </li>
-                                <li>
-                                        <a href="https://www.linkedin.com/pulse/problem-triangle-developing-polynomial-function-f-n-m-albert-tkaczyk/"
-                                                target="_blank">Albert Tkaczyk</a>. On the problem of a triangle
-                                        developing the polynomial function f (n) = n ^ m - continuation, 2018.
-                                        <a href="https://drive.google.com/file/d/1OYR7A7M4LIsRxjOEiuJtrUl8Xjw6C1bj/view"
-                                                target="_blank">Google Drive link.</a>
-                                </li>
-                        </ul>
-                </div>
-        </article>
-        <!-- End Interesting links -->
-
-        <!-- Begin Footer -->
-        <!-- <div class="foot">
-                <a href="https://oeis.org/wiki/User:Kolosov_Petro" target="_blank">
-                        <img src="css/OEIS.png" width="30" height="30">
-                </a>
-
-                <a href="https://arxiv.org/a/kolosov_p_1.html" target="_blank">
-                        <img src="css/arxiv.png" width="30" height="30">
-                </a>
-        </div> -->
+<h1 class="h1">razumovsky_r</h1>
+<div class="avatar"></div>
+<p class="bio">11100 y.o Dotnet Developer from $"{cityName}</p>
+<div class="container">
+    <a href="https://github.com/kolosovpetro" target="blank"><img class="social" src="icons/github.png"
+                                                                  alt="github"></a>
+    <a href="https://t.me/razumovsky_r" target="blank"><img class="social" src="icons/telegram.png" alt="telegram"></a>
+    <a href="https://www.blockchain.com/btc/address/15iQcebcPCHrApW6LgDVqBES5vi1Mt5per" target="blank"><img
+            class="social" src="icons/bitcoin.png" alt="bitcoin wallet"></a>
+    <a href="https://www.buymeacoffee.com/razumovsky" target="blank"><img class="social"
+                                                                          src="icons/buymeacoffee.png"
+                                                                          alt="buymeacoffe"></a>
+    <a href="https://medium.com/@razumovsky_r" target="blank"><img class="social" src="icons/medium.png"
+                                                                   alt="medium"></a>
+</div>
+<div class="container">
+    <a style="font-size: 45px;" href="./">Projects</a>
+    <a style="font-size: 45px; color: black" href="math">Math</a>
+    <a style="font-size: 45px; color: black" href="oeis">OEIS</a>
+    <a style="font-size: 45px; color: black" href="links">Links</a>
+</div>
+<div class="container">
+    <div>Bachelor's project
+        <ul>
+            <li><a href="https://github.com/MangoInstantMessenger/MangoMessengerBachelorThesis" target="_blank">Mango
+                Messenger Thesis</a></li>
+            <li><a href="https://github.com/MangoInstantMessenger/MangoMessengerAPI" target="_blank">Mango Messenger
+                API</a></li>
+            <li><a href="https://github.com/MangoInstantMessenger/MangoMessengerFrontend" target="_blank">Mango
+                Messenger Angular</a></li>
+        </ul>
+    </div>
+    <div>Opensource
+        <ul>
+            <li><a href="https://github.com/seclerp/rider-efcore" target="_blank">Rider EFCore Plugin</a></li>
+        </ul>
+    </div>
+    <div>Algorithms
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/MontyHallProblem" target="_blank">Monty Hall Problem</a></li>
+            <li><a href="https://github.com/TheAlgorithms/C-Sharp/pull/280" target="_blank">Dynamic Coin Change</a></li>
+            <li><a href="https://github.com/TheAlgorithms/C-Sharp/pull/278" target="_blank">Dijkstra Algorithm</a></li>
+            <li><a href="https://github.com/kolosovpetro/Enigma" target="_blank">Enigma Machine</a></li>
+            <li><a href="https://github.com/kolosovpetro/Classical-Algorithms" target="_blank">Classical Algorithms</a>
+            </li>
+            <li><a href="https://github.com/kolosovpetro/Sort-Algorithms" target="_blank">Sort Algorithms</a></li>
+            <li><a href="https://github.com/kolosovpetro/Search-Algorithms" target="_blank">Search Algorithms</a></li>
+            <li><a href="https://github.com/kolosovpetro/RpnCalculator" target="_blank">RPN Calculator</a></li>
+            <li><a href="https://github.com/kolosovpetro/Bit-Converter" target="_blank">Bit Converter</a></li>
+            <li><a href="https://github.com/kolosovpetro/Html-Code-Generator" target="_blank">Html Code Generator</a>
+            </li>
+        </ul>
+    </div>
+    <div>EFCore & Databases
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/CodeFirstEntityFrameworkCore" target="_blank">Code First</a>
+            </li>
+            <li><a href="https://github.com/kolosovpetro/DatabaseFirstEntityFrameworkCore" target="_blank">Databse
+                First</a></li>
+            <li><a href="https://github.com/kolosovpetro/MongoDb-Repository" target="_blank">MongoDB Repository</a></li>
+        </ul>
+    </div>
+    <div>Data structures & Patterns
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/Data-Structures" target="_blank">Linear Data Structures</a>
+            </li>
+            <li><a href="https://github.com/kolosovpetro/Tree-Algorithms" target="_blank">Tree Data Structure</a></li>
+            <li><a href="https://github.com/kolosovpetro/Graph-Algorithms" target="_blank">Graph via References</a></li>
+            <li><a href="https://github.com/TheAlgorithms/C-Sharp/pull/233" target="_blank">Graph via Adjacency
+                Matrix</a></li>
+            <li><a href="https://github.com/kolosovpetro/Design-Patterns" target="_blank">Design Patterns</a></li>
+        </ul>
+    </div>
+    <div>TeX Works
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/CrackingTheLeetCode" target="_blank">Cracking The LeetCode
+                Book</a></li>
+            <li><a href="https://github.com/kolosovpetro/github-latex-template" target="_blank">Github LaTeX
+                Template</a></li>
+        </ul>
+    </div>
+<!--    <div>Mathematics-->
+<!--        <ul>-->
+<!--            <li><a href="https://github.com/kolosovpetro/AStudyOnDynamicEquations" target="_blank">A Study On Dynamic-->
+<!--                Equations</a></li>-->
+<!--            <li><a href="https://github.com/kolosovpetro/OnTheBinomialTheoremAndDiscreteConvolution" target="_blank">On-->
+<!--                the Binomial theorem and Discrete Convolution</a></li>-->
+<!--            <li><a href="https://github.com/kolosovpetro/OnTheBertrandsPostulate" target="_blank">On the Bertrand's-->
+<!--                Postulate</a></li>-->
+<!--            <li><a href="https://github.com/kolosovpetro/RSAEncryptionExplained" target="_blank">RSA Encryption: Behind-->
+<!--                the scenes</a></li>-->
+<!--            <li><a href="https://github.com/kolosovpetro/DiffieHellmanKeyExchange" target="_blank">Diffie-Hellman via-->
+<!--                REST</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+    <div>Web Backend
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/CQRS-Api" target="_blank">CQRS API</a></li>
+            <li><a href="https://github.com/kolosovpetro/Blockchain-Api" target="_blank">Blockchain API</a></li>
+            <li><a href="https://github.com/kolosovpetro/Gadget-Store-MVC" target="_blank">Gadget Store MVC</a></li>
+            <li><a href="https://github.com/kolosovpetro/BankMVC" target="_blank">Bank MVC Test Task</a></li>
+            <li><a href="https://github.com/kolosovpetro/Rest-Api" target="_blank">REST API</a></li>
+        </ul>
+    </div>
+    <div>Web Frontend
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/Blazor-Course" target="_blank">Blazor Course</a></li>
+            <li><a href="https://github.com/kolosovpetro/LearningJavascript" target="_blank">Learning Javascript</a>
+            </li>
+        </ul>
+    </div>
+    <div>C#
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/DelegatesInLINQ" target="_blank">Delegates in LINQ</a></li>
+            <li><a href="https://github.com/kolosovpetro/CovariantFactory" target="_blank">Covariant Factory</a></li>
+            <li><a href="https://github.com/kolosovpetro/ContravariantList" target="_blank">Contravariant List</a></li>
+            <li><a href="https://github.com/kolosovpetro/IoC-Container" target="_blank">IoC Container</a></li>
+            <li><a href="https://github.com/kolosovpetro/Computer-Science" target="_blank">Computer Science</a></li>
+        </ul>
+    </div>
+    <div>SQL
+        <ul>
+            <li><a href="https://github.com/kolosovpetro/Rental-SQL-Database" target="_blank">SQL Server Queries</a>
+            </li>
+            <li><a href="https://github.com/kolosovpetro/SQL_Course" target="_blank">PostgreSQL Queries</a></li>
+        </ul>
+    </div>
+</div>
 </body>
 
 </html>
