@@ -1,0 +1,94 @@
+.body {
+    background-color: rgb(255, 254, 194);
+}
+
+.h1 {
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 65px;
+    text-align: center;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    background-image: url("main_ava.jpg");
+    background-size: cover;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.bio {
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 45px;
+    text-align: center;
+}
+
+.social {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+.container>a {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin: 2%;
+    width: 100px;
+}
+
+.container>div {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    margin: 2%;
+    width: 20%;
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 33px;
+}
+
+ul {
+    line-height: 200%;
+    text-align: left;
+    list-style-type: square;
+}
+
+
+/* unvisited link */
+
+a:link {
+    color: #d7034e;
+    font-size: 30px;
+    font-family: 'Smooch Sans', sans-serif;
+}
+
+
+/* visited link */
+
+a:visited {
+    color: #d7034e;
+    font-family: 'Smooch Sans', sans-serif;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: #d7034e;
+    text-decoration: none;
+    font-family: 'Smooch Sans', sans-serif;
+}
+
+
+/* selected link */
+
+a:active {
+    color: #d7034e;
+    font-family: 'Smooch Sans', sans-serif;
+}
