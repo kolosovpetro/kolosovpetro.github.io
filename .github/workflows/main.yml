@@ -13,18 +13,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Pull changes to the VM
-        uses: appleboy/ssh-action@master
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create Artifact
+        run: |
+          zip -r website-artifact.zip .
+
+      - name: Copy files to VM via SSH
+        uses: nogsantos/scp-deploy@master
         with:
+          src: website-artifact.zip
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
+          remote: "website-artifact-remote.zip"
+          port: 22
+          user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/kolosovpetro.github.io
-            git checkout master
-            git pull
-            sudo nginx -t
-            sudo systemctl restart nginx
-            sudo nginx -t
-
-
