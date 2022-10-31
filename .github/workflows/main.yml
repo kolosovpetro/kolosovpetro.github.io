@@ -37,5 +37,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            mkdir -p temp_for_zip_extract
-            unzip -o ~/website-artifact-remote.zip -d temp_for_zip_extract
+            mkdir -p razumovsky_me
+            unzip -o ~/website-artifact-remote.zip -d razumovsky_me
+            sudo nginx -t
+            sudo systemctl restart nginx
+            sudo nginx -t
