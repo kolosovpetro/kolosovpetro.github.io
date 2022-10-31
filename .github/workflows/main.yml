@@ -20,12 +20,12 @@ jobs:
         run: |
           tar --exclude='./.git' --exclude='./.github' -zcvf website-artifact.tgz .
 
-      - name: Copy files to VM via SSH
-        uses: nogsantos/scp-deploy@master
-        with:
-          src: website-artifact.zip
-          host: ${{ secrets.SSH_HOST }}
-          remote: "website-artifact-remote.tgz"
-          port: 22
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+      # - name: Copy files to VM via SSH
+      #   uses: nogsantos/scp-deploy@master
+      #   with:
+      #     src: website-artifact.zip
+      #     host: ${{ secrets.SSH_HOST }}
+      #     remote: "website-artifact-remote.tgz"
+      #     port: 22
+      #     user: ${{ secrets.SSH_USER }}
+      #     key: ${{ secrets.SSH_KEY }}
