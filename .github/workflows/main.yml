@@ -1,51 +1,42 @@
-# This is a basic workflow to help you get started with Actions
+name: Deploy to VM
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  deploy:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Configure SSH
+      - name: Create Artifact
         run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/id_rsa
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.AZURE_DEV_SSH_USER }}
-          SSH_KEY: ${{ secrets.AZURE_DEV_SSH_KEY }}
-          SSH_HOST: ${{ secrets.AZURE_DEV_SSH_HOST }}
+          zip -r website-artifact.zip .
 
-      - name: Copy Release to Remote
-        run: |
-          scp -o StrictHostKeyChecking=no -r -i ~/.ssh/id_rsa * $SSH_USER@$SSH_HOST:/home/$SSH_USER/dist/razumovsky
-        env:
-          SSH_USER: ${{ secrets.AZURE_DEV_SSH_USER }}
-          SSH_HOST: ${{ secrets.AZURE_DEV_SSH_HOST }}
+      - name: Copy files to VM via SSH
+        uses: nogsantos/scp-deploy@master
+        with:
+          src: website-artifact.zip
+          host: ${{ secrets.SSH_HOST }}
+          remote: "website-artifact-remote.zip"
+          port: 22
+          user: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
 
-      - name: Restart nginx
-        run: ssh staging "sudo systemctl restart nginx"
+      - name: Extract artifact on Remote
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            mkdir -p razumovsky_me
+            unzip -o ~/website-artifact-remote.zip -d razumovsky_me
+            sudo nginx -t
+            sudo systemctl restart nginx
+            sudo nginx -t
