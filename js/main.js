@@ -3,16 +3,15 @@
 const test = document.getElementById("headerText");
 
 function calculateAge() {
-    var dateOfBirth = new Date("03/04/1994");
+    const dateOfBirth = new Date("03/04/1994");
 
-    var monthDifference = Date.now() - dateOfBirth.getTime();
+    const monthDifference = Date.now() - dateOfBirth.getTime();
 
- 
-    var ageDateTime = new Date(monthDifference);
-   
-    var year = ageDateTime.getUTCFullYear();
+    const ageDateTime = new Date(monthDifference);
 
-    var age = Math.abs(year - 1970);
+    const year = ageDateTime.getUTCFullYear();
+
+    const age = Math.abs(year - 1970);
 
     return age;
 }
