@@ -1,6 +1,18 @@
 name: directory-listing-deploy
 on:
+  push:
+    branches:
+      - master
+      - develop
+      - updates
+  pull_request:
+    branches:
+      - master
+      - develop
+      - updates
+
   workflow_dispatch:
+
 
 jobs:
   pages-directory-listing:
