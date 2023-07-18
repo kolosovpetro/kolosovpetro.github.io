@@ -1,0 +1,22 @@
+name: directory-listing-build
+on: [ push, pull_request ]
+
+jobs:
+  pages-directory-listing:
+    
+    runs-on: ubuntu-latest
+    
+    name: Directory Listings Index
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Generate Directory Listings
+        uses: jayanta525/github-pages-directory-listing@v3.0.0
+        with:
+          FOLDER: pdf
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './'
