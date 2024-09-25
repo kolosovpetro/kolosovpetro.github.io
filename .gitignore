@@ -16,6 +16,7 @@
 # Generated files
 .idea/**/contentModel.xml
 .idea/
+.vscode/
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
