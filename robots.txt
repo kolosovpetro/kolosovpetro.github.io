@@ -10,3 +10,4 @@ Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_12_09.xml
 Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_11_08.xml
 Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_09_25.xml
 Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_07_13.xml
+Sitemap: https://kolosovpetro.github.io/sitemap.txt
