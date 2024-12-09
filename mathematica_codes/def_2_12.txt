@@ -1,0 +1,13 @@
+(* This Mathematica code was created as supplementary file to arXiv:1603.02468 *) 
+(* This code verifies the the values Definition (3.27) produces, page 12. Date: 28/05/2018 *)
+(* This code is closely related to https://kolosovpetro.github.io/mathematica_codes/solutions_system_2_4.txt, it produces same values analytically. *)
+(* Original file is placed at https://kolosovpetro.github.io/mathematica_codes/def_2_12.txt *)
+
+R[n_, k_] := 0
+R[n_, k_] := (2 k + 1)*Binomial[2 k, k]*
+   Sum[R[n, j]*Binomial[j, 2 k + 1]*(-1)^(j - 1)/(j - k)*
+   BernoulliB[2 j - 2 k], {j, 2 k + 1, n}] /; 2 k + 1 <= n
+R[n_, k_] := (2 n + 1)*Binomial[2 n, n] /; k == n;
+
+(* Print Fifteen Initial rows of sequence A302971/A304042 in OEIS *)
+Column[ Table[ R[n, k], {n, 0, 15}, {k, 0, n}], Center] 
