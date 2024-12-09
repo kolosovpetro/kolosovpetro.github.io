@@ -5,4 +5,3 @@ Disallow: /research/binomial-theorem-and-convolution/*
 Disallow: /mathematica_codes/*
 Disallow: /arxiv_1603_02468/*
 Disallow: /Html-Code-Generator/*
-Sitemap: https://kolosovpetro.github.io/sitemap.xml
