@@ -1,0 +1,21 @@
+﻿In[55]:= (* Define 0^0 = 1 *)
+Unprotect[Power];
+Power[0 | 0., 0 | 0.] = 1;
+Protect[Power];
+
+(*Define the R[n,k]:=A302971(m,j)/A304042(m,j)*)
+R[n_, k_] := 0
+R[n_, k_] := (2 k + 1)*Binomial[2 k, k]*
+   Sum[R[n, j]*Binomial[j, 2 k + 1]*(-1)^(j - 1)/(j - k)*
+     BernoulliB[2 j - 2 k], {j, 2 k + 1, n}] /; 2 k + 1 <= n
+R[n_, k_] := (2 n + 1)*Binomial[2 n, n] /; k == n;
+
+(*Define the U(m,l,t) coefficients*)
+U[m_, l_, t_] := (-1)^m Sum[ Sum[Binomial[j, t] R[m, j] k^(2 j - t) (-1)^j, {j, t, m}], {k, 1, l}];
+
+(*Define the value of the variable'm',should be m=2 for A316349*)
+m = 2;
+
+(* Validate T^(2m+1)=Sum_{k=0..m} (-1)^(m-k)*U(m,T,k)*T^k for m=0,1,... \
+12.*)
+Table[Simplify[ Sum[(-1)^(m - k) * U[m, T, k] * T^k, {k, 0, m}]] == T^(2 m + 1), {m, 0, 12}]
