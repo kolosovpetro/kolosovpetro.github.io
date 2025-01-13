@@ -14,3 +14,4 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Fix formatting in math html
 - Add citation link math
 - Add favicon
+- Update links text decoration
