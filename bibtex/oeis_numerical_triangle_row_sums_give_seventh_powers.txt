@@ -1,0 +1,8 @@
+﻿@misc{oeis_numerical_triangle_row_sums_give_seventh_powers,
+    title = {{Numerical triangle, row sums give seventh power, Entry A300785 in The On-Line Encyclopedia of Integer Sequences}},
+    author = {Kolosov, Petro},
+    journal = {{The On-Line Encyclopedia of Integer Sequences}},
+    number = {A300785},
+    note = {\url{https://oeis.org/A300785}},
+    year = {2018}
+}

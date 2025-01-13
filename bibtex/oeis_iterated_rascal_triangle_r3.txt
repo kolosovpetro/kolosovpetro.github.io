@@ -1,0 +1,8 @@
+﻿@misc{oeis_iterated_rascal_triangle_r3,
+    title = {Iterated rascal triangle R3, Entry A374452 in The On-Line Encyclopedia of Integer Sequences},
+    author = {Kolosov, Petro},
+    journal = {The On-Line Encyclopedia of Integer Sequences},
+    number = {A374452},
+    note = {\url {https://oeis.org/A374452}},
+    year = {2024}
+}
