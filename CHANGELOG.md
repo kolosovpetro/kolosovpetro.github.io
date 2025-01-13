@@ -15,3 +15,5 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Add citation link math
 - Add favicon
 - Update links text decoration
+- Fix typos in oeis
+- Format html in oeis
