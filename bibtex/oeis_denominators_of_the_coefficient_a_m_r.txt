@@ -1,0 +1,8 @@
+@misc{oeis_denominators_of_the_coefficient_a_m_r,
+    title = {{Entry A304042 in The On-Line Encyclopedia of Integer Sequences}},
+    author = {Kolosov, Petro},
+    journal = {{The On-Line Encyclopedia of Integer Sequences}},
+    number = {A304042},
+    note = {\url{https://oeis.org/A304042}},
+    year = {2018}
+}

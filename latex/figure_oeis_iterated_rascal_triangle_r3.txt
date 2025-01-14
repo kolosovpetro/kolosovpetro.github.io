@@ -1,0 +1,20 @@
+\begin{table}[H]
+    \setlength\extrarowheight{-6pt}
+    \begin{tabular}{c|cccccccccc}
+        $n/k$ & 0 & 1 & 2  & 3  & 4   & 5   & 6  & 7  & 8 & 9 \\
+        \hline
+        0     & 1 &   &    &    &     &     &    &    &   &   \\
+        1     & 1 & 1 &    &    &     &     &    &    &   &   \\
+        2     & 1 & 2 & 1  &    &     &     &    &    &   &   \\
+        3     & 1 & 3 & 3  & 1  &     &     &    &    &   &   \\
+        4     & 1 & 4 & 6  & 4  & 1   &     &    &    &   &   \\
+        5     & 1 & 5 & 10 & 10 & 5   & 1   &    &    &   &   \\
+        6     & 1 & 6 & 15 & 20 & 15  & 6   & 1  &    &   &   \\
+        7     & 1 & 7 & 21 & 35 & 35  & 21  & 7  & 1  &   &   \\
+        8     & 1 & 8 & 28 & 56 & 69  & 56  & 28 & 8  & 1 &   \\
+        9     & 1 & 9 & 36 & 84 & 121 & 121 & 84 & 36 & 9 & 1
+    \end{tabular}
+    \caption{Rascal triangle R3. Sequence \href{https://oeis.org/A374452}{\texttt{A374452}}
+    in OEIS~\cite{oeis_iterated_rascal_triangle_r3}.}
+    \label{tab:r3-triangle}
+\end{table}

@@ -1,0 +1,8 @@
+@misc{polynomial_identity_with_binomial_theorem_and_faulhabers_formula,
+    title = {{Polynomial identity involving Binomial Theorem and Faulhaber's formula}},
+    author = {Kolosov, Petro},
+    journal = {Figshare},
+    number = {https://doi.org/10.6084/m9.figshare.2386},
+    note = {\url{https://kolosovpetro.github.io/pdf/PolynomialIdentityInvolvingBTandFaulhaber.pdf}},
+    year = {2023}
+}

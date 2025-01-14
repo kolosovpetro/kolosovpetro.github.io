@@ -1,0 +1,8 @@
+@misc{oeis_iterated_rascal_triangle_r2,
+    title = {{Iterated rascal triangle R2, Entry A374378 in The On-Line Encyclopedia of Integer Sequences}},
+    author = {{Kolosov, Petro}},
+    journal = {{The On-Line Encyclopedia of Integer Sequences}},
+    number = {A374378},
+    note = {\url {https://oeis.org/A374378}},
+    year = {2024}
+}

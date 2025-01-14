@@ -1,0 +1,7 @@
+@misc{odd_power_identity_via_matrix_multiplication,
+    title = {{A curiosity about Polynomial Interpolation}},
+    author = {Kolosov, Petro},
+    journal = {GitHub},
+    note = {\url{https://kolosovpetro.github.io/pdf/ACuriosityAboutPolynomialInterpolation.pdf}},
+    year = {2024}
+}

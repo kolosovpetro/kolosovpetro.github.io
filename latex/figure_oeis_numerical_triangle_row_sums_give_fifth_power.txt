@@ -1,0 +1,19 @@
+\begin{table}[H]
+    \setlength\extrarowheight{-6pt}
+    \begin{tabular}{c|cccccccc}
+        $n/k$ & 0 & 1    & 2    & 3    & 4    & 5    & 6    & 7 \\
+        \hline
+        0     & 1 &      &      &      &      &      &      &   \\
+        1     & 1 & 1    &      &      &      &      &      &   \\
+        2     & 1 & 31   & 1    &      &      &      &      &   \\
+        3     & 1 & 121  & 121  & 1    &      &      &      &   \\
+        4     & 1 & 271  & 481  & 271  & 1    &      &      &   \\
+        5     & 1 & 481  & 1081 & 1081 & 481  & 1    &      &   \\
+        6     & 1 & 751  & 1921 & 2431 & 1921 & 751  & 1    &   \\
+        7     & 1 & 1081 & 3001 & 4321 & 4321 & 3001 & 1081 & 1
+    \end{tabular}
+    \caption{Values of $30k^2(n-k)^2 + 1$.
+    See the OEIS entry \href{https://oeis.org/A300656}{\texttt{A300656}}
+    ~\cite{oeis_numerical_triangle_row_sums_give_fifth_powers}.}
+    \label{tab:row-sums-gives-fifth-power}
+\end{table}

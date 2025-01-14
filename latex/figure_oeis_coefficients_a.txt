@@ -1,0 +1,20 @@
+\begin{table}[H]
+    \begin{center}
+        \setlength\extrarowheight{-6pt}
+        \begin{tabular}{c|cccccccc}
+            $m/r$ & 0 & 1       & 2      & 3      & 4   & 5    & 6     & 7 \\ [3px]
+            \hline
+            0     & 1 &         &        &        &     &      &       &       \\
+            1     & 1 & 6       &        &        &     &      &       &       \\
+            2     & 1 & 0       & 30     &        &     &      &       &       \\
+            3     & 1 & -14     & 0      & 140    &     &      &       &       \\
+            4     & 1 & -120    & 0      & 0      & 630 &      &       &       \\
+            5     & 1 & -1386   & 660    & 0      & 0   & 2772 &       &       \\
+            6     & 1 & -21840  & 18018  & 0      & 0   & 0    & 12012 &       \\
+            7     & 1 & -450054 & 491400 & -60060 & 0   & 0    & 0     & 51480
+        \end{tabular}
+    \end{center}
+    \caption{Coefficients $\coeffA{m}{r}$. See OEIS sequences
+    ~\cite{oeis_numerators_of_the_coefficient_a_m_r,oeis_denominators_of_the_coefficient_a_m_r}.}
+    \label{tab:table_of_coefficients_a}
+\end{table}
