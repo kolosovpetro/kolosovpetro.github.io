@@ -1,4 +1,4 @@
-﻿@misc{oeis_numerical_triangle_row_sums_give_fifth_powers,
+@misc{oeis_numerical_triangle_row_sums_give_fifth_powers,
     title = {{Numerical triangle, row sums give fifth power, Entry A300656 in The On-Line Encyclopedia of Integer Sequences}},
     author = {Kolosov, Petro},
     journal = {{The On-Line Encyclopedia of Integer Sequences}},

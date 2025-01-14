@@ -1,4 +1,4 @@
-﻿@misc{identities_in_iterated_rascal_triangles,
+@misc{identities_in_iterated_rascal_triangles,
     title = {{Identities in Iterated Rascal triangles}},
     author = {Kolosov, Petro},
     journal = {GitHub},

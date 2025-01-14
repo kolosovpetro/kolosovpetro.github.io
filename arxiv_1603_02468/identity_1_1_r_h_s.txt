@@ -1,4 +1,4 @@
-﻿In[55]:= (* Define 0^0 = 1 *)
+In[55]:= (* Define 0^0 = 1 *)
 Unprotect[Power];
 Power[0 | 0., 0 | 0.] = 1;
 Protect[Power];

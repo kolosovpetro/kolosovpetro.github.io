@@ -1,4 +1,4 @@
-﻿@article{another_approach_to_get_derivative_of_odd_power,
+@article{another_approach_to_get_derivative_of_odd_power,
     title = {Another approach to get derivative of odd-power},
     author = {Kolosov, Petro},
     journal = {{arXiv preprint arXiv:2310.07804}},

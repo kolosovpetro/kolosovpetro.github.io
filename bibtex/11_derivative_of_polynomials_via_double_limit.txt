@@ -1,4 +1,4 @@
-﻿@article{derivative_of_polynomials_via_double_limit,
+@article{derivative_of_polynomials_via_double_limit,
     title = {Finding the derivative of polynomials via double limit},
     author = {Kolosov, Petro},
     journal = {GitHub},

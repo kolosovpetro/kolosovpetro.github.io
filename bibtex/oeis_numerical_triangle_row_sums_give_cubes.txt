@@ -1,4 +1,4 @@
-﻿@misc{oeis_numerical_triangle_row_sums_give_cubes,
+@misc{oeis_numerical_triangle_row_sums_give_cubes,
     title = {{Numerical triangle, row sums give third power, Entry A287326 in The On-Line Encyclopedia of Integer Sequences}},
     author = {Kolosov, Petro},
     journal = {{The On-Line Encyclopedia of Integer Sequences}},

@@ -1,4 +1,4 @@
-﻿@misc{oeis_numerators_of_the_coefficient_a_m_r,
+@misc{oeis_numerators_of_the_coefficient_a_m_r,
     title = {{Entry A302971 in The On-Line Encyclopedia of Integer Sequences}},
     author = {Kolosov, Petro},
     journal = {{The On-Line Encyclopedia of Integer Sequences}},

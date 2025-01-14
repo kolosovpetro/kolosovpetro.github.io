@@ -1,4 +1,4 @@
-﻿@misc{history_and_overview_of_polynomial_p,
+@misc{history_and_overview_of_polynomial_p,
     title = {{History and overview of the polynomial P(m,b,x)}},
     author = {Kolosov, Petro},
     journal = {GitHub},

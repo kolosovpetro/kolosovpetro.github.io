@@ -1,4 +1,4 @@
-﻿@misc{novel_proof_of_power_rule_in_calculus,
+@misc{novel_proof_of_power_rule_in_calculus,
     title = {{A novel proof of power rule in Calculus}},
     author = {Kolosov, Petro},
     journal = {GitHub},

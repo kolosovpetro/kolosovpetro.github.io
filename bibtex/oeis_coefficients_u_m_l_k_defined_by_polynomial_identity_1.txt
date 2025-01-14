@@ -1,4 +1,4 @@
-﻿@misc{oeis_coefficients_u_m_l_k_defined_by_polynomial_identity_1,
+@misc{oeis_coefficients_u_m_l_k_defined_by_polynomial_identity_1,
     title = {{The coefficients U(m, l, k), m = 1 defined by the polynomial identity}},
     author = {Kolosov, Petro},
     journal = {{The On-Line Encyclopedia of Integer Sequences}},

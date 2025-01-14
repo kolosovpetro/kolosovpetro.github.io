@@ -1,1 +1,1 @@
-﻿This folder is to fix OEIS links
+This folder is to fix OEIS links

@@ -1,4 +1,4 @@
-﻿\begin{table}[H]
+\begin{table}[H]
     \begin{center}
         \setlength\extrarowheight{-6pt}
         \begin{tabular}{c|cccccccc}

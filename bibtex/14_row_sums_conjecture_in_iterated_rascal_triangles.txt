@@ -1,4 +1,4 @@
-﻿@misc{row_sums_conjecture_in_iterated_rascal_triangles,
+@misc{row_sums_conjecture_in_iterated_rascal_triangles,
     title = {Row sums conjecture in iterated rascal triangles},
     author = {Kolosov, Petro},
     journal = {GitHub},

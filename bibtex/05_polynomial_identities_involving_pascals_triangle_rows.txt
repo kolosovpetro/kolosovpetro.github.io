@@ -1,4 +1,4 @@
-﻿@article{polynomial_identities_involving_pascals_triangle_rows_2022,
+@article{polynomial_identities_involving_pascals_triangle_rows_2022,
     title = {{Polynomial identities involving Pascal's triangle rows}},
     author = {Kolosov, Petro},
     note = {\url{https://kolosovpetro.github.io/pdf/PolynomialIdentitiesInvolvingPascalsTriangleRows.pdf}},
