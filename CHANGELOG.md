@@ -20,3 +20,4 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Remove unused images
 - Add citations to oeis
 - Update readme
+- Add latex figures for OEIS sequences
