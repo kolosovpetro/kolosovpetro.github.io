@@ -21,3 +21,4 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Add citations to oeis
 - Update readme
 - Add latex figures for OEIS sequences
+- Add rascal triangles figures
