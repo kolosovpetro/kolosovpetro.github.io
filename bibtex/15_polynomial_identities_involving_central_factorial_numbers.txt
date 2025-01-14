@@ -1,5 +1,5 @@
 ﻿@misc{polynomial_identities_involving_central_factorial_numbers,
-    title = {Polynomial identities involving Central Factorial numbers},
+    title = {{Polynomial identities involving Central Factorial numbers}},
     author = {Kolosov, Petro},
     journal = {GitHub},
     note = {\url{https://kolosovpetro.github.io/pdf/PolynomialIdentitiesInvolvingCentralFactorialNumbers.pdf}},
