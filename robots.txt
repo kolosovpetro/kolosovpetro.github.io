@@ -1,13 +1,2 @@
-User-agent: Googlebot
-Disallow: /arxiv/
-Disallow: /mathematica/
-Disallow: /pdf/Sums_of_powers_of_positive_integers_and_their_recurrenc
-Disallow: /Html-Code-Generator/
-
 User-agent: *
-Allow: /
-Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_12_09.xml
-Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_11_08.xml
-Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_09_25.xml
-Sitemap: https://kolosovpetro.github.io/sitemaps/sitemap_2024_07_13.xml
-Sitemap: https://kolosovpetro.github.io/sitemap.txt
+Disallow:
