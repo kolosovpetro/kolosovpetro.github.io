@@ -1,0 +1,6 @@
+@misc{kolosov2025spline,
+  author = {Petro Kolosov},
+  title = {{An Efficient Method of Spline Approximation}},
+  year = {2025},
+  note = {\url{https://kolosovpetro.github.io/pdf/AnEfficientMethodOfSplineApproximation.pdf}}
+}

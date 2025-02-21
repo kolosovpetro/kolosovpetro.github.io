@@ -38,7 +38,19 @@ try {
         }
 
         $fullPath = Resolve-Path -LiteralPath $file
+
+        if (-Not (Test-Path -LiteralPath $fullPath -PathType Leaf)) {
+            Write-Warning "Skipping missing file: $file"
+            continue
+        }
+        
         $bytes = [IO.File]::ReadAllBytes($fullPath) | Select-Object -First $bom.Length
+
+        if ($null -eq $bytes -or $bytes.Length -eq 0) {
+            Write-Warning "Skipping empty or unreadable file: $file"
+            continue
+        }
+        
         $bytesEqualsBom = @(Compare-Object $bytes $bom -SyncWindow 0).Length -eq 0
         if ($bytesEqualsBom -and $Autofix) {
             $fullContent = [IO.File]::ReadAllBytes($fullPath)
