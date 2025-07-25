@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://kolosovpetro.github.io/sitemap.xml
