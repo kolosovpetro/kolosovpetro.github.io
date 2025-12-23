@@ -28,3 +28,4 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Fix header links
 - Update main page with more DevOps focused projects
 - Underline tech stack in projects
+- Add works about Central Factorial Numbers
