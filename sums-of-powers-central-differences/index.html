@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Petro Kolosov" />
+  <meta name="dcterms.date" content="2026-01-05" />
+  <title>Sums of powers via central finite differences and Newton’s formula</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: left;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Sums of powers via central finite differences and
+Newton’s formula</h1>
+<p class="author">Petro Kolosov</p>
+<p class="date">2026-01-05</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>In this manuscript we derive formula for multifold sums of powers
+using Newton’s formula and central differences.</p>
+</div>
+</header>
+<h1 id="sec:introduction">Introduction and main results</h1>
+<p>In this manuscript we derive formula for multifold sums of powers
+using Newton’s formula and central differences.</p>
+<p>The idea to derive sums of powers using difference operator and
+Newton’s series is quite generic, thus, formulas for sums of powers
+using forward and backward differences can be found in the works <span
+class="citation"
+data-cites="kolosov_2026_18135998 kolosov_2026_18136163"></span>.</p>
+<p>We define the following recurrence for multifold sums of powers,
+which we utilize throughout the paper. <span
+class="math display">\[\begin{align*}
+    \Sigma^{0}\,{n}^{m}   &amp;= n^m \\
+    \Sigma^{1}\,{n}^{m}   &amp;= \Sigma^{0}\,{1}^{m} +
+\Sigma^{0}\,{2}^{m} + \cdots + \Sigma^{0}\,{n}^{m} \\
+    \Sigma^{r+1}\,{n}^{m} &amp;= \Sigma^{r}\,{1}^{m} +
+\Sigma^{r}\,{2}^{m} + \cdots + \Sigma^{r}\,{n}^{m}
+\end{align*}\]</span> Consider the Newton’s formula <span
+class="citation" data-cites="newton1850newton"></span> in central
+differences</p>
+<div id="prop:newtons-series-in-central-differences"
+class="proposition">
+<p><strong>Proposition 1</strong> (Newton’s series in central
+differences). <em><span class="math display">\[\begin{align*}
+        f(x) &amp;= \sum_{k=0}^{\infty} \frac{x^{[k]}}{k!} \delta^{k}
+f(0)
+\end{align*}\]</span> where <span class="math inline">\(\delta^{k} f(0)=
+\sum_{j=0}^{k} (-1)^{j} \binom{k}{j} f\left(\frac{k}{2} -
+j\right)\)</span> is central finite difference in zero, and <span
+class="math inline">\(x^{[k]} = n \left( n + \frac{k}{2} -1
+\right)\left( n + \frac{k}{2} -2 \right) \cdots \left( n - \frac{k}{2}
++1 \right)\)</span> is central factorial.</em></p>
+</div>
+<div class="lemma">
+<p><strong>Lemma 2</strong> (Central factorial). <em><span
+class="math display">\[\begin{align*}
+        n^{[k]}
+        = n \left( n + \frac{k}{2} -1 \right)\left( n + \frac{k}{2} -2
+\right) \cdots \left( n - \frac{k}{2} +1 \right)
+        = n \prod_{j=1}^{k-1} \left( n + \frac{k}{2} -j \right)
+\end{align*}\]</span></em></p>
+</div>
+<p>We observe that central factorials are closely related to falling
+factorials <span class="math inline">\(\left(x\right)_{n} =
+x(x-1)(x-2)(x-3)\cdots(x-n+1)=\prod_{k=0}^{n-1}(x-k)\)</span>.
+Therefore, <span class="math display">\[\begin{align*}
+    n^{[k]} = n \left(n+\frac{k}{2}-1\right)_{k-1}
+\end{align*}\]</span> To derive formula for multifold sums of powers, we
+follow the strategy to express the Newton’s formula [eq ref] in terms of
+binomial coefficients, then to reach closed forms of column sum of
+binomial coefficients by means of hockey stick identity. Therefore,</p>
+<div class="proposition">
+<p><strong>Proposition 3</strong>. <em>For <span class="math inline">\(k
+\geq 1\)</span> <span class="math display">\[\begin{align*}
+        \frac{n^{[k]}}{k!}
+        &amp;= \frac{n}{k!}\left(n+\frac{k}{2}-1\right)_{k-1}
+        = \frac{n}{k (k-1)!} \left(n+\frac{k}{2}-1\right)_{k-1}
+        = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> The identity above is true because <span
+class="math inline">\(\frac{\left(x\right)_{n}}{n!} =
+\binom{x}{n}\)</span>. ◻</em></p>
+</div>
+</div>
+<p>Which yields Newton’s formula for powers, in terms of central
+differences. For positive integers <span class="math inline">\(n \geq
+1\)</span> and <span class="math inline">\(m \geq 1\)</span> <span
+class="math display">\[\begin{align*}
+    n^m = \sum_{k=1}^{m} \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\delta^{k} 0^m
+\end{align*}\]</span></p>
+<p>Although based on Newton’s interpolation series, the formula above
+begins the summation from <span class="math inline">\(k=1\)</span> to
+avoid division by zero in <span
+class="math inline">\(\frac{n}{k}\)</span>. It is a valid trick, because
+the central difference <span class="math inline">\(\delta^{k}
+0^n\)</span> is zero for all <span class="math inline">\(n \geq
+1\)</span> and <span class="math inline">\(k=0\)</span>.</p>
+<p>By factoring out and simplifying the term <span
+class="math inline">\(n\)</span>, we get <span
+class="math display">\[\begin{align*}
+    n^{m-1} = \sum_{k=1}^{m} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\delta^{k} 0^m
+\end{align*}\]</span> We may observe that the operator of central finite
+difference of power <span class="math inline">\(\delta^{k} 0^m\)</span>
+requires the parity of its arguments <span
+class="math inline">\(m\)</span> and <span
+class="math inline">\(k\)</span> meaning that both <span
+class="math inline">\(m\)</span> and <span
+class="math inline">\(k\)</span> must be <span
+class="math inline">\(m\bmod2 = k\bmod2\)</span> so that <span
+class="math inline">\(\delta^{k} 0^m\)</span> is non-zero.</p>
+<p>By setting <span class="math inline">\(m \rightarrow 2m\)</span> we
+get <span class="math display">\[\begin{align*}
+    n^{2m-1} = \sum_{k=1}^{2m} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\delta^{k} 0^{2m}
+\end{align*}\]</span> Thus, the central difference <span
+class="math inline">\(\delta^{k} 0^{2m}\)</span> for odd <span
+class="math inline">\(k\)</span> is zero. Since <span
+class="math inline">\(k\)</span> runs over all integers in the range
+<span class="math inline">\(0\leq k \leq 2m\)</span>, we are able to
+omit odd values of <span class="math inline">\(k\)</span> <span
+class="math display">\[\begin{align*}
+    n^{2m-1} = \sum_{k=1}^{m} \frac{1}{2k} \binom{n+k-1}{2k-1}
+\delta^{2k} 0^{2m}
+\end{align*}\]</span> Thus, formula for ordinary sums of odd powers
+is</p>
+<div class="proposition">
+<p><strong>Proposition 4</strong> (Ordinary sums of powers). <em><span
+class="math display">\[\begin{align*}
+        \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} \frac{1}{2k}
+\binom{n+k}{2k} \delta^{2k} 0^{2m}
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> We have <span
+class="math inline">\(\Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m}
+\frac{1}{2k} \delta^{2k} 0^{2m} \sum_{j=1}^{n}
+\binom{j+k-1}{k-1}\)</span>.</em></p>
+<p><em>By hockey stick identity <span
+class="math inline">\(\sum_{j=1}^{n} \binom{j+k-1}{2k-1} =
+\binom{n+k}{2k}\)</span>, thus the statement follows. ◻</em></p>
+</div>
+</div>
+<p>Therefore,</p>
+<div class="theorem">
+<p><strong>Theorem 5</strong> (Multifold sums of odd powers). </p>
+<div class="mdframed">
+<p><em><span class="math display">\[\begin{align*}
+            \Sigma^{r}\,{n}^{2m-1} = \sum_{k=1}^{m} \frac{1}{2k}
+\binom{n+k-1+r}{2k-1+r} \delta^{2k} 0^{2m}.
+\end{align*}\]</span></em></p>
+</div>
+<div class="proof">
+<p><em><em>Proof.</em> We have <span
+class="math inline">\(\Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m}
+\frac{1}{2k} \delta^{2k} 0^{2m} \sum_{j=1}^{n}
+\binom{j+k-1}{2k-1}\)</span>.</em></p>
+<p><em>By hockey stick identity <span
+class="math inline">\(\sum_{j=1}^{n} \binom{j+k-1}{k-1} =
+\binom{n+k}{2k}\)</span>. By induction the claim follows. ◻</em></p>
+</div>
+</div>
+<p>The formula for multifold sums of odd powers can be rewritten in
+terms of central factorial numbers of the second kind <span
+class="math inline">\(T(n,k)\)</span>, because <span
+class="math display">\[\begin{align*}
+    k! T(n, k) = \delta^k 0^n
+\end{align*}\]</span> The identity above is well discussed in <span
+class="citation"
+data-cites="steffensen1927interpolation carlitz1963divided riordan1968combinatorial"></span>.
+The non-zero central factorial numbers <span
+class="math inline">\(T(2m,2k)\)</span> are registered as <a
+href="https://oeis.org/A008957"><code>A008957</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line"></span>.</p>
+<p>Hence,</p>
+<div class="proposition">
+<p><strong>Proposition 6</strong> (Multifold sums of odd powers in
+central factorial numbers). </p>
+<div class="mdframed">
+<p><em><span class="math display">\[\begin{align*}
+            \Sigma^{r}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)!
+\binom{n+k-1+r}{2k-1+r} T(2m,2k).
+\end{align*}\]</span></em></p>
+</div>
+</div>
+<p>It is remarkable that exactly this formula can be found in Donald
+Knuth’s work <em>Johann Faulhaber and sums of powers</em>, see <span
+class="citation" data-cites="knuth1993johann"></span>.</p>
+<h1 id="sec:conclusions">Conclusions</h1>
+<p>In this manuscript we derived formula for multifold sums of powers
+using Newton’s formula and central differences. Additionally, we
+discussed the connection with classical formulas for sums of powers
+(Knuth 1993 <span class="citation"
+data-cites="knuth1993johann"></span>).</p>
+<p><br />
+<strong>Version:</strong> <code>Local-0.1.0</code></p>
+<p><br />
+<strong>License:</strong> This work is licensed under a <a
+href="https://creativecommons.org/licenses/by/4.0/"><code>CC BY 4.0 License</code></a>.<br />
+<strong>DOI:</strong> <a
+href="https://doi.org/10.5281/zenodo.18096789"><code>https://doi.org/10.5281/zenodo.18096789</code></a><br />
+<strong>Sources</strong>: <a
+href="https://github.com/kolosovpetro/SumsOfPowersViaCentralFiniteDifferencesAndNewtonFormula"><code>github.com/kolosovpetro/SumsOfPowersViaCentralDifferences</code></a><br />
+<strong>ORCID</strong>: <a
+href="https://orcid.org/0000-0002-6544-8880"><code>0000-0002-6544-8880</code></a><br />
+<strong>Email</strong>: <a
+href="mailto:kolosovp94@gmail.com"><code>kolosovp94@gmail.com</code></a></p>
+</body>
+</html>
