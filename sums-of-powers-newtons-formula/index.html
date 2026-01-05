@@ -243,17 +243,18 @@ class="math display">\[\begin{align*}
 interpolation formula as stated below</p>
 <div id="proposition:newton-series-in-arbitrary-point-a"
 class="proposition">
-<p><strong>Proposition 1</strong>. <em>(Newton’s series around arbitrary
-point <span class="citation" data-cites="newton1850newton">(Newton,
+<p><strong>Proposition 1</strong>. <em>(Newton’s interpolation
+formula <span class="citation" data-cites="newton1850newton">(Newton,
 Isaac and Chittenden, N.W. 1850, Lemma V)</span>.) <span
 class="math display">\[\begin{align*}
         f(x) = \sum_{j=0}^{\infty} \binom{x-a}{j} \Delta^{j} f(a)
-\end{align*}\]</span> where <span class="math inline">\(\Delta^{k} f(x)
-= \sum_{j=0}^{k} (-1)^{k-j} \binom{k}{j} f(x+j)\)</span> is <span
-class="math inline">\(k\)</span>-degree forward finite difference of
-<span class="math inline">\(f\)</span>.</em></p>
+\end{align*}\]</span> where <span class="math inline">\(\Delta^{k} f(a)
+= \sum_{j=0}^{k} (-1)^{k-j} \binom{k}{j} f(a+j)\)</span> are <span
+class="math inline">\(k\)</span>-degree forward finite differences of
+<span class="math inline">\(f\)</span> evaluated in point <span
+class="math inline">\(a\)</span>.</em></p>
 </div>
-<p>Which indeed holds, because <span
+<p>Which is indeed true, because <span
 class="math display">\[\begin{align*}
     n^3 &amp;= 0 \binom{n}{0} + 1 \binom{n}{1} + 6 \binom{n}{2} + 6
 \binom{n}{3} \\
@@ -324,7 +325,7 @@ data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
 and Patashnik, Oren 1994, 190)</span> and in <span class="citation"
 data-cites="pfaff2007deriving">(Pfaff 2007)</span>. The coefficients
 <span class="math inline">\(0, 1, 6, 6, 0, 1, 14, 36, 24, \dots\)</span>
-are given by the sequence <a
+is the sequence <a
 href="https://oeis.org/A131689"><code>A131689</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>. The special cases for <span
@@ -337,12 +338,12 @@ class="citation" data-cites="cereceda2022sums">(Cereceda, José L.
     \Sigma^{1}\,{n}^{4} &amp;= 1 \binom{n}{1} +15 \binom{n}{2} +50
 \binom{n}{3} +60 \binom{n}{4} +24 \binom{n}{5}
 \end{align*}\]</span> The coefficients <span
-class="math inline">\(1,7,12,6,1,15, \dots\)</span> are given by the
-sequence <a href="https://oeis.org/A028246"><code>A028246</code></a> in
-the OEIS <span class="citation" data-cites="sloane2003line">(Sloane,
-Neil J.A. and others 2003)</span>. Interestingly enough that the
-paper <span class="citation" data-cites="cereceda2022sums">(Cereceda,
-José L. 2022)</span> gives the formula for sums of powers <span
+class="math inline">\(1,7,12,6,1,15, \dots\)</span> is the sequence <a
+href="https://oeis.org/A028246"><code>A028246</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. Interestingly enough that the paper <span
+class="citation" data-cites="cereceda2022sums">(Cereceda, José L.
+2022)</span> gives the formula for sums of powers <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j! \left[ \binom{n+1-r}{j+1} +
 (-1)^j \binom{r+j-1}{j+1} \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{r}
@@ -378,17 +379,20 @@ class="math display">\[\begin{align*}
 \binom{4}{2}  \right) + 30 \left( \binom{n-3}{3} + \binom{5}{3}  \right)
 \\ &amp;+ 6 \left( \binom{n-3}{4} - \binom{6}{4}  \right)
 \end{align*}\]</span> The coefficients <span
-class="math inline">\(1,4,1,16,9,\dots\)</span> are given by the
-sequence <a href="https://oeis.org/A391633"><code>A391633</code></a> in
-the OEIS <span class="citation" data-cites="sloane2003line">(Sloane,
-Neil J.A. and others 2003)</span>. In general, <span
+class="math inline">\(1,4,1,16,9,\dots\)</span> is the sequence <a
+href="https://oeis.org/A391633"><code>A391633</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. In general, <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} 4^m \left[
 \binom{n-3}{j+1} + (-1)^j \binom{j+3}{j+1}  \right].
 \end{align*}\]</span></p>
-<p>To obtain the formula for double sum of powers, we apply the
-summation operator over the ordinary sum of powers again, thus <span
-class="math display">\[\begin{align*}
+<p>To derive formula for double sum of powers, we apply summation
+operator over the ordinary sum of powers <a
+href="#prop:ordinary-sums-of-powers-via-newtons-series"
+data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-via-newtons-series">[prop:ordinary-sums-of-powers-via-newtons-series]</a>
+again, thus <span class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^{m} \left[
 (-1)^{j} \sum_{k=1}^{n} \binom{j+t-1}{j+1} + \sum_{k=1}^{n}
 \binom{k-t+1}{j+1} \right]
@@ -398,7 +402,8 @@ class="math display">\[\begin{align*}
 (-1)^{j} \binom{j+t-1}{j+1} n + \sum_{k=1}^{n} \binom{k-t+1}{j+1}
 \right]
 \end{align*}\]</span> Thus,</p>
-<div class="proposition">
+<div id="prop:double-sums-of-powers-via-newtons-series"
+class="proposition">
 <p><strong>Proposition 5</strong> (Double sums of powers via Newton’s
 series). <em>For non-negative integers <span
 class="math inline">\(n,m\)</span> and an arbitrary integer <span
@@ -420,7 +425,7 @@ href="#prop:segmented-hockey-stick-identity" data-reference-type="eqref"
 data-reference="prop:segmented-hockey-stick-identity">[prop:segmented-hockey-stick-identity]</a>. ◻</em></p>
 </div>
 </div>
-<p>For example, given <span class="math inline">\(t=5\)</span>, the
+<p>For example, by setting <span class="math inline">\(t=5\)</span>, the
 double sums of powers are <span class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{0} &amp;= 1 \left( \binom{n-3}{2} + \binom{4}{1} n
 - \binom{4}{2} \right) \\
@@ -439,11 +444,11 @@ n - \binom{4}{2} \right) + 91 \left( \binom{n-3}{3} - \binom{5}{2} n +
 \right) + 6 \left( \binom{n-3}{5} - \binom{7}{4} n + \binom{7}{5}
 \right)
 \end{align*}\]</span> The coefficients <span
-class="math inline">\(1,5,1,25,11,2,\dots\)</span> are given by the
-sequence <a href="https://oeis.org/A391635"><code>A391635</code></a> in
-the OEIS <span class="citation" data-cites="sloane2003line">(Sloane,
-Neil J.A. and others 2003)</span>. In general, <span
-class="math display">\[\begin{align*}
+class="math inline">\(1,5,1,25,11,2,\dots\)</span> is the sequence <a
+href="https://oeis.org/A391635"><code>A391635</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>.</p>
+<p>In general, <span class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} 5^{m} \left[
 \binom{n-3}{j+2} + (-1)^{j} \binom{j+4}{j+1} n^1 + (-1)^{j+1}
 \binom{j+4}{j+2} n^0 \right]
@@ -462,8 +467,11 @@ class="math display">\[\begin{align*}
 +  \binom{n-t+3}{j+3} \Bigg]
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> By summing up the double powers sums, we get
-<span class="math display">\[\begin{align*}
+<p><em><em>Proof.</em> By summing up double sums of powers <a
+href="#prop:double-sums-of-powers-via-newtons-series"
+data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers-via-newtons-series">[prop:double-sums-of-powers-via-newtons-series]</a>,
+we get <span class="math display">\[\begin{align*}
             &amp;\Sigma^{3}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^m
 \sum_{k=1}^{n}  \left[ (-1)^{j} \binom{j+t-1}{j+1} k^1 + (-1)^{j+1}
 \binom{j+t-1}{j+2} k^0 + \binom{k-t+2}{j+2} \right] \\
@@ -483,7 +491,7 @@ data-reference="prop:segmented-hockey-stick-identity">[prop:segmented-hockey-sti
 This completes the proof. ◻</em></p>
 </div>
 </div>
-<p>For example, given <span class="math inline">\(t=4\)</span>, the
+<p>For example, by setting <span class="math inline">\(t=4\)</span>, the
 triple sums of powers are <span class="math display">\[\begin{align*}
     \Sigma^{3}\,{n}^{0} &amp;= 1 \left( \binom{n-1}{3} + \binom{3}{1}
 \Sigma^{2}\,{n}^{0} - \binom{3}{2} \Sigma^{1}\,{n}^{0} + \binom{3}{3}
@@ -511,8 +519,8 @@ class="math display">\[\begin{align*}
     &amp;+ (-1)^{j+2} \binom{j+3}{j+3} \Sigma^{0}\,{n}^{0}
 +  \binom{n-1}{j+3} \Bigg]
 \end{align*}\]</span></p>
-<p>Continuing similarly, we are able to derive the formula for multifold
-sums of powers, which is</p>
+<p>Continuing similarly, we derive formula for multifold sums of powers,
+which is</p>
 <div id="theorem:multifold-sums-of-powers-via-newtons-series"
 class="theorem">
 <p><strong>Theorem 7</strong> (Multifold sums of powers via Newton’s
@@ -700,8 +708,8 @@ data-cites="Worpitzky1883">(Worpitzky 1883)</span></p>
 <p><strong>Lemma 16</strong> (Worpitzky identity). <em>For non-negative
 integers <span class="math inline">\(t,m\)</span> <span
 class="math display">\[\begin{align*}
-        t^{m} = \sum_{k=0}^{m} \genfrac{\langle}{\rangle}{0pt}{}{m}{k}
-\binom{t+k}{m}
+        t^{m} = \sum_{k=0}^{m} \binom{t+k}{m}
+\genfrac{\langle}{\rangle}{0pt}{}{m}{k}
 \end{align*}\]</span></em></p>
 </div>
 <p>where <span
@@ -712,8 +720,8 @@ are Eulerian numbers. Thus,</p>
 <em>For non-negative integers <span class="math inline">\(j,m\)</span>
 and an arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
-        \Delta^{j} t^{m} = \sum_{k=0}^{m}
-\genfrac{\langle}{\rangle}{0pt}{}{m}{k} \binom{t+k}{m-j}
+        \Delta^{j} t^{m} = \sum_{k=0}^{m} \binom{t+k}{m-j}
+\genfrac{\langle}{\rangle}{0pt}{}{m}{k}
 \end{align*}\]</span></em></p>
 </div>
 <p>Therefore,</p>
@@ -729,7 +737,7 @@ class="math display">\[\begin{align*}
             \Sigma^{r}\,{n}^{m}= \sum_{j=0}^{m} \sum_{k=0}^{m} \left[
 \left( \sum_{s=1}^{r} (-1)^{j+s-1} \binom{j+t-1}{j+s}
 \Sigma^{r-s}\,{n}^{0} \right) + \binom{n-t+r}{j+r} \right]
-\genfrac{\langle}{\rangle}{0pt}{}{m}{k} \binom{t+k}{m-j}
+\binom{t+k}{m-j} \genfrac{\langle}{\rangle}{0pt}{}{m}{k}
 \end{align*}\]</span></em></p>
 </div>
 <div class="proof">
@@ -752,8 +760,8 @@ class="math inline">\(n,m\)</span> and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
             \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \sum_{k=0}^{m} \left[
-(-1)^j \binom{j+t-1}{j+1} +  \binom{n-t+1}{j+1} \right]
-\genfrac{\langle}{\rangle}{0pt}{}{m}{k} \binom{t+k}{m-j}
+(-1)^j \binom{j+t-1}{j+1} +  \binom{n-t+1}{j+1} \right] \binom{t+k}{m-j}
+\genfrac{\langle}{\rangle}{0pt}{}{m}{k}
 \end{align*}\]</span></em></p>
 </div>
 </div>
@@ -765,19 +773,22 @@ yields a well-known identity for sums of powers in terms of Eulerian
 numbers</p>
 <div class="corollary">
 <p><strong>Corollary 20</strong> (Sums of powers via Eulerian numbers).
-<em>For non-negative integers <span class="math inline">\(n,m\)</span>
-<span class="math display">\[\begin{align*}
-        \Sigma^{1}\,{n}^{m}= \sum_{j=0}^{m} \sum_{k=0}^{m}
+</p>
+<div class="mdframed">
+<p><em>For non-negative integers <span
+class="math inline">\(n,m\)</span> <span
+class="math display">\[\begin{align*}
+            \Sigma^{1}\,{n}^{m}= \sum_{j=0}^{m} \sum_{k=0}^{m}
 \binom{n+1}{j+1} \binom{k}{m-j} \genfrac{\langle}{\rangle}{0pt}{}{m}{k}
 \end{align*}\]</span></em></p>
+</div>
 </div>
 <h1 id="sec:backward-difference-form">Backward difference form</h1>
 <p>The formula for multifold sums of powers via Newton’s series <a
 href="#theorem:multifold-sums-of-powers-via-newtons-series"
 data-reference-type="eqref"
 data-reference="theorem:multifold-sums-of-powers-via-newtons-series">[theorem:multifold-sums-of-powers-via-newtons-series]</a>
-can be altered to be in terms of backward differences easily,
-because</p>
+can be expressed in terms of backward differences easily, because</p>
 <div id="prop:forward-via-backward-differences" class="proposition">
 <p><strong>Proposition 21</strong>. <em>For integers <span
 class="math inline">\(j,m,t\)</span> <span
@@ -815,7 +826,7 @@ data-reference="prop:forward-via-backward-differences">[prop:forward-via-backwar
 href="#theorem:multifold-sums-of-powers-via-newtons-series"
 data-reference-type="eqref"
 data-reference="theorem:multifold-sums-of-powers-via-newtons-series">[theorem:multifold-sums-of-powers-via-newtons-series]</a>
-can be altered to be in terms of central differences easily, because</p>
+can be expressed in terms of central differences easily, because</p>
 <div id="prop:forward-via-central-differences" class="proposition">
 <p><strong>Proposition 23</strong>. <em>For integers <span
 class="math inline">\(j,m,t\)</span> <span
