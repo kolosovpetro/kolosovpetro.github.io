@@ -181,7 +181,26 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <script defer=""
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
   type="text/javascript"></script>
@@ -208,11 +227,12 @@ the second kind and Eulerian numbers.</p>
 Newton’s series is quite generic, thus, formulas for sums of powers
 using backward and central differences can be found in the works <span
 class="citation"
-data-cites="kolosov_2026_18134757 kolosov_2025_18098442"></span>.</p>
+data-cites="kolosov_2026_18134757 kolosov_2025_18098442">(Kolosov 2026,
+2025b)</span>.</p>
 <p>Allow us to start from the definition of multifold sums of powers. We
 utilize the recurrence proposed by Donald Knuth in his article
 <em>Johann Faulhaber and sums of powers</em>, see <span class="citation"
-data-cites="knuth1993johann"></span> <span
+data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span> <span
 class="math display">\[\begin{align*}
     \Sigma^{0}\,{n}^{m}   &amp;= n^m \\
     \Sigma^{1}\,{n}^{m}   &amp;= \Sigma^{0}\,{1}^{m} +
@@ -224,8 +244,9 @@ interpolation formula as stated below</p>
 <div id="proposition:newton-series-in-arbitrary-point-a"
 class="proposition">
 <p><strong>Proposition 1</strong>. <em>(Newton’s series around arbitrary
-point <span class="citation" data-cites="newton1850newton"></span>.)
-<span class="math display">\[\begin{align*}
+point <span class="citation" data-cites="newton1850newton">(Newton,
+Isaac and Chittenden, N.W. 1850, Lemma V)</span>.) <span
+class="math display">\[\begin{align*}
         f(x) = \sum_{j=0}^{\infty} \binom{x-a}{j} \Delta^{j} f(a)
 \end{align*}\]</span> where <span class="math inline">\(\Delta^{k} f(x)
 = \sum_{j=0}^{k} (-1)^{k-j} \binom{k}{j} f(x+j)\)</span> is <span
@@ -299,16 +320,18 @@ class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{3} = 0 \binom{n+1}{1} + 1 \binom{n+1}{2} + 6
 \binom{n+1}{3} + 6 \binom{n+1}{4}
 \end{align*}\]</span> which was discussed in <span class="citation"
-data-cites="graham1994concrete"></span> and in <span class="citation"
-data-cites="pfaff2007deriving"></span>. The coefficients <span
-class="math inline">\(0, 1, 6, 6, 0, 1, 14, 36, 24, \dots\)</span> are
-given by the sequence <a
+data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
+and Patashnik, Oren 1994, 190)</span> and in <span class="citation"
+data-cites="pfaff2007deriving">(Pfaff 2007)</span>. The coefficients
+<span class="math inline">\(0, 1, 6, 6, 0, 1, 14, 36, 24, \dots\)</span>
+are given by the sequence <a
 href="https://oeis.org/A131689"><code>A131689</code></a> in the
-OEIS <span class="citation" data-cites="sloane2003line"></span>. The
-special cases for <span class="math inline">\(t=1\)</span> and <span
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. The special cases for <span
+class="math inline">\(t=1\)</span> and <span
 class="math inline">\(m=2,3,4,5\)</span> were discussed in <span
-class="citation" data-cites="cereceda2022sums"></span>. For instance,
-<span class="math display">\[\begin{align*}
+class="citation" data-cites="cereceda2022sums">(Cereceda, José L.
+2022)</span>. For instance, <span class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{3} &amp;= 1 \binom{n}{1} + 7 \binom{n}{2} + 12
 \binom{n}{3} + 6 \binom{n}{4} \\
     \Sigma^{1}\,{n}^{4} &amp;= 1 \binom{n}{1} +15 \binom{n}{2} +50
@@ -316,10 +339,11 @@ class="citation" data-cites="cereceda2022sums"></span>. For instance,
 \end{align*}\]</span> The coefficients <span
 class="math inline">\(1,7,12,6,1,15, \dots\)</span> are given by the
 sequence <a href="https://oeis.org/A028246"><code>A028246</code></a> in
-the OEIS <span class="citation" data-cites="sloane2003line"></span>.
-Interestingly enough that the paper <span class="citation"
-data-cites="cereceda2022sums"></span> gives the formula for sums of
-powers <span class="math display">\[\begin{align*}
+the OEIS <span class="citation" data-cites="sloane2003line">(Sloane,
+Neil J.A. and others 2003)</span>. Interestingly enough that the
+paper <span class="citation" data-cites="cereceda2022sums">(Cereceda,
+José L. 2022)</span> gives the formula for sums of powers <span
+class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j! \left[ \binom{n+1-r}{j+1} +
 (-1)^j \binom{r+j-1}{j+1} \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{r}
 \end{align*}\]</span> where <span
@@ -356,8 +380,9 @@ class="math display">\[\begin{align*}
 \end{align*}\]</span> The coefficients <span
 class="math inline">\(1,4,1,16,9,\dots\)</span> are given by the
 sequence <a href="https://oeis.org/A391633"><code>A391633</code></a> in
-the OEIS <span class="citation" data-cites="sloane2003line"></span>. In
-general, <span class="math display">\[\begin{align*}
+the OEIS <span class="citation" data-cites="sloane2003line">(Sloane,
+Neil J.A. and others 2003)</span>. In general, <span
+class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} 4^m \left[
 \binom{n-3}{j+1} + (-1)^j \binom{j+3}{j+1}  \right].
 \end{align*}\]</span></p>
@@ -416,8 +441,9 @@ n - \binom{4}{2} \right) + 91 \left( \binom{n-3}{3} - \binom{5}{2} n +
 \end{align*}\]</span> The coefficients <span
 class="math inline">\(1,5,1,25,11,2,\dots\)</span> are given by the
 sequence <a href="https://oeis.org/A391635"><code>A391635</code></a> in
-the OEIS <span class="citation" data-cites="sloane2003line"></span>. In
-general, <span class="math display">\[\begin{align*}
+the OEIS <span class="citation" data-cites="sloane2003line">(Sloane,
+Neil J.A. and others 2003)</span>. In general, <span
+class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} 5^{m} \left[
 \binom{n-3}{j+2} + (-1)^{j} \binom{j+4}{j+1} n^1 + (-1)^{j+1}
 \binom{j+4}{j+2} n^0 \right]
@@ -669,7 +695,7 @@ data-reference="prop:multifold-sum-of-zero-powers">[prop:multifold-sum-of-zero-p
 <p>In addition, we are able to express multifold sums of powers via
 Eulerian numbers, by expressing the forward finite difference via the
 Worpitzky identity <span class="citation"
-data-cites="Worpitzky1883"></span></p>
+data-cites="Worpitzky1883">(Worpitzky 1883)</span></p>
 <div class="lemma">
 <p><strong>Lemma 16</strong> (Worpitzky identity). <em>For non-negative
 integers <span class="math inline">\(t,m\)</span> <span
@@ -843,9 +869,10 @@ class="math inline">\(\binom{f(n)}{k}\)</span>.</p>
 class="math inline">\(\Delta, \nabla, \delta\)</span>, there is a
 complete theory on dynamic differential equations on time-scales,
 founded by Bohner and Peterson <span class="citation"
-data-cites="Bohner2001DynamicEO"></span>. For example, Jackson <span
-class="citation" data-cites="jackson_1909"></span> derivative is given
-by</p>
+data-cites="Bohner2001DynamicEO">(Bohner, Martin and Peterson, Allan
+2001)</span>. For example, Jackson <span class="citation"
+data-cites="jackson_1909">(Jackson, Frederick H. 1909)</span> derivative
+is given by</p>
 <p><span class="math display">\[\begin{align*}
     D_q(f(x)) = \frac{f(qx) - f(x)}{qx-x}
 \end{align*}\]</span></p>
@@ -878,10 +905,10 @@ class="math display">\[\begin{align*}
 \end{align*}\]</span></p>
 <p>In particular, Donald Knuth provides the formula for multifold sums
 of odd powers <span class="citation"
-data-cites="knuth1993johann"></span> based on operator of central finite
-differences evaluated in zero, and Newton’s interpolation formula for
-central differences <span class="citation"
-data-cites="kolosov_2025_18098442"></span></p>
+data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span> based on
+operator of central finite differences evaluated in zero, and Newton’s
+interpolation formula for central differences <span class="citation"
+data-cites="kolosov_2025_18098442">(Kolosov 2025b)</span></p>
 <div id="prop:knuth-sums-of-odd-powers" class="proposition">
 <p><strong>Proposition 25</strong> (Multifold sums of odd powers).
 <em><span class="math display">\[\begin{align*}
@@ -893,15 +920,16 @@ data-cites="kolosov_2025_18098442"></span></p>
 </div>
 <p>where <span class="math inline">\(T(n,k)\)</span> are the central
 factorial numbers of the second kind, see <span class="citation"
-data-cites="steffensen1927interpolation"></span> and <span
-class="citation" data-cites="carlitz1963divided"></span> <span
-class="math display">\[\begin{align*}
+data-cites="steffensen1927interpolation">(Steffensen, Johan Frederik
+1927, sec. 58)</span> and <span class="citation"
+data-cites="carlitz1963divided">(Carlitz and Riordan 1963, formula
+(10a))</span> <span class="math display">\[\begin{align*}
     T(n, k) = \frac{1}{k!} \delta^k 0^n = \frac{1}{k!} \sum_{j=0}^{k}
 (-1)^j \binom{k}{j} \left( \frac{k}{2} - j \right)^n
 \end{align*}\]</span> Central factorial numbers of the second kind <span
 class="math inline">\(T(n,k)\)</span> were defined by Riordan in <span
-class="citation" data-cites="riordan1968combinatorial"></span> by
-polynomial identity</p>
+class="citation" data-cites="riordan1968combinatorial">(Riordan 1968,
+ch. 6.5, formula (24))</span> by polynomial identity</p>
 <div class="lemma">
 <p><strong>Lemma 26</strong> (Riordan power identity). <em><span
 class="math display">\[\begin{align*}
@@ -912,9 +940,9 @@ are central factorials <span class="math inline">\(n^{[k]} = n
 </div>
 <p>The sequence <a
 href="https://oeis.org/A008957"><code>A008957</code></a> in the
-OEIS <span class="citation" data-cites="sloane2003line"></span> provides
-non-zero central factorial numbers of the second kind <span
-class="math inline">\(T(2n,2k)\)</span>.</p>
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span> provides non-zero central factorial numbers
+of the second kind <span class="math inline">\(T(2n,2k)\)</span>.</p>
 <p>As future research direction, the Knuth’s formula <a
 href="#prop:knuth-sums-of-odd-powers" data-reference-type="eqref"
 data-reference="prop:knuth-sums-of-odd-powers">[prop:knuth-sums-of-odd-powers]</a>
@@ -940,9 +968,9 @@ data-reference="sec:mathematica-programs">[sec:mathematica-programs]</a>.</p>
 <h1 id="sec:acknowledgements">Acknowledgements</h1>
 <p>The author is grateful to Markus Scheuer for his valuable
 contribution of the list of references <span class="citation"
-data-cites="RiordanCentralFactorialMSE2020"></span> about the fact that
-central factorial numbers of the second kind arise from central
-differences of nothing.</p>
+data-cites="RiordanCentralFactorialMSE2020">(Markus Scheuer 2020)</span>
+about the fact that central factorial numbers of the second kind arise
+from central differences of nothing.</p>
 <p><br />
 <strong>Version:</strong> <code>Local-0.1.0</code></p>
 <p><br />
@@ -999,7 +1027,8 @@ class="math display">\[\begin{align*}
 \end{align*}\]</span> This completes the proof.</p>
 <h1 id="sec:mathematica-programs">Mathematica programs</h1>
 <p>Use the <em>Mathematica</em> package <span class="citation"
-data-cites="MathematicaPrograms"></span> to validate the results<br />
+data-cites="MathematicaPrograms">(Kolosov 2025a)</span> to validate the
+results<br />
 </p>
 <div class="center">
 <table>
@@ -1090,6 +1119,92 @@ data-reference="prop:multifold-sums-of-powers-binomial-form-reindexed">[prop:mul
 </tr>
 </tbody>
 </table>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-Bohner2001DynamicEO" class="csl-entry" role="listitem">
+Bohner, Martin and Peterson, Allan. 2001. <em><span
+class="nocase">Dynamic equations on time scales: An introduction with
+applications</span></em>. <span>Springer Science &amp; Business
+Media</span>.
+</div>
+<div id="ref-carlitz1963divided" class="csl-entry" role="listitem">
+Carlitz, L., and John Riordan. 1963. <span>“The Divided Central
+Differences of Zero.”</span> <em><span class="nocase">Canadian Journal
+of Mathematics</span></em> 15: 94–100.
+</div>
+<div id="ref-cereceda2022sums" class="csl-entry" role="listitem">
+Cereceda, José L. 2022. <span>“<span class="nocase">Sums of powers of
+integers and generalized Stirling numbers of the second
+kind</span>.”</span> <em><span class="nocase">arXiv preprint
+arXiv:2211.11648</span></em>.
+</div>
+<div id="ref-graham1994concrete" class="csl-entry" role="listitem">
+Graham, Ronald L. and Knuth, Donald E. and Patashnik, Oren. 1994.
+<em><span class="nocase">Concrete mathematics: A foundation for computer
+science (second edition)</span></em>. <span>Addison-Wesley Publishing
+Company, Inc.</span>
+</div>
+<div id="ref-jackson_1909" class="csl-entry" role="listitem">
+Jackson, Frederick H. 1909. <span>“<span class="nocase">XI.—on
+q-functions and a certain difference operator</span>.”</span> <em><span
+class="nocase">Earth and Environmental Science Transactions of the Royal
+Society of Edinburgh</span></em> 46 (2): 253–81.
+</div>
+<div id="ref-knuth1993johann" class="csl-entry" role="listitem">
+Knuth, Donald E. 1993. <span>“<span class="nocase">Johann Faulhaber and
+sums of powers</span>.”</span> <em><span class="nocase">Mathematics of
+Computation</span></em> 61 (203): 277–94.
+</div>
+<div id="ref-MathematicaPrograms" class="csl-entry" role="listitem">
+Kolosov, Petro. 2025a. <em>Mathematica Programs for Finite Differences,
+Stirling Numbers, and Sums of Powers</em>. <a
+href="https://github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers/tree/main/mathematica"
+class="uri">Https://github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers/tree/main/mathematica</a>.
+</div>
+<div id="ref-kolosov_2025_18098442" class="csl-entry" role="listitem">
+Kolosov, Petro. 2025b. <em>Sums of Powers via Central Finite Differences
+and Newton’s Formula</em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.18096789">https://doi.org/10.5281/zenodo.18096789</a>.
+</div>
+<div id="ref-kolosov_2026_18134757" class="csl-entry" role="listitem">
+Kolosov, Petro. 2026. <em>Sums of Powers via Backward Finite Differences
+and Newton’s Formula</em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.18134757">https://doi.org/10.5281/zenodo.18134757</a>.
+</div>
+<div id="ref-RiordanCentralFactorialMSE2020" class="csl-entry"
+role="listitem">
+Markus Scheuer. 2020. <em><span class="nocase">Reference request:
+identity in central factorial numbers</span></em>.
+</div>
+<div id="ref-newton1850newton" class="csl-entry" role="listitem">
+Newton, Isaac and Chittenden, N.W. 1850. <em><span
+class="nocase">Newton’s Principia: the mathematical principles of
+natural philosophy</span></em>. <span>New-York, D. Adee</span>.
+</div>
+<div id="ref-pfaff2007deriving" class="csl-entry" role="listitem">
+Pfaff, Thomas J. 2007. <span>“Deriving a Formula for Sums of Powers of
+Integers.”</span> <em>Pi Mu Epsilon Journal</em> 12 (7): 425–30.
+</div>
+<div id="ref-riordan1968combinatorial" class="csl-entry"
+role="listitem">
+Riordan, John. 1968. <em>Combinatorial Identities</em>. Vol. 217.
+<span>Wiley New York</span>.
+</div>
+<div id="ref-sloane2003line" class="csl-entry" role="listitem">
+Sloane, Neil J.A. and others. 2003. <em><span class="nocase">The on-line
+encyclopedia of integer sequences</span></em>.
+</div>
+<div id="ref-steffensen1927interpolation" class="csl-entry"
+role="listitem">
+Steffensen, Johan Frederik. 1927. <em>Interpolation</em>. <span>Williams
+&amp; Wilkins</span>.
+</div>
+<div id="ref-Worpitzky1883" class="csl-entry" role="listitem">
+Worpitzky, J. 1883. <span>“Studien Über Die Bernoullischen Und
+Eulerschen Zahlen.”</span> <em>Journal Für Die Reine Und Angewandte
+Mathematik</em> 94: 203–32.
+</div>
 </div>
 </body>
 </html>
