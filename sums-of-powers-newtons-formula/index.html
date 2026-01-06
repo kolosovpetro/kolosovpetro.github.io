@@ -356,13 +356,15 @@ OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p>
 <p>Interestingly enough that the paper <span class="citation"
 data-cites="cereceda2022sums">(Cereceda, José L. 2022)</span> gives the
-formula for sums of powers <span class="math display">\[\begin{align*}
+formula for sums of powers</p>
+<p><span class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j! \left[ \binom{n+1-r}{j+1} +
 (-1)^j \binom{r+j-1}{j+1} \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{r}
-\end{align*}\]</span> where <span
+\end{align*}\]</span></p>
+<p>where <span
 class="math inline">\(\genfrac{\{}{\}}{0pt}{}{k}{j}_{r}\)</span> are
-generalized Stirling numbers of the second kind. The formula above is
-identical to the proposition <a
+generalized Stirling numbers of the second kind.</p>
+<p>The formula above is identical to the proposition <a
 href="#prop:ordinary-sums-of-powers-via-newtons-series"
 data-reference-type="eqref"
 data-reference="prop:ordinary-sums-of-powers-via-newtons-series">[prop:ordinary-sums-of-powers-via-newtons-series]</a>,
@@ -922,13 +924,15 @@ class="math display">\[\begin{align*}
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m} = \sum_{k} D(n^m, k) \binom{f(n+r)}{k}
 \end{align*}\]</span> Many interpolation approaches involve rising
-factorials <span class="math inline">\(x_{(n)}\)</span>, falling
-factorials <span class="math inline">\((x)_n\)</span>, or regular
-factorials <span class="math inline">\(n!\)</span>, and thus can be
-expressed in terms of binomial coefficients, because <span
+factorials <span class="math inline">\(x^{\left(n\right)}\)</span>,
+falling factorials <span
+class="math inline">\(\left(x\right)_{n}\)</span>, or regular factorials
+<span class="math inline">\(n!\)</span>, and thus can be expressed in
+terms of binomial coefficients, because <span
 class="math display">\[\begin{align*}
-    \frac{(x)_n}{n!} = \binom{x}{n}; \quad \frac{x_{(n)}}{n!} =
-\binom{x+n-1}{n}.
+    \frac{\left(x\right)_{n}}{n!} = \binom{x}{n}; \quad
+    \frac{x^{\left(n\right)}}{n!} = \binom{x+n-1}{n}; \quad
+    x^{[n]} = n \left(x+\frac{n}{2}-1\right)_{n-1}
 \end{align*}\]</span></p>
 <p>In particular, Donald Knuth provides the formula for multifold sums
 of odd powers <span class="citation"
@@ -1001,21 +1005,25 @@ from central differences of nothing.</p>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Version:</strong>
-<code>1.5.0+main.a49dfab</code></p></li>
-<li><p><strong>License:</strong> This work is licensed under a <a
-href="https://creativecommons.org/licenses/by/4.0/"><code>CC BY 4.0 License</code></a>.</p></li>
-<li><p><strong>Sources:</strong> <a
-href="https://github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers"><code>github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers</code></a></p></li>
-<li><p><strong>ORCID:</strong> <a
-href="https://orcid.org/0000-0002-6544-8880"><code>0000-0002-6544-8880</code></a></p></li>
-<li><p><strong>Email:</strong> <a
-href="mailto:kolosovp94@gmail.com"><code>kolosovp94@gmail.com</code></a></p></li>
+<code>1.5.1-MATH-132.1+MATH-132.d23a55f</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 41A15, 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Newton’s series,
 Faulhaber’s formula, Bernoulli numbers, Bernoulli polynomials,
 Interpolation, Combinatorics, Central factorial numbers, Stirling
 numbers, Eulerian numbers, Worpitzky identity, OEIS</p></li>
+<li><p><strong>License:</strong> This work is licensed under a <a
+href="https://creativecommons.org/licenses/by/4.0/"><code>CC BY 4.0 License</code></a>.</p></li>
+<li><p><strong>DOI:</strong> <a
+href="https://doi.org/10.5281/zenodo.18040979"><code>https://doi.org/10.5281/zenodo.18040979</code></a></p></li>
+<li><p><strong>Web Version:</strong> <a
+href="https://kolosovpetro.github.io/sums-of-powers-newtons-formula/"><code>https://kolosovpetro.github.io/sums-of-powers-newtons-formula/</code></a></p></li>
+<li><p><strong>Sources:</strong> <a
+href="https://github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers"><code>github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers</code></a></p></li>
+<li><p><strong>ORCID:</strong> <a
+href="https://orcid.org/0000-0002-6544-8880"><code>0000-0002-6544-8880</code></a></p></li>
+<li><p><strong>Email:</strong> <a
+href="mailto:kolosovp94@gmail.com"><code>kolosovp94@gmail.com</code></a></p></li>
 </ul>
 <h1 class="unnumbered"
 id="proof-of-segmented-hockey-stick-identity">Proof of Segmented hockey
@@ -1176,8 +1184,10 @@ role="list">
 <div id="ref-Bohner2001DynamicEO" class="csl-entry" role="listitem">
 Bohner, Martin and Peterson, Allan. 2001. <em><span
 class="nocase">Dynamic equations on time scales: An introduction with
-applications</span></em>. <span>Springer Science &amp; Business
-Media</span>.
+applications</span></em>. <a
+href="https://web.mst.edu/~bohner/sample.pdf"
+class="uri">Https://web.mst.edu/~bohner/sample.pdf</a>; <span>Springer
+Science &amp; Business Media</span>.
 </div>
 <div id="ref-carlitz1963divided" class="csl-entry" role="listitem">
 Carlitz, L., and John Riordan. 1963. <span>“The Divided Central
@@ -1193,8 +1203,10 @@ arXiv:2211.11648</span></em>.
 <div id="ref-graham1994concrete" class="csl-entry" role="listitem">
 Graham, Ronald L. and Knuth, Donald E. and Patashnik, Oren. 1994.
 <em><span class="nocase">Concrete mathematics: A foundation for computer
-science (second edition)</span></em>. <span>Addison-Wesley Publishing
-Company, Inc.</span>
+science (second edition)</span></em>. <a
+href="https://archive.org/details/concrete-mathematics"
+class="uri">Https://archive.org/details/concrete-mathematics</a>;
+<span>Addison-Wesley Publishing Company, Inc.</span>
 </div>
 <div id="ref-jackson_1909" class="csl-entry" role="listitem">
 Jackson, Frederick H. 1909. <span>“<span class="nocase">XI.—on
@@ -1226,12 +1238,17 @@ href="https://doi.org/10.5281/zenodo.18134757">https://doi.org/10.5281/zenodo.18
 <div id="ref-RiordanCentralFactorialMSE2020" class="csl-entry"
 role="listitem">
 Markus Scheuer. 2020. <em><span class="nocase">Reference request:
-identity in central factorial numbers</span></em>.
+identity in central factorial numbers</span></em>. <a
+href="https://math.stackexchange.com/a/3665722/463487"
+class="uri">Https://math.stackexchange.com/a/3665722/463487</a>.
 </div>
 <div id="ref-newton1850newton" class="csl-entry" role="listitem">
 Newton, Isaac and Chittenden, N.W. 1850. <em><span
 class="nocase">Newton’s Principia: the mathematical principles of
-natural philosophy</span></em>. <span>New-York, D. Adee</span>.
+natural philosophy</span></em>. <a
+href="https://archive.org/details/bub_gb_KaAIAAAAIAAJ/page/466/mode/2up"
+class="uri">Https://archive.org/details/bub_gb_KaAIAAAAIAAJ/page/466/mode/2up</a>;
+<span>New-York, D. Adee</span>.
 </div>
 <div id="ref-pfaff2007deriving" class="csl-entry" role="listitem">
 Pfaff, Thomas J. 2007. <span>“Deriving a Formula for Sums of Powers of
@@ -1239,17 +1256,22 @@ Integers.”</span> <em>Pi Mu Epsilon Journal</em> 12 (7): 425–30.
 </div>
 <div id="ref-riordan1968combinatorial" class="csl-entry"
 role="listitem">
-Riordan, John. 1968. <em>Combinatorial Identities</em>. Vol. 217.
+Riordan, John. 1968. <em>Combinatorial Identities</em>. Vol. 217. <a
+href="https://www.amazon.com/-/de/Combinatorial-Identities-Probability-Mathematical-Statistics/dp/0471722758"
+class="uri">Https://www.amazon.com/-/de/Combinatorial-Identities-Probability-Mathematical-Statistics/dp/0471722758</a>;
 <span>Wiley New York</span>.
 </div>
 <div id="ref-sloane2003line" class="csl-entry" role="listitem">
 Sloane, Neil J.A. and others. 2003. <em><span class="nocase">The on-line
-encyclopedia of integer sequences</span></em>.
+encyclopedia of integer sequences</span></em>. <a
+href="https://oeis.org/" class="uri">Https://oeis.org/</a>.
 </div>
 <div id="ref-steffensen1927interpolation" class="csl-entry"
 role="listitem">
-Steffensen, Johan Frederik. 1927. <em>Interpolation</em>. <span>Williams
-&amp; Wilkins</span>.
+Steffensen, Johan Frederik. 1927. <em>Interpolation</em>. <a
+href="https://www.amazon.com/-/de/Interpolation-Second-Dover-Books-Mathematics-ebook/dp/B00GHQVON8"
+class="uri">Https://www.amazon.com/-/de/Interpolation-Second-Dover-Books-Mathematics-ebook/dp/B00GHQVON8</a>;
+<span>Williams &amp; Wilkins</span>.
 </div>
 <div id="ref-Worpitzky1883" class="csl-entry" role="listitem">
 Worpitzky, J. 1883. <span>“Studien Über Die Bernoullischen Und
