@@ -226,29 +226,32 @@ using forward and backward differences can be found in the works <span
 class="citation"
 data-cites="kolosov_2026_18135998 kolosov_2026_18136163">(Kolosov 2026a,
 2026b)</span>.</p>
-<p>We define the following recurrence for multifold sums of powers,
-which we utilize throughout the paper. <span
-class="math display">\[\begin{align*}
+<p>We define the recurrence for multifold sums of powers introduced by
+Donald Knuth in <span class="citation"
+data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span>, which we
+utilize throughout the paper.</p>
+<p><span class="math display">\[\begin{align*}
     \Sigma^{0}\,{n}^{m}   &amp;= n^m \\
     \Sigma^{1}\,{n}^{m}   &amp;= \Sigma^{0}\,{1}^{m} +
 \Sigma^{0}\,{2}^{m} + \cdots + \Sigma^{0}\,{n}^{m} \\
     \Sigma^{r+1}\,{n}^{m} &amp;= \Sigma^{r}\,{1}^{m} +
 \Sigma^{r}\,{2}^{m} + \cdots + \Sigma^{r}\,{n}^{m}
-\end{align*}\]</span> Consider the Newton’s formula <span
-class="citation" data-cites="newton1850newton">(Newton, Isaac and
-Chittenden, N.W. 1850)</span> in central differences</p>
-<div id="prop:newtons-series-in-central-differences"
+\end{align*}\]</span></p>
+<p>Consider the Newton’s formula <span class="citation"
+data-cites="newton1850newton">(Newton, Isaac and Chittenden, N.W.
+1850)</span> in central differences</p>
+<div id="prop:newtons-formula-in-central-differences"
 class="proposition">
-<p><strong>Proposition 1</strong> (Newton’s series in central
+<p><strong>Proposition 1</strong> (Newton’s formula in central
 differences). <em><span class="math display">\[\begin{align*}
         f(x) &amp;= \sum_{k=0}^{\infty} \frac{x^{[k]}}{k!} \delta^{k}
 f(0)
 \end{align*}\]</span> where <span class="math inline">\(\delta^{k} f(0)=
 \sum_{j=0}^{k} (-1)^{j} \binom{k}{j} f\left(\frac{k}{2} -
-j\right)\)</span> is central finite difference in zero, and <span
+j\right)\)</span> are central finite differences in zero, and <span
 class="math inline">\(x^{[k]} = n \left( n + \frac{k}{2} -1
 \right)\left( n + \frac{k}{2} -2 \right) \cdots \left( n - \frac{k}{2}
-+1 \right)\)</span> is central factorial.</em></p>
++1 \right)\)</span> are central factorials.</em></p>
 </div>
 <div class="lemma">
 <p><strong>Lemma 2</strong> (Central factorial). <em><span
@@ -262,12 +265,18 @@ class="math display">\[\begin{align*}
 <p>We observe that central factorials are closely related to falling
 factorials <span class="math inline">\(\left(x\right)_{n} =
 x(x-1)(x-2)(x-3)\cdots(x-n+1)=\prod_{k=0}^{n-1}(x-k)\)</span>.
-Therefore, <span class="math display">\[\begin{align*}
+Therefore,</p>
+<p><span class="math display">\[\begin{align*}
     n^{[k]} = n \left(n+\frac{k}{2}-1\right)_{k-1}
-\end{align*}\]</span> To derive formula for multifold sums of powers, we
-follow the strategy to express the Newton’s formula [eq ref] in terms of
-binomial coefficients, then to reach closed forms of column sum of
-binomial coefficients by means of hockey stick identity. Therefore,</p>
+\end{align*}\]</span></p>
+<p>To derive formula for multifold sums of powers, we follow the
+strategy to express the Newton’s formula <a
+href="#prop:newtons-formula-in-central-differences"
+data-reference-type="eqref"
+data-reference="prop:newtons-formula-in-central-differences">[prop:newtons-formula-in-central-differences]</a>
+in terms of binomial coefficients, then to reach closed forms of column
+sum of binomial coefficients by means of hockey stick identity.
+Therefore,</p>
 <div class="proposition">
 <p><strong>Proposition 3</strong>. <em>For <span class="math inline">\(k
 \geq 1\)</span> <span class="math display">\[\begin{align*}
@@ -284,8 +293,8 @@ class="math inline">\(\frac{\left(x\right)_{n}}{n!} =
 </div>
 <p>Which yields Newton’s formula for powers, in terms of central
 differences. For positive integers <span class="math inline">\(n \geq
-1\)</span> and <span class="math inline">\(m \geq 1\)</span> <span
-class="math display">\[\begin{align*}
+1\)</span> and <span class="math inline">\(m \geq 1\)</span></p>
+<p><span class="math display">\[\begin{align*}
     n^m = \sum_{k=1}^{m} \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
 \delta^{k} 0^m
 \end{align*}\]</span></p>
@@ -297,34 +306,37 @@ the central difference <span class="math inline">\(\delta^{k}
 0^n\)</span> is zero for all <span class="math inline">\(n \geq
 1\)</span> and <span class="math inline">\(k=0\)</span>.</p>
 <p>By factoring out and simplifying the term <span
-class="math inline">\(n\)</span>, we get <span
-class="math display">\[\begin{align*}
+class="math inline">\(n\)</span>, we get</p>
+<p><span class="math display">\[\begin{align*}
     n^{m-1} = \sum_{k=1}^{m} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1}
 \delta^{k} 0^m
-\end{align*}\]</span> We may observe that the operator of central finite
-difference of power <span class="math inline">\(\delta^{k} 0^m\)</span>
-requires the parity of its arguments <span
-class="math inline">\(m\)</span> and <span
+\end{align*}\]</span></p>
+<p>We may observe that the operator of central finite difference <span
+class="math inline">\(\delta^{k} 0^m\)</span> requires the parity of its
+arguments <span class="math inline">\(m\)</span> and <span
 class="math inline">\(k\)</span> meaning that both <span
 class="math inline">\(m\)</span> and <span
-class="math inline">\(k\)</span> must be <span
-class="math inline">\(m\bmod2 = k\bmod2\)</span> so that <span
-class="math inline">\(\delta^{k} 0^m\)</span> is non-zero.</p>
+class="math inline">\(k\)</span> required to be: <span
+class="math inline">\(m\bmod2 = k\bmod2\)</span>, such that finite
+differences <span class="math inline">\(\delta^{k} 0^m\)</span> are
+non-zero.</p>
 <p>By setting <span class="math inline">\(m \rightarrow 2m\)</span> we
-get <span class="math display">\[\begin{align*}
+get</p>
+<p><span class="math display">\[\begin{align*}
     n^{2m-1} = \sum_{k=1}^{2m} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1}
 \delta^{k} 0^{2m}
-\end{align*}\]</span> Thus, the central difference <span
-class="math inline">\(\delta^{k} 0^{2m}\)</span> for odd <span
-class="math inline">\(k\)</span> is zero. Since <span
-class="math inline">\(k\)</span> runs over all integers in the range
-<span class="math inline">\(0\leq k \leq 2m\)</span>, we are able to
-omit odd values of <span class="math inline">\(k\)</span> <span
-class="math display">\[\begin{align*}
+\end{align*}\]</span></p>
+<p>Thus, the central differences <span class="math inline">\(\delta^{k}
+0^{2m}\)</span> are zero for all odd <span
+class="math inline">\(k\)</span>.</p>
+<p>Since <span class="math inline">\(k\)</span> runs over all integers
+in the range <span class="math inline">\(0\leq k \leq 2m\)</span>, we
+can omit odd values of <span class="math inline">\(k\)</span></p>
+<p><span class="math display">\[\begin{align*}
     n^{2m-1} = \sum_{k=1}^{m} \frac{1}{2k} \binom{n+k-1}{2k-1}
 \delta^{2k} 0^{2m}
-\end{align*}\]</span> Thus, formula for ordinary sums of odd powers
-is</p>
+\end{align*}\]</span></p>
+<p>Hence, formula for ordinary sums of odd powers is</p>
 <div class="proposition">
 <p><strong>Proposition 4</strong> (Ordinary sums of powers). <em><span
 class="math display">\[\begin{align*}
@@ -342,8 +354,9 @@ class="math inline">\(\sum_{j=1}^{n} \binom{j+k-1}{2k-1} =
 </div>
 </div>
 <p>Therefore,</p>
-<div class="theorem">
-<p><strong>Theorem 5</strong> (Multifold sums of odd powers). </p>
+<div id="theorem:multifold-sums-of-odd-powers" class="theorem">
+<p><strong>Theorem 5</strong> (Multifold sums of odd powers).
+<em></em></p>
 <div class="mdframed">
 <p><em><span class="math display">\[\begin{align*}
             \Sigma^{r}\,{n}^{2m-1} = \sum_{k=1}^{m} \frac{1}{2k}
@@ -360,23 +373,29 @@ class="math inline">\(\sum_{j=1}^{n} \binom{j+k-1}{k-1} =
 \binom{n+k}{2k}\)</span>. By induction the claim follows. ◻</em></p>
 </div>
 </div>
-<p>The formula for multifold sums of odd powers can be rewritten in
-terms of central factorial numbers of the second kind <span
-class="math inline">\(T(n,k)\)</span>, because <span
-class="math display">\[\begin{align*}
+<p>It is quite interesting to notice that theorem <a
+href="#theorem:multifold-sums-of-odd-powers" data-reference-type="eqref"
+data-reference="theorem:multifold-sums-of-odd-powers">[theorem:multifold-sums-of-odd-powers]</a>
+is a central difference form of the formula of sums of odd-powers given
+by Donald Knuth in <em>Johann Faulhaber and sums of powers</em>,
+see <span class="citation" data-cites="knuth1993johann">(Knuth, Donald
+E. 1993)</span>.</p>
+<p>The reason is straightforward, instead of using Central factorial
+numbers of the second kind <span class="math inline">\(T(n,k)\)</span>,
+the theorem <a href="#theorem:multifold-sums-of-odd-powers"
+data-reference-type="eqref"
+data-reference="theorem:multifold-sums-of-odd-powers">[theorem:multifold-sums-of-odd-powers]</a>
+utilizes central differences explicitly, because</p>
+<div id="lem:central-factorial-numbers-of-the-second-kind"
+class="lemma">
+<p><strong>Lemma 6</strong> (Central factorial numbers of the second
+kind). <em><span class="math display">\[\begin{align*}
     k! T(n, k) = \delta^k 0^n
-\end{align*}\]</span> The identity above is well discussed in <span
-class="citation"
-data-cites="steffensen1927interpolation carlitz1963divided riordan1968combinatorial">(Steffensen,
-Johan Frederik 1927; Carlitz and Riordan 1963; Riordan 1968)</span>. The
-non-zero central factorial numbers <span
-class="math inline">\(T(2m,2k)\)</span> are registered as <a
-href="https://oeis.org/A008957"><code>A008957</code></a> in the
-OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
-J.A. and others 2003)</span>.</p>
-<p>Hence,</p>
+\end{align*}\]</span></em></p>
+</div>
+<p>Meaning that the Knuth’s formula</p>
 <div class="proposition">
-<p><strong>Proposition 6</strong> (Multifold sums of odd powers in
+<p><strong>Proposition 7</strong> (Multifold sums of odd powers in
 central factorial numbers). </p>
 <div class="mdframed">
 <p><em><span class="math display">\[\begin{align*}
@@ -385,20 +404,31 @@ central factorial numbers). </p>
 \end{align*}\]</span></em></p>
 </div>
 </div>
-<p>It is remarkable that exactly this formula can be found in Donald
-Knuth’s work <em>Johann Faulhaber and sums of powers</em>, see <span
-class="citation" data-cites="knuth1993johann">(Knuth, Donald E.
-1993)</span>.</p>
+<p>originates from Newton’s interpolation formula in central
+differences <a href="#prop:newtons-formula-in-central-differences"
+data-reference-type="eqref"
+data-reference="prop:newtons-formula-in-central-differences">[prop:newtons-formula-in-central-differences]</a>.</p>
+<p>The lemma <a href="#lem:central-factorial-numbers-of-the-second-kind"
+data-reference-type="eqref"
+data-reference="lem:central-factorial-numbers-of-the-second-kind">[lem:central-factorial-numbers-of-the-second-kind]</a>
+is well discussed in <span class="citation"
+data-cites="steffensen1927interpolation carlitz1963divided riordan1968combinatorial">(Steffensen,
+Johan Frederik 1927; Carlitz and Riordan 1963; Riordan 1968)</span>.</p>
+<p>The non-zero central factorial numbers <span
+class="math inline">\(T(2m,2k)\)</span> are registered as <a
+href="https://oeis.org/A008957"><code>A008957</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>.</p>
 <h1 class="unnumbered" id="conclusions">Conclusions</h1>
 <p>In this manuscript we derived formula for multifold sums of powers
 using Newton’s formula and central differences. Additionally, we
-discussed the connection with classical formulas for sums of powers
-(Knuth 1993 <span class="citation" data-cites="knuth1993johann">(Knuth,
-Donald E. 1993)</span>).</p>
+discussed the connection with the classical formulas for sums of
+powers <span class="citation" data-cites="knuth1993johann">(Knuth,
+Donald E. 1993)</span>.</p>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Version:</strong>
-<code>1.1.1-MATH-141.1+MATH-141.0ad6c52</code></p></li>
+<code>1.2.0+main.d110eee</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
