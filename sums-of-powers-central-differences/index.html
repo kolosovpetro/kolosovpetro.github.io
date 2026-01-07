@@ -418,6 +418,27 @@ Johan Frederik 1927; Carlitz and Riordan 1963; Riordan 1968)</span>.</p>
 class="math inline">\(T(2m,2k)\)</span> are registered as <a
 href="https://oeis.org/A008957"><code>A008957</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. For example, <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{1} &amp;= \tbinom{n+1}{2} \\
+    \Sigma^{1}\,{n}^{3} &amp;= 6 \tbinom{n+2}{4} + \tbinom{n+1}{2} \\
+    \Sigma^{1}\,{n}^{5} &amp;= 120 \tbinom{n+3}{6} + 30 \tbinom{n+2}{4}
++ \tbinom{n+1}{2} \\
+    \Sigma^{1}\,{n}^{7} &amp;= 5040 \tbinom{n+4}{8} + 1680
+\tbinom{n+3}{6} + 126 \tbinom{n+2}{4} + \tbinom{n+1}{2}
+\end{align*}\]</span> While multifold sums of odd powers are <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{1} &amp;= \tbinom{n+1+r}{2+r} \\
+    \Sigma^{r}\,{n}^{3} &amp;= 6 \tbinom{n+2+r}{4+r} +
+\tbinom{n+1+r}{2+r} \\
+    \Sigma^{r}\,{n}^{5} &amp;= 120 \tbinom{n+3+r}{6+r} + 30
+\tbinom{n+2+r}{4+r} + \tbinom{n+1+r}{2+r} \\
+    \Sigma^{r}\,{n}^{7} &amp;= 5040 \tbinom{n+4+r}{8+r} + 1680
+\tbinom{n+3+r}{6+r} + 126 \tbinom{n+2+r}{4+r} + \tbinom{n+1+r}{2+r}
+\end{align*}\]</span> The coefficients <span class="math inline">\(1, 6,
+1, 120, 30, 1,\ldots\)</span> is the sequence <a
+href="https://oeis.org/A303675"><code>A303675</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p>
 <h1 class="unnumbered" id="conclusions">Conclusions</h1>
 <p>In this manuscript we derived formula for multifold sums of powers
@@ -428,7 +449,7 @@ Donald E. 1993)</span>.</p>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Version:</strong>
-<code>1.2.0+main.d110eee</code></p></li>
+<code>1.2.1+main.18ed9f8</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
