@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-01-17" />
+  <meta name="dcterms.date" content="2026-01-18" />
   <title>Sums of powers via central finite differences and Newton’s formula</title>
   <style>
     /* Default styles provided by pandoc.
@@ -210,7 +210,7 @@
 <h1 class="title">Sums of powers via central finite differences and
 Newton’s formula</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-01-17</p>
+<p class="date">2026-01-18</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>In this manuscript we derive formula for multifold sums of powers
@@ -514,6 +514,192 @@ class="math display">\[\begin{align*}
 href="https://oeis.org/A303675"><code>A303675</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p>
+<p>This approach can be generalized even further. Consider Newton’s
+interpolation formula around arbitrary integer <span
+class="math inline">\(t\)</span></p>
+<div id="prop:newtons-interpolation-formula-in-central-differences"
+class="proposition">
+<p><strong>Proposition 11</strong> (Newton’s interpolation formula in
+central differenes). <em></em></p>
+<div class="mdframed">
+<p><em><span class="math display">\[\begin{align*}
+      f(x+t)
+      = \sum_{k=0}^{\infty} \frac{x^{[k]}}{k!} \delta^{k} f(t)
+\end{align*}\]</span></em></p>
+</div>
+<div class="proof">
+<p><em><em>Proof.</em> See <span class="citation"
+data-cites="butzer1989central">(Butzer et al. 1989,
+462)</span>. ◻</em></p>
+</div>
+</div>
+<p>Thus, for powers we have identity</p>
+<div id="prop:newtons-formula-for-powers" class="proposition">
+<p><strong>Proposition 12</strong> (Newton’s formula for powers).
+<em></em></p>
+<div class="mdframed">
+<p><em>For integers <span class="math inline">\(n,t\)</span> and <span
+class="math inline">\(m \geq 0\)</span> <span
+class="math display">\[\begin{align*}
+      n^m = \sum_{k=0}^{m} \frac{(n-t)^{[k]}}{k!} \delta^{k} t^m
+\end{align*}\]</span></em></p>
+</div>
+</div>
+<p>Thus,</p>
+<div id="prop:powers-in-central-binomial-form" class="proposition">
+<p><strong>Proposition 13</strong> (Powers in central binomial form).
+<em>For integers <span class="math inline">\(n,t\)</span> and <span
+class="math inline">\(m \geq 0\)</span> <span
+class="math display">\[\begin{align*}
+    n^m
+    &amp;= \frac{(n-t)^{[0]}}{0!} \delta^{0} t^m + \sum_{k=1}^{m}
+\frac{n-t}{k} \binom{n+t+\frac{k}{2}-1}{k-1} \delta^{k} t^m \\
+    &amp;= t^m + \sum_{k=1}^{m} (n-t) \binom{n-t+\frac{k}{2}-1}{k-1}
+\frac{\delta^{k} t^m}{k}
+\end{align*}\]</span></em></p>
+</div>
+<p>Now we expand the brackets in central binomial form above <span
+class="math display">\[\begin{align*}
+  n^m
+  = t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+  \left[ n \binom{n-t+\frac{k}{2}-1}{k-1} - t
+\binom{n-t+\frac{k}{2}-1}{k-1} \right]
+\end{align*}\]</span> Hence, we get ordinary sum of powers</p>
+<div id="cor:centered-ordinary-sums-of-powers" class="corollary">
+<p><strong>Corollary 14</strong> (Centered ordinary sums of powers).
+<em>For integers <span class="math inline">\(t, \; m\geq 0, \; n \geq
+0\)</span> <span class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m}
+    = \sum_{j=1}^n t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+    \left[ \sum_{j=1}^n j \binom{j-t+\frac{k}{2}-1}{k-1}
+    - t \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1} \right]
+\end{align*}\]</span></em></p>
+</div>
+<p>Now we notice that</p>
+<div id="prop:binomial-refactorization" class="proposition">
+<p><strong>Proposition 15</strong> (Binomial re-factorization). <em>For
+integers <span class="math inline">\(n\geq 0, \; r \geq 0, \; m\geq
+0\)</span> <span class="math display">\[\begin{align*}
+    n \binom{n+r}{m} = (m+1) \binom{n+r}{m+1} - (r-m) \binom{n+r}{m}
+\end{align*}\]</span></em></p>
+</div>
+<p>Thus, by setting <span class="math inline">\(n=j\)</span> and <span
+class="math inline">\(r=-t+\frac{k}{2} -1\)</span> and <span
+class="math inline">\(m=k-1\)</span> yields</p>
+<div id="prop:central-binomial-refactorization" class="proposition">
+<p><strong>Proposition 16</strong> (Central binomial re-factorization).
+<em>For integers <span class="math inline">\(j\geq 0, \; t \geq 0, \;
+k\geq 0\)</span> <span class="math display">\[\begin{align*}
+    j \binom{j-t+\frac{k}{2} -1}{k-1}
+    &amp;= (k-1+1) \binom{j-t+\frac{k}{2} -1}{k-1+1}
+    - \left [-t+\frac{k}{2} -1-(k-1)\right ]
+    \binom{j+-t+\frac{k}{2} -1}{k-1} \\
+    &amp;= k \binom{j-t+\frac{k}{2}-1}{k}
+    - \left [-t-\frac{k}{2} \right ]
+    \binom{j-t+\frac{k}{2}-1}{k-1} \\
+    &amp;= k \binom{j-t+\frac{k}{2}-1}{k}
+    + \left [t+\frac{k}{2} \right ]
+    \binom{j-t+\frac{k}{2}-1}{k-1} \\
+\end{align*}\]</span></em></p>
+</div>
+<p>Thus, formula for sums of powers yields <span
+class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{m}
+  &amp;= \sum_{j=1}^{n} t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+  \Bigg [
+    \sum_{j=1}^{n} \left \{ k \binom{j-t+\frac{k}{2}-1}{k}
+      + \left [t+\frac{k}{2} \right ]
+    \binom{j-t+\frac{k}{2}-1}{k-1} \right \} \\
+    &amp;- t \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k-1}
+  \Bigg ] \\
+  &amp;= \sum_{j=1}^{n} t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+  \Bigg [
+    \left \{ k \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
+      + \left [t+\frac{k}{2} \right ]
+    \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1} \right \} \\
+    &amp;- t \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k-1}
+  \Bigg ] \\
+  &amp;= \sum_{j=1}^{n} t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+  \Bigg [
+    \left \{ k \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
+      + \frac{k}{2}
+    \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1} \right \}
+  \Bigg ]
+\end{align*}\]</span> Therefore,</p>
+<div id="prop:centered-decomposition-of-power-sums" class="proposition">
+<p><strong>Proposition 17</strong> (Centered decomposition of power
+sums). <em>For integers <span class="math inline">\(t, \; m\geq 0, \; n
+\geq 0\)</span> <span class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m} = \sum_{j=1}^{n} t^m + \sum_{k=1}^{m}
+\frac{\delta^{k} t^m}{k}
+    \left [
+      k \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
+      + \frac{k}{2}
+      \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1}
+    \right ]
+\end{align*}\]</span></em></p>
+</div>
+<p>Let be generalized hockey stick identity</p>
+<div id="prop:generalized-hockey-stick-identity" class="proposition">
+<p><strong>Proposition 18</strong> (Generalized hockey-stick identity).
+<em>For integers <span class="math inline">\(a,b\)</span> and <span
+class="math inline">\(j\)</span> <span
+class="math display">\[\begin{align*}
+    \sum_{k=a}^{b} \binom{k}{j} = \binom{b+1}{j+1} - \binom{a}{j+1}
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> We have <span
+class="math inline">\(\sum_{k=a}^{b} \binom{k}{j} = \binom{a}{j} +
+\binom{a+1}{j} + \cdots + \binom{b}{j}\)</span>, which means that <span
+class="math inline">\(\sum_{k=a}^{b} \binom{k}{j} =
+    \left( \sum_{k=0}^{b} \binom{k}{j} \right) - \left( \sum_{k=0}^{a-1}
+\binom{k}{j} \right)\)</span>. By hockey stick identity <span
+class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> yields <span
+class="math inline">\(\sum_{k=a}^{b} \binom{k}{j}
+    = \left( \sum_{k=0}^{b} \binom{k}{j} \right) - \left(
+\sum_{k=0}^{a-1} \binom{k}{j} \right)
+    = \binom{b+1}{j+1} - \binom{a}{j+1}\)</span>. ◻</em></p>
+</div>
+</div>
+<p>Therefore, by setting <span
+class="math inline">\(a=-t+\frac{k}{2}\)</span> and <span
+class="math inline">\(b=n-t-\frac{k}{2}-1\)</span> yields</p>
+<div id="prop:centered-hockey-stick-identity" class="proposition">
+<p><strong>Proposition 19</strong> (Centered hockey stick identity).
+<em>For integers <span class="math inline">\(n, j, t, k\)</span> <span
+class="math display">\[\begin{align*}
+    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
+    = \sum_{a=-t+\frac{k}{2}}^{n-t-\frac{k}{2}-1} \binom{a}{k}
+    = \binom{n-t+\frac{k}{2}}{k+1} - \binom{-t+\frac{k}{2}}{k+1}
+\end{align*}\]</span></em></p>
+</div>
+<p>Thus, closed form of centered sums of powers yields</p>
+<div id="theorem:closed-form-of-centered-sums-of-powers"
+class="theorem">
+<p><strong>Theorem 20</strong> (Closed form of centered sums of powers).
+<em></em></p>
+<div class="mdframed">
+<p><em>For integers <span class="math inline">\(n\geq 0, \; m \geq
+0\)</span> and arbitrary integer <span class="math inline">\(t\)</span>
+<span class="math display">\[\begin{align*}
+      \Sigma^{1}\,{n}^{m} = \sum_{j=1}^{n} t^m + \sum_{k=1}^{m}
+\frac{\delta^{k} t^m}{k}
+      \left [
+        k \left( \binom{n-t+\frac{k}{2}}{k+1} -
+\binom{-t+\frac{k}{2}}{k+1} \right)
+        + \frac{k}{2}
+        \left( \binom{n-t+\frac{k}{2}}{k} - \binom{-t+\frac{k}{2}}{k}
+\right)
+      \right ].
+\end{align*}\]</span></em></p>
+</div>
+</div>
+<p>Continuing similarly, we can derive formula for multifold sums of
+powers by using centered hockey stick identity <a
+href="#prop:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a>
+repeatedly.</p>
 <h1 class="unnumbered" id="conclusions">Conclusions</h1>
 <p>In this manuscript, we derived formula for multifold sums of powers
 using Newton’s formula in central differences, combined with
@@ -584,13 +770,79 @@ href="#theorem:multifold-sums-of-odd-powers-in-central-differences"
 data-reference-type="eqref"
 data-reference="theorem:multifold-sums-of-odd-powers-in-central-differences">[theorem:multifold-sums-of-odd-powers-in-central-differences]</a></td>
 </tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateNewtonsFormulaForPowers[10]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:newtons-formula-for-powers" data-reference-type="eqref"
+data-reference="prop:newtons-formula-for-powers">[prop:newtons-formula-for-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidatePowersInCentralBinomialForm[10]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:powers-in-central-binomial-form" data-reference-type="eqref"
+data-reference="prop:powers-in-central-binomial-form">[prop:powers-in-central-binomial-form]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateCenteredOrdinarySumsOfPowers[10]</code></td>
+<td style="text-align: left;">Validates Cor. <a
+href="#cor:centered-ordinary-sums-of-powers" data-reference-type="eqref"
+data-reference="cor:centered-ordinary-sums-of-powers">[cor:centered-ordinary-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateBinomialRefactorization[5]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:binomial-refactorization" data-reference-type="eqref"
+data-reference="prop:binomial-refactorization">[prop:binomial-refactorization]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateCentralBinomialRefactorization[5]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:central-binomial-refactorization"
+data-reference-type="eqref"
+data-reference="prop:central-binomial-refactorization">[prop:central-binomial-refactorization]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateCenteredDecompositionOfPowerSums[10]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:centered-decomposition-of-power-sums"
+data-reference-type="eqref"
+data-reference="prop:centered-decomposition-of-power-sums">[prop:centered-decomposition-of-power-sums]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity[10]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity[10]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateClosedFormOfCenteredSumsOfPowers[10]</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#theorem:closed-form-of-centered-sums-of-powers"
+data-reference-type="eqref"
+data-reference="theorem:closed-form-of-centered-sums-of-powers">[theorem:closed-form-of-centered-sums-of-powers]</a></td>
+</tr>
 </tbody>
 </table>
 </div>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Version:</strong>
-<code>1.3.0+main.7110fb4</code></p></li>
+<code>1.4.0+main.6c8a455</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
