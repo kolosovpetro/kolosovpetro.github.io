@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <link rel="canonical" href="https://kolosovpetro.github.io/sums-of-powers-backward-differences/" />
+  <meta name="keywords" content="Sums of powers, Newton's interpolation formula, Finite differences, Binomial coefficients, Faulhaber's formula, Bernoulli numbers, Bernoulli polynomials, Interpolation, Approximation, Discrete convolution, Combinatorics, Polynomial identities, Central factorial numbers, Stirling numbers, Eulerian numbers, Worpitzky identity, Pascal's triangle, OEIS." />
+  <meta name="description" content="We derive formulas for sums of powers via Newton's interpolation formula based on backward finite differences of powers. In addition, we note that backward differences are closely related to Eulerian numbers, and Stirling numbers of the second kind. Thus, we express formulas for sums of powers in terms of Eulerian numbers, and Stirling numbers of the second kind." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-01-21" />
+  <meta name="dcterms.date" content="2026-01-24" />
   <title>Sums of powers via backward finite differences and Newton’s formula</title>
   <style>
     /* Default styles provided by pandoc.
@@ -210,10 +213,10 @@
 <h1 class="title">Sums of powers via backward finite differences and
 Newton’s formula</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-01-21</p>
+<p class="date">2026-01-24</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
-<p>We obtain formulas for sums of powers via Newton’s interpolation
+<p>We derive formulas for sums of powers via Newton’s interpolation
 formula based on backward finite differences of powers. In addition, we
 note that backward differences are closely related to Eulerian numbers,
 and Stirling numbers of the second kind. Thus, we express formulas for
@@ -256,9 +259,9 @@ Donald E. 1993)</span> notation</p>
 \end{align*}\]</span></em></p>
 </div>
 <p>Steffensen gives Newton’s formula for backward differences evaluated
-at zero <span class="math inline">\(f(x) = \sum_{k=0}^{n}
-\binom{x+k-1}{k} \nabla^{k} f(0)\)</span>, in his book
-Interpolation <span class="citation"
+at zero <span class="math display">\[\begin{align*}
+  f(x) = \sum_{k=0}^{n} \binom{x+k-1}{k} \nabla^{k} f(0)
+\end{align*}\]</span> in his book Interpolation <span class="citation"
 data-cites="steffensen1927interpolation">(Steffensen, Johan Frederik
 1927, chap. 2, eq. (19))</span>. Thus, Newton’s formula for backward
 differences evaluated at arbitrary integer <span
@@ -878,17 +881,17 @@ data-reference="prop:multifold-sums-of-powers-in-eulerian-numbers">[prop:multifo
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> January 1, 2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-01-21.</p></li>
+<li><p><strong>Current release date:</strong> 2026-01-24.</p></li>
 <li><p><strong>Version:</strong>
-<code>1.6.0+main.308e3bd</code></p></li>
+<code>1.6.1+main.5be10a4</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B68, 11B73,
 11B83.</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
-Bernoulli numbers, Bernoulli polynomials Interpolation, Approximation,
+Bernoulli numbers, Bernoulli polynomials, Interpolation, Approximation,
 Discrete convolution, Combinatorics, Polynomial identities, Central
 factorial numbers, Stirling numbers, Eulerian numbers, Worpitzky
-identity, Pascal’s triangle, OEIS.</p></li>
+identity, Pascal’s triangle, OEIS .</p></li>
 <li><p><strong>License:</strong> This work is licensed under a <a
 href="https://creativecommons.org/licenses/by/4.0/"><code>CC BY 4.0 License</code></a>.</p></li>
 <li><p><strong>DOI:</strong> <a
@@ -955,3 +958,4 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </section>
 </body>
 </html>
+
