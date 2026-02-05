@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <link rel="canonical" href="https://kolosovpetro.github.io/math/test/" />
+  <meta name="keywords" content="sums of powers, Newton interpolation formula, finite differences, binomial coefficients, Faulhaber's formula, Bernoulli numbers, Bernoulli polynomials, interpolation, discrete convolution, combinatorics, polynomial identities, Stirling numbers of the second kind, Eulerian numbers, Worpitzky identity, Pascal's triangle, OEIS" />
+  <meta name="description" content="LaTeX template for GitHub including general CI/CD actions and Mathematica templates." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-01-06" />
+  <meta name="dcterms.date" content="2026-02-05" />
   <title>LaTeX Template for GitHub</title>
   <style>
     /* Default styles provided by pandoc.
@@ -209,15 +212,14 @@
 <header id="title-block-header">
 <h1 class="title">LaTeX Template for GitHub</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-01-06</p>
+<p class="date">2026-02-05</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>Your abstract here.</p>
 </div>
 </header>
 <h1 id="sec:introduction">Introduction</h1>
-<p>Your introduction here. Include some references <span
-class="citation"
+<p>Include some references <span class="citation"
 data-cites="derivative_of_polynomials_via_double_limit alekseyev2018mathoverflow oeis_coefficients_u_m_l_k_defined_by_polynomial_identity_3">(Kolosov
 2024, 2018c; Alekseyev, Max 2018)</span>. Lorem Ipsum is simply dummy
 text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -350,29 +352,29 @@ class="math inline">\(m/r\)</span></th>
 </div>
 </div>
 <p><span class="math display">\[\begin{equation*}
-    \left\lceil\kern-3.5pt\left\lceil\genfrac{}{}{0pt}{}{a}{b}
+  \left\lceil\kern-3.5pt\left\lceil\genfrac{}{}{0pt}{}{a}{b}
 \right\rfloor\kern-3.5pt\right\rfloor_{m}
 \end{equation*}\]</span> <span class="math display">\[\begin{equation*}
-    \left\lceil\kern-3.5pt\left\lceil\genfrac{}{}{0pt}{}{a}{b}
+  \left\lceil\kern-3.5pt\left\lceil\genfrac{}{}{0pt}{}{a}{b}
 \right\rfloor\kern-3.5pt\right\rfloor_{m}
 \end{equation*}\]</span></p>
 <p>And for any natural <span class="math inline">\(m\)</span> we have
 polynomial identity <span class="math display">\[\begin{equation}
-    x^m = \sum_{k=1}^{m} T(m, k) x^{[k]}
-    \label{eq:knuth-power-identity}
+  x^m = \sum_{k=1}^{m} T(m, k) x^{[k]}
+  \label{eq:knuth-power-identity}
 \end{equation}\]</span> where <span
 class="math inline">\(x^{[k]}\)</span> denotes central factorial defined
 by <span class="math display">\[\begin{equation*}
-    x^{[n]} = x \left(x+\frac{n}{2}-1\right)_{n-1}
+  x^{[n]} = x \left(x+\frac{n}{2}-1\right)_{n-1}
 \end{equation*}\]</span> where <span
 class="math inline">\(\left(n\right)_{k} = n (n-1) (n-2) \cdots
 (n-k+1)\)</span> denotes falling factorial in Knuth’s notation. In
 particular, <span class="math display">\[\begin{equation}
-    \label{eq:falling-factorial}
-    x^{[n]}
-    = x \left( x+\frac{n}{2}-1 \right) \left( x+\frac{n}{2}-1 \right)
+  \label{eq:falling-factorial}
+  x^{[n]}
+  = x \left( x+\frac{n}{2}-1 \right) \left( x+\frac{n}{2}-1 \right)
 \cdots \left (x+\frac{n}{2}-n-1 \right)
-    = x \prod_{k=1}^{n-1} \left( x+\frac{n}{2}-k \right)
+  = x \prod_{k=1}^{n-1} \left( x+\frac{n}{2}-k \right)
 \end{equation}\]</span> This is an equation reference <a
 href="#eq:knuth-power-identity" data-reference-type="eqref"
 data-reference="eq:knuth-power-identity">[eq:knuth-power-identity]</a>.</p>
@@ -381,17 +383,14 @@ sums of powers, which is</p>
 <div id="theorem:multifold-sums-of-powers-via-newtons-series"
 class="theorem">
 <p><strong>Theorem 1</strong> (Multifold sums of powers via Newton’s
-series). <em></em></p>
-<div class="mdframed">
-<p><em>For non-negative integers <span
+series). <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
-            \Sigma^{r}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^{m} \left[
-\left( \sum_{s=1}^{r} (-1)^{j+s-1} \binom{j+t-1}{j+s}
-\Sigma^{r-s}\,{n}^{0} \right) + \binom{n-t+r}{j+r} \right]
+    \Sigma^{r}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^{m} \left[ \left(
+\sum_{s=1}^{r} (-1)^{j+s-1} \binom{j+t-1}{j+s} \Sigma^{r-s}\,{n}^{0}
+\right) + \binom{n-t+r}{j+r} \right]
 \end{align*}\]</span></em></p>
-</div>
 <div class="proof">
 <p><em><em>Proof.</em> By Newton’s series for power and repeated
 applications of the segmented hockey stick identity. ◻</em></p>
@@ -400,52 +399,52 @@ applications of the segmented hockey stick identity. ◻</em></p>
 <div class="proposition">
 <p><strong>Proposition 2</strong> (Falling factorial). <em><span
 class="math display">\[\begin{align*}
-        \left(x\right)_{n} = x(x-1)(x-2)(x-3)\cdots(x-n+1) =
+    \left(x\right)_{n} = x(x-1)(x-2)(x-3)\cdots(x-n+1) =
 \prod_{k=0}^{n-1}(x-k)
 \end{align*}\]</span></em></p>
 </div>
 <div class="proposition">
 <p><strong>Proposition 3</strong>. <em><span
 class="math display">\[\begin{align*}
-        \frac{\left(x\right)_{n}}{n!} = \binom{x}{n}
+    \frac{\left(x\right)_{n}}{n!} = \binom{x}{n}
 \end{align*}\]</span></em></p>
 </div>
 <h2 id="rising-factorials">Rising factorials</h2>
 <div class="proposition">
 <p><strong>Proposition 4</strong> (Rising factorial). <em><span
 class="math display">\[\begin{align*}
-        x^{\left(n\right)} = x(x+1)(x+2)(x+3)\cdots(x+n-1) =
+    x^{\left(n\right)} = x(x+1)(x+2)(x+3)\cdots(x+n-1) =
 \prod_{k=0}^{n-1}(x+k)
 \end{align*}\]</span></em></p>
 </div>
 <div class="proposition">
 <p><strong>Proposition 5</strong>. <em><span
 class="math display">\[\begin{align*}
-        \frac{x^{\left(n\right)}}{n!} = \binom{x+n-1}{n}
+    \frac{x^{\left(n\right)}}{n!} = \binom{x+n-1}{n}
 \end{align*}\]</span></em></p>
 </div>
 <h2 id="central-factorials">Central factorials</h2>
 <div class="lemma">
 <p><strong>Lemma 6</strong> (Central factorial). <em><span
 class="math display">\[\begin{align*}
-        n^{[k]}
-        = n \left( n + \frac{k}{2} -1 \right)\left( n + \frac{k}{2} -2
+    n^{[k]}
+    = n \left( n + \frac{k}{2} -1 \right)\left( n + \frac{k}{2} -2
 \right) \cdots \left( n - \frac{k}{2} +1 \right)
-        = n \prod_{j=1}^{k-1} \left( n + \frac{k}{2} -j \right)
+    = n \prod_{j=1}^{k-1} \left( n + \frac{k}{2} -j \right)
 \end{align*}\]</span></em></p>
 </div>
 <div class="proposition">
 <p><strong>Proposition 7</strong>. <em><span
 class="math display">\[\begin{align*}
-        n^{[k]} = n \left(n+\frac{k}{2}-1\right)_{k-1}
+    n^{[k]} = n \left(n+\frac{k}{2}-1\right)_{k-1}
 \end{align*}\]</span></em></p>
 </div>
 <h2 id="derivatives">Derivatives</h2>
 <p><span class="math display">\[\begin{align*}
-    \frac{d x}{d y} = \frac{f(x+h)-f(x)}{h}
+  \frac{\mathrm{d} x}{\mathrm{d} y} = \frac{f(x+h)-f(x)}{h}
 \end{align*}\]</span></p>
 <p><span class="math display">\[\begin{align*}
-    \frac{d^{3} x}{d y^{3}} = \frac{f(x+h)-f(x)}{h}
+  \frac{\mathrm{d}^{3} x}{\mathrm{d} y^{3}} = \frac{f(x+h)-f(x)}{h}
 \end{align*}\]</span></p>
 <h1 class="unnumbered" id="conclusions">Conclusions</h1>
 <p>Conclusions of your manuscript.</p>
@@ -460,13 +459,16 @@ class="math display">\[\begin{align*}
 [contribution] about the fact that [interesting claim].</p>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
+<li><p><strong>Initial release date:</strong> December 24,
+2025.</p></li>
+<li><p><strong>Current release date:</strong> 2026-02-05.</p></li>
 <li><p><strong>Version:</strong>
-<code>1.5.1-2+main.1489937</code></p></li>
+<code>1.5.1-5+main.d2cfd97</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 41A15, 11B68, 11B73,
 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
-Bernoulli numbers, Bernoulli polynomials Interpolation, Approximation,
+Bernoulli numbers, Bernoulli polynomials, Interpolation, Approximation,
 Discrete convolution, Combinatorics, Polynomial identities, Central
 factorial numbers, Stirling numbers, Eulerian numbers, Worpitzky
 identity, Pascal’s triangle, OEIS</p></li>
@@ -475,9 +477,9 @@ href="https://creativecommons.org/licenses/by/4.0/"><code>CC BY 4.0 License</cod
 <li><p><strong>DOI:</strong> <a
 href="https://doi.org/10.5281/zenodo.18040979"><code>https://doi.org/10.5281/zenodo.18040979</code></a></p></li>
 <li><p><strong>Web Version:</strong> <a
-href="https://kolosovpetro.github.io/math/"><code>https://kolosovpetro.github.io/math/test</code></a></p></li>
+href="https://kolosovpetro.github.io/sums-of-powers-newtons-formula/"><code>kolosovpetro.github.io/sums-of-powers-newtons-formula</code></a></p></li>
 <li><p><strong>Sources:</strong> <a
-href="https://github.com/kolosovpetro/github-latex-template"><code>github.com/kolosovpetro/github-latex-template</code></a></p></li>
+href="https://github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers"><code>github.com/kolosovpetro/NewtonsFormulaAndSumsOfPowers</code></a></p></li>
 <li><p><strong>ORCID:</strong> <a
 href="https://orcid.org/0000-0002-6544-8880"><code>0000-0002-6544-8880</code></a></p></li>
 <li><p><strong>Email:</strong> <a
@@ -525,3 +527,4 @@ Double Limit.”</span> <em>GitHub</em>.
 </div>
 </body>
 </html>
+
