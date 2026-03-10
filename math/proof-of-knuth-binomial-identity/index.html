@@ -8,7 +8,7 @@
   <meta name="description" content="We prove a remarkable Binomial identity (5.43) given by Donald Knuth in his fundamental work Concrete Mathematics." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-02-14" />
+  <meta name="dcterms.date" content="2026-03-10" />
   <title>Proof of Knuth’s Binomial identity (5.43)</title>
   <style>
     /* Default styles provided by pandoc.
@@ -212,7 +212,7 @@
 <header id="title-block-header">
 <h1 class="title">Proof of Knuth’s Binomial identity (5.43)</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-02-14</p>
+<p class="date">2026-03-10</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>In this manuscript we prove a remarkable Binomial identity (5.43)
@@ -231,7 +231,7 @@ and Patashnik, Oren 1994, 190)</span></p>
 <em>For non-negative integers <span class="math inline">\(n\)</span>,
 and for arbitrary integers <span class="math inline">\(s, r\)</span>
 <span class="math display">\[\begin{align*}
-    \sum_{k=0}^{n} \binom{n}{k} \binom{r-sk}{n} (-1)^k = s^n.
+    \sum_{k=0}^{n} \binom{n}{k} \binom{r-sk}{n} (-1)^k = s^n
 \end{align*}\]</span></em></p>
 </div>
 <h1 id="proof-of-knuths-binomial-identity">Proof of Knuth’s Binomial
@@ -240,17 +240,17 @@ identity</h1>
 class="math inline">\(n\)</span>-order finite differences of function
 <span class="math inline">\(f\)</span> <span
 class="math display">\[\begin{align*}
-  \Delta^{n} f(x) = \sum_{k=0}^{n} \binom{n}{k} (-1)^{n-k} f(x+k).
+  \Delta^{n} f(x) = \sum_{k=0}^{n} \binom{n}{k} (-1)^{n-k} f(x+k)
 \end{align*}\]</span> Now, we define the binomial function <span
 class="math inline">\(F\)</span>, such that <span
 class="math display">\[\begin{align*}
-  F(x) = \binom{r-sx}{n}.
+  F(x) = \binom{r-sx}{n}
 \end{align*}\]</span> Thus, the <span
 class="math inline">\(t\)</span>-order forward finite difference of
 <span class="math inline">\(F\)</span> is <span
 class="math display">\[\begin{align*}
-  \Delta^{t} F(x) = \sum_{k=0}^{t} \binom{t}{k} \binom{r-s(x+k)}{n}
-(-1)^{n-k}
+  \Delta^{t} F(x)
+  = \sum_{k=0}^{t} \binom{t}{k} \binom{r-s(x+k)}{n} (-1)^{t-k}
 \end{align*}\]</span> We may notice that the equation above quite
 reminds the structure of Knuth’s binomial identity <a
 href="#prop:knuth-identity" data-reference-type="eqref"
@@ -258,24 +258,30 @@ data-reference="prop:knuth-identity">[prop:knuth-identity]</a>. By
 evaluating <span class="math inline">\(\Delta^{t} F(x)\)</span> in zero,
 we reach our goal even further, because <span
 class="math display">\[\begin{align*}
-  \Delta^{t} F(0) = \sum_{k=0}^{t} \binom{t}{k} \binom{r-sk}{n}
-(-1)^{n-k}.
+  \Delta^{t} F(0)
+  = \sum_{k=0}^{t} \binom{t}{k} \binom{r-sk}{n} (-1)^{t-k}
 \end{align*}\]</span> Next, by setting <span
 class="math inline">\(t=n\)</span> gives the exact structure of <a
 href="#prop:knuth-identity" data-reference-type="eqref"
 data-reference="prop:knuth-identity">[prop:knuth-identity]</a>, such
 that <span class="math display">\[\begin{align*}
   \Delta^{n} F(0) = \sum_{k=0}^{n} \binom{n}{k} \binom{r-sk}{n}
-(-1)^{n-k}.
+(-1)^{n-k}
 \end{align*}\]</span> Still, it may not be immediately clear why <span
-class="math inline">\(\Delta^{n} F(x) = (-1)^n s^n\)</span>. To make
-things work, we refer to the formula (5.42) in Concrete mathematics,
-see <span class="citation" data-cites="graham1994concrete">(Graham,
-Ronald L. and Knuth, Donald E. and Patashnik, Oren 1994, 190)</span>,
-<span class="math display">\[\begin{align*}
-  \sum_{k} \binom{n}{k} (-1)^k \left[
+class="math inline">\(\Delta^{n} F(0) = (-1)^n s^n\)</span>, as the
+Proposition <a href="#prop:knuth-identity" data-reference-type="eqref"
+data-reference="prop:knuth-identity">[prop:knuth-identity]</a> states.
+To make the things up, we refer to the formula (5.42) in Concrete
+mathematics, see <span class="citation"
+data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
+and Patashnik, Oren 1994, 190)</span>, <span
+class="math display">\[\begin{align*}
+  (-1)^n \Delta^{n} F(0)
+  = \sum_{k} \binom{n}{k} (-1)^k
+  \left[
     a_0 + a_1 k^1 + a_2 k^2 + \cdots + a_n k^n
-  \right] = (-1)^n n! a_n,
+  \right]
+  = (-1)^n n! a_n,
 \end{align*}\]</span> which states that <span
 class="math inline">\(n\)</span>-th difference of a polynomial of degree
 <span class="math inline">\(n\)</span> in <span
@@ -285,51 +291,59 @@ class="math inline">\((-1)^n n!\)</span>. This helps us a lot, because
 the binomial coefficient <span
 class="math inline">\(\binom{r-sk}{n}\)</span> is actually a polynomial
 of degree <span class="math inline">\(n\)</span> in <span
-class="math inline">\(r-sk\)</span>. The famous identity in Stirling
-numbers of the first kind <span
+class="math inline">\((r-sk)\)</span>. The famous identity in unsigned
+Stirling numbers of the first kind <span
 class="math inline">\(\genfrac{[}{]}{0pt}{}{n}{k}\)</span> shows it
-clearly</p>
-<p><span class="math display">\[\begin{align*}
+clearly <span class="math display">\[\begin{align*}
+  \binom{n}{k}
+  = \sum_{j=0}^{k} \frac{(-1)^{k-j}}{k!} \genfrac{[}{]}{0pt}{}{k}{j} n^j
+\end{align*}\]</span> In particular, <span
+class="math display">\[\begin{align*}
   \binom{r-sk}{n}
-  &amp;= \frac{(-1)^{0}}{n!} \genfrac{[}{]}{0pt}{}{n}{0} (r-sk)^0
-  + \frac{(-1)^{1}}{n!} \genfrac{[}{]}{0pt}{}{n}{1} (r-sk)^1
+  &amp;= \frac{(-1)^{n-0}}{n!} \genfrac{[}{]}{0pt}{}{n}{0} (r-sk)^0
+  + \frac{(-1)^{n-1}}{n!} \genfrac{[}{]}{0pt}{}{n}{1} (r-sk)^1
   + \cdots
-  + \frac{(-1)^{n}}{n!} \genfrac{[}{]}{0pt}{}{n}{n} (r-sk)^n \\
-  &amp;= \sum_{j=0}^{n} \frac{(-1)^{j}}{n!} \genfrac{[}{]}{0pt}{}{n}{j}
-(r-sk)^j.
+  + \frac{(-1)^{n-n}}{n!} \genfrac{[}{]}{0pt}{}{n}{n} (r-sk)^n \\
+  &amp;= \sum_{j=0}^{n} \frac{(-1)^{n-j}}{n!}
+\genfrac{[}{]}{0pt}{}{n}{j} (r-sk)^j
 \end{align*}\]</span> Thus, the coefficient <span
 class="math inline">\(a_n\)</span> of <span
 class="math inline">\(k^n\)</span> is <span
 class="math display">\[\begin{align*}
   a_n
-  = [k^n] \frac{(-1)^{n}}{n!} \genfrac{[}{]}{0pt}{}{n}{n} (r-sk)^n
-  = \frac{(-1)^{n}}{n!} \genfrac{[}{]}{0pt}{}{n}{n} [k^n] (r-sk)^n.
+  = [k^n] \frac{1}{n!} \genfrac{[}{]}{0pt}{}{n}{n} (r-sk)^n
+  = \frac{1}{n!} \genfrac{[}{]}{0pt}{}{n}{n} [k^n] (r-sk)^n
 \end{align*}\]</span> By Binomial theorem, <span
 class="math display">\[\begin{align*}
-  (r-sk)^n = \sum_{m=0}^{n} (-1)^{n-m} \binom{n}{m} r^{m} s^{n-m}
-k^{n-m}.
-\end{align*}\]</span> Thus, <span class="math display">\[\begin{align*}
+  (r-sk)^n = \sum_{j=0}^{n} \binom{n}{j} r^{n-j} (-1)^j (sk)^j
+\end{align*}\]</span> Thus, by extracting the coefficient of <span
+class="math inline">\(k^n\)</span>, we isolate the term for <span
+class="math inline">\(j=n\)</span>, such that <span
+class="math display">\[\begin{align*}
   [k^n] (r-sk)^n
-  = (-1)^{n-0} \binom{n}{0} r^{0} s^{n-0}.
+  = \binom{n}{n} r^{0} (-1)^n s^{n}
   = (-1)^{n} s^{n}
 \end{align*}\]</span> Hence, the coefficient <span
 class="math inline">\(a_n\)</span> of <span
 class="math inline">\(k^n\)</span> equals to <span
 class="math display">\[\begin{align*}
-  a_n = \frac{(-1)^{n}}{n!} \genfrac{[}{]}{0pt}{}{n}{n} (-1)^{n} s^{n}
-  = \frac{s^{n}}{n!}.
+  a_n = \frac{1}{n!} \genfrac{[}{]}{0pt}{}{n}{n} (-1)^{n} s^{n}
+  = (-1)^{n} \frac{s^{n}}{n!}
 \end{align*}\]</span> Which implies that, <span
 class="math display">\[\begin{align*}
   \Delta^{n} F(0)
   = \sum_{k=0}^{n} \binom{n}{k} \binom{r-sk}{n} (-1)^{n-k}
-  = (-1)^n n! a_n
-  = (-1)^n n! \frac{s^{n}}{n!}.
+  = n! a_n
+  = (-1)^n n! \frac{s^{n}}{n!}
+  = (-1)^n s^n
 \end{align*}\]</span> Therefore, the Knuth’s identity <a
 href="#prop:knuth-identity" data-reference-type="eqref"
 data-reference="prop:knuth-identity">[prop:knuth-identity]</a> is indeed
 true <span class="math display">\[\begin{align*}
-  s^n = (-1)^n \Delta^{n} F(0)
-  = \sum_{k=0}^{n} \binom{n}{k} \binom{r-sk}{n} (-1)^{k}.
+  (-1)^n \Delta^{n} F(0)
+  = (-1)^{2n} n! \frac{s^{n}}{n!}
+  = \sum_{k=0}^{n} \binom{n}{k} \binom{r-sk}{n} (-1)^{k}
+  = s^n
 \end{align*}\]</span> This completes the proof of Proposition <a
 href="#prop:knuth-identity" data-reference-type="eqref"
 data-reference="prop:knuth-identity">[prop:knuth-identity]</a>. 0◻</p>
@@ -338,19 +352,19 @@ href="#prop:knuth-identity" data-reference-type="eqref"
 data-reference="prop:knuth-identity">[prop:knuth-identity]</a> is a
 special case of forward finite differences of <span
 class="math inline">\(F(x) = \binom{r-sx}{n}\)</span> evaluated in zero
-<span class="math inline">\(s^n = (-1)^n \Delta^{n} F(0)\)</span> – it
-holds for all <span class="math inline">\(x\)</span>, because the
-coefficient of <span class="math inline">\(k^n\)</span> remains <span
-class="math inline">\(s^n\)</span> for all <span
+<span class="math inline">\(s^n = (-1)^n \Delta^{n} F(0)\)</span> — it
+can be generalized for all <span class="math inline">\(x\)</span>,
+because the coefficient of <span class="math inline">\(k^n\)</span>
+remains <span class="math inline">\(s^n\)</span> for all <span
 class="math inline">\(x\)</span></p>
 <div id="prop:generalized-knuths-identity" class="proposition">
-<p><strong>Proposition 2</strong> (Generalized Knuths’ binomial
+<p><strong>Proposition 2</strong> (Generalized Knuths’ Binomial
 identity). <em>For non-negative integers <span
 class="math inline">\(n\)</span>, and for arbitrary integers <span
 class="math inline">\(s, r, x\)</span> <span
 class="math display">\[\begin{align*}
     s^n = (-1)^n \Delta^{n} F(x)
-    = \sum_{k=0}^{n} \binom{n}{k} \binom{r-sx-sk}{n} (-1)^{k}.
+    = \sum_{k=0}^{n} \binom{n}{k} \binom{r-sx-sk}{n} (-1)^{k}
 \end{align*}\]</span></em></p>
 </div>
 <p>Because the coefficient of <span class="math inline">\(k^n\)</span>
@@ -358,11 +372,11 @@ in <span class="math inline">\(\binom{r-sx-sk}{n}\)</span> is <span
 class="math display">\[\begin{align*}
   a_n
   = \frac{(-1)^{n}}{n!} \genfrac{[}{]}{0pt}{}{n}{n} [k^n] ((r-sx)-sk)^n
-  = \frac{s^{n}}{n!}.
+  = (-1)^n \frac{s^{n}}{n!}
 \end{align*}\]</span> Because, by Binomial theorem <span
 class="math display">\[\begin{align*}
-  [k^n] ((r-sx)-sk)^n = (-1)^{n-0} \binom{n}{0} (r-sx)^{0} s^{n-0}
-  = (-1)^n s^n.
+  [k^n] ((r-sx)-sk)^n = (-1)^{n} \binom{n}{0} (r-sx)^{0} s^{n}
+  = (-1)^n s^n
 \end{align*}\]</span></p>
 <h1 class="unnumbered" id="conclusions">Conclusions</h1>
 <p>In this manuscript we have shown that the remarkable Binomial
