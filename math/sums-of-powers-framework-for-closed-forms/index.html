@@ -1,0 +1,2593 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Petro Kolosov" />
+  <meta name="dcterms.date" content="2026-06-04" />
+  <title>Sums of powers of integers: A complete framework for closed formulas</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: left;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Sums of powers of integers: A complete framework for
+closed formulas</h1>
+<p class="author">Petro Kolosov</p>
+<p class="date">2026-06-04</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>This manuscript originates from the historical development of the
+sums of powers problem, briefly tracing its evolution from Archimedes
+(287-212 BC) to Donald Knuth’s work <em>Johann Faulhaber and sums of
+powers (1993)</em>, highlighting the transition from purely arithmetic
+methods to modern enumerative and algebraic-combinatorial approaches.
+The main results establish an algorithm for deriving closed formulas for
+multifold sums of powers of integers by combining variations of Newton’s
+interpolation formula with hockey-stick family identities for binomial
+coefficients.</p>
+</div>
+</header>
+<h1 id="historical-context">Historical context</h1>
+<p>The story begins in ancient Greek times, with discrete approximations
+to obtain continuous areas by the method of exhaustion. In particular,
+Archimedes (287-212 BC) evaluated sums of squares while finding the
+spiral’s area <span class="citation"
+data-cites="pengelley2002bridge">(Pengelley 2002)</span>, analogous to
+what we have nowadays <span class="math display">\[\begin{align*}
+  1^2 + 2^2 + 3^2 + \cdots n^2 = \frac{n(n+1)(2n+1)}{6}.
+\end{align*}\]</span></p>
+<p>Moving to early modern Europe (1636), Pierre de Fermat (1601-1665)
+referred to the problem of finding formulas for sums of powers <em>...
+perhaps the most beautiful problem of all arithmetics</em>, in his
+correspondence with Blaise Pascal (1623-1662). Fermat’s contribution to
+the topic was quite remarkable indeed, as he revived the study of
+figurate numbers and investigated their arithmetic properties, including
+what is now known as Fermat’s polygonal number theorem. Application of
+polygonal numbers in sums of powers is extensively discussed in <span
+class="citation" data-cites="Marko2020">(Marko and Litvinov 2020,
+(2020))</span>.</p>
+<p>Meanwhile, Johann Faulhaber (1580-1635) worked on the problem of sums
+of powers, writing his famous book <em>Academia Algebrae</em> <span
+class="citation" data-cites="faulhaberacademia">(Faulhaber 1631,
+(1631))</span>. Faulhaber’s contribution was great indeed, because
+Johann managed to compute formulas up to <span
+class="math inline">\(\Sigma^{1}\,{n}^{25} = 1^{25}+2^{25}+ \cdots +
+n^{25}\)</span>, which is quite impressive. Imagine to derive the
+formula back in 17-th century, without computers. Faulhaber explicitly
+tabulated formulas through the seventeenth power and provided sufficient
+information for determining higher cases, including the twenty-fifth
+power. Knuth later reconstructed the latter computation. Faulhaber
+actually discovered deep structural patterns, particularly for odd
+powers expressed as polynomials in triangular numbers. What he lacked
+was a completely general symbolic formula.</p>
+<p>The major breakthrough was achieved by Jacob Bernoulli (1665-1705) in
+his work entitled <em>Ars coniectandi</em> <span class="citation"
+data-cites="bernoulli1713ars">(Bernoulli 1713, (1713))</span>, published
+postmortem. In the work, Jacob introduced Bernoulli numbers (named after
+him later), thus allowing for arbitrary powers to be summed up <span
+class="math display">\[\begin{align*}
+  \sum_{k=1}^{n} k^p = \frac{1}{p+1} \sum_{r=0}^{p} \binom{p+1}{r} B_r
+n^{p+1-r}
+\end{align*}\]</span> It assumes that <span class="math inline">\(B_1 =
++\frac{1}{2}\)</span>. The choice of convention for <span
+class="math inline">\(B_1\)</span> has a long historical background;
+see <span class="citation"
+data-cites="luschny2021manifesto luschny2020introduction">(Luschny,
+Peter HN 2021, 2020)</span> for a detailed discussion. Therefore,
+Bernoulli managed to contribute the missing capstone to Faulhaber’s
+work, making it symbolically complete. In fact, the formula above is
+commonly referred to as Faulhaber’s formula, although the modern
+Bernoulli-number formulation originates with Bernoulli’s great work.</p>
+<p>During the eighteenth and nineteenth centuries, the theory was
+further developed by Euler, Stirling, Jacobi, and others through
+connections with finite differences, interpolation, and special number
+sequences.</p>
+<p>In 1993, Donald Knuth revisited the topic of sums of powers, giving
+it a new direction of development. Based on works of Carl Gustav Jacobi
+(1804-1851), and Gessel-Viennot <span class="citation"
+data-cites="gessel1989determinants">(Gessel and Viennot 1989,
+(1989))</span>, Knuth reviewed Faulhaber’s work from a completely
+different angle, by using modern enumerative combinatorics techniques.
+Remarkably, Knuth’s contribution does not necessarily involve Bernoulli
+numbers, instead he derived formulas for power sums by utilizing special
+numbers (e.g Stirling, central factorial), and Binomial coefficients. In
+addition, Knuth introduced a remarkably convenient notation for <span
+class="math inline">\(r\)</span>-fold sums of powers <span
+class="math inline">\(\Sigma^{r}\,{n}^{m}\)</span>, which we use in this
+work.</p>
+<p>In this manuscript, we reveal the role of Newton’s interpolation
+formula in the process of computing formulas for sums of powers. As the
+main result, this paper proposes an algorithm to derive closed formulas
+for sums of powers, by utilizing variations of Newton’s interpolation
+formula, combined with hockey-stick family binomial identities. As
+results show, there are infinitely many variations of closed formulas
+for sums of powers.</p>
+<h1 id="definitions-and-notations">Definitions and notations</h1>
+<p>Allow us to define the mathematical objects we utilize throughout the
+manuscript. For multifold sums of powers, we use the notation provided
+by Donald Knuth in <span class="citation"
+data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span>, because it
+is simple and beautiful.</p>
+<div id="def:multifold-sums-of-powers-recurrence" class="definition">
+<p><strong>Definition 1</strong> (Multifold sums of powers). <em>For
+non-negative integers <span class="math inline">\(r,n,m\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{0}\,{n}^{m}   &amp;= n^m, \\
+    \Sigma^{1}\,{n}^{m}   &amp;= \Sigma^{0}\,{1}^{m}
+    + \Sigma^{0}\,{2}^{m} + \cdots + \Sigma^{0}\,{n}^{m}, \\
+    \Sigma^{r+1}\,{n}^{m} &amp;= \Sigma^{r}\,{1}^{m}
+    + \Sigma^{r}\,{2}^{m} + \cdots + \Sigma^{r}\,{n}^{m}.
+\end{align*}\]</span></em></p>
+</div>
+<p>We utilize the following notation for falling factorials</p>
+<div class="definition">
+<p><strong>Definition 2</strong> (Falling factorials). <em>For integers
+<span class="math inline">\(x,n\)</span> <span
+class="math display">\[\begin{align*}
+    \left(x\right)_{n} =
+    \begin{cases}
+      1, &amp; \mathrm{if \; } k = 0, \\
+      x(x-1)(x-2)\cdots(x-n+1) = \prod_{k=0}^{n-1} (x-k), &amp;
+\mathrm{if \; } k &gt; 0, \\
+      0, &amp; \mathrm{else}.
+    \end{cases}
+\end{align*}\]</span></em></p>
+</div>
+<p>We utilize the following notation for central factorials</p>
+<div id="def:central-factorials" class="definition">
+<p><strong>Definition 3</strong> (Central factorials). <em>For integers
+<span class="math inline">\(n,k\)</span> <span
+class="math display">\[\begin{align*}
+    n^{[k]} =
+    \begin{cases}
+      0, \quad &amp; \mathrm{if \; } k &lt; 0, \\
+      1, \quad &amp; \mathrm{if \; } k = 0, \\
+      n \left( n + \frac{k}{2} -1 \right)\left( n + \frac{k}{2} -2
+\right)
+      \cdots \left( n - \frac{k}{2} +1 \right)
+      = n \left(n+\frac{k}{2}-1\right)_{k-1}, \quad &amp; \mathrm{if \;
+} k&gt;0,
+    \end{cases}
+\end{align*}\]</span> where <span
+class="math inline">\(\left(n+\frac{k}{2}-1\right)_{k-1}
+  = \prod_{j=0}^{k-2} \left( n+\frac{k}{2}-1 -j \right)\)</span> are
+falling factorials.</em></p>
+</div>
+<p>We encourage the audience to read J. F. Steffensen’s work on the
+definition of generalized factorials <span class="citation"
+data-cites="steffensen1933definition">(Steffensen 1933)</span>.</p>
+<h1 id="auxiliary-lemmas">Auxiliary lemmas</h1>
+<div id="lem:centra-newtons-formula" class="lemma">
+<p><strong>Lemma 4</strong> (Central Newton’s formula). <em>For a
+function <span class="math inline">\(f\)</span> defined on integers and
+arbitrary integers <span class="math inline">\(x,t\)</span> <span
+class="math display">\[\begin{align*}
+    f(x)
+    = \sum_{k=0}^{\infty} \frac{(x-t)^{[k]}}{k!} \delta^{k} f(t),
+\end{align*}\]</span> where <span class="math inline">\(\delta^{k}
+f(t)\)</span> denotes the <span class="math inline">\(k\)</span>-th
+central finite difference <span class="math display">\[\begin{align*}
+    \delta^{k} f(t) = \mathop{\textstyle\sum}_{j=0}^{k} (-1)^j
+\tbinom{k}{j} f\!\left(t+\tfrac{k}{2} - j\right),
+\end{align*}\]</span> and <span
+class="math inline">\((x-t)^{[k]}\)</span> are central factorials
+defined by <a href="#def:central-factorials" data-reference-type="eqref"
+data-reference="def:central-factorials">[def:central-factorials]</a>.</em></p>
+<div class="proof">
+<p><em><em>Proof.</em> See <span class="citation"
+data-cites="butzer1989central">(Butzer et al. 1989, 462)</span>,
+and <span class="citation"
+data-cites="steffensen1927interpolation">(Steffensen, Johan Frederik
+1927, sec. 2, eq. (19))</span>, and <span class="citation"
+data-cites="riordan1968combinatorial">(Riordan 1968, sec. 6, eq.
+(21))</span>. ◻</em></p>
+</div>
+</div>
+<div id="lem:central-newtons-formula-for-powers" class="lemma">
+<p><strong>Lemma 5</strong> (Newton’s formula for powers). <em>For
+integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    n^m = \sum_{k=0}^{m} \frac{(n-t)^{[k]}}{k!} \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<div id="lem:central-factorials-binomial-form" class="lemma">
+<p><strong>Lemma 6</strong> (Central factorials binomial form). <em>For
+integers <span class="math inline">\(n\)</span> and <span
+class="math inline">\(k \geq 1\)</span>, <span
+class="math display">\[\begin{align*}
+    \frac{n^{[k]}}{k!}
+    = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> We have <span
+class="math display">\[\begin{align*}
+      \frac{n^{[k]}}{k!}
+      &amp;= \frac{n}{k!}\left(n+\frac{k}{2}-1\right)_{k-1}
+      = \frac{n}{k (k-1)!} \left(n+\frac{k}{2}-1\right)_{k-1}
+      = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1},
+\end{align*}\]</span> because of the identity in falling factorials
+<span class="math inline">\(\frac{\left(x\right)_{n}}{n!} =
+\binom{x}{n}\)</span>. ◻</em></p>
+</div>
+</div>
+<div id="lem:central-factorials-binomial-form-decomposition"
+class="lemma">
+<p><strong>Lemma 7</strong> (Central factorials binomial form
+decomposition). <em>For integers <span class="math inline">\(n,k\geq
+0\)</span>, <span class="math display">\[\begin{align*}
+    \frac{n^{[k]}}{k!}
+    = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
+    = \frac{1}{2} \binom{n+\frac{k}{2}}{k} + \frac{1}{2}
+\binom{n+\frac{k}{2}-1}{k}.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> We have <span class="math inline">\(\binom{a}{k}
+= \frac{a}{k} \binom{a-1}{k-1}\)</span>. Let <span
+class="math inline">\(a=n + \frac{k}{2}\)</span>, then <span
+class="math display">\[\begin{align*}
+      \tbinom{n + \frac{k}{2}}{k} = \tfrac{n + \tfrac{k}{2}}{k}
+\tbinom{n+\frac{k}{2}-1}{k-1}
+      = \tfrac{n}{k} \tbinom{n+\frac{k}{2}-1}{k-1} + \tfrac{1}{2}
+\tbinom{n+\frac{k}{2}-1}{k-1}.
+\end{align*}\]</span> Thus, <span class="math display">\[\begin{align*}
+      \tfrac{n}{k} \tbinom{n+\frac{k}{2}-1}{k-1} = \tbinom{n +
+\frac{k}{2}}{k} - \tfrac{1}{2} \tbinom{n+\frac{k}{2}-1}{k-1}.
+\end{align*}\]</span> By moving under common denominator, and applying
+binomial recurrence yields <span class="math display">\[\begin{align*}
+      \tfrac{n}{k} \tbinom{n+\frac{k}{2}-1}{k-1}
+      = \tfrac{1}{2}
+      \left[
+        2 \tbinom{n + \frac{k}{2}}{k} - \tbinom{n+\frac{k}{2}-1}{k-1}
+      \right]
+      = \tfrac{1}{2}
+      \left[
+        \tbinom{n + \frac{k}{2}}{k} + \tbinom{n + \frac{k}{2}-1}{k} +
+\tbinom{n + \frac{k}{2}-1}{k-1} - \tbinom{n+\frac{k}{2}-1}{k-1}
+      \right].
+\end{align*}\]</span> Thus, the statement follows. ◻</em></p>
+</div>
+</div>
+<div id="lem:central-newtons-formula-for-powers-decomposition"
+class="lemma">
+<p><strong>Lemma 8</strong> (Newton’s formula for powers decomposition).
+<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    n^m = \frac{1}{2} \sum_{k=0}^{m}
+    \left[
+      \binom{n-t+\frac{k}{2}}{k} + \binom{n-t+\frac{k}{2}-1}{k}
+    \right] \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<div id="lem:generalized-hockey-stick-identity" class="lemma">
+<p><strong>Lemma 9</strong> (Generalized hockey-stick identity). <em>For
+integers <span class="math inline">\(a,b\)</span> and <span
+class="math inline">\(j\)</span>, <span
+class="math display">\[\begin{align*}
+    \sum_{k=a}^{b} \binom{k}{j} = \binom{b+1}{j+1} - \binom{a}{j+1}.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> We have, <span
+class="math inline">\(\sum_{k=a}^{b} \binom{k}{j}
+    = \binom{a}{j} + \binom{a+1}{j} + \cdots + \binom{b}{j}
+    = \left( \sum_{k=0}^{b} \binom{k}{j} \right) - \left(
+\sum_{k=0}^{a-1} \binom{k}{j} \right)\)</span>. By hockey-stick identity
+<span class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> yields, <span
+class="math display">\[\begin{align*}
+      \mathop{\textstyle\sum}_{k=a}^{b} \tbinom{k}{j}
+      = \left( \mathop{\textstyle\sum}_{k=0}^{b} \tbinom{k}{j} \right) -
+\left( \mathop{\textstyle\sum}_{k=0}^{a-1} \tbinom{k}{j} \right)
+      = \tbinom{b+1}{j+1} - \tbinom{a}{j+1}.
+\end{align*}\]</span> This completes the proof. ◻</em></p>
+</div>
+</div>
+<div id="lem:centered-hockey-stick-identity" class="lemma">
+<p><strong>Lemma 10</strong> (Centered hockey-stick identity). <em>For
+integers <span class="math inline">\(n\geq1\)</span>, and arbitrary
+integers <span class="math inline">\(t,k,r\)</span> <span
+class="math display">\[\begin{align*}
+    \sum_{j=1}^{n} \binom{j -t + \frac{k}{2} +r}{k}
+    = \binom{n -t + \frac{k}{2} + r +1}{k+1} - \binom{1 -t +
+\tfrac{k}{2} +r}{k+1}.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> By setting <span class="math inline">\(a=1 -t +
+\tfrac{k}{2} +r\)</span>, and <span class="math inline">\(b=n-t+
+\tfrac{k}{2} +r\)</span> into Lemma <a
+href="#lem:generalized-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>
+yields <span class="math display">\[\begin{align*}
+      \mathop{\textstyle\sum}_{j=1}^{n} \tbinom{j -t + \tfrac{k}{2}
++r}{k} =
+      \mathop{\textstyle\sum}_{j=1 -t + \tfrac{k}{2} +r}^{n -t +
+\tfrac{k}{2} +r} \tbinom{j}{k}
+      = \tbinom{n -t + \tfrac{k}{2} + r +1}{k+1} - \tbinom{1 -t +
+\tfrac{k}{2} +r}{k+1}.
+\end{align*}\]</span> This completes the proof. ◻</em></p>
+</div>
+</div>
+<div class="convention">
+<p><strong>Convention 11</strong>. <em>For all <span
+class="math inline">\(x\)</span> <span
+class="math display">\[\begin{align*}
+    x^0 = 1.
+\end{align*}\]</span></em></p>
+</div>
+<p>Donald Knuth give extensive discussion on the convention <span
+class="math inline">\(x^0=1\)</span> for all <span
+class="math inline">\(x\)</span> in Concrete Mathematics <span
+class="citation" data-cites="graham1994concrete">(Graham, Ronald L. and
+Knuth, Donald E. and Patashnik, Oren 1994, 162)</span>, and in <span
+class="citation" data-cites="knuth1992notesnotation">(Knuth
+1992)</span>.</p>
+<h1 id="ordinary-sums-of-powers">Ordinary sums of powers</h1>
+<p>By decomposition of Newton’s formula for powers <a
+href="#lem:central-newtons-formula-for-powers-decomposition"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers-decomposition">[lem:central-newtons-formula-for-powers-decomposition]</a>,
+for integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, we get <span
+class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
+  \left[
+    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}}{k} + \sum_{j=1}^{n}
+\binom{j-t+\frac{k}{2}-1}{k}
+  \right] \delta^{k} t^m.
+\end{align*}\]</span> Now we reach the transition to closed form of
+ordinary sums of powers. By setting <span
+class="math inline">\(r=0\)</span>, and <span
+class="math inline">\(r=-1\)</span> into Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>,
+we get closed forms of the sums <span
+class="math inline">\(\sum_{j=1}^{n} \binom{j -t +
+\frac{k}{2}}{k}\)</span>, and <span class="math inline">\(\sum_{j=1}^{n}
+\binom{j -t + \frac{k}{2}-1}{k}\)</span>, respectively. Therefore,</p>
+<div id="prop:ordinary-sums-of-powers-decomposition"
+class="proposition">
+<p><strong>Proposition 12</strong> (Ordinary sums of powers
+decomposition). <em>For integers <span class="math inline">\(n,m \geq
+0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
+    \left[
+      \binom{n -t + \frac{k}{2} +1}{k+1} - \binom{1 -t +
+\tfrac{k}{2}}{k+1}
+      + \binom{n -t + \frac{k}{2}}{k+1} - \binom{-t + \tfrac{k}{2}}{k+1}
+    \right] \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<p>Note that we should note worry about fractions in upper index of
+binomial coefficients <span class="math inline">\(\binom{n -t +
+\frac{k}{2} +1}{k+1}\)</span>, because binomial coefficient <span
+class="math inline">\(\binom{n}{k}\)</span> is a polynomial in <span
+class="math inline">\(n\)</span>. The well-known identity in unsigned
+Stirling numbers of the first kind <span
+class="math inline">\(\genfrac{[}{]}{0pt}{}{n}{k}\)</span> shows it
+clearly <span class="math display">\[\begin{align*}
+  \binom{n}{k}
+  = \sum_{j=0}^{k} \frac{(-1)^{k-j}}{k!} \genfrac{[}{]}{0pt}{}{k}{j}
+n^j.
+\end{align*}\]</span> For example, the sums of squares are</p>
+<div class="example">
+<p><strong>Example 13</strong> (Sums of squares in central differences).
+<em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}(2n)
+    +
+    \frac{\delta t^2}{2}\, n(1+n)
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(1+3n+2n^2)}{6},
+    \\
+    %
+    t=1:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}(2n)
+    +
+    \frac{\delta t^2}{2}\, n(n-1)
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(1-3n+2n^2)}{6},
+    \\
+    %
+    t=2:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}(2n)
+    +
+    \frac{\delta t^2}{2}\, n(n-3)
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(13-9n+2n^2)}{6},
+    \\
+    %
+    t=3:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}(2n)
+    +
+    \frac{\delta t^2}{2}\, n(n-5)
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(37-15n+2n^2)}{6},
+    \\
+    %
+    t=4:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}(2n)
+    +
+    \frac{\delta t^2}{2}\, n(n-7)
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(73-21n+2n^2)}{6}.
+\end{align*}\]</span></em></p>
+</div>
+<p>While the sums of cubes</p>
+<div class="example">
+<p><strong>Example 14</strong> (Sums of cubes in central differences).
+<em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{t^3}{2}(2n)
+    +
+    \tfrac{\delta t^3}{2}\, n(1+n)
+    +
+    \tfrac{\delta^2 t^3}{2}\,\tfrac{n(1+3n+2n^2)}{6}
+    +
+    \tfrac{\delta^3 t^3}{2}\,\tfrac{n(-1+n+4n^2+2n^3)}{24},
+    \\
+    %
+    t=1:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{t^3}{2}(2n)
+    +
+    \tfrac{\delta t^3}{2}\, n(n-1)
+    +
+    \tfrac{\delta^2 t^3}{2}\,\tfrac{n(1-3n+2n^2)}{6}
+    +
+    \tfrac{\delta^3 t^3}{2}\,\tfrac{n(1+n-4n^2+2n^3)}{24},
+    \\
+    %
+    t=2:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{t^3}{2}(2n)
+    +
+    \tfrac{\delta t^3}{2}\, n(n-3)
+    +
+    \tfrac{\delta^2 t^3}{2}\,\tfrac{n(13-9n+2n^2)}{6}
+    +
+    \tfrac{\delta^3 t^3}{2}\,\tfrac{n(-21+25n-12n^2+2n^3)}{24},
+    \\
+    %
+    t=3:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{t^3}{2}(2n)
+    +
+    \tfrac{\delta t^3}{2}\, n(n-5)
+    +
+    \tfrac{\delta^2 t^3}{2}\,\tfrac{n(37-15n+2n^2)}{6}
+    +
+    \tfrac{\delta^3 t^3}{2}\,\tfrac{n(-115+73n-20n^2+2n^3)}{24},
+    \\
+    %
+    t=4:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{t^3}{2}(2n)
+    +
+    \tfrac{\delta t^3}{2}\, n(n-7)
+    +
+    \tfrac{\delta^2 t^3}{2}\,\tfrac{n(73-21n+2n^2)}{6}
+    +
+    \tfrac{\delta^3 t^3}{2}\,\tfrac{n(-329+145n-28n^2+2n^3)}{24}.
+\end{align*}\]</span></em></p>
+</div>
+<p>It is indeed interesting to notice the connection between the
+decomposition of ordinary sums of powers <a
+href="#prop:ordinary-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a>
+and Riordan’s central factorial numbers of the second kind, that is</p>
+<div id="prop:central-factorial-numbers-sums" class="proposition">
+<p><strong>Proposition 15</strong> (Central factorial numbers sums).
+<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
+    \left[
+      \binom{n + \frac{k}{2} +1}{k+1} - \binom{1 + \tfrac{k}{2}}{k+1}
+      + \binom{n + \frac{k}{2}}{k+1} - \binom{\tfrac{k}{2}}{k+1}
+    \right] k! T(m,k),
+\end{align*}\]</span> where <span class="math inline">\(T(m,k)\)</span>
+denote the central factorial numbers of the second kind (in Riordan’s
+notation). See <span class="citation"
+data-cites="riordan1968combinatorial">(Riordan 1968, 213)</span>,
+and <span class="citation" data-cites="carlitz1963divided">(Carlitz and
+Riordan 1963)</span>.</em></p>
+</div>
+<p>These central factorial numbers of the second kind <span
+class="math inline">\(T(n,k)\)</span> are defined by central Newton’s
+formula for powers <a href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
+evaluated in zero, such that <span class="math display">\[\begin{align*}
+  n^m = \sum_{k=0}^{\infty} T(m,k) n^{[k]}.
+\end{align*}\]</span> Which implies <span
+class="math display">\[\begin{align*}
+  T(n,k) = \frac{\delta^{k} 0^m}{k!},
+\end{align*}\]</span> by Newton’s formula <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>.</p>
+<h1 id="remark-on-knuths-formula-for-sums-of-odd-powers">Remark on
+Knuth’s formula for sums of odd powers</h1>
+<p>In <span class="citation" data-cites="knuth1993johann">(Knuth, Donald
+E. 1993)</span> Donald Knuth gives a remarkable formula for sums of odd
+powers</p>
+<div id="prop:knuth-odd-powers-sum" class="proposition">
+<p><strong>Proposition 16</strong> (Knuth’s odd powers sum). <em>For
+non-negative integers <span class="math inline">\(n,m\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)! \binom{n+k}{2k}
+T(2m,2k),
+\end{align*}\]</span> where <span
+class="math inline">\(T(2m,2k)\)</span> are central factorial numbers of
+the second kind.</em></p>
+</div>
+<p>It is quite interesting to notice that Proposition <a
+href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
+originates from centered Newton’s formula for powers <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
+evaluated at zero. By Newton’s formula, we have <span
+class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=0}^{2m} \frac{n^{[k]}}{k!} \cdot \delta^{k} 0^{2m}
+\end{align*}\]</span> The iteration for <span
+class="math inline">\(k=0\)</span> can be omitted because <span
+class="math inline">\(\delta^{0} 0^{2m} = 0\)</span>, for integer <span
+class="math inline">\(m \geq 1\)</span>. Next, we observe that <span
+class="math inline">\(\delta^{k} 0^{2m} = 0\)</span> for every odd <span
+class="math inline">\(k\)</span>, thus we can omit odd iterations of
+<span class="math inline">\(k\)</span> <span
+class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} \frac{n^{[2k]}}{(2k)!} \cdot \delta^{2k}
+0^{2m}.
+\end{align*}\]</span> By definition of central factorial numbers of the
+second kind, yields <span class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} n^{[2k]} T(2m,2k).
+\end{align*}\]</span> By applying Lemma <a
+href="#lem:central-factorials-binomial-form" data-reference-type="eqref"
+data-reference="lem:central-factorials-binomial-form">[lem:central-factorials-binomial-form]</a>,
+we get <span class="math display">\[\begin{align*}
+  n^{2m}
+  = \sum_{k=1}^{m} \frac{(2k)!}{(2k)!} n^{[2k]} T(2m,2k)
+  &amp;= \sum_{k=1}^{m} (2k)!  \frac{n}{2k} \binom{n+k-1}{2k-1} T(2m,2k)
+\\
+  &amp;= \sum_{k=1}^{m} (2k-1)!  n \binom{n+k-1}{2k-1} T(2m,2k).
+\end{align*}\]</span> By factoring out <span
+class="math inline">\(n\)</span>, we obtain <span
+class="math display">\[\begin{align*}
+  n^{2m-1}
+  &amp;= \sum_{k=1}^{m} (2k-1)! \binom{n+k-1}{2k-1} T(2m,2k).
+\end{align*}\]</span> By hockey stick identity <span
+class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> yields <span
+class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)! \binom{n+k}{2k}
+T(2m,2k),
+\end{align*}\]</span> which matches the Proposition <a
+href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
+precisely. Clearly, the formula for sums of odd powers can be
+generalized to multifold case, by applying hockey-stick identity <span
+class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> repeatedly</p>
+<div id="prop:knuth-odd-powers-sum-multifold" class="proposition">
+<p><strong>Proposition 17</strong> (Knuth’s odd powers sum multifold).
+<em>For non-negative integers <span class="math inline">\(r,n,m\)</span>
+<span class="math display">\[\begin{align*}
+    \Sigma^{r+1}\,{n}^{2m-1}
+    = \sum_{k=1}^{m} (2k-1)! \binom{n+k+r}{2k+r} T(2m,2k),
+\end{align*}\]</span> where <span
+class="math inline">\(T(2m,2k)\)</span> are central factorial numbers of
+the second kind.</em></p>
+</div>
+<p>For example, <span class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{1} &amp;= \tbinom{n+1}{2}, \\
+  \Sigma^{1}\,{n}^{3} &amp;= 6 \tbinom{n+2}{4} + \tbinom{n+1}{2}, \\
+  \Sigma^{1}\,{n}^{5} &amp;= 120 \tbinom{n+3}{6} + 30 \tbinom{n+2}{4}
+  + \tbinom{n+1}{2}, \\
+  \Sigma^{1}\,{n}^{7} &amp;= 5040 \tbinom{n+4}{8} + 1680 \tbinom{n+3}{6}
+  + 126 \tbinom{n+2}{4} + \tbinom{n+1}{2}.
+\end{align*}\]</span> While multifold sums of odd powers are, <span
+class="math display">\[\begin{align*}
+  \Sigma^{r}\,{n}^{1} &amp;= \tbinom{n+1+r}{2+r}, \\
+  \Sigma^{r}\,{n}^{3} &amp;= 6 \tbinom{n+2+r}{4+r} +
+\tbinom{n+1+r}{2+r}, \\
+  \Sigma^{r}\,{n}^{5} &amp;= 120 \tbinom{n+3+r}{6+r} + 30
+\tbinom{n+2+r}{4+r}
+  + \tbinom{n+1+r}{2+r}, \\
+  \Sigma^{r}\,{n}^{7} &amp;= 5040 \tbinom{n+4+r}{8+r} + 1680
+\tbinom{n+3+r}{6+r}
+  + 126 \tbinom{n+2+r}{4+r} + \tbinom{n+1+r}{2+r}.
+\end{align*}\]</span> The coefficients <span class="math inline">\(1, 6,
+1, 120, 30, 1,\ldots\)</span> is the sequence <a
+href="https://oeis.org/A303675"><code>A303675</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>.</p>
+<h1
+id="generalized-central-factorial-numbers-of-the-second-kind">Generalized
+central factorial numbers of the second kind</h1>
+<div class="definition">
+<p><strong>Definition 18</strong> (Generalized central factorial numbers
+of the second kind). <em>For integers <span class="math inline">\(0 \leq
+k \leq m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the generalized central factorial
+numbers of the second kind are defined by the relation <span
+class="math display">\[\begin{align*}
+    n^m = \sum_{k=0}^{\infty} T_t(m,k) \cdot (n-t)^{[k]}.
+\end{align*}\]</span></em></p>
+</div>
+<p>It is also straightforward that <span
+class="math display">\[\begin{align*}
+  T_t (m,k) = \frac{\delta^{k} t^m}{k!},
+\end{align*}\]</span> by Newton’s formula <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>.
+For example,</p>
+<div class="center">
+<table id="tab:central-factorial-numbers-t0">
+<caption>Values of generalized central factorial numbers <span
+class="math inline">\(T_0(n,k)\)</span>. See also the sequences <a
+href="https://oeis.org/A395862"><code>A395862</code></a>, and <a
+href="https://oeis.org/A370703"><code>A370703</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. </caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(n/k\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1}{4}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1}{16}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{5}{2}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1}{64}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{91}{16}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{35}{4}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="center">
+<table id="tab:central-factorial-numbers-t1">
+<caption> Values of generalized central factorial numbers <span
+class="math inline">\(T_1(n,k)\)</span>. See also the sequences <a
+href="https://oeis.org/A395860"><code>A395860</code></a>, and <a
+href="https://oeis.org/A395861"><code>A395861</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. </caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(n/k\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{13}{4}\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{121}{16}\)</span></td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{25}{2}\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{91}{8}\)</span></td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1093}{64}\)</span></td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1491}{16}\)</span></td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{119}{4}\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{205}{8}\)</span></td>
+<td style="text-align: center;">127</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{483}{2}\)</span></td>
+<td style="text-align: center;">231</td>
+<td style="text-align: center;">126</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="center">
+<table id="tab:central-factorial-numbers-t2">
+<caption>Values of generalized central factorial numbers <span
+class="math inline">\(T_2(n,k)\)</span>. See also the sequences <a
+href="https://oeis.org/A394466"><code>A394466</code></a>, and <a
+href="https://oeis.org/A395314"><code>A395314</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. </caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(n/k\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{49}{4}\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1441}{16}\)</span></td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{85}{2}\)</span></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{931}{4}\)</span></td>
+<td style="text-align: center;">301</td>
+<td style="text-align: center;">190</td>
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{37969}{64}\)</span></td>
+<td style="text-align: center;">966</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{12411}{16}\)</span></td>
+<td style="text-align: center;">350</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{371}{4}\)</span></td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{6001}{4}\)</span></td>
+<td style="text-align: center;">3025</td>
+<td style="text-align: center;">3003</td>
+<td style="text-align: center;">1701</td>
+<td style="text-align: center;">588</td>
+<td style="text-align: center;">126</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="center">
+<table id="tab:central-factorial-numbers-t3">
+<caption>Values of generalized central factorial numbers <span
+class="math inline">\(T_3(n,k)\)</span>. See also the sequences <a
+href="https://oeis.org/A396559"><code>A396559</code></a>, and <a
+href="https://oeis.org/A395861"><code>A395861</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. </caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(n/k\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{109}{4}\)</span></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">111</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">243</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{6841}{16}\)</span></td>
+<td style="text-align: center;">285</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{185}{2}\)</span></td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">729</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{12753}{8}\)</span></td>
+<td style="text-align: center;">1351</td>
+<td style="text-align: center;">585</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">2187</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{372709}{64}\)</span></td>
+<td style="text-align: center;">6069</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{53011}{16}\)</span></td>
+<td style="text-align: center;">1050</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{791}{4}\)</span></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">6561</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{167943}{8}\)</span></td>
+<td style="text-align: center;">26335</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{35049}{2}\)</span></td>
+<td style="text-align: center;">6951</td>
+<td style="text-align: center;">1722</td>
+<td style="text-align: center;">266</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<table>
+<caption>Sequences of <span
+class="math inline">\(T_t(2m,2k)\)</span>.</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(t\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(T_t(2m,2k)\)</span></th>
+<th style="text-align: center;">OEIS ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1, 0, 1, 0, 1,
+1, 0, 1, 5, 1, 0, 1, 21, 14, 1, 0, 1, 85, 147, 30, 1, 0, 1,
+\cdots\)</span></td>
+<td style="text-align: center;"><a
+href="https://oeis.org/A269945"><code>A269945</code></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1, 1, 1, 1, 7,
+1, 1, 31, 20, 1, 1, 127, 231, 42, 1, 1, 511, 2290,
+987,\cdots\)</span></td>
+<td style="text-align: center;"><a
+href="https://oeis.org/A394692"><code>A394692</code></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1, 4, 1, 16,
+25, 1, 64, 301, 65, 1, 256, 3025, 1701, 126, 1, 1024,
+\cdots\)</span></td>
+<td style="text-align: center;"><a
+href="https://oeis.org/A395456"><code>A395456</code></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(3\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1, 9, 1, 81,
+55, 1, 729, 1351, 140, 1, 6561, 26335, 6951, 266, 1,
+\cdots\)</span></td>
+<td style="text-align: center;"><a
+href="https://oeis.org/A395457"><code>A395457</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Thus, we have the formula for sums of powers in terms of generalized
+central factorial numbers of the second kind</p>
+<div id="prop:generalized-central-factorial-sums" class="proposition">
+<p><strong>Proposition 19</strong> (Generalized Central factorial sums).
+<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
+    \left[
+      \binom{n -t + \frac{k}{2} +1}{k+1} - \binom{1 -t +
+\tfrac{k}{2}}{k+1}
+      + \binom{n -t + \frac{k}{2}}{k+1} - \binom{-t + \tfrac{k}{2}}{k+1}
+    \right] k! T_t (m,k).
+\end{align*}\]</span></em></p>
+</div>
+<h1
+id="double-and-triple-sums-of-powers-in-terms-of-central-differences">Double
+and triple sums of powers in terms of central differences</h1>
+<div id="prop:double-sums-of-powers-decomposition" class="proposition">
+<p><strong>Proposition 20</strong> (Double sums of powers
+decomposition). <em>For integers <span class="math inline">\(n,m \geq
+0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{2}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
+    \Bigg[
+      &amp;+ \binom{n -t + \frac{k}{2} +2}{k+2} - \binom{2 -t +
+\tfrac{k}{2}}{k+2} \Sigma^{0}\,{n}^{0} - \binom{1 -t +
+\tfrac{k}{2}}{k+1} \Sigma^{1}\,{n}^{0} \\
+      &amp;+ \binom{n -t + \frac{k}{2}+1}{k+2} - \binom{1-t +
+\tfrac{k}{2}}{k+2} \Sigma^{0}\,{n}^{0} - \binom{0-t + \tfrac{k}{2}}{k+1}
+\Sigma^{1}\,{n}^{0}
+    \Bigg] \delta^{k} t^m
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 21</strong> (Double sum of squares in central
+differences). <em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{2}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}\, n(1+n)
+    +
+    \frac{\delta t^2}{2}\,\frac{n(2+3n+n^2)}{3}
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(1+n)^2(2+n)}{12},
+    \\
+    %
+    t=1:\quad
+    \Sigma^{2}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}\, n(1+n)
+    +
+    \frac{\delta t^2}{2}\,\frac{n(-1+n^2)}{3}
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n^2(-1+n^2)}{12},
+    \\
+    %
+    t=2:\quad
+    \Sigma^{2}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}\, n(1+n)
+    +
+    \frac{\delta t^2}{2}\,\frac{n(-4-3n+n^2)}{3}
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(10+5n-4n^2+n^3)}{12},
+    \\
+    %
+    t=3:\quad
+    \Sigma^{2}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}\, n(1+n)
+    +
+    \frac{\delta t^2}{2}\,\frac{n(-7-6n+n^2)}{3}
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(32+23n-8n^2+n^3)}{12},
+    \\
+    %
+    t=4:\quad
+    \Sigma^{2}\,{n}^{2}
+    &amp;=
+    \frac{t^2}{2}\, n(1+n)
+    +
+    \frac{\delta t^2}{2}\,\frac{n(-10-9n+n^2)}{3}
+    +
+    \frac{\delta^2 t^2}{2}\,\frac{n(66+53n-12n^2+n^3)}{12}.
+\end{align*}\]</span></em></p>
+</div>
+<div id="prop:triple-sums-of-powers-decomposition" class="proposition">
+<p><strong>Proposition 22</strong> (Triple sums of powers
+decomposition). <em>For integers <span class="math inline">\(n,m \geq
+0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    &amp;\Sigma^{3}\,{n}^{m}
+    = \frac{1}{2} \sum_{k=0}^{m}
+    \Bigg[ \\
+      &amp;+ \binom{n -t + \frac{k}{2} +3}{k+3} - \binom{3 -t +
+\tfrac{k}{2}}{k+3} \Sigma^{0}\,{n}^{0} - \binom{2 -t +
+\tfrac{k}{2}}{k+2} \Sigma^{1}\,{n}^{0} - \binom{1 -t +
+\tfrac{k}{2}}{k+1} \Sigma^{2}\,{n}^{0} \\
+      &amp;+ \binom{n -t + \frac{k}{2}+2}{k+3} - \binom{2-t +
+\tfrac{k}{2}}{k+3} \Sigma^{0}\,{n}^{0} - \binom{1-t + \tfrac{k}{2}}{k+2}
+\Sigma^{1}\,{n}^{0} - \binom{0-t + \tfrac{k}{2}}{k+1}
+\Sigma^{2}\,{n}^{0}
+    \Bigg] \delta^{k} t^m
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 23</strong> (Triple sum of squares in central
+differences). <em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{3}\,{n}^{2}
+    &amp;=
+    \tfrac{t^2}{2}\,\tfrac{n(2+3n+n^2)}{3}
+    +
+    \tfrac{\delta t^2}{2}\,\tfrac{n(6+11n+6n^2+n^3)}{12}
+    +
+    \tfrac{\delta^2 t^2}{2}\,\tfrac{n(18+45n+40n^2+15n^3+2n^4)}{120},
+    \\
+    %
+    t=1:\quad
+    \Sigma^{3}\,{n}^{2}
+    &amp;=
+    \tfrac{t^2}{2}\,\tfrac{n(2+3n+n^2)}{3}
+    +
+    \tfrac{\delta t^2}{2}\,\tfrac{n(-2-n+2n^2+n^3)}{12}
+    +
+    \tfrac{\delta^2 t^2}{2}\,\tfrac{n(-2-5n+5n^3+2n^4)}{120},
+    \\
+    %
+    t=2:\quad
+    \Sigma^{3}\,{n}^{2}
+    &amp;=
+    \tfrac{t^2}{2}\,\tfrac{n(2+3n+n^2)}{3}
+    +
+    \tfrac{\delta t^2}{2}\,\tfrac{n(-10-13n-2n^2+n^3)}{12}
+    +
+    \tfrac{\delta^2 t^2}{2}\,\tfrac{n(58+65n-5n^3+2n^4)}{120},
+    \\
+    %
+    t=3:\quad
+    \Sigma^{3}\,{n}^{2}
+    &amp;=
+    \tfrac{t^2}{2}\,\tfrac{n(2+3n+n^2)}{3}
+    +
+    \tfrac{\delta t^2}{2}\,\tfrac{n(-18-25n-6n^2+n^3)}{12}
+    +
+    \tfrac{\delta^2 t^2}{2}\,\tfrac{n(198+255n+40n^2-15n^3+2n^4)}{120},
+    \\
+    %
+    t=4:\quad
+    \Sigma^{3}\,{n}^{2}
+    &amp;=
+    \tfrac{t^2}{2}\,\tfrac{n(2+3n+n^2)}{3}
+    +
+    \tfrac{\delta t^2}{2}\,\tfrac{n(-26-37n-10n^2+n^3)}{12}
+    +
+    \tfrac{\delta^2 t^2}{2}\,\tfrac{n(418+565n+120n^2-25n^3+2n^4)}{120}.
+\end{align*}\]</span></em></p>
+</div>
+<h1
+id="multifold-sums-of-powers-in-terms-of-central-differences">Multifold
+sums of powers in terms of central differences</h1>
+<div id="thm:multifold-sums-of-powers" class="theorem">
+<p><strong>Theorem 24</strong> (Multifold sums of powers). <em>For
+integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \frac{1}{2} \sum_{k=0}^{m}
+    \Bigg \{
+      \binom{n-t+\frac{k}{2}+r}{k+r} + \binom{n-t+\frac{k}{2}+r-1}{k+r}
+\\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \left[
+        \binom{r-s-t+\frac{k}{2}}{k+r-s} +
+\binom{r-1-s-t+\frac{k}{2}}{k+r-s}
+      \right] \Sigma^{s}\,{n}^{0}
+    \Bigg \} \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 25</strong> (Examples of multifold sums). <em><span
+class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{r}\,{n}^{m}
+    &amp;=
+    \tfrac12
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \Bigg\{
+      \tbinom{n+\tfrac{k}{2}+r}{k+r}
+      +
+      \tbinom{n+\tfrac{k}{2}+r-1}{k+r}
+      \\
+      &amp;\qquad-
+      \mathop{\textstyle\sum}_{s=0}^{r-1}
+      \Big[
+        \tbinom{r-s+\tfrac{k}{2}}{k+r-s}
+        +
+        \tbinom{r-1-s+\tfrac{k}{2}}{k+r-s}
+      \Big]
+      \Sigma^{s}\,{n}^{0}
+    \Bigg\}
+    \,\delta^k 0^m ,
+    \\
+    %
+    t=1:\quad
+    \Sigma^{r}\,{n}^{m}
+    &amp;=
+    \tfrac12
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \Bigg\{
+      \tbinom{n-1+\tfrac{k}{2}+r}{k+r}
+      +
+      \tbinom{n-1+\tfrac{k}{2}+r-1}{k+r}
+      \\
+      &amp;\qquad-
+      \mathop{\textstyle\sum}_{s=0}^{r-1}
+      \Big[
+        \tbinom{r-s-1+\tfrac{k}{2}}{k+r-s}
+        +
+        \tbinom{r-2-s+\tfrac{k}{2}}{k+r-s}
+      \Big]
+      \Sigma^{s}\,{n}^{0}
+    \Bigg\}
+    \,\delta^k 1^m ,
+    \\
+    %
+    t=2:\quad
+    \Sigma^{r}\,{n}^{m}
+    &amp;=
+    \tfrac12
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \Bigg\{
+      \tbinom{n-2+\tfrac{k}{2}+r}{k+r}
+      +
+      \tbinom{n-2+\tfrac{k}{2}+r-1}{k+r}
+      \\
+      &amp;\qquad-
+      \mathop{\textstyle\sum}_{s=0}^{r-1}
+      \Big[
+        \tbinom{r-s-2+\tfrac{k}{2}}{k+r-s}
+        +
+        \tbinom{r-3-s+\tfrac{k}{2}}{k+r-s}
+      \Big]
+      \Sigma^{s}\,{n}^{0}
+    \Bigg\}
+    \,\delta^k 2^m .
+\end{align*}\]</span></em></p>
+</div>
+<h1
+id="multifold-sums-of-powers-in-generalized-central-factorial-numbers">Multifold
+sums of powers in generalized central factorial numbers</h1>
+<div id="prop:multifold-central-factorial-sums-of-powers"
+class="proposition">
+<p><strong>Proposition 26</strong> (Multifold central factorial sums of
+powers). <em>For integers <span class="math inline">\(n,m \geq
+0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \frac{1}{2} \sum_{k=0}^{m}
+    \Bigg \{
+      \binom{n-t+\frac{k}{2}+r}{k+r} + \binom{n-t+\frac{k}{2}+r-1}{k+r}
+\\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \left[
+        \binom{r-s-t+\frac{k}{2}}{k+r-s} +
+\binom{r-1-s-t+\frac{k}{2}}{k+r-s}
+      \right] \Sigma^{s}\,{n}^{0}
+    \Bigg \} k! T_t(m,k).
+\end{align*}\]</span></em></p>
+</div>
+<div class="example">
+<p><strong>Example 27</strong> (Sums of squares in central factorial
+numbers). <em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;= n\cdot0 + \tfrac12 n(1+n)\cdot0 + \tfrac16
+n(1+3n+2n^2)\cdot1,
+    \\
+    %
+    t=1:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;= n\cdot1 + \tfrac12 n(n-1)\cdot2 + \tfrac16
+n(1-3n+2n^2)\cdot1,
+    \\
+    %
+    t=2:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;= n\cdot4 + \tfrac12 n(n-3)\cdot4 + \tfrac16
+n(13-9n+2n^2)\cdot1,
+    \\
+    %
+    t=3:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;= n\cdot9 + \tfrac12 n(n-5)\cdot6 + \tfrac16
+n(37-15n+2n^2)\cdot1,
+    \\
+    %
+    t=4:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;= n\cdot16 + \tfrac12 n(n-7)\cdot8 + \tfrac16
+n(73-21n+2n^2)\cdot1,
+    \\
+    %
+    t=5:\quad
+    \Sigma^{1}\,{n}^{2}
+    &amp;= n\cdot25 + \tfrac12 n(n-9)\cdot10 + \tfrac16
+n(121-27n+2n^2)\cdot1.
+\end{align*}\]</span></em></p>
+</div>
+<p>From the example above, we may observe that</p>
+<ul>
+<li><p>For <span class="math inline">\(t=0\)</span> the coefficients
+<span class="math inline">\(0,0,1\)</span> correspond to the second row
+of the triangle <a href="#tab:central-factorial-numbers-t0"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t0">[tab:central-factorial-numbers-t0]</a>.</p></li>
+<li><p>For <span class="math inline">\(t=1\)</span> the coefficients
+<span class="math inline">\(1,2,1\)</span> correspond to the second row
+of the triangle <a href="#tab:central-factorial-numbers-t1"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t1">[tab:central-factorial-numbers-t1]</a>.</p></li>
+<li><p>For <span class="math inline">\(t=2\)</span> the coefficients
+<span class="math inline">\(4,4,1\)</span> correspond to the second row
+of the triangle <a href="#tab:central-factorial-numbers-t2"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t2">[tab:central-factorial-numbers-t2]</a>.</p></li>
+<li><p>For <span class="math inline">\(t=3\)</span> the coefficients
+<span class="math inline">\(9,6,1\)</span> correspond to the second row
+of the triangle <a href="#tab:central-factorial-numbers-t3"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t3">[tab:central-factorial-numbers-t3]</a>.</p></li>
+</ul>
+<div class="example">
+<p><strong>Example 28</strong> (Sums of cubes in central factorial
+numbers). <em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{1}\,{n}^{4}
+    &amp;= n\cdot0 + \tfrac12 n(1+n)\cdot0 + \tfrac16 n(1+3n+2n^2)\cdot1
+    \\
+    &amp;+ \tfrac18 n(-1+n+4n^2+2n^3)\cdot0
+    + \tfrac1{10} n(-2-5n+5n^3+2n^4)\cdot1,
+    \\
+    %
+    t=1:\quad
+    \Sigma^{1}\,{n}^{4}
+    &amp;= n\cdot1 + \tfrac12 n(n-1)\cdot5 + \tfrac16 n(1-3n+2n^2)\cdot7
+    \\
+    &amp;+ \tfrac18 n(1+n-4n^2+2n^3)\cdot4
+    + \tfrac1{10} n(-2+5n-5n^3+2n^4)\cdot1,
+    \\
+    %
+    t=2:\quad
+    \Sigma^{1}\,{n}^{4}
+    &amp;= n\cdot16 + \tfrac12 n(n-3)\cdot34 + \tfrac16
+n(13-9n+2n^2)\cdot25
+    \\
+    &amp;+ \tfrac18 n(-21+25n-12n^2+2n^3)\cdot8 \\
+    &amp;+ \tfrac1{10} n(18-45n+40n^2-15n^3+2n^4)\cdot1,
+    \\
+    %
+    t=3:\quad
+    \Sigma^{1}\,{n}^{4}
+    &amp;= n\cdot81 + \tfrac12 n(n-5)\cdot111 + \tfrac16
+n(37-15n+2n^2)\cdot55
+    \\
+    &amp;+ \tfrac18 n(-115+73n-20n^2+2n^3)\cdot12 \\
+    &amp;+ \tfrac1{10} n(298-275n+120n^2-25n^3+2n^4)\cdot1
+\end{align*}\]</span></em></p>
+</div>
+<p>From the example above, we may observe that</p>
+<ul>
+<li><p>For <span class="math inline">\(t=0\)</span> the coefficients
+<span class="math inline">\(0,0,1,0,1\)</span> correspond to the fourth
+row of the triangle <a href="#tab:central-factorial-numbers-t0"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t0">[tab:central-factorial-numbers-t0]</a>.</p></li>
+<li><p>For <span class="math inline">\(t=1\)</span> the coefficients
+<span class="math inline">\(1,5,7,4,1\)</span> correspond to the fourth
+row of the triangle <a href="#tab:central-factorial-numbers-t1"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t1">[tab:central-factorial-numbers-t1]</a>.</p></li>
+<li><p>For <span class="math inline">\(t=2\)</span> the coefficients
+<span class="math inline">\(16,34,25,8,1\)</span> correspond to the
+fourth row of the triangle <a href="#tab:central-factorial-numbers-t2"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t2">[tab:central-factorial-numbers-t2]</a>.</p></li>
+<li><p>For <span class="math inline">\(t=3\)</span> the coefficients
+<span class="math inline">\(81,111,55,12,1\)</span> correspond to the
+fourth row of the triangle <a href="#tab:central-factorial-numbers-t3"
+data-reference-type="eqref"
+data-reference="tab:central-factorial-numbers-t3">[tab:central-factorial-numbers-t3]</a>.</p></li>
+</ul>
+<h1 id="multifold-sums-of-powers-in-binomial-form">Multifold sums of
+powers in binomial form</h1>
+<div id="prop:multifold-sum-of-zero-powers" class="lemma">
+<p><strong>Lemma 29</strong> (Multifold sums of zero powers). <em>For
+integers <span class="math inline">\(r \geq 0\)</span>, and <span
+class="math inline">\(n\geq 1\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{0} = \binom{r+n-1}{r}
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em></em></p>
+<ol>
+<li><p><em>Let <span class="math inline">\(r=0\)</span>, then we have
+<span class="math inline">\(\Sigma^{0}\,{n}^{0} = 1\)</span>, by
+definition <a href="#def:multifold-sums-of-powers-recurrence"
+data-reference-type="eqref"
+data-reference="def:multifold-sums-of-powers-recurrence">[def:multifold-sums-of-powers-recurrence]</a>.</em></p></li>
+<li><p><em>Let <span class="math inline">\(r=1\)</span>, then we have
+<span class="math inline">\(\Sigma^{1}\,{n}^{0}
+        = \sum_{k=1}^{n} 1 = \binom{n}{1}\)</span>.</em></p></li>
+<li><p><em>Let <span class="math inline">\(r=2\)</span>, then we have
+<span class="math inline">\(\Sigma^{2}\,{n}^{0}
+        = \sum_{k=1}^{n} \binom{k}{1}
+        % = \sum_{k=1}^{n} k
+        = \binom{n+1}{2}\)</span>.</em></p></li>
+<li><p><em>Let <span class="math inline">\(r=3\)</span>, then we have
+<span class="math inline">\(\Sigma^{3}\,{n}^{0}
+        = \sum_{k=1}^{n} \binom{k+1}{2}
+        = \binom{n+2}{3}\)</span>.</em></p></li>
+<li><p><em>Similarly, for arbitrary integer <span
+class="math inline">\(r\)</span>, by hockey stick identity <span
+class="math inline">\(\sum_{k=1}^{n} \binom{k}{r} =
+\binom{n+1}{r+1}\)</span>, yields <span
+class="math inline">\(\Sigma^{r}\,{n}^{0}
+        =  \sum_{k=1}^{n} \Sigma^{r-1}\,{k}^{0}
+        =  \sum_{k=1}^{n} \binom{k+r-2}{r-1}
+        = \binom{r+n-1}{r}\)</span>.</em></p></li>
+</ol>
+<p><em>This completes the proof. ◻</em></p>
+</div>
+</div>
+<div id="prop:multifold-binomial-sums-of-powers" class="proposition">
+<p><strong>Proposition 30</strong> (Multifold binomial sums of powers).
+<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \frac{1}{2} \sum_{k=0}^{m}
+    \Bigg \{
+      \binom{n-t+\frac{k}{2}+r}{k+r} + \binom{n-t+\frac{k}{2}+r-1}{k+r}
+\\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \left[
+        \binom{r-s-t+\frac{k}{2}}{k+r-s} +
+\binom{r-1-s-t+\frac{k}{2}}{k+r-s}
+      \right] \binom{s+n-1}{s}
+    \Bigg \} \delta^{k} t^m
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 31</strong> (Examples of multifold binomial sums).
+<em><span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{r}\,{n}^{m}
+    &amp;=
+    \tfrac12
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \Bigg\{
+      \tbinom{n+\tfrac{k}{2}+r}{k+r}
+      +
+      \tbinom{n+\tfrac{k}{2}+r-1}{k+r}
+      \\
+      &amp;\qquad-
+      \mathop{\textstyle\sum}_{s=0}^{r-1}
+      \Big[
+        \tbinom{r-s+\tfrac{k}{2}}{k+r-s}
+        +
+        \tbinom{r-1-s+\tfrac{k}{2}}{k+r-s}
+      \Big]
+      \tbinom{s+n-1}{s}
+    \Bigg\}
+    \,\delta^k 0^m ,
+    \\
+    %
+    t=1:\quad
+    \Sigma^{r}\,{n}^{m}
+    &amp;=
+    \tfrac12
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \Bigg\{
+      \tbinom{n-1+\tfrac{k}{2}+r}{k+r}
+      +
+      \tbinom{n-1+\tfrac{k}{2}+r-1}{k+r}
+      \\
+      &amp;\qquad-
+      \mathop{\textstyle\sum}_{s=0}^{r-1}
+      \Big[
+        \tbinom{r-s-1+\tfrac{k}{2}}{k+r-s}
+        +
+        \tbinom{r-2-s+\tfrac{k}{2}}{k+r-s}
+      \Big]
+      \tbinom{s+n-1}{s}
+    \Bigg\}
+    \,\delta^k 1^m ,
+    \\
+    %
+    t=2:\quad
+    \Sigma^{r}\,{n}^{m}
+    &amp;=
+    \tfrac12
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \Bigg\{
+      \tbinom{n-2+\tfrac{k}{2}+r}{k+r}
+      +
+      \tbinom{n-2+\tfrac{k}{2}+r-1}{k+r}
+      \\
+      &amp;\qquad-
+      \mathop{\textstyle\sum}_{s=0}^{r-1}
+      \Big[
+        \tbinom{r-s-2+\tfrac{k}{2}}{k+r-s}
+        +
+        \tbinom{r-3-s+\tfrac{k}{2}}{k+r-s}
+      \Big]
+      \tbinom{s+n-1}{s}
+    \Bigg\}
+    \,\delta^k 2^m .
+\end{align*}\]</span></em></p>
+</div>
+<h1 id="framework-for-sums-of-powers">Framework for sums of powers</h1>
+<p>In this manuscript, we derive formulas for sums of powers by
+combining centered Newton’s interpolation formula for powers <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
+with hockey-stick identities <a
+href="#lem:generalized-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>,
+and <a href="#lem:centered-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>.
+This approach can be generalized further. In particular, while using
+Newton’s formulas <span class="math display">\[\begin{align}
+  \label{eq:newtons-formulas-casess}
+  \begin{cases}
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^{[k]}}{k!} \delta^{k} f(a)
+    = \sum_{k=0}^{\infty} \frac{x-a}{k} \binom{x-a+\frac{k}{2}-1}{k-1}
+\delta^{k} f(a), \\
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{\left(x-a\right)_{k}}{k!} \Delta^k
+f(a)
+    = \sum_{k=0}^{\infty} \binom{x-a}{k} \Delta^k f(a), \\
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^{\left(k\right)}}{k!}
+\nabla^k f(a)
+    = \sum_{k=0}^{\infty} \binom{x-a+k-1}{k} \nabla^k f(a), \\
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^k}{k!} \frac{\mathrm{d}^{k}
+f(a)}{\mathrm{d} x^{k}}
+  \end{cases}
+\end{align}\]</span> one may replace linear difference operators <span
+class="math inline">\(\delta, \Delta, \nabla\)</span> with their
+non-linear dynamic analogs, allowing more generic approach for sums of
+powers. It is indeed so remarkable that Taylor’s series <span
+class="math inline">\(f(x)= \sum_{k=0}^{\infty} \frac{(x-a)^k}{k!}
+\frac{\mathrm{d}^{k} f(a)}{\mathrm{d} x^{k}}\)</span> is a continuous
+analogue of Newton’s formula! Back to the topic, such non-linear
+difference operators arise naturally in the theory of dynamic equations
+on time scales, developed by Bohner and Peterson in <span
+class="citation" data-cites="Bohner2001DynamicEO">(Bohner, Martin and
+Peterson, Allan 2001)</span>. Thus, the discrete change <span
+class="math inline">\(x+h\)</span> of a function <span
+class="math inline">\(f(x+h)\)</span> is replaced by function <span
+class="math inline">\(g(h)\)</span> which implies that dynamic
+difference operator is <span class="math display">\[\begin{align}
+  D_g f = \frac{f(g(x)) - f(x)}{g(x) - x}.
+  \label{eq:dynamic-difference-operator}
+\end{align}\]</span> A well-known example is Jackson’s <span
+class="math inline">\(q\)</span>-difference <span class="citation"
+data-cites="jackson_1909">(Jackson, Frederick H. 1909)</span> <span
+class="math display">\[\begin{align*}
+  D_q f(x) = \frac{f(qx) - f(x)}{qx - x},
+\end{align*}\]</span> where <span class="math inline">\(g(x) =
+qx\)</span>. In particular, for Newton’s formula in linear differences
+<span class="math inline">\(\delta, \Delta, \nabla\)</span>, their
+respective falling, rising, and central factorials are related to
+binomial coefficients via <span class="math display">\[\begin{align}
+  \label{eq:factorial-identities}
+  \begin{cases}
+    \frac{\left(x\right)_{n}}{n!} &amp;= \frac{1}{n!}
+x(x-1)(x-2)\cdots(x-n+1) =\binom{x}{n}, \\
+    \frac{x^{\left(n\right)}}{n!}  &amp;= \frac{1}{n!}
+x(x+1)(x+2)\cdots(x+n-1)  =\binom{x+n-1}{n}, \\
+    \frac{x^{[n]}}{n!} &amp;= \frac{1}{n!} \left( n + \frac{k}{2} -1
+\right)\left( n + \frac{k}{2} -2 \right)
+    \cdots \left( n - \frac{k}{2} +1 \right)  =\frac{x}{n}
+\binom{x+\frac{n}{2}-1}{n-1}.
+  \end{cases}
+\end{align}\]</span> Motivated by this viewpoint, we can see that
+dynamic version of Newton’s formula is <span
+class="math display">\[\begin{align}
+  \label{eq:generalized-newtons-formula}
+  f(x) = \sum_{k=0}^{\infty} \frac{\left(x\mid \alpha,
+\beta\right)_{k}}{k!} \cdot D_g f(a),
+\end{align}\]</span> where <span class="math inline">\(a\)</span> is an
+arbitrary integer, <span class="math inline">\(D_g f(a)\)</span> is
+dynamic difference operator, and <span class="math inline">\(\left(x\mid
+\alpha, \beta\right)_{n}\)</span> is generalized factorial which uses
+the combination of Nörlund’s notation <span class="citation"
+data-cites="Norlund1924">(Nörlund 1924)</span>, and definition given by
+Steffensen <span class="citation"
+data-cites="steffensen1933definition">(Steffensen 1933)</span></p>
+<div id="prop:generalized-factorial" class="definition">
+<p><strong>Definition 32</strong> (Generalized factorial). <em>For
+non-negative integers <span
+class="math inline">\(x,n,\alpha,\beta\)</span> <span
+class="math display">\[\begin{align*}
+    \left(x\mid \alpha, \beta\right)_{n} = x(x-n\alpha -
+\beta)(x-n\alpha - 2\beta)\cdots(x-n\alpha - n - I\beta).
+\end{align*}\]</span></em></p>
+</div>
+<p>For instance, <span class="math display">\[\begin{align*}
+  \begin{cases}
+    \left(x\right)_{n} &amp;= \left(x\mid \alpha, \beta\right)_{n},
+\quad \alpha=0, \quad \beta =1, \quad \text{(forward Newton&#39;s
+formula)} \\
+    x^{\left(n\right)}  &amp;= \left(x\mid \alpha, \beta\right)_{n},
+\quad \alpha=0, \quad \beta =-1,  \quad \text{(backward Newton&#39;s
+formula)}  \\
+    x^{[n]} &amp;= \left(x\mid \alpha, \beta\right)_{n}, \quad
+\alpha=\frac{1}{2}, \quad \beta =1,  \quad \text{(central Newton&#39;s
+formula)}\\
+    x^n                     &amp;= \left(x\mid \alpha, \beta\right)_{n},
+\quad \alpha=0, \quad \beta =0,  \quad \text{(Taylor&#39;s formula)}
+  \end{cases}
+\end{align*}\]</span> More precisely, the algorithm for closed formulas
+for sums of powers is</p>
+<div id="alg:sums-of-powers" class="algorithm">
+<p><strong>Algorithm 33</strong> (Algorithm for closed formulas).
+<em></em></p>
+<ol>
+<li><p><em>Define the function <span class="math inline">\(f(x) =
+x^m\)</span>.</em></p></li>
+<li><p><em>Pick generalized difference operator <span
+class="math inline">\(D_g f(x)\)</span>, see <a
+href="#eq:dynamic-difference-operator" data-reference-type="eqref"
+data-reference="eq:dynamic-difference-operator">[eq:dynamic-difference-operator]</a>.</em></p></li>
+<li><p><em>Derive generalized Newton’s formula <a
+href="#eq:generalized-newtons-formula" data-reference-type="eqref"
+data-reference="eq:generalized-newtons-formula">[eq:generalized-newtons-formula]</a>
+in terms of <span class="math inline">\(D_g f(x)\)</span>, for
+example <a href="#eq:newtons-formulas-casess"
+data-reference-type="eqref"
+data-reference="eq:newtons-formulas-casess">[eq:newtons-formulas-casess]</a>.</em></p></li>
+<li><p><em>Find an identity that connects respective factorials <span
+class="math inline">\(\left(x\mid \alpha, \beta\right)_{n}\)</span> with
+binomial coefficients of the form <span
+class="math inline">\(\binom{x}{k}\)</span>, so that upper index is
+expression in <span class="math inline">\(x\)</span>, for example <a
+href="#eq:factorial-identities" data-reference-type="eqref"
+data-reference="eq:factorial-identities">[eq:factorial-identities]</a>.</em></p></li>
+<li><p><em>Apply hockey stick identities <a
+href="#lem:generalized-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>,
+and <a href="#lem:centered-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+to derive closed form for sums of powers <span
+class="math inline">\(\Sigma^{1}\,{n}^{m}\)</span>.</em></p></li>
+<li><p><em>Apply identities <a
+href="#lem:generalized-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>,
+and <a href="#lem:centered-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+<span class="math inline">\(r\)</span>-times to reach <span
+class="math inline">\(r\)</span>-fold closed form for sums of powers
+<span class="math inline">\(\Sigma^{r}\,{n}^{m}\)</span>.</em></p></li>
+</ol>
+</div>
+<p>The algorithm above has already been utilized in practice. For
+instance, the work <span class="citation"
+data-cites="kolosov_2026_forward">(Kolosov 2026a)</span> provides
+remarkable formulas for sums of powers, based on forward difference
+Newton’s formula,</p>
+<div class="proposition">
+<p><strong>Proposition 34</strong>. <em>For integers <span
+class="math inline">\(r\geq 0\)</span>, and <span
+class="math inline">\(n\geq 0\)</span>, and <span
+class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \sum_{j=0}^{m}
+    \left[ \binom{n-t+r}{j+r} +
+      \sum_{s=1}^{r} (-1)^{j+s-1} \binom{j+t-1}{j+s}
+\binom{r-s+n-1}{r-s}
+    \right] \Delta^{j} t^{m}.
+\end{align*}\]</span></em></p>
+</div>
+<p>Also, in terms of Eulerian numbers <span
+class="math inline">\(\genfrac{\langle}{\rangle}{0pt}{}{n}{k}\)</span></p>
+<div class="proposition">
+<p><strong>Proposition 35</strong>. <em>For integers <span
+class="math inline">\(r\geq0\)</span>, and <span
+class="math inline">\(n\geq 0\)</span>, and <span
+class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    = \sum_{j=0}^{m} \sum_{k=0}^{m}
+    \left[ \binom{n-t+r}{j+r} -
+      \sum_{s=1}^{r} \binom{s-t}{j+s} \binom{r-s+n-1}{r-s}
+    \right]
+    \binom{t+k}{m-j} \genfrac{\langle}{\rangle}{0pt}{}{m}{k}.
+\end{align*}\]</span></em></p>
+</div>
+<p>The work entitled <em>Sums of powers of integers and generalized
+Stirling numbers of the second kind</em>  <span class="citation"
+data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
+2022)</span> discusses closed formulas for sums of powers in terms of
+generalized Stirling numbers of the second kind, which originates from
+forward Newton’s formula for powers, around arbitrary integer point
+<span class="math inline">\(t\)</span>. It is quite remarkable that
+both <span class="citation"
+data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
+2022)</span>, and <span class="citation"
+data-cites="kolosov_2026_forward">(Kolosov 2026a)</span> reached the
+same result independently. In <span class="citation"
+data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
+2022)</span> we get <span class="math display">\[\begin{align}
+  \Sigma^{1}\,{n}^{k} &amp;= \sum_{j=0}^{k} j!
+  \left[
+    \binom{n+1-r}{j+1} + (-1)^j \binom{r+j-1}{j+1}
+  \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{r},
+  \label{eq:cereceda-sums-1}
+  \\
+  \Sigma^{1}\,{n}^{k} &amp;= \sum_{j=0}^{k} j!
+  \left[
+    \binom{n+1-r}{j+1} + \binom{r+1}{j+1}
+  \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{-r}.
+  \label{eq:cereceda-sums-2}
+\end{align}\]</span> Formula <a href="#eq:cereceda-sums-1"
+data-reference-type="eqref"
+data-reference="eq:cereceda-sums-1">[eq:cereceda-sums-1]</a> is a
+special case of proposition <span class="citation"
+data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop.
+(1.9))</span></p>
+<div class="proposition">
+<p><strong>Proposition 36</strong>. <em>For integers <span
+class="math inline">\(n\geq 0\)</span>, and <span
+class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^m
+    \left[ \binom{n-t+1}{j+1} + (-1)^j \binom{j+t-1}{j+1} \right].
+\end{align*}\]</span></em></p>
+</div>
+<p>in terms of generalized Stirling numbers <span
+class="math inline">\(\genfrac{\{}{\}}{0pt}{}{k}{j}_{r}\)</span>. This
+implies that finite differences of powers can be expressed in terms of
+generalized Stirling numbers of the second kind, <span
+class="math inline">\(\Delta^{j} t^m = j!
+\genfrac{\{}{\}}{0pt}{}{m}{j}_{t}\)</span>. Formula <a
+href="#eq:cereceda-sums-2" data-reference-type="eqref"
+data-reference="eq:cereceda-sums-2">[eq:cereceda-sums-2]</a> is a
+special case of proposition <span class="citation"
+data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop.
+(1.8))</span></p>
+<div class="proposition">
+<p><strong>Proposition 37</strong>. <em>For integers <span
+class="math inline">\(n\geq 0\)</span>, and <span
+class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^m
+    \left[ \binom{n-t+1}{j+1} - \binom{1-t}{j+1} \right].
+\end{align*}\]</span></em></p>
+</div>
+<p>with setting <span class="math inline">\(t=r\)</span>. Moving to
+backward Newton’s formula, the work <span class="citation"
+data-cites="kolosov_2026_backward">(Kolosov 2026b)</span> utilizes
+algorithm <a href="#alg:sums-of-powers" data-reference-type="eqref"
+data-reference="alg:sums-of-powers">[alg:sums-of-powers]</a> in terms of
+backward differences, providing another remarkable formula</p>
+<div class="proposition">
+<p><strong>Proposition 38</strong>. <em>For non-negative integers <span
+class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r+1}\,{n}^{m} = \sum_{j=0}^{m}
+    \left[
+      \binom{j-t+n+r}{j+r+1}
+      + \sum_{s=0}^{r} (-1)^{j+s} \binom{t}{j+s+1} \binom{r-s+n-1}{r-s}
+    \right] \nabla^{j} t^{m}.
+\end{align*}\]</span></em></p>
+</div>
+<p>Finally, the work <span class="citation"
+data-cites="kolosov_2026_central">(Kolosov 2026c)</span> explores
+Newton’s formula in central differences, allowing it to be applied with
+algorithm <a href="#alg:sums-of-powers" data-reference-type="eqref"
+data-reference="alg:sums-of-powers">[alg:sums-of-powers]</a>.
+Essentially, it achieves similar formulas for sums of powers as current
+paper, but using different binomial identities to reach the closed form.
+For instance,</p>
+<div class="proposition">
+<p><strong>Proposition 39</strong>. <em>For integers <span
+class="math inline">\(n\geq 0, \; m \geq 0\)</span>, and an arbitrary
+integer <span class="math inline">\(t\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \binom{r+n-1}{r} t^m
+    + \sum_{k=1}^{m} \frac{\delta^{k} t^{m}}{2}
+    \Bigg \{
+      \left[
+        \binom{n-t+\frac{k}{2}+r}{k+r}
+        +
+        \binom{n-t+\frac{k}{2}+r-1}{k+r}
+      \right] \\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \left[
+        \binom{-t+\frac{k}{2} + r -s}{k+r-s} +
+        \binom{-t+\frac{k}{2} + r -s-1}{k+r-s}
+      \right] \binom{s+n-1}{s}
+    \Bigg \}.
+\end{align*}\]</span></em></p>
+</div>
+<h1 id="conclusions">Conclusions</h1>
+<p>This manuscript reviews historical development of the sums of powers
+problem, briefly tracing its evolution from Archimedes (287-212 BC) to
+Donald Knuth’s work <em>Johann Faulhaber and sums of powers (1993)</em>,
+highlighting the transition from purely arithmetic methods to modern
+enumerative and algebraic-combinatorial approaches. The main results
+establish an algorithm <a href="#alg:sums-of-powers"
+data-reference-type="eqref"
+data-reference="alg:sums-of-powers">[alg:sums-of-powers]</a> for
+deriving closed formulas for multifold sums of powers of integers by
+combining variations of Newton’s interpolation formula with hockey-stick
+family identities for binomial coefficients. Using the algorithm, some
+remarkable formulas were obtained, closed formula for sums of powers <a
+href="#prop:ordinary-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a>,
+formula for <span class="math inline">\(r-\)</span>fold sums of
+powers <a href="#thm:multifold-sums-of-powers"
+data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>,
+formula for <span class="math inline">\(r-\)</span>fold sums of powers
+in pure binomial view <a href="#prop:multifold-binomial-sums-of-powers"
+data-reference-type="eqref"
+data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a>.
+In addition, we have shown that famous Knuth’s formula for sums of odd
+powers <a href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
+originates from Newton’s interpolation formula <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>,
+thus generalizing it for <span class="math inline">\(r-\)</span>fold
+case <a href="#prop:knuth-odd-powers-sum-multifold"
+data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum-multifold">[prop:knuth-odd-powers-sum-multifold]</a>.</p>
+<h1 class="unnumbered" id="mathematica-programs">Mathematica
+programs</h1>
+<p>Use this <a
+href="https://github.com/kolosovpetro/AFormulaForSumsOfPowersViaCentralNewtonsInterpolation"><code>GitHub</code></a>
+repository to validate the results using Mathematica programs.<br />
+</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Mathematica Function</strong></th>
+<th style="text-align: left;"><strong>Validates / Prints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: left;"><code>MultifoldSumOfPowersRecurrence[r, n, m]</code></td>
+<td style="text-align: left;">Computes <span
+class="math inline">\(\Sigma^{r}\,{n}^{m}\)</span>, <a
+href="#def:multifold-sums-of-powers-recurrence"
+data-reference-type="eqref"
+data-reference="def:multifold-sums-of-powers-recurrence">[def:multifold-sums-of-powers-recurrence]</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CentralFactorial[n, k]</code></td>
+<td style="text-align: left;">Computes <span
+class="math inline">\(n^{[k]}\)</span>, <a
+href="#def:central-factorials" data-reference-type="eqref"
+data-reference="def:central-factorials">[def:central-factorials]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>CentralFactorialsBinomialFormDecomposition[20]</code></td>
+<td style="text-align: left;">Validates Lem. <a
+href="#lem:central-factorials-binomial-form-decomposition"
+data-reference-type="eqref"
+data-reference="lem:central-factorials-binomial-form-decomposition">[lem:central-factorials-binomial-form-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateNewtonsFormulaForPowers[10]</code></td>
+<td style="text-align: left;">Validates Lem. <a
+href="#lem:central-newtons-formula-for-powers-decomposition"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers-decomposition">[lem:central-newtons-formula-for-powers-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity[5]</code></td>
+<td style="text-align: left;">Validates Lem. <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateOrdinarySumsOfPowersDecomposition[10]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:ordinary-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateDoubleSumsOfPowersDecomposition[5]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:double-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers-decomposition">[prop:double-sums-of-powers-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateTripleSumsOfPowersDecomposition[5]</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:triple-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:triple-sums-of-powers-decomposition">[prop:triple-sums-of-powers-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowers[3]</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span><strong>Metadata</strong></span></p>
+<ul>
+<li><p><strong>Initial release date:</strong> June 2026.</p></li>
+<li><p><strong>Current release date:</strong> 2026-06-04.</p></li>
+<li><p><strong>Version:</strong> <code>1.0.0+main.7ea3e63</code>
+.</p></li>
+<li><p><strong>MSC2010:</strong> 05A10, 11B68, 11B73, 11B83 .</p></li>
+<li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
+formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
+Bernoulli numbers, Bernoulli polynomials, Interpolation, Central
+factorial numbers, Stirling numbers, Eulerian numbers, OEIS .</p></li>
+<li><p><strong>License:</strong> This work is licensed under a <a
+href="https://creativecommons.org/licenses/by/4.0/"><code>CC BY 4.0 License</code></a>.</p></li>
+<li><p><strong>DOI:</strong> <a
+href="https://doi.org/10.5281/zenodo.20548019"><code>https://doi.org/10.5281/zenodo.20548019</code></a></p></li>
+<li><p><strong>Web Version:</strong> <a
+href="https://kolosovpetro.github.io/math/sums-of-powers-framework-for-closed-forms/"><code>kolosovpetro.github.io/math/sums-of-powers-framework-for-closed-forms</code></a></p></li>
+<li><p><strong>GitHub:</strong> <a
+href="https://github.com/kolosovpetro/NewtonsInterpolationFormulaAndSumsOfPowers"><code>github.com/kolosovpetro/NewtonsFormulaAndSumsOfPowers</code></a></p></li>
+<li><p><strong>ORCID:</strong> <a
+href="https://orcid.org/0000-0002-6544-8880"><code>0000-0002-6544-8880</code></a></p></li>
+<li><p><strong>Email:</strong> <a
+href="mailto:kolosovp94@gmail.com"><code>kolosovp94@gmail.com</code></a></p></li>
+</ul>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-bernoulli1713ars" class="csl-entry" role="listitem">
+Bernoulli, Jakob. 1713. <em>Ars Coniectandi</em>. Impensis Thurnisiorum,
+fratrum.
+</div>
+<div id="ref-Bohner2001DynamicEO" class="csl-entry" role="listitem">
+Bohner, Martin and Peterson, Allan. 2001. <em><span
+class="nocase">Dynamic equations on time scales: An introduction with
+applications</span></em>. <a
+href="https://web.mst.edu/~bohner/sample.pdf"
+class="uri">Https://web.mst.edu/~bohner/sample.pdf</a>; <span>Springer
+Science &amp; Business Media</span>.
+</div>
+<div id="ref-butzer1989central" class="csl-entry" role="listitem">
+Butzer, Paul Leo, K. Schmidt, E. L. Stark, and L. Vogt. 1989.
+<span>“Central Factorial Numbers; Their Main Properties and Some
+Applications.”</span> <em>Numerical Functional Analysis and
+Optimization</em> 10 (5-6): 419–88. <a
+href="https://doi.org/10.1080/01630568908816313">https://doi.org/10.1080/01630568908816313</a>.
+</div>
+<div id="ref-carlitz1963divided" class="csl-entry" role="listitem">
+Carlitz, L., and John Riordan. 1963. <span>“The Divided Central
+Differences of Zero.”</span> <em><span class="nocase">Canadian Journal
+of Mathematics</span></em> 15: 94–100. <a
+href="https://doi.org/10.4153/CJM-1963-010-8">https://doi.org/10.4153/CJM-1963-010-8</a>.
+</div>
+<div id="ref-cereceda2022sumspowersintegersgeneralized"
+class="csl-entry" role="listitem">
+Cereceda, José L. 2022. <em>Sums of Powers of Integers and Generalized
+Stirling Numbers of the Second Kind</em>. <a
+href="https://arxiv.org/abs/2211.11648">https://arxiv.org/abs/2211.11648</a>.
+</div>
+<div id="ref-faulhaberacademia" class="csl-entry" role="listitem">
+Faulhaber, Johannes. 1631. <em>Academia Algebrae: Darinnen Dir
+Miraculosische Guvontiones Zu Den h<span>ö</span>chsten Costen Weiters
+Continuirt u. Profitiert Werden</em>. Johann Remelins.
+</div>
+<div id="ref-gessel1989determinants" class="csl-entry" role="listitem">
+Gessel, Ira M, and Xavier Viennot. 1989. <span>“Determinants, Paths, and
+Plane Partitions.”</span> <em>Preprint</em> 132 (197.15). <a
+href="https://people.brandeis.edu/~gessel/homepage/papers/pp.pdf">https://people.brandeis.edu/~gessel/homepage/papers/pp.pdf</a>.
+</div>
+<div id="ref-graham1994concrete" class="csl-entry" role="listitem">
+Graham, Ronald L. and Knuth, Donald E. and Patashnik, Oren. 1994.
+<em><span class="nocase">Concrete mathematics: A foundation for computer
+science (second edition)</span></em>. <span>Addison-Wesley Publishing
+Company, Inc.</span> <a
+href="https://archive.org/details/concrete-mathematics">https://archive.org/details/concrete-mathematics</a>.
+</div>
+<div id="ref-jackson_1909" class="csl-entry" role="listitem">
+Jackson, Frederick H. 1909. <span>“<span class="nocase">XI.—on
+q-functions and a certain difference operator</span>.”</span> <em><span
+class="nocase">Earth and Environmental Science Transactions of the Royal
+Society of Edinburgh</span></em> 46 (2): 253–81. <a
+href="https://doi.org/10.1017/S0080456800002751">https://doi.org/10.1017/S0080456800002751</a>.
+</div>
+<div id="ref-knuth1992notesnotation" class="csl-entry" role="listitem">
+Knuth, Donald E. 1992. <em>Two Notes on Notation</em>. <a
+href="https://arxiv.org/abs/math/9205211">https://arxiv.org/abs/math/9205211</a>.
+</div>
+<div id="ref-knuth1993johann" class="csl-entry" role="listitem">
+Knuth, Donald E. 1993. <span>“<span class="nocase">Johann Faulhaber and
+sums of powers</span>.”</span> <em><span class="nocase">Mathematics of
+Computation</span></em> 61 (203): 277–94. <a
+href="https://arxiv.org/abs/math/9207222">https://arxiv.org/abs/math/9207222</a>.
+</div>
+<div id="ref-kolosov_2026_forward" class="csl-entry" role="listitem">
+Kolosov, Petro. 2026a. <em>Newton’s Interpolation Formula and Sums of
+Powers</em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.18040979">https://doi.org/10.5281/zenodo.18040979</a>.
+</div>
+<div id="ref-kolosov_2026_backward" class="csl-entry" role="listitem">
+Kolosov, Petro. 2026b. <em>Sums of Powers via Backward Finite
+Differences and Newton’s Formula</em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.18118011">https://doi.org/10.5281/zenodo.18118011</a>.
+</div>
+<div id="ref-kolosov_2026_central" class="csl-entry" role="listitem">
+Kolosov, Petro. 2026c. <em>Sums of Powers via Central Finite Differences
+and Newton’s Formula</em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.18361364">https://doi.org/10.5281/zenodo.18361364</a>.
+</div>
+<div id="ref-luschny2020introduction" class="csl-entry" role="listitem">
+Luschny, Peter HN. 2020. <span>“<span class="nocase">An introduction to
+the Bernoulli function</span>.”</span> <em><span class="nocase">arXiv
+preprint arXiv:2009.06743</span></em>. <a
+href="https://arxiv.org/abs/2009.06743">https://arxiv.org/abs/2009.06743</a>.
+</div>
+<div id="ref-luschny2021manifesto" class="csl-entry" role="listitem">
+Luschny, Peter HN. 2021. <em><span>The Bernoulli Manifesto</span></em>.
+<a
+href="http://luschny.de/math/zeta/The-Bernoulli-Manifesto.html">http://luschny.de/math/zeta/The-Bernoulli-Manifesto.html</a>.
+</div>
+<div id="ref-Marko2020" class="csl-entry" role="listitem">
+Marko, František, and Semyon Litvinov. 2020. <span>“Geometry of Figurate
+Numbers and Sums of Powers of Consecutive Natural Numbers.”</span>
+<em>The American Mathematical Monthly</em> 127 (1): 4–22. <a
+href="https://www.researchgate.net/publication/338054650_Geometry_of_Figurate_Numbers_and_Sums_of_Powers_of_Consecutive_Natural_Numbers">https://www.researchgate.net/publication/338054650_Geometry_of_Figurate_Numbers_and_Sums_of_Powers_of_Consecutive_Natural_Numbers</a>.
+</div>
+<div id="ref-Norlund1924" class="csl-entry" role="listitem">
+Nörlund, Niels Erik. 1924. <em>Vorlesungen <span
+class="nocase">ü</span>ber Differenzenrechnung</em>. Springer. <a
+href="https://link.springer.com/book/10.1007/978-3-642-50824-0">https://link.springer.com/book/10.1007/978-3-642-50824-0</a>.
+</div>
+<div id="ref-pengelley2002bridge" class="csl-entry" role="listitem">
+Pengelley, David J. 2002. <span>“The Bridge Between the Continuous and
+the Discrete via Original Sources.”</span> <em>Study the Masters: The
+Abel-Fauvel Conference, Kristiansand</em>. <a
+href="https://sites.google.com/view/davidpengelley/david-pengelley">https://sites.google.com/view/davidpengelley/david-pengelley</a>.
+</div>
+<div id="ref-riordan1968combinatorial" class="csl-entry"
+role="listitem">
+Riordan, John. 1968. <em>Combinatorial Identities</em>. Vol. 217. <a
+href="https://www.amazon.com/-/de/Combinatorial-Identities-Probability-Mathematical-Statistics/dp/0471722758"
+class="uri">Https://www.amazon.com/-/de/Combinatorial-Identities-Probability-Mathematical-Statistics/dp/0471722758</a>;
+<span>Wiley New York</span>.
+</div>
+<div id="ref-sloane2003line" class="csl-entry" role="listitem">
+Sloane, Neil J.A. and others. 2003. <em><span class="nocase">The on-line
+encyclopedia of integer sequences</span></em>. <a
+href="https://oeis.org/" class="uri">Https://oeis.org/</a>.
+</div>
+<div id="ref-steffensen1933definition" class="csl-entry"
+role="listitem">
+Steffensen, J. F. 1933. <span>“ON THE DEFINITION OF THE CENTRAL
+FACTORIAL.”</span> <em>Journal of the Institute of Actuaries
+(1886-1994)</em> 64 (2): 165–68. <a
+href="http://www.jstor.org/stable/41137516">http://www.jstor.org/stable/41137516</a>.
+</div>
+<div id="ref-steffensen1927interpolation" class="csl-entry"
+role="listitem">
+Steffensen, Johan Frederik. 1927. <em>Interpolation</em>. <a
+href="https://www.amazon.com/-/de/Interpolation-Second-Dover-Books-Mathematics-ebook/dp/B00GHQVON8"
+class="uri">Https://www.amazon.com/-/de/Interpolation-Second-Dover-Books-Mathematics-ebook/dp/B00GHQVON8</a>;
+<span>Williams &amp; Wilkins</span>.
+</div>
+</div>
+</body>
+</html>
+
