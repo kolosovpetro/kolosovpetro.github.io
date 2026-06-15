@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-06-04" />
+  <meta name="dcterms.date" content="2026-06-15" />
   <title>Sums of powers of integers: A complete framework for closed formulas</title>
   <style>
     /* Default styles provided by pandoc.
@@ -214,7 +214,7 @@
 <h1 class="title">Sums of powers of integers: A complete framework for
 closed formulas</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-06-04</p>
+<p class="date">2026-06-15</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>This manuscript originates from the historical development of the
@@ -2206,26 +2206,30 @@ data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
 data-cites="kolosov_2026_forward">(Kolosov 2026a)</span> reached the
 same result independently. In <span class="citation"
 data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
-2022)</span> we get <span class="math display">\[\begin{align}
-  \Sigma^{1}\,{n}^{k} &amp;= \sum_{j=0}^{k} j!
-  \left[
-    \binom{n+1-r}{j+1} + (-1)^j \binom{r+j-1}{j+1}
-  \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{r},
-  \label{eq:cereceda-sums-1}
-  \\
-  \Sigma^{1}\,{n}^{k} &amp;= \sum_{j=0}^{k} j!
-  \left[
-    \binom{n+1-r}{j+1} + \binom{r+1}{j+1}
-  \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{-r}.
-  \label{eq:cereceda-sums-2}
-\end{align}\]</span> Formula <a href="#eq:cereceda-sums-1"
-data-reference-type="eqref"
+2022)</span> we get</p>
+<div class="proposition">
+<p><strong>Proposition 36</strong> (Cereceda (2022)). <em><span
+class="math display">\[\begin{align}
+    \label{eq:cereceda-sums-1}
+    \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j!
+    \left[
+      \binom{n+1-r}{j+1} + (-1)^j \binom{r+j-1}{j+1}
+    \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{r},
+\end{align}\]</span> <span class="math display">\[\begin{align}
+    \label{eq:cereceda-sums-2}
+    \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j!
+    \left[
+      \binom{n+1-r}{j+1} + \binom{r+1}{j+1}
+    \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{-r}.
+\end{align}\]</span></em></p>
+</div>
+<p>Formula <a href="#eq:cereceda-sums-1" data-reference-type="eqref"
 data-reference="eq:cereceda-sums-1">[eq:cereceda-sums-1]</a> is a
 special case of proposition <span class="citation"
 data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop.
 (1.9))</span></p>
 <div class="proposition">
-<p><strong>Proposition 36</strong>. <em>For integers <span
+<p><strong>Proposition 37</strong>. <em>For integers <span
 class="math inline">\(n\geq 0\)</span>, and <span
 class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
@@ -2246,7 +2250,7 @@ special case of proposition <span class="citation"
 data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop.
 (1.8))</span></p>
 <div class="proposition">
-<p><strong>Proposition 37</strong>. <em>For integers <span
+<p><strong>Proposition 38</strong>. <em>For integers <span
 class="math inline">\(n\geq 0\)</span>, and <span
 class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
@@ -2262,7 +2266,7 @@ algorithm <a href="#alg:sums-of-powers" data-reference-type="eqref"
 data-reference="alg:sums-of-powers">[alg:sums-of-powers]</a> in terms of
 backward differences, providing another remarkable formula</p>
 <div class="proposition">
-<p><strong>Proposition 38</strong>. <em>For non-negative integers <span
+<p><strong>Proposition 39</strong>. <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
@@ -2282,7 +2286,7 @@ Essentially, it achieves similar formulas for sums of powers as current
 paper, but using different binomial identities to reach the closed form.
 For instance,</p>
 <div class="proposition">
-<p><strong>Proposition 39</strong>. <em>For integers <span
+<p><strong>Proposition 40</strong>. <em>For integers <span
 class="math inline">\(n\geq 0, \; m \geq 0\)</span>, and an arbitrary
 integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -2429,9 +2433,9 @@ data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
 </div>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
-<li><p><strong>Initial release date:</strong> June 2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-06-04.</p></li>
-<li><p><strong>Version:</strong> <code>1.0.0+main.7ea3e63</code>
+<li><p><strong>Initial release date:</strong> 04-Jun-2026.</p></li>
+<li><p><strong>Current release date:</strong> 2026-06-15.</p></li>
+<li><p><strong>Version:</strong> <code>1.0.1+main.a8719e8</code>
 .</p></li>
 <li><p><strong>MSC2010:</strong> 05A10, 11B68, 11B73, 11B83 .</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
