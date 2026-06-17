@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-06-16" />
+  <meta name="dcterms.date" content="2026-06-17" />
   <title>Sums of powers of integers: A complete framework for closed formulas</title>
   <style>
     /* Default styles provided by pandoc.
@@ -214,7 +214,7 @@
 <h1 class="title">Sums of powers of integers: A complete framework for
 closed formulas</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-06-16</p>
+<p class="date">2026-06-17</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>This manuscript originates from the historical development of the
@@ -419,8 +419,9 @@ decomposition). <em>For integers <span class="math inline">\(n,k\geq
 0\)</span>, <span class="math display">\[\begin{align*}
     \frac{n^{[k]}}{k!}
     = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
-    = \frac{1}{2} \binom{n+\frac{k}{2}}{k} + \frac{1}{2}
-\binom{n+\frac{k}{2}-1}{k}.
+    = \frac{1}{2}
+    \left[ \binom{n+\frac{k}{2}}{k} + \binom{n+\frac{k}{2}-1}{k}
+\right].
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em> We have <span class="math inline">\(\binom{a}{k}
@@ -1877,7 +1878,7 @@ data-reference="tab:central-factorial-numbers-t3">[tab:central-factorial-numbers
 </ul>
 <h1 id="multifold-sums-of-powers-in-binomial-form">Multifold sums of
 powers in binomial form</h1>
-<div id="prop:multifold-sum-of-zero-powers" class="lemma">
+<div id="lem:multifold-sum-of-zero-powers" class="lemma">
 <p><strong>Lemma 29</strong> (Multifold sums of zero powers). <em>For
 integers <span class="math inline">\(r \geq 0\)</span>, and <span
 class="math inline">\(n\geq 1\)</span> <span
@@ -1916,6 +1917,13 @@ class="math inline">\(\Sigma^{r}\,{n}^{0}
 <p><em>This completes the proof. ◻</em></p>
 </div>
 </div>
+<p>Thus, by Lemma <a href="#lem:multifold-sum-of-zero-powers"
+data-reference-type="eqref"
+data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
+and by Theorem <a href="#thm:multifold-sums-of-powers"
+data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
+yields</p>
 <div id="prop:multifold-binomial-sums-of-powers" class="proposition">
 <p><strong>Proposition 30</strong> (Multifold binomial sums of powers).
 <em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
@@ -2350,7 +2358,7 @@ data-reference="prop:knuth-odd-powers-sum-multifold">[prop:knuth-odd-powers-sum-
 <h1 class="unnumbered" id="mathematica-programs">Mathematica
 programs</h1>
 <p>Use this <a
-href="https://github.com/kolosovpetro/AFormulaForSumsOfPowersViaCentralNewtonsInterpolation"><code>GitHub</code></a>
+href="https://github.com/kolosovpetro/SumsOfPowersACompleteFrameworkForClosedForms/tree/main/mathematica"><code>GitHub</code></a>
 repository to validate the results using Mathematica programs.<br />
 </p>
 <div class="center">
@@ -2380,7 +2388,7 @@ data-reference="def:central-factorials">[def:central-factorials]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>CentralFactorialsBinomialFormDecomposition[20]</code></td>
+style="text-align: left;"><code>ValidateCentralFactorialsBinomialDecomposition.txt</code></td>
 <td style="text-align: left;">Validates Lem. <a
 href="#lem:central-factorials-binomial-form-decomposition"
 data-reference-type="eqref"
@@ -2388,7 +2396,7 @@ data-reference="lem:central-factorials-binomial-form-decomposition">[lem:central
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateNewtonsFormulaForPowers[10]</code></td>
+style="text-align: left;"><code>ValidateNewtonsFormulaForPowers.txt</code></td>
 <td style="text-align: left;">Validates Lem. <a
 href="#lem:central-newtons-formula-for-powers-decomposition"
 data-reference-type="eqref"
@@ -2396,41 +2404,18 @@ data-reference="lem:central-newtons-formula-for-powers-decomposition">[lem:centr
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity[5]</code></td>
+style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity.txt</code></td>
 <td style="text-align: left;">Validates Lem. <a
 href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateOrdinarySumsOfPowersDecomposition[10]</code></td>
+style="text-align: left;"><code>ValidateOrdinarySumsOfPowersDecomposition.txt</code></td>
 <td style="text-align: left;">Validates Prop. <a
 href="#prop:ordinary-sums-of-powers-decomposition"
 data-reference-type="eqref"
 data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateDoubleSumsOfPowersDecomposition[5]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:double-sums-of-powers-decomposition"
-data-reference-type="eqref"
-data-reference="prop:double-sums-of-powers-decomposition">[prop:double-sums-of-powers-decomposition]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateTripleSumsOfPowersDecomposition[5]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:triple-sums-of-powers-decomposition"
-data-reference-type="eqref"
-data-reference="prop:triple-sums-of-powers-decomposition">[prop:triple-sums-of-powers-decomposition]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateMultifoldSumsOfPowers[3]</code></td>
-<td style="text-align: left;">Validates Thm. <a
-href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
-data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
@@ -2439,14 +2424,52 @@ style="text-align: left;"><code>ValidateMultifoldSumsKnuthFormula.txt</code></td
 href="#prop:knuth-odd-powers-sum-multifold" data-reference-type="eqref"
 data-reference="prop:knuth-odd-powers-sum-multifold">[prop:knuth-odd-powers-sum-multifold]</a></td>
 </tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateDoubleSumsOfPowersDecomposition.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:double-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers-decomposition">[prop:double-sums-of-powers-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateTripleSumsOfPowersDecomposition.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:triple-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:triple-sums-of-powers-decomposition">[prop:triple-sums-of-powers-decomposition]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowersTheorem.txt</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfZeroPowersLemma.txt</code></td>
+<td style="text-align: left;">Validates Lem. <a
+href="#lem:multifold-sum-of-zero-powers" data-reference-type="eqref"
+data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldBinomialSumsOfPowersProposition.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:multifold-binomial-sums-of-powers"
+data-reference-type="eqref"
+data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a></td>
+</tr>
 </tbody>
 </table>
 </div>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> 04-Jun-2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-06-16.</p></li>
-<li><p><strong>Version:</strong> <code>1.0.2+main.b573a1b</code>
+<li><p><strong>Current release date:</strong> 2026-06-17.</p></li>
+<li><p><strong>Version:</strong> <code>1.0.3+main.749f3d1</code>
 .</p></li>
 <li><p><strong>MSC2010:</strong> 05A10, 11B68, 11B73, 11B83 .</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
