@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-06-17" />
+  <meta name="dcterms.date" content="2026-06-22" />
   <title>Sums of powers of integers: A complete framework for closed formulas</title>
   <style>
     /* Default styles provided by pandoc.
@@ -214,18 +214,13 @@
 <h1 class="title">Sums of powers of integers: A complete framework for
 closed formulas</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-06-17</p>
+<p class="date">2026-06-22</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
-<p>This manuscript originates from the historical development of the
-sums of powers problem, briefly tracing its evolution from Archimedes
-(287-212 BC) to Donald Knuth’s work <em>Johann Faulhaber and sums of
-powers (1993)</em>, highlighting the transition from purely arithmetic
-methods to modern enumerative and algebraic-combinatorial approaches.
-The main results establish an algorithm for deriving closed formulas for
-multifold sums of powers of integers by combining variations of Newton’s
-interpolation formula with hockey-stick family identities for binomial
-coefficients.</p>
+<p>This manuscript provides an algorithm for deriving closed formulas
+for multifold sums of powers of integers by combining variations of
+Newton’s interpolation formula with hockey-stick family identities for
+binomial coefficients.</p>
 </div>
 </header>
 <h1 id="historical-context">Historical context</h1>
@@ -292,7 +287,7 @@ different angle, by using modern enumerative combinatorics techniques.
 Remarkably, Knuth’s contribution does not necessarily involve Bernoulli
 numbers, instead he derived formulas for power sums by utilizing special
 numbers (e.g Stirling, central factorial), and Binomial coefficients. In
-addition, Knuth introduced a remarkably convenient notation for <span
+addition, Knuth introduced a very convenient notation for <span
 class="math inline">\(r\)</span>-fold sums of powers <span
 class="math inline">\(\Sigma^{r}\,{n}^{m}\)</span>, which we use in this
 work.</p>
@@ -395,7 +390,7 @@ class="math display">\[\begin{align*}
 <div id="lem:central-factorials-binomial-form" class="lemma">
 <p><strong>Lemma 6</strong> (Central factorials binomial form). <em>For
 integers <span class="math inline">\(n\)</span> and <span
-class="math inline">\(k \geq 1\)</span>, <span
+class="math inline">\(k\neq0\)</span>, <span
 class="math display">\[\begin{align*}
     \frac{n^{[k]}}{k!}
     = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}.
@@ -415,8 +410,9 @@ class="math display">\[\begin{align*}
 <div id="lem:central-factorials-binomial-form-decomposition"
 class="lemma">
 <p><strong>Lemma 7</strong> (Central factorials binomial form
-decomposition). <em>For integers <span class="math inline">\(n,k\geq
-0\)</span>, <span class="math display">\[\begin{align*}
+decomposition). <em>For non-negative integers <span
+class="math inline">\(n,k\)</span>, <span
+class="math display">\[\begin{align*}
     \frac{n^{[k]}}{k!}
     = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
     = \frac{1}{2}
@@ -453,8 +449,8 @@ binomial recurrence yields <span class="math display">\[\begin{align*}
 <div id="lem:central-newtons-formula-for-powers-decomposition"
 class="lemma">
 <p><strong>Lemma 8</strong> (Newton’s formula for powers decomposition).
-<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span>, <span
+<em>For non-negative integers <span class="math inline">\(n,m\)</span>,
+and an arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     n^m = \frac{1}{2} \sum_{k=0}^{m}
     \left[
@@ -464,7 +460,7 @@ class="math display">\[\begin{align*}
 </div>
 <div id="lem:generalized-hockey-stick-identity" class="lemma">
 <p><strong>Lemma 9</strong> (Generalized hockey-stick identity). <em>For
-integers <span class="math inline">\(a,b\)</span> and <span
+arbitrary integers <span class="math inline">\(a,b\)</span> and <span
 class="math inline">\(j\)</span>, <span
 class="math display">\[\begin{align*}
     \sum_{k=a}^{b} \binom{k}{j} = \binom{b+1}{j+1} - \binom{a}{j+1}.
@@ -487,7 +483,7 @@ class="math display">\[\begin{align*}
 </div>
 <div id="lem:centered-hockey-stick-identity" class="lemma">
 <p><strong>Lemma 10</strong> (Centered hockey-stick identity). <em>For
-integers <span class="math inline">\(n\geq1\)</span>, and arbitrary
+integer <span class="math inline">\(n\geq1\)</span>, and arbitrary
 integers <span class="math inline">\(t,k,r\)</span> <span
 class="math display">\[\begin{align*}
     \sum_{j=1}^{n} \binom{j -t + \frac{k}{2} +r}{k}
@@ -520,26 +516,26 @@ class="math display">\[\begin{align*}
 </div>
 <p>Donald Knuth give extensive discussion on the convention <span
 class="math inline">\(x^0=1\)</span> for all <span
-class="math inline">\(x\)</span> in Concrete Mathematics <span
-class="citation" data-cites="graham1994concrete">(Graham, Ronald L. and
-Knuth, Donald E. and Patashnik, Oren 1994, 162)</span>, and in <span
-class="citation" data-cites="knuth1992notesnotation">(Knuth
-1992)</span>.</p>
+class="math inline">\(x\)</span>, including zero, in Concrete
+Mathematics <span class="citation"
+data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
+and Patashnik, Oren 1994, 162)</span>, and in <span class="citation"
+data-cites="knuth1992notesnotation">(Knuth 1992)</span>.</p>
 <h1 id="ordinary-sums-of-powers">Ordinary sums of powers</h1>
 <p>By decomposition of Newton’s formula for powers <a
 href="#lem:central-newtons-formula-for-powers-decomposition"
 data-reference-type="eqref"
 data-reference="lem:central-newtons-formula-for-powers-decomposition">[lem:central-newtons-formula-for-powers-decomposition]</a>,
-for integers <span class="math inline">\(n,m \geq 0\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span>, we get <span
-class="math display">\[\begin{align*}
+for non-negative integers <span class="math inline">\(n,m\)</span>, and
+an arbitrary integer <span class="math inline">\(t\)</span>, we have
+<span class="math display">\[\begin{align*}
   \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
   \left[
     \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}}{k} + \sum_{j=1}^{n}
 \binom{j-t+\frac{k}{2}-1}{k}
   \right] \delta^{k} t^m.
-\end{align*}\]</span> Now we reach the transition to closed form of
-ordinary sums of powers. By setting <span
+\end{align*}\]</span> Now, the closed form of ordinary sums of powers
+becomes straightforward. By setting <span
 class="math inline">\(r=0\)</span>, and <span
 class="math inline">\(r=-1\)</span> into Lemma <a
 href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
@@ -563,18 +559,19 @@ class="math display">\[\begin{align*}
     \right] \delta^{k} t^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>Note that we should note worry about fractions in upper index of
-binomial coefficients <span class="math inline">\(\binom{n -t +
-\frac{k}{2} +1}{k+1}\)</span>, because binomial coefficient <span
+<p>Note that we do not bother about fractions in upper index of binomial
+coefficients <span class="math inline">\(\binom{n -t + \frac{k}{2}
++1}{k+1}\)</span>, because binomial coefficient <span
 class="math inline">\(\binom{n}{k}\)</span> is a polynomial in <span
 class="math inline">\(n\)</span>. The well-known identity in unsigned
 Stirling numbers of the first kind <span
 class="math inline">\(\genfrac{[}{]}{0pt}{}{n}{k}\)</span> shows it
-clearly <span class="math display">\[\begin{align*}
+explicitly <span class="math display">\[\begin{align*}
   \binom{n}{k}
   = \sum_{j=0}^{k} \frac{(-1)^{k-j}}{k!} \genfrac{[}{]}{0pt}{}{k}{j}
 n^j.
-\end{align*}\]</span> For example, the sums of squares are</p>
+\end{align*}\]</span> For example, for <span
+class="math inline">\(\Sigma^{1}\,{n}^{2}\)</span> we have</p>
 <div class="example">
 <p><strong>Example 13</strong> (Sums of squares in central differences).
 <em><span class="math display">\[\begin{align*}
@@ -628,7 +625,8 @@ n^j.
     \frac{\delta^2 t^2}{2}\,\frac{n(73-21n+2n^2)}{6}.
 \end{align*}\]</span></em></p>
 </div>
-<p>While the sums of cubes</p>
+<p>For example, for <span
+class="math inline">\(\Sigma^{1}\,{n}^{3}\)</span> we have</p>
 <div class="example">
 <p><strong>Example 14</strong> (Sums of cubes in central differences).
 <em><span class="math display">\[\begin{align*}
@@ -692,16 +690,16 @@ n^j.
     \tfrac{\delta^3 t^3}{2}\,\tfrac{n(-329+145n-28n^2+2n^3)}{24}.
 \end{align*}\]</span></em></p>
 </div>
-<p>It is indeed interesting to notice the connection between the
-decomposition of ordinary sums of powers <a
-href="#prop:ordinary-sums-of-powers-decomposition"
+<p>It is indeed interesting to notice the connection between
+Proposition <a href="#prop:ordinary-sums-of-powers-decomposition"
 data-reference-type="eqref"
-data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a>
-and Riordan’s central factorial numbers of the second kind, that is</p>
+data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a>,
+and central factorial numbers of the second kind <span
+class="math inline">\(T(n,k)\)</span></p>
 <div id="prop:central-factorial-numbers-sums" class="proposition">
 <p><strong>Proposition 15</strong> (Central factorial numbers sums).
-<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span>, <span
+<em>For non-negative integers <span class="math inline">\(n,m\)</span>,
+and an arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
     \left[
@@ -709,7 +707,7 @@ class="math display">\[\begin{align*}
       + \binom{n + \frac{k}{2}}{k+1} - \binom{\tfrac{k}{2}}{k+1}
     \right] k! T(m,k),
 \end{align*}\]</span> where <span class="math inline">\(T(m,k)\)</span>
-denote the central factorial numbers of the second kind (in Riordan’s
+are central factorial numbers of the second kind (in Riordan’s
 notation). See <span class="citation"
 data-cites="riordan1968combinatorial">(Riordan 1968, 213)</span>,
 and <span class="citation" data-cites="carlitz1963divided">(Carlitz and
@@ -720,7 +718,7 @@ class="math inline">\(T(n,k)\)</span> are defined by central Newton’s
 formula for powers <a href="#lem:central-newtons-formula-for-powers"
 data-reference-type="eqref"
 data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
-evaluated in zero, such that <span class="math display">\[\begin{align*}
+evaluated at zero, such that <span class="math display">\[\begin{align*}
   n^m = \sum_{k=0}^{\infty} T(m,k) n^{[k]}.
 \end{align*}\]</span> Which implies <span
 class="math display">\[\begin{align*}
@@ -732,11 +730,13 @@ data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-for
 <h1 id="remark-on-knuths-formula-for-sums-of-odd-powers">Remark on
 Knuth’s formula for sums of odd powers</h1>
 <p>In <span class="citation" data-cites="knuth1993johann">(Knuth, Donald
-E. 1993)</span> Donald Knuth gives a remarkable formula for sums of odd
-powers</p>
+E. 1993)</span> Donald Knuth provides a remarkable formula for sums of
+odd powers, in terms of central factorial numbers of the second kind
+<span class="math inline">\(T(n,k)\)</span></p>
 <div id="prop:knuth-odd-powers-sum" class="proposition">
 <p><strong>Proposition 16</strong> (Knuth’s odd powers sum). <em>For
-non-negative integers <span class="math inline">\(n,m\)</span> <span
+integers <span class="math inline">\(n \geq 0\)</span>, and <span
+class="math inline">\(m\geq 1\)</span> <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)! \binom{n+k}{2k}
 T(2m,2k),
@@ -751,16 +751,34 @@ originates from centered Newton’s formula for powers <a
 href="#lem:central-newtons-formula-for-powers"
 data-reference-type="eqref"
 data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
-evaluated at zero. By Newton’s formula, we have <span
+evaluated at zero. By Newton’s formula, for <span
+class="math inline">\(m\geq 1\)</span>, we have <span
 class="math display">\[\begin{align*}
-  n^{2m} = \sum_{k=0}^{2m} \frac{n^{[k]}}{k!} \cdot \delta^{k} 0^{2m}
+  n^{2m} = \sum_{k=1}^{2m} \frac{n^{[k]}}{k!} \cdot \delta^{k} 0^{2m}
 \end{align*}\]</span> The iteration for <span
 class="math inline">\(k=0\)</span> can be omitted because <span
-class="math inline">\(\delta^{0} 0^{2m} = 0\)</span>, for integer <span
-class="math inline">\(m \geq 1\)</span>. Next, we observe that <span
-class="math inline">\(\delta^{k} 0^{2m} = 0\)</span> for every odd <span
-class="math inline">\(k\)</span>, thus we can omit odd iterations of
-<span class="math inline">\(k\)</span> <span
+class="math inline">\(\delta^{0} 0^{2m} = 0\)</span>. Now, we observe
+that central difference <span class="math inline">\(\delta^k
+0^m\)</span> satisfies the parity of arguments <span
+class="math inline">\(m\)</span> and <span
+class="math inline">\(k\)</span>, such that <span
+class="math display">\[\begin{align*}
+  \begin{cases}
+    \delta^{k} 0^m \neq 0, \quad &amp;\text{when} \quad m \equiv k
+\pmod{2}, \\
+    \delta^{k} 0^m = 0, \quad &amp;\text{when} \quad m \not\equiv k
+\pmod{2},
+  \end{cases}
+\end{align*}\]</span> meaning that <span
+class="math inline">\(\delta^{k} 0^m\)</span> is zero whether <span
+class="math inline">\(k,m\)</span> are odd and even, and vise versa.
+Note that the parity property holds only for central difference of
+powers evaluated at zero, by contrast <span
+class="math inline">\(\delta^{3} 1^{4} = 24  \neq 0\)</span>. Thus, the
+parity of <span class="math inline">\(\delta^{k} 0^{2m}\)</span> allows
+us to omit odd iterations of <span class="math inline">\(k\)</span>,
+because <span class="math inline">\(\delta^{k} 0^{2m}\)</span> is zero
+for odd <span class="math inline">\(k\)</span> <span
 class="math display">\[\begin{align*}
   n^{2m} = \sum_{k=1}^{m} \frac{n^{[2k]}}{(2k)!} \cdot \delta^{2k}
 0^{2m}.
@@ -774,18 +792,19 @@ class="math inline">\(\frac{n^{[2k]}}{(2k)!}\)</span> using Lemma <a
 href="#lem:central-factorials-binomial-form" data-reference-type="eqref"
 data-reference="lem:central-factorials-binomial-form">[lem:central-factorials-binomial-form]</a>,
 we get <span class="math display">\[\begin{align*}
-  n^{2m}
-  &amp;= \sum_{k=1}^{m} (2k)!  \frac{n}{2k} \binom{n+k-1}{2k-1} T(2m,2k)
-\\
-  &amp;= \sum_{k=1}^{m} (2k-1)!  n \binom{n+k-1}{2k-1} T(2m,2k).
+  n^{2m} = \sum_{k=1}^{m} (2k)!  \frac{n}{2k} \binom{n+k-1}{2k-1}
+T(2m,2k).
+\end{align*}\]</span> Therefore, <span
+class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} (2k-1)!  n \binom{n+k-1}{2k-1} T(2m,2k).
 \end{align*}\]</span> By factoring out <span
 class="math inline">\(n\)</span>, we obtain <span
 class="math display">\[\begin{align*}
   n^{2m-1}
   &amp;= \sum_{k=1}^{m} (2k-1)! \binom{n+k-1}{2k-1} T(2m,2k).
-\end{align*}\]</span> By hockey stick identity <span
+\end{align*}\]</span> By using hockey stick identity <span
 class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
-\binom{n+1}{j+1}\)</span> formula for sums of powers yields <span
+\binom{n+1}{j+1}\)</span> yields <span
 class="math display">\[\begin{align*}
   \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)! \binom{n+k}{2k}
 T(2m,2k).
@@ -798,15 +817,17 @@ class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
 \binom{n+1}{j+1}\)</span> repeatedly</p>
 <div id="prop:knuth-odd-powers-sum-multifold" class="proposition">
 <p><strong>Proposition 17</strong> (Knuth’s odd powers sum multifold).
-<em>For non-negative integers <span class="math inline">\(r,n,m\)</span>
-<span class="math display">\[\begin{align*}
+<em>For non-negative integers <span class="math inline">\(r,n\)</span>,
+and <span class="math inline">\(m \geq 1\)</span> <span
+class="math display">\[\begin{align*}
     \Sigma^{r+1}\,{n}^{2m-1}
     = \sum_{k=1}^{m} (2k-1)! \binom{n+k+r}{2k+r} T(2m,2k),
 \end{align*}\]</span> where <span
 class="math inline">\(T(2m,2k)\)</span> are central factorial numbers of
 the second kind.</em></p>
 </div>
-<p>For example, <span class="math display">\[\begin{align*}
+<p>For example, for <span class="math inline">\(r=0\)</span> we have
+<span class="math display">\[\begin{align*}
   \Sigma^{1}\,{n}^{1} &amp;= \tbinom{n+1}{2} 1, \\
   \Sigma^{1}\,{n}^{3} &amp;= \tbinom{n+2}{4} 6    + \tbinom{n+1}{2} 1,
 \\
@@ -814,7 +835,8 @@ the second kind.</em></p>
 30   + \tbinom{n+1}{2}, \\
   \Sigma^{1}\,{n}^{7} &amp;= \tbinom{n+4}{8} 5040 + \tbinom{n+3}{6} 1680
 + \tbinom{n+2}{4} 126 + \tbinom{n+1}{2} 1.
-\end{align*}\]</span> While multifold sums of odd powers are, <span
+\end{align*}\]</span> For example, for arbitrary integer <span
+class="math inline">\(r\)</span> we have <span
 class="math display">\[\begin{align*}
   \Sigma^{r}\,{n}^{1} &amp;= \tbinom{n+0+r}{1+r} 1, \\
   \Sigma^{r}\,{n}^{3} &amp;= \tbinom{n+1+r}{3+r} 6    +
@@ -825,14 +847,14 @@ class="math display">\[\begin{align*}
 \tbinom{n+3+r}{5+r} 1680 + \tbinom{n+1+r}{3+r} 126 + \tbinom{n+0+r}{1+r}
 1.
 \end{align*}\]</span> The coefficients <span class="math inline">\(1, 6,
-1, 120, 30, 1,\ldots\)</span> is the sequence <a
+1, 120, 30, 1, 5040, 1680, 126, 1,\ldots\)</span> is the sequence <a
 href="https://oeis.org/A303675"><code>A303675</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p>
 <h1
 id="generalized-central-factorial-numbers-of-the-second-kind">Generalized
 central factorial numbers of the second kind</h1>
-<div class="definition">
+<div id="def:generalized-central-factorial-numbers" class="definition">
 <p><strong>Definition 18</strong> (Generalized central factorial numbers
 of the second kind). <em>For integers <span class="math inline">\(0 \leq
 k \leq m\)</span>, and an arbitrary integer <span
@@ -849,7 +871,8 @@ class="math display">\[\begin{align*}
 href="#lem:central-newtons-formula-for-powers"
 data-reference-type="eqref"
 data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>.
-For example,</p>
+For example, for <span class="math inline">\(T_0(n,k)\)</span> we
+have</p>
 <div class="center">
 <table id="tab:central-factorial-numbers-t0">
 <caption>Values of generalized central factorial numbers <span
@@ -991,6 +1014,8 @@ class="math inline">\(\tfrac{35}{4}\)</span></td>
 </tbody>
 </table>
 </div>
+<p>For example, for <span class="math inline">\(T_1(n,k)\)</span> we
+have</p>
 <div class="center">
 <table id="tab:central-factorial-numbers-t1">
 <caption> Values of generalized central factorial numbers <span
@@ -1135,6 +1160,8 @@ class="math inline">\(\tfrac{483}{2}\)</span></td>
 </tbody>
 </table>
 </div>
+<p>For example, for <span class="math inline">\(T_2(n,k)\)</span> we
+have</p>
 <div class="center">
 <table id="tab:central-factorial-numbers-t2">
 <caption>Values of generalized central factorial numbers <span
@@ -1278,6 +1305,8 @@ class="math inline">\(\tfrac{6001}{4}\)</span></td>
 </tbody>
 </table>
 </div>
+<p>For example, for <span class="math inline">\(T_3(n,k)\)</span> we
+have</p>
 <div class="center">
 <table id="tab:central-factorial-numbers-t3">
 <caption>Values of generalized central factorial numbers <span
@@ -1422,6 +1451,9 @@ class="math inline">\(\tfrac{35049}{2}\)</span></td>
 </tbody>
 </table>
 </div>
+<p>For example, for <span class="math inline">\(T_t (2n, 2k)\)</span>,
+such that <span class="math inline">\(0 \leq t \leq 3\)</span>, we
+have</p>
 <table>
 <caption>Sequences of <span
 class="math inline">\(T_t(2m,2k)\)</span>.</caption>
@@ -1473,12 +1505,12 @@ href="https://oeis.org/A395457"><code>A395457</code></a></td>
 </tr>
 </tbody>
 </table>
-<p>Thus, we have the formula for sums of powers in terms of generalized
+<p>Thus, yields the formula for sums of powers in terms of generalized
 central factorial numbers of the second kind</p>
 <div id="prop:generalized-central-factorial-sums" class="proposition">
 <p><strong>Proposition 19</strong> (Generalized Central factorial sums).
-<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span>, <span
+<em>For non-negative integers <span class="math inline">\(n,m\)</span>,
+and an arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
     \left[
@@ -1491,10 +1523,22 @@ class="math display">\[\begin{align*}
 <h1
 id="double-and-triple-sums-of-powers-in-terms-of-central-differences">Double
 and triple sums of powers in terms of central differences</h1>
+<p>By following similarly, it is easy to compute closed forms of double
+sums of powers, by using Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+along with Proposition <a
+href="#prop:ordinary-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a>.
+Thus, we have to compute closed forms for sums <span
+class="math inline">\(\sum_{j=1}^{n} \binom{j -t + \frac{k}{2}
++1}{k+1}\)</span>, and <span class="math inline">\(\sum_{j=1}^{n}
+\binom{j -t + \frac{k}{2}}{k+1}\)</span>, hence</p>
 <div id="prop:double-sums-of-powers-decomposition" class="proposition">
 <p><strong>Proposition 20</strong> (Double sums of powers
-decomposition). <em>For integers <span class="math inline">\(n,m \geq
-0\)</span>, and an arbitrary integer <span
+decomposition). <em>For non-negative integers <span
+class="math inline">\(n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{m} = \frac{1}{2} \sum_{k=0}^{m}
@@ -1508,10 +1552,12 @@ class="math display">\[\begin{align*}
     \Bigg] \delta^{k} t^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>For example,</p>
+<p>For example, for <span
+class="math inline">\(\Sigma^{2}\,{n}^{2}\)</span> we have</p>
 <div class="example">
 <p><strong>Example 21</strong> (Double sum of squares in central
-differences). <em><span class="math display">\[\begin{align*}
+differences). <em>For integer <span class="math inline">\(0 \leq t \leq
+4\)</span> <span class="math display">\[\begin{align*}
     t=0:\quad
     \Sigma^{2}\,{n}^{2}
     &amp;=
@@ -1562,10 +1608,12 @@ differences). <em><span class="math display">\[\begin{align*}
     \frac{\delta^2 t^2}{2}\,\frac{n(66+53n-12n^2+n^3)}{12}.
 \end{align*}\]</span></em></p>
 </div>
+<p>Repeating the procedure above, we easily obtain the formula for
+triple sums of powers</p>
 <div id="prop:triple-sums-of-powers-decomposition" class="proposition">
 <p><strong>Proposition 22</strong> (Triple sums of powers
-decomposition). <em>For integers <span class="math inline">\(n,m \geq
-0\)</span>, and an arbitrary integer <span
+decomposition). <em>For non-negative integers <span
+class="math inline">\(n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     &amp;\Sigma^{3}\,{n}^{m}
@@ -1582,10 +1630,12 @@ class="math display">\[\begin{align*}
     \Bigg] \delta^{k} t^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>For example,</p>
+<p>For example, for <span
+class="math inline">\(\Sigma^{3}\,{n}^{2}\)</span> we have</p>
 <div class="example">
 <p><strong>Example 23</strong> (Triple sum of squares in central
-differences). <em><span class="math display">\[\begin{align*}
+differences). <em>For integer <span class="math inline">\(0 \leq t \leq
+4\)</span> <span class="math display">\[\begin{align*}
     t=0:\quad
     \Sigma^{3}\,{n}^{2}
     &amp;=
@@ -1639,9 +1689,17 @@ differences). <em><span class="math display">\[\begin{align*}
 <h1
 id="multifold-sums-of-powers-in-terms-of-central-differences">Multifold
 sums of powers in terms of central differences</h1>
+<p>By applying Lemma <a href="#lem:centered-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+on formula for ordinary sums of powers <a
+href="#prop:ordinary-sums-of-powers-decomposition"
+data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-decomposition">[prop:ordinary-sums-of-powers-decomposition]</a>
+repeatedly, the formula for multifold sums of powers follows</p>
 <div id="thm:multifold-sums-of-powers" class="theorem">
 <p><strong>Theorem 24</strong> (Multifold sums of powers). <em>For
-integers <span class="math inline">\(n,m \geq 0\)</span>, and an
+non-negative integers <span class="math inline">\(n,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
@@ -1660,7 +1718,8 @@ class="math display">\[\begin{align*}
 </div>
 <p>For example,</p>
 <div class="example">
-<p><strong>Example 25</strong> (Examples of multifold sums). <em><span
+<p><strong>Example 25</strong> (Examples of multifold sums). <em>For
+integer <span class="math inline">\(0 \leq t \leq 2\)</span> <span
 class="math display">\[\begin{align*}
     t=0:\quad
     \Sigma^{r}\,{n}^{m}
@@ -1731,11 +1790,18 @@ class="math display">\[\begin{align*}
 <h1
 id="multifold-sums-of-powers-in-generalized-central-factorial-numbers">Multifold
 sums of powers in generalized central factorial numbers</h1>
+<p>By definition <a href="#def:generalized-central-factorial-numbers"
+data-reference-type="eqref"
+data-reference="def:generalized-central-factorial-numbers">[def:generalized-central-factorial-numbers]</a>,
+from Theorem <a href="#thm:multifold-sums-of-powers"
+data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
+follows</p>
 <div id="prop:multifold-central-factorial-sums-of-powers"
 class="proposition">
 <p><strong>Proposition 26</strong> (Multifold central factorial sums of
-powers). <em>For integers <span class="math inline">\(n,m \geq
-0\)</span>, and an arbitrary integer <span
+powers). <em>For non-negative integers <span
+class="math inline">\(n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
@@ -1752,10 +1818,12 @@ class="math display">\[\begin{align*}
     \Bigg \} k! T_t(m,k).
 \end{align*}\]</span></em></p>
 </div>
-<p>For example,</p>
+<p>For example, for <span
+class="math inline">\(\Sigma^{1}\,{n}^{2}\)</span> we have</p>
 <div class="example">
 <p><strong>Example 27</strong> (Sums of squares in central factorial
-numbers). <em><span class="math display">\[\begin{align*}
+numbers). <em>For integer <span class="math inline">\(0 \leq t \leq
+5\)</span> <span class="math display">\[\begin{align*}
     t=0:\quad
     \Sigma^{1}\,{n}^{2}
     &amp;= n\cdot0 + \tfrac12 n(1+n)\cdot0 + \tfrac16
@@ -1815,10 +1883,12 @@ of the triangle <a href="#tab:central-factorial-numbers-t3"
 data-reference-type="eqref"
 data-reference="tab:central-factorial-numbers-t3">[tab:central-factorial-numbers-t3]</a>.</p></li>
 </ul>
-<p>For example,</p>
+<p>For example, for <span
+class="math inline">\(\Sigma^{1}\,{n}^{4}\)</span> we have</p>
 <div class="example">
-<p><strong>Example 28</strong> (Sums of cubes in central factorial
-numbers). <em><span class="math display">\[\begin{align*}
+<p><strong>Example 28</strong> (Sums of fourth powers in central
+factorial numbers). <em>For integer <span class="math inline">\(0 \leq t
+\leq 3\)</span> <span class="math display">\[\begin{align*}
     t=0:\quad
     \Sigma^{1}\,{n}^{4}
     &amp;= n\cdot0 + \tfrac12 n(1+n)\cdot0 + \tfrac16 n(1+3n+2n^2)\cdot1
@@ -1880,8 +1950,7 @@ data-reference="tab:central-factorial-numbers-t3">[tab:central-factorial-numbers
 powers in binomial form</h1>
 <div id="lem:multifold-sum-of-zero-powers" class="lemma">
 <p><strong>Lemma 29</strong> (Multifold sums of zero powers). <em>For
-integers <span class="math inline">\(r \geq 0\)</span>, and <span
-class="math inline">\(n\geq 1\)</span> <span
+non-negative integers <span class="math inline">\(r,n\)</span> <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{0} = \binom{r+n-1}{r}.
 \end{align*}\]</span></em></p>
@@ -1899,7 +1968,6 @@ data-reference="def:multifold-sums-of-powers-recurrence">[def:multifold-sums-of-
 <li><p><em>Let <span class="math inline">\(r=2\)</span>, then we have
 <span class="math inline">\(\Sigma^{2}\,{n}^{0}
         = \sum_{k=1}^{n} \binom{k}{1}
-        % = \sum_{k=1}^{n} k
         = \binom{n+1}{2}\)</span>.</em></p></li>
 <li><p><em>Let <span class="math inline">\(r=3\)</span>, then we have
 <span class="math inline">\(\Sigma^{3}\,{n}^{0}
@@ -1926,8 +1994,8 @@ data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
 yields</p>
 <div id="prop:multifold-binomial-sums-of-powers" class="proposition">
 <p><strong>Proposition 30</strong> (Multifold binomial sums of powers).
-<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span>, <span
+<em>For non-negative integers <span class="math inline">\(n,m\)</span>,
+and an arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     &amp;= \frac{1}{2} \sum_{k=0}^{m}
@@ -1946,7 +2014,8 @@ class="math display">\[\begin{align*}
 <p>For example,</p>
 <div class="example">
 <p><strong>Example 31</strong> (Examples of multifold binomial sums).
-<em><span class="math display">\[\begin{align*}
+<em>For integer <span class="math inline">\(0 \leq t \leq 2\)</span>
+<span class="math display">\[\begin{align*}
     t=0:\quad
     \Sigma^{r}\,{n}^{m}
     &amp;=
@@ -2013,6 +2082,49 @@ class="math display">\[\begin{align*}
     \,\delta^k 2^m .
 \end{align*}\]</span></em></p>
 </div>
+<p>By setting <span class="math inline">\(t \rightarrow -t\)</span> we
+get negated version of Proposition <a
+href="#prop:multifold-binomial-sums-of-powers"
+data-reference-type="eqref"
+data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a></p>
+<div id="prop:multifold-binomial-sums-of-powers-negated"
+class="proposition">
+<p><strong>Proposition 32</strong> (Multifold binomial sums of powers
+negated). <em>For non-negative integers <span
+class="math inline">\(n,m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \frac{1}{2} \sum_{k=0}^{m} (-1)^{m+k}
+    \Bigg \{
+      \binom{n+t+\frac{k}{2}+r}{k+r} + \binom{n+t+\frac{k}{2}+r-1}{k+r}
+\\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \left[
+        \binom{r-s+t+\frac{k}{2}}{k+r-s} +
+\binom{r-1-s+t+\frac{k}{2}}{k+r-s}
+      \right] \binom{s+n-1}{s}
+    \Bigg \} \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> By setting <span class="math inline">\(t
+\rightarrow -t\)</span> into Proposition <a
+href="#prop:multifold-binomial-sums-of-powers"
+data-reference-type="eqref"
+data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a>,
+and by <span class="math inline">\(\delta^k (-t)^m = (-1)^{m+k}
+\delta^{k} t^{m}\)</span>. ◻</em></p>
+</div>
+</div>
+<p>There are indeed many (infinitely) variations of such formulas as
+above, at least for every integer <span
+class="math inline">\(t\)</span>. However, this entropy can be even
+wilder, by recalling the fundamental properties of binomial
+coefficients, such as <span class="math display">\[\begin{align*}
+  \binom{-x}{k} &amp;= (-1)^{k} \binom{x+k-1}{k}, \\
+  \binom{x}{k}  &amp;= \binom{x}{x-k}.
+\end{align*}\]</span></p>
 <h1 id="framework-for-sums-of-powers">Framework for sums of powers</h1>
 <p>In this manuscript, we derive formulas for sums of powers by
 combining centered Newton’s interpolation formula for powers <a
@@ -2099,7 +2211,7 @@ data-cites="Norlund1924">(Nörlund 1924)</span>, and definition given by
 Steffensen <span class="citation"
 data-cites="steffensen1933definition">(Steffensen 1933)</span></p>
 <div id="prop:generalized-factorial" class="definition">
-<p><strong>Definition 32</strong> (Generalized factorial). <em>For
+<p><strong>Definition 33</strong> (Generalized factorial). <em>For
 non-negative integers <span
 class="math inline">\(x,n,\alpha,\beta\)</span> <span
 class="math display">\[\begin{align*}
@@ -2124,7 +2236,7 @@ formula)}\\
 \end{align*}\]</span> More precisely, the algorithm for closed formulas
 for sums of powers is</p>
 <div id="alg:sums-of-powers" class="algorithm">
-<p><strong>Algorithm 33</strong> (Algorithm for closed formulas).
+<p><strong>Algorithm 34</strong> (Algorithm for closed formulas).
 <em></em></p>
 <ol>
 <li><p><em>Define the function <span class="math inline">\(f(x) =
@@ -2174,10 +2286,8 @@ data-cites="kolosov_2026_forward">(Kolosov 2026a)</span> provides
 remarkable formulas for sums of powers, based on forward difference
 Newton’s formula,</p>
 <div class="proposition">
-<p><strong>Proposition 34</strong>. <em>For integers <span
-class="math inline">\(r\geq 0\)</span>, and <span
-class="math inline">\(n\geq 0\)</span>, and <span
-class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+<p><strong>Proposition 35</strong>. <em>For non-negative integers <span
+class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
@@ -2191,10 +2301,8 @@ class="math display">\[\begin{align*}
 <p>Also, in terms of Eulerian numbers <span
 class="math inline">\(\genfrac{\langle}{\rangle}{0pt}{}{n}{k}\)</span></p>
 <div class="proposition">
-<p><strong>Proposition 35</strong>. <em>For integers <span
-class="math inline">\(r\geq0\)</span>, and <span
-class="math inline">\(n\geq 0\)</span>, and <span
-class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+<p><strong>Proposition 36</strong>. <em>For non-negative integers <span
+class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
@@ -2209,18 +2317,21 @@ class="math display">\[\begin{align*}
 Stirling numbers of the second kind</em>  <span class="citation"
 data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
 2022)</span> discusses closed formulas for sums of powers in terms of
-generalized Stirling numbers of the second kind, which originates from
-forward Newton’s formula for powers, around arbitrary integer point
-<span class="math inline">\(t\)</span>. It is quite remarkable that
-both <span class="citation"
+generalized Stirling numbers of the second kind <span
+class="math inline">\(\genfrac{\{}{\}}{0pt}{}{k}{j}_{r}\)</span> which
+originates from forward Newton’s formula for powers, evaluated at
+arbitrary integer <span class="math inline">\(t\)</span>. It is quite
+interesting that both <span class="citation"
 data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
 2022)</span>, and <span class="citation"
 data-cites="kolosov_2026_forward">(Kolosov 2026a)</span> reached the
 same result independently. In <span class="citation"
 data-cites="cereceda2022sumspowersintegersgeneralized">(Cereceda
-2022)</span> we get</p>
+2022)</span>, we read</p>
 <div class="proposition">
-<p><strong>Proposition 36</strong> (Cereceda (2022)). <em><span
+<p><strong>Proposition 37</strong> (Cereceda (2022)). <em>For
+non-negative integers <span class="math inline">\(n,k\)</span>, and an
+arbitrary integer <span class="math inline">\(r\)</span> <span
 class="math display">\[\begin{align}
     \label{eq:cereceda-sums-1}
     \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j!
@@ -2231,7 +2342,7 @@ class="math display">\[\begin{align}
     \label{eq:cereceda-sums-2}
     \Sigma^{1}\,{n}^{k} = \sum_{j=0}^{k} j!
     \left[
-      \binom{n+1-r}{j+1} + \binom{r+1}{j+1}
+      \binom{n+1+r}{j+1} + \binom{r+1}{j+1}
     \right] \genfrac{\{}{\}}{0pt}{}{k}{j}_{-r}.
 \end{align}\]</span></em></p>
 </div>
@@ -2241,13 +2352,13 @@ special case of proposition <span class="citation"
 data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop.
 (1.9))</span></p>
 <div class="proposition">
-<p><strong>Proposition 37</strong>. <em>For integers <span
-class="math inline">\(n\geq 0\)</span>, and <span
-class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+<p><strong>Proposition 38</strong>. <em>For non-negative integers <span
+class="math inline">\(n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^m
-    \left[ \binom{n-t+1}{j+1} + (-1)^j \binom{j+t-1}{j+1} \right].
+    \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m}
+    \left[ \binom{n-t+1}{j+1} + (-1)^j \binom{j+t-1}{j+1} \right]
+\Delta^{j} t^m.
 \end{align*}\]</span></em></p>
 </div>
 <p>in terms of generalized Stirling numbers <span
@@ -2259,26 +2370,26 @@ class="math inline">\(\Delta^{j} t^m = j!
 href="#eq:cereceda-sums-2" data-reference-type="eqref"
 data-reference="eq:cereceda-sums-2">[eq:cereceda-sums-2]</a> is a
 special case of proposition <span class="citation"
-data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop.
-(1.8))</span></p>
+data-cites="kolosov_2026_forward">(Kolosov 2026a, Prop. (1.8))</span>
+with setting <span class="math inline">\(t=-r\)</span></p>
 <div class="proposition">
-<p><strong>Proposition 38</strong>. <em>For integers <span
-class="math inline">\(n\geq 0\)</span>, and <span
-class="math inline">\(m\geq 0\)</span>, and an arbitrary integer <span
+<p><strong>Proposition 39</strong>. <em>For non-negative integers <span
+class="math inline">\(n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m} \Delta^{j} t^m
-    \left[ \binom{n-t+1}{j+1} - \binom{1-t}{j+1} \right].
+    \Sigma^{1}\,{n}^{m} = \sum_{j=0}^{m}
+    \left[ \binom{n+t+1}{j+1} - \binom{1+t}{j+1} \right] \Delta^{j}
+(-t)^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>with setting <span class="math inline">\(t=r\)</span>. Moving to
-backward Newton’s formula, the work <span class="citation"
-data-cites="kolosov_2026_backward">(Kolosov 2026b)</span> utilizes
-algorithm <a href="#alg:sums-of-powers" data-reference-type="eqref"
+<p>Moving discussion to backward Newton’s formula, the work <span
+class="citation" data-cites="kolosov_2026_backward">(Kolosov
+2026b)</span> utilizes algorithm <a href="#alg:sums-of-powers"
+data-reference-type="eqref"
 data-reference="alg:sums-of-powers">[alg:sums-of-powers]</a> in terms of
 backward differences, providing another remarkable formula</p>
 <div class="proposition">
-<p><strong>Proposition 39</strong>. <em>For non-negative integers <span
+<p><strong>Proposition 40</strong>. <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
 class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
@@ -2298,9 +2409,9 @@ Essentially, it achieves similar formulas for sums of powers as current
 paper, but using different binomial identities to reach the closed form.
 For instance,</p>
 <div class="proposition">
-<p><strong>Proposition 40</strong>. <em>For integers <span
-class="math inline">\(n\geq 0, \; m \geq 0\)</span>, and an arbitrary
-integer <span class="math inline">\(t\)</span> <span
+<p><strong>Proposition 41</strong>. <em>For non-negative integers <span
+class="math inline">\(r,n,m\)</span> and an arbitrary integer <span
+class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     &amp;= \binom{r+n-1}{r} t^m
@@ -2462,14 +2573,22 @@ href="#prop:multifold-binomial-sums-of-powers"
 data-reference-type="eqref"
 data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a></td>
 </tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldBinomialSumsOfPowersNegated.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:multifold-binomial-sums-of-powers-negated"
+data-reference-type="eqref"
+data-reference="prop:multifold-binomial-sums-of-powers-negated">[prop:multifold-binomial-sums-of-powers-negated]</a></td>
+</tr>
 </tbody>
 </table>
 </div>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
-<li><p><strong>Initial release date:</strong> 04-Jun-2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-06-17.</p></li>
-<li><p><strong>Version:</strong> <code>1.0.3+main.749f3d1</code>
+<li><p><strong>Initial release date:</strong> June 04, 2026.</p></li>
+<li><p><strong>Current release date:</strong> 2026-06-22.</p></li>
+<li><p><strong>Version:</strong> <code>1.0.4+main.4c83bb5</code>
 .</p></li>
 <li><p><strong>MSC2010:</strong> 05A10, 11B68, 11B73, 11B83 .</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
