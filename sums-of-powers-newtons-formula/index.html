@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-06-27" />
+  <meta name="dcterms.date" content="2026-06-28" />
   <title>Newton’s interpolation formula and sums of powers</title>
   <style>
     /* Default styles provided by pandoc.
@@ -213,7 +213,7 @@
 <header id="title-block-header">
 <h1 class="title">Newton’s interpolation formula and sums of powers</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-06-27</p>
+<p class="date">2026-06-28</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>In this manuscript, we derive closed formulas for multifold sums of
@@ -427,8 +427,8 @@ class="math display">\[\begin{align*}
     = \sum_{k=0}^{\infty} \frac{x-a}{k} \binom{x-a+\frac{k}{2}-1}{k-1}
 \delta^{k} f(a), \\
     f(x)
-    &amp;= \sum_{k=0}^{\infty} \frac{x-a^{\left(k\right)}}{k!} \Delta^k
-f(a)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^{\left(k\right)}}{k!}
+\Delta^k f(a)
     = \sum_{k=0}^{\infty} \binom{x-a}{k} \Delta^k f(a), \\
     f(x)
     &amp;= \sum_{k=0}^{\infty} \frac{\left(x-a\right)_{k}}{k!} \nabla^k
@@ -911,10 +911,86 @@ class="math display">\[\begin{align*}
     \Delta^k 3^m.
 \end{align*}\]</span></em></p>
 </div>
+<p>These formulas are polynomials in <span
+class="math inline">\(n\)</span>, with integer coefficients which are
+forward finite differences of powers, evaluated at arbitrary integer
+<span class="math inline">\(t\)</span>. For example, for integer <span
+class="math inline">\(0 \leq t \leq 4\)</span>, we have</p>
+<div class="example">
+<p><strong>Example 24</strong>. <em>For <span
+class="math inline">\(r=1\)</span> and <span
+class="math inline">\(m=3\)</span>, Proposition <a
+href="#prop:multifold-binomial-sums-of-powers" data-reference-type="ref"
+data-reference="prop:multifold-binomial-sums-of-powers">22</a> yields
+<span class="math display">\[\begin{align*}
+    t=0:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    n\cdot0
+    +\tfrac{1}{2}(n+n^2)\cdot1
+    +\tfrac{1}{6}(-n+n^3)\cdot6
+    +\tfrac{1}{24}(2n-n^2-2n^3+n^4)\cdot6,
+    \\
+    t=1:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    n\cdot1
+    +\tfrac{1}{2}(-n+n^2)\cdot7
+    +\tfrac{1}{6}(2n-3n^2+n^3)\cdot12 \\
+    &amp;+\tfrac{1}{24}(-6n+11n^2-6n^3+n^4)\cdot6,
+    \\
+    t=2:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    n\cdot8
+    +\tfrac{1}{2}(-3n+n^2)\cdot19
+    +\tfrac{1}{6}(11n-6n^2+n^3)\cdot18 \\
+    &amp;+\tfrac{1}{24}(-50n+35n^2-10n^3+n^4)\cdot6,
+    \\
+    t=3:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    n\cdot27
+    +\tfrac{1}{2}(-5n+n^2)\cdot37
+    +\tfrac{1}{6}(26n-9n^2+n^3)\cdot24 \\
+    &amp;+\tfrac{1}{24}(-154n+71n^2-14n^3+n^4)\cdot6,
+    \\
+    t=4:\quad
+    \Sigma^{1}\,{n}^{3}
+    &amp;=
+    n\cdot64
+    +\tfrac{1}{2}(-7n+n^2)\cdot61
+    +\tfrac{1}{6}(47n-12n^2+n^3)\cdot30 \\
+    &amp;+\tfrac{1}{24}(-342n+119n^2-18n^3+n^4)\cdot6.
+\end{align*}\]</span></em></p>
+</div>
+<p>Where the coefficients</p>
+<ul>
+<li><p>For <span class="math inline">\(t=0\)</span> are <span
+class="math inline">\(0, 1, 6, 6\)</span> belong to the sequence <a
+href="https://oeis.org/A131689"><code>A131689</code></a> in the
+OEIS.</p></li>
+<li><p>For <span class="math inline">\(t=1\)</span> are <span
+class="math inline">\(1, 7, 12, 6\)</span> belong to the sequence <a
+href="https://oeis.org/A028246"><code>A028246</code></a> in the
+OEIS.</p></li>
+<li><p>For <span class="math inline">\(t=2\)</span> are <span
+class="math inline">\(8, 19, 18, 6\)</span> belong to the sequence <a
+href="https://oeis.org/A038719"><code>A038719</code></a> in the
+OEIS.</p></li>
+<li><p>For <span class="math inline">\(t=3\)</span> are <span
+class="math inline">\(27, 37, 24, 6\)</span> belong to the sequence <a
+href="https://oeis.org/A391552"><code>A391552</code></a> in the
+OEIS.</p></li>
+<li><p>For <span class="math inline">\(t=4\)</span> are <span
+class="math inline">\(64, 61, 30, 6\)</span> belong to the sequence <a
+href="https://oeis.org/A391633"><code>A391633</code></a> in the
+OEIS.</p></li>
+</ul>
 <h1 id="stirling-form">Stirling form</h1>
 <p>We have</p>
 <div id="lem:finite-differences-via-stirling-numbers" class="lemma">
-<p><strong>Lemma 24</strong> (Stirling finite differences). <em>For
+<p><strong>Lemma 25</strong> (Stirling finite differences). <em>For
 non-negative integers <span class="math inline">\(k,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
@@ -932,7 +1008,7 @@ data-reference-type="eqref"
 data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
 follows</p>
 <div id="prop:multifold-stirling-sums" class="proposition">
-<p><strong>Proposition 25</strong> (Multifold Stirling sums). <em>For
+<p><strong>Proposition 26</strong> (Multifold Stirling sums). <em>For
 non-negative integers <span class="math inline">\(r,n,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -952,7 +1028,7 @@ data-reference-type="eqref"
 data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
 the pure binomial form follows</p>
 <div id="prop:multifold-stirling-binomial-sums" class="proposition">
-<p><strong>Proposition 26</strong> (Multifold Stirling-Binomial sums).
+<p><strong>Proposition 27</strong> (Multifold Stirling-Binomial sums).
 <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
@@ -971,7 +1047,7 @@ class="math display">\[\begin{align*}
 <h1 id="eulerian-form">Eulerian form</h1>
 <p>We have</p>
 <div id="lem:worpitzky-identity" class="lemma">
-<p><strong>Lemma 27</strong> (Worpitzky identity). <em>For non-negative
+<p><strong>Lemma 28</strong> (Worpitzky identity). <em>For non-negative
 integers <span class="math inline">\(t,m\)</span> <span
 class="math display">\[\begin{align*}
     t^{m} = \sum_{k=0}^{m} \binom{t+k}{m}
@@ -989,7 +1065,7 @@ class="citation" data-cites="Worpitzky1883">(Worpitzky
 Eulerian numbers <span
 class="math inline">\(\genfrac{\langle}{\rangle}{0pt}{}{m}{s}\)</span></p>
 <div id="lem:finite-differences-via-eulerian-numbers" class="lemma">
-<p><strong>Lemma 28</strong> (Eulerian finite differences). <em>For
+<p><strong>Lemma 29</strong> (Eulerian finite differences). <em>For
 non-negative integers <span class="math inline">\(t,k\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span>, <span
 class="math display">\[\begin{align*}
@@ -1009,7 +1085,7 @@ data-reference-type="eqref"
 data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
 follows</p>
 <div id="prop:multifold-eulerian-sums" class="proposition">
-<p><strong>Proposition 29</strong> (Multifold Eulerian sums). <em>For
+<p><strong>Proposition 30</strong> (Multifold Eulerian sums). <em>For
 non-negative integers <span class="math inline">\(r,n,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -1029,7 +1105,7 @@ data-reference-type="eqref"
 data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
 the pure binomial form follows</p>
 <div id="prop:multifold-eulerian-binomial-sums" class="proposition">
-<p><strong>Proposition 30</strong> (Multifold Eulerian-Binomial sums).
+<p><strong>Proposition 31</strong> (Multifold Eulerian-Binomial sums).
 <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
@@ -1048,7 +1124,7 @@ class="math display">\[\begin{align*}
 <h1 id="backward-difference-form">Backward difference form</h1>
 <p>We have</p>
 <div id="lem:forward-via-backward-differences" class="lemma">
-<p><strong>Lemma 31</strong> (Forward-Backward relation). <em>For
+<p><strong>Lemma 32</strong> (Forward-Backward relation). <em>For
 non-negative integers <span class="math inline">\(k,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -1063,7 +1139,7 @@ data-reference-type="eqref"
 data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
 follows</p>
 <div id="prop:multifold-backward-sums" class="proposition">
-<p><strong>Proposition 32</strong> (Multifold Backward sums). <em>For
+<p><strong>Proposition 33</strong> (Multifold Backward sums). <em>For
 non-negative integers <span class="math inline">\(r,n,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -1083,7 +1159,7 @@ data-reference-type="eqref"
 data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
 the pure binomial form follows</p>
 <div id="prop:multifold-backward-binomial-sums" class="proposition">
-<p><strong>Proposition 33</strong> (Multifold Backward-Binomial sums).
+<p><strong>Proposition 34</strong> (Multifold Backward-Binomial sums).
 <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
@@ -1102,7 +1178,7 @@ class="math display">\[\begin{align*}
 <h1 id="central-difference-form">Central difference form</h1>
 <p>We have</p>
 <div id="prop:forward-via-central-differences" class="lemma">
-<p><strong>Lemma 34</strong> (Forward-Central relation). <em>For
+<p><strong>Lemma 35</strong> (Forward-Central relation). <em>For
 non-negative integers <span class="math inline">\(k,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -1120,7 +1196,7 @@ data-reference-type="eqref"
 data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>
 follows</p>
 <div id="prop:multifold-central-sums" class="proposition">
-<p><strong>Proposition 35</strong> (Multifold Central sums). <em>For
+<p><strong>Proposition 36</strong> (Multifold Central sums). <em>For
 non-negative integers <span class="math inline">\(r,n,m\)</span>, and an
 arbitrary integer <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
@@ -1140,7 +1216,7 @@ data-reference-type="eqref"
 data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
 the pure binomial form follows</p>
 <div id="prop:multifold-central-binomial-sums" class="proposition">
-<p><strong>Proposition 36</strong> (Multifold Central-Binomial sums).
+<p><strong>Proposition 37</strong> (Multifold Central-Binomial sums).
 <em>For non-negative integers <span
 class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span> <span
@@ -1265,9 +1341,9 @@ data-reference="prop:multifold-central-binomial-sums">[prop:multifold-central-bi
 <ul>
 <li><p><strong>Initial release date:</strong> December 24,
 2025.</p></li>
-<li><p><strong>Current release date:</strong> 2026-06-27.</p></li>
+<li><p><strong>Current release date:</strong> 2026-06-28.</p></li>
 <li><p><strong>Version:</strong>
-<code>2.0.0+main.97e424d</code></p></li>
+<code>2.0.1+main.4c3ba8a</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 41A15, 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Newton’s series,
