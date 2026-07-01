@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="canonical" href="https://kolosovpetro.github.io/sums-of-powers-central-differences/" />
-  <meta name="keywords" content="sums of powers, Newton interpolation formula, finite differences, binomial coefficients, Faulhaber's formula, Bernoulli numbers, Bernoulli polynomials, interpolation, approximation, discrete convolution, combinatorics, polynomial identities, central factorial numbers, Stirling numbers, Eulerian numbers, Worpitzky identity, Pascal's triangle, OEIS" />
-  <meta name="description" content="We derive closed-form expressions for multifold sums of powers using Newton’s central differences formula, evaluated at an arbitrary integer point. Knuth’s formula for odd-power sums emerges naturally at zero, and Mathematica code is provided to verify the results." />
-
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-01-24" />
+  <meta name="dcterms.date" content="2026-07-01" />
   <title>Sums of powers via central finite differences and Newton’s formula</title>
   <style>
     /* Default styles provided by pandoc.
@@ -108,6 +104,7 @@
       margin-bottom: 0.5em;
     }
     code {
+      white-space: pre-wrap;
       font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
@@ -171,10 +168,13 @@
     #TOC a:not(:hover) {
       text-decoration: none;
     }
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -206,7 +206,7 @@
       margin-left: 2em;
     }  </style>
   <script defer=""
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
   type="text/javascript"></script>
 </head>
 <body>
@@ -214,47 +214,53 @@
 <h1 class="title">Sums of powers via central finite differences and
 Newton’s formula</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-01-24</p>
+<p class="date">2026-07-01</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
-<p>In this manuscript, we derive closed-form expressions for multifold
-sums of powers using Newton’s interpolation formula in central
-differences, evaluated at an arbitrary integer point <span
-class="math inline">\(t\)</span>. We further show that Knuth’s formula
-for multifold sums of odd powers arises naturally from Newton’s
-interpolation formula in central differences evaluated at zero.
-Additionally, we provide Wolfram Mathematica programs to validate the
-main results.</p>
+<p>In this manuscript, we derive closed formulas for multifold sums of
+powers of integers by combining the central Newton interpolation formula
+with hockey-stick identities for binomial coefficients. We further
+obtain representations of multifold sums of powers in terms of Stirling
+numbers of the second kind and Eulerian numbers. Finally, we provide
+Wolfram Mathematica programs for the efficient verification of the
+derived identities.</p>
 </div>
 </header>
-<p><a href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a></p>
-<h1 id="introduction-and-main-results">Introduction and main
-results</h1>
-<p>In this manuscript, we derive formulas for multifold sums of powers
-using Newton’s formula and central finite differences. The idea of
-deriving sums of powers using difference operators and Newton series is
-classical and quite general. Formulas for sums of powers using forward
-and backward differences can be found in the works <span
-class="citation"
-data-cites="kolosov_2026_18135998 kolosov_2026_18136163">(Kolosov 2026a,
-2026b)</span>. We define the recurrence for multifold sums of powers
-introduced by Donald Knuth <span class="citation"
-data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span>, which is
-used throughout the paper.</p>
-<div id="prop:multifold-sums-of-powers-recurrence" class="proposition">
-<p><strong>Proposition 1</strong> (Multifold sums of powers recurrence).
-<em>For non-negative integers <span class="math inline">\(r,n,m\)</span>
-<span class="math display">\[\begin{align*}
-    \Sigma^{0}\,{n}^{m}   &amp;= n^m \\
+<h1 id="auxiliary-lemmas">Auxiliary lemmas</h1>
+<p>In this section, allow us to define a few lemmas, definitions, and
+conventions that serve as foundation for main results of this
+manuscript. For multifold sums of powers, we use the notation provided
+by Donald Knuth in <span class="citation"
+data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span>, because it
+is simple and beautiful</p>
+<div id="def:multifold-sums-of-powers-recurrence" class="definition">
+<p><strong>Definition 1</strong> (Multifold sums of powers). <em>For
+non-negative integers <span class="math inline">\(r,n,m\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{0}\,{n}^{m}   &amp;= n^m, \\
     \Sigma^{1}\,{n}^{m}   &amp;= \Sigma^{0}\,{1}^{m}
-    + \Sigma^{0}\,{2}^{m} + \cdots + \Sigma^{0}\,{n}^{m} \\
+    + \Sigma^{0}\,{2}^{m} + \cdots + \Sigma^{0}\,{n}^{m}, \\
     \Sigma^{r+1}\,{n}^{m} &amp;= \Sigma^{r}\,{1}^{m}
-    + \Sigma^{r}\,{2}^{m} + \cdots + \Sigma^{r}\,{n}^{m}
+    + \Sigma^{r}\,{2}^{m} + \cdots + \Sigma^{r}\,{n}^{m}.
 \end{align*}\]</span></em></p>
 </div>
-<div class="proposition">
-<p><strong>Proposition 2</strong> (Central factorials). <em>For integers
+<p>We utilize the following notation for falling factorials</p>
+<div class="definition">
+<p><strong>Definition 2</strong> (Falling factorials). <em>For integers
+<span class="math inline">\(x,n\)</span> <span
+class="math display">\[\begin{align*}
+    \left(n\right)_{k} =
+    \begin{cases}
+      1, &amp; \mathrm{if \; } k = 0, \\
+      n(n-1)(n-2)\cdots(n-k+1) = \prod_{j=0}^{k-1} (n-j), &amp;
+\mathrm{if \; } k &gt; 0, \\
+      0, &amp; \mathrm{else}.
+    \end{cases}
+\end{align*}\]</span></em></p>
+</div>
+<p>We utilize the following notation for central factorials</p>
+<div id="def:central-factorials" class="definition">
+<p><strong>Definition 3</strong> (Central factorials). <em>For integers
 <span class="math inline">\(n,k\)</span> <span
 class="math display">\[\begin{align*}
     n^{[k]} =
@@ -263,64 +269,67 @@ class="math display">\[\begin{align*}
       1, \quad &amp; \mathrm{if \; } k = 0, \\
       n \left( n + \frac{k}{2} -1 \right)\left( n + \frac{k}{2} -2
 \right)
-      \cdots \left( n - \frac{k}{2} +1 \right) = n \prod_{j=1}^{k-1}
-      \left( n + \frac{k}{2} -j \right), \quad &amp; \mathrm{if \; }
-k&gt;0.
-    \end{cases}
-\end{align*}\]</span></em></p>
-</div>
-<p>Consider Newton’s interpolation formula <span class="citation"
-data-cites="newton1850newton butzer1989central steffensen1927interpolation">(Newton,
-Isaac and Chittenden, N.W. 1850; Butzer et al. 1989; Steffensen, Johan
-Frederik 1927)</span> in central differences evaluated at zero.</p>
-<div id="prop:newtons-formula-in-central-differences"
-class="proposition">
-<p><strong>Proposition 3</strong> (Newton’s formula in central
-differences at zero). <em><span class="math display">\[\begin{align*}
-    f(x)
-    = \sum_{k=0}^{\infty} \frac{x^{[k]}}{k!} \delta^{k} f(0),
-\end{align*}\]</span> where <span class="math inline">\(\delta^{k} f(0)
-  = \sum_{j=0}^{k} (-1)^{j} \binom{k}{j} f\left(\frac{k}{2} -
-j\right)\)</span> are central finite differences at zero, and <span
-class="math inline">\(x^{[k]}\)</span> are central factorials, with
-<span class="math inline">\(x^{[0]}=1\)</span> for every <span
-class="math inline">\(x\)</span>.</em></p>
-</div>
-<p>We observe that central factorials are closely related to falling
-factorials <span class="math inline">\(\left(x\right)_{n}
-= x(x-1)(x-2)(x-3)\cdots(x-n+1)=\prod_{k=0}^{n-1}(x-k)\)</span>.
-Therefore,</p>
-<div id="prop:central-factorials-in-terms-of-falling"
-class="proposition">
-<p><strong>Proposition 4</strong> (Central factorials in terms of
-falling). <em>For integers <span class="math inline">\(n,k\)</span>
-<span class="math display">\[\begin{align*}
-    n^{[k]} =
-    \begin{cases}
-      0, \quad &amp; \mathrm{if \; } k&lt;0 \\
-      1, \quad &amp; \mathrm{if \; } k=0 \\
-      n \left(n+\frac{k}{2}-1\right)_{k-1}, \quad &amp; \mathrm{if \; }
-k&gt;0
+      \cdots \left( n - \frac{k}{2} +1 \right)
+      = n \left(n+\frac{k}{2}-1\right)_{k-1}, \quad &amp; \mathrm{if \;
+} k&gt;0,
     \end{cases}
 \end{align*}\]</span> where <span
-class="math inline">\(\left(n+\frac{k}{2}-1\right)_{k-1}\)</span> are
+class="math inline">\(\left(n+\frac{k}{2}-1\right)_{k-1}
+  = \prod_{j=0}^{k-2} \left( n+\frac{k}{2}-1 -j \right)\)</span> are
 falling factorials.</em></p>
 </div>
-<p>To derive a formula for multifold sums of powers, we follow the
-strategy to express the Newton’s formula <a
-href="#prop:newtons-formula-in-central-differences"
-data-reference-type="eqref"
-data-reference="prop:newtons-formula-in-central-differences">[prop:newtons-formula-in-central-differences]</a>
-in terms of binomial coefficients, then to reach closed forms of column
-sum of binomial coefficients by means of hockey stick identity.
-Therefore,</p>
-<div id="prop:binomial-form-of-central-factorials" class="proposition">
-<p><strong>Proposition 5</strong> (Binomial form of central factorials).
-<em>For integers <span class="math inline">\(n\)</span> and <span
-class="math inline">\(k \geq 1\)</span> <span
+<p>We encourage the audience to read J. F. Steffensen’s work on the
+definition of generalized factorials <span class="citation"
+data-cites="steffensen1933definition">(Steffensen 1933)</span>.</p>
+<div id="lem:central-newtons-formula" class="lemma">
+<p><strong>Lemma 4</strong> (Central Newton’s formula). <em>For a
+function <span class="math inline">\(f\)</span> defined on integers and
+arbitrary integers <span class="math inline">\(x,t\)</span> <span
+class="math display">\[\begin{align*}
+    f(x)
+    = \sum_{k=0}^{\infty} \frac{(x-t)^{[k]}}{k!} \delta^{k} f(t),
+\end{align*}\]</span> where <span class="math inline">\(\delta^{k}
+f(t)\)</span> denotes the <span class="math inline">\(k\)</span>-th
+central finite difference <span class="math display">\[\begin{align*}
+    \delta^{k} f(t) = \mathop{\textstyle\sum}_{j=0}^{k} (-1)^j
+\tbinom{k}{j} f\!\left(t+\tfrac{k}{2} - j\right),
+\end{align*}\]</span> and <span
+class="math inline">\((x-t)^{[k]}\)</span> are central factorials
+defined by <a href="#def:central-factorials" data-reference-type="eqref"
+data-reference="def:central-factorials">[def:central-factorials]</a>.</em></p>
+<div class="proof">
+<p><em><em>Proof.</em> See <span class="citation"
+data-cites="butzer1989central">(Butzer et al. 1989, 462)</span>,
+and <span class="citation"
+data-cites="steffensen1927interpolation">(Steffensen, Johan Frederik
+1927, sec. 2, eq. (19))</span>, and <span class="citation"
+data-cites="riordan1968combinatorial">(Riordan 1968, sec. 6, eq.
+(21))</span>. ◻</em></p>
+</div>
+</div>
+<p>We have</p>
+<div id="lem:central-newtons-formula-for-powers" class="lemma">
+<p><strong>Lemma 5</strong> (Newton’s formula for powers). <em>For
+non-negative integers <span class="math inline">\(n,m\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span>, <span
+class="math display">\[\begin{align*}
+    n^m = \sum_{k=0}^{m} \frac{(n-t)^{[k]}}{k!} \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> Special case of Lemma <a
+href="#lem:central-newtons-formula" data-reference-type="eqref"
+data-reference="lem:central-newtons-formula">[lem:central-newtons-formula]</a>
+for <span class="math inline">\(f(n) = n^m\)</span>. ◻</em></p>
+</div>
+</div>
+<p>We have</p>
+<div id="lem:central-factorials-binomial-form" class="lemma">
+<p><strong>Lemma 6</strong> (Central factorials binomial form). <em>For
+integers <span class="math inline">\(n\)</span> and <span
+class="math inline">\(k\neq0\)</span>, <span
 class="math display">\[\begin{align*}
     \frac{n^{[k]}}{k!}
-    = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
+    = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}.
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em> We have <span
@@ -328,749 +337,868 @@ class="math display">\[\begin{align*}
       \frac{n^{[k]}}{k!}
       &amp;= \frac{n}{k!}\left(n+\frac{k}{2}-1\right)_{k-1}
       = \frac{n}{k (k-1)!} \left(n+\frac{k}{2}-1\right)_{k-1}
-      = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
-\end{align*}\]</span> because of the identity in falling factorial <span
-class="math inline">\(\frac{\left(x\right)_{n}}{n!} =
-\binom{x}{n}\)</span>, and Proposition <a
-href="#prop:central-factorials-in-terms-of-falling"
-data-reference-type="eqref"
-data-reference="prop:central-factorials-in-terms-of-falling">[prop:central-factorials-in-terms-of-falling]</a>. ◻</em></p>
+      = \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1},
+\end{align*}\]</span> because of the identity in falling factorials
+<span class="math inline">\(\frac{\left(x\right)_{n}}{n!} =
+\binom{x}{n}\)</span>. ◻</em></p>
 </div>
 </div>
-<p>This yields Newton’s formula for powers, in terms of central
-differences.</p>
-<div id="prop:newtons-formula-for-powers-in-zero" class="proposition">
-<p><strong>Proposition 6</strong> (Newton’s formula for powers at zero).
-<em>For positive integers <span class="math inline">\(n \geq 1\)</span>
-and <span class="math inline">\(m \geq 1\)</span> <span
-class="math display">\[\begin{align*}
-    n^m
-    = \sum_{k=1}^{m} \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1} \delta^{k}
-0^m
-\end{align*}\]</span></em></p>
-</div>
-<p>Although it is based on Newton’s interpolation formula <a
-href="#prop:newtons-formula-in-central-differences"
-data-reference-type="eqref"
-data-reference="prop:newtons-formula-in-central-differences">[prop:newtons-formula-in-central-differences]</a>,
-Proposition <a href="#prop:newtons-formula-for-powers-in-zero"
-data-reference-type="eqref"
-data-reference="prop:newtons-formula-for-powers-in-zero">[prop:newtons-formula-for-powers-in-zero]</a>
-starts the summation at <span class="math inline">\(k=1\)</span>, which
-avoids division by zero in <span
-class="math inline">\(\frac{n}{k}\)</span>. This is a valid trick,
-because the central difference <span class="math inline">\(\delta^{k}
-0^n\)</span> is zero for all <span class="math inline">\(n \geq
-1\)</span> and <span class="math inline">\(k=0\)</span>. By factoring
-out and simplifying the term <span class="math inline">\(n\)</span>, we
-get <span class="math display">\[\begin{align*}
-  n^{m-1}
-  = \sum_{k=1}^{m} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1} \delta^{k}
-0^m
-\end{align*}\]</span> We observe that the central finite difference
-operator <span class="math inline">\(\delta^{k} 0^m\)</span> depends on
-the parity of <span class="math inline">\(m\)</span> and <span
-class="math inline">\(k\)</span>. In particular, <span
-class="math display">\[\begin{align*}
-  \delta^{k} 0^m \neq 0 \quad &amp;\text{when} \quad m \equiv k
-\pmod{2}, \\
-  \delta^{k} 0^m = 0 \quad &amp;\text{when} \quad m \not\equiv k
-\pmod{2}.
-\end{align*}\]</span> Thus, for odd powers, only even-order central
-differences contribute. By setting <span class="math inline">\(m
-\rightarrow 2m\)</span>, we get, <span
-class="math display">\[\begin{align*}
-  n^{2m-1}
-  = \sum_{k=1}^{2m} \frac{1}{k}
-  \binom{n+\frac{k}{2}-1}{k-1} \delta^{k} 0^{2m}.
-\end{align*}\]</span> Since <span class="math inline">\(k\)</span> runs
-over all integers in the range <span class="math inline">\(0\leq k \leq
-2m\)</span>, we can omit odd values of <span
-class="math inline">\(k\)</span>. <span
-class="math display">\[\begin{align*}
-  n^{2m-1}
-  = \sum_{k=1}^{m} \frac{1}{2k} \binom{n+k-1}{2k-1} \delta^{2k} 0^{2m}
-\end{align*}\]</span> Hence, we obtain the formula for ordinary sums of
-odd powers.</p>
-<div id="prop:ordinary-sums-of-odd-powers-in-central-differences"
-class="proposition">
-<p><strong>Proposition 7</strong> (Ordinary sums of odd powers in
-central differences). <em>For integers <span class="math inline">\(n\geq
-1, \; m\geq 1\)</span> <span class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{2m-1}
-    = \sum_{k=1}^{m} \frac{1}{2k} \binom{n+k}{2k} \delta^{2k} 0^{2m}
-\end{align*}\]</span></em></p>
-<div class="proof">
-<p><em><em>Proof.</em> We have <span
-class="math inline">\(\Sigma^{1}\,{n}^{2m-1}
-    = \sum_{k=1}^{m}
-    \frac{1}{2k} \delta^{2k} 0^{2m} \sum_{j=1}^{n}
-\binom{j+k-1}{k-1}\)</span>.</em></p>
-<p><em>By hockey stick identity <span
-class="math inline">\(\sum_{j=1}^{n} \binom{j+k-1}{2k-1} =
-\binom{n+k}{2k}\)</span>, thus the statement follows. ◻</em></p>
-</div>
-</div>
-<p>Therefore,</p>
-<div id="theorem:multifold-sums-of-odd-powers-in-central-differences"
-class="theorem">
-<p><strong>Theorem 8</strong> (Multifold sums of odd powers in central
-differences). <em>For integers <span
-class="math inline">\(n,m,r\geq0\)</span>, <span
-class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{2m-1}
-    = \sum_{k=1}^{m} \frac{1}{2k} \binom{n+k-1+r}{2k-1+r} \delta^{2k}
-0^{2m}.
-\end{align*}\]</span></em></p>
-<div class="proof">
-<p><em><em>Proof.</em> We have <span
-class="math inline">\(\Sigma^{1}\,{n}^{2m-1}
-    = \sum_{k=1}^{m} \frac{1}{2k} \delta^{2k} 0^{2m}
-    \sum_{j=1}^{n} \binom{j+k-1}{2k-1}\)</span>.</em></p>
-<p><em>By hockey stick identity <span
-class="math inline">\(\sum_{j=1}^{n} \binom{j+k-1}{k-1} =
-\binom{n+k}{2k}\)</span>. By induction the claim follows. ◻</em></p>
-</div>
-</div>
-<p>It is quite interesting to notice that the formula for sums of
-odd-powers <span class="math inline">\(n^{2m-1}\)</span> given by Donald
-Knuth in <em>Johann Faulhaber and sums of powers</em> <span
-class="citation" data-cites="knuth1993johann">(Knuth, Donald E.
-1993)</span> recovers naturally from the theorem <a
-href="#theorem:multifold-sums-of-odd-powers-in-central-differences"
-data-reference-type="eqref"
-data-reference="theorem:multifold-sums-of-odd-powers-in-central-differences">[theorem:multifold-sums-of-odd-powers-in-central-differences]</a>.
-The reason is straightforward, instead of using central factorial
-numbers of the second kind <span class="math inline">\(T(n,k)\)</span>,
-the theorem <a
-href="#theorem:multifold-sums-of-odd-powers-in-central-differences"
-data-reference-type="eqref"
-data-reference="theorem:multifold-sums-of-odd-powers-in-central-differences">[theorem:multifold-sums-of-odd-powers-in-central-differences]</a>
-utilizes central differences explicitly, because,</p>
-<div id="lem:central-factorial-numbers-of-the-second-kind"
-class="lemma">
-<p><strong>Lemma 9</strong> (Central factorial numbers of the second
-kind). <em>For integers <span class="math inline">\(n \geq 0, \; k\geq
-0\)</span>, <span class="math display">\[\begin{align*}
-    k! T(n, k) = \delta^k 0^n,
-\end{align*}\]</span> where <span class="math inline">\(T(n,k)\)</span>
-are central factorial numbers, defined by polynomial identity, <span
-class="math display">\[\begin{align*}
-    x^m = \sum_{k=1}^{m} T(m,k) x^{[k]}.
-\end{align*}\]</span> See <span class="citation"
-data-cites="riordan1968combinatorial">(Riordan 1968, 213)</span>,
-and <span class="citation" data-cites="carlitz1963divided">(Carlitz and
-Riordan 1963)</span>.</em></p>
-</div>
-<p>It means that Knuth’s formula for sums of odd powers,</p>
-<div id="prop:multifold-sums-of-odd-powers-in-central-factorial-numbers"
-class="proposition">
-<p><strong>Proposition 10</strong> (Multifold sums of odd powers in
-central factorial numbers). <em>For integers <span
-class="math inline">\(n \geq 1, \; m \geq 1\)</span> and <span
-class="math inline">\(r\geq0\)</span> <span
-class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{2m-1}
-    = \sum_{k=1}^{m} (2k-1)! \binom{n+k-1+r}{2k-1+r} T(2m,2k).
-\end{align*}\]</span></em></p>
-</div>
-<p>originates from Newton’s interpolation formula in central
-differences <a href="#prop:newtons-formula-in-central-differences"
-data-reference-type="eqref"
-data-reference="prop:newtons-formula-in-central-differences">[prop:newtons-formula-in-central-differences]</a>.
-The non-zero central factorial numbers <span
-class="math inline">\(T(2m,2k)\)</span> is the sequence <a
-href="https://oeis.org/A008957"><code>A008957</code></a> in the
-OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
-J.A. and others 2003)</span>. For example, <span
-class="math display">\[\begin{align*}
-  \Sigma^{1}\,{n}^{1} &amp;= \tbinom{n+1}{2}, \\
-  \Sigma^{1}\,{n}^{3} &amp;= 6 \tbinom{n+2}{4} + \tbinom{n+1}{2}, \\
-  \Sigma^{1}\,{n}^{5} &amp;= 120 \tbinom{n+3}{6} + 30 \tbinom{n+2}{4}
-  + \tbinom{n+1}{2}, \\
-  \Sigma^{1}\,{n}^{7} &amp;= 5040 \tbinom{n+4}{8} + 1680 \tbinom{n+3}{6}
-  + 126 \tbinom{n+2}{4} + \tbinom{n+1}{2}.
-\end{align*}\]</span> While multifold sums of odd powers are, <span
-class="math display">\[\begin{align*}
-  \Sigma^{r}\,{n}^{1} &amp;= \tbinom{n+1+r}{2+r}, \\
-  \Sigma^{r}\,{n}^{3} &amp;= 6 \tbinom{n+2+r}{4+r} +
-\tbinom{n+1+r}{2+r}, \\
-  \Sigma^{r}\,{n}^{5} &amp;= 120 \tbinom{n+3+r}{6+r} + 30
-\tbinom{n+2+r}{4+r}
-  + \tbinom{n+1+r}{2+r}, \\
-  \Sigma^{r}\,{n}^{7} &amp;= 5040 \tbinom{n+4+r}{8+r} + 1680
-\tbinom{n+3+r}{6+r}
-  + 126 \tbinom{n+2+r}{4+r} + \tbinom{n+1+r}{2+r}.
-\end{align*}\]</span> The coefficients <span class="math inline">\(1, 6,
-1, 120, 30, 1,\ldots\)</span> is the sequence <a
-href="https://oeis.org/A303675"><code>A303675</code></a> in the
-OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
-J.A. and others 2003)</span>. This approach can be generalized even
-further. Consider Newton’s interpolation formula around an arbitrary
-integer <span class="math inline">\(t\)</span>.</p>
-<div id="prop:newtons-interpolation-formula-in-central-differences"
-class="proposition">
-<p><strong>Proposition 11</strong> (Newton’s interpolation formula in
-central differences). <em><span class="math display">\[\begin{align*}
-    f(x+t)
-    = \sum_{k=0}^{\infty} \frac{x^{[k]}}{k!} \delta^{k} f(t)
-\end{align*}\]</span></em></p>
-<div class="proof">
-<p><em><em>Proof.</em> See <span class="citation"
-data-cites="butzer1989central">(Butzer et al. 1989,
-462)</span>. ◻</em></p>
-</div>
-</div>
-<p>Thus, for powers we have identity,</p>
-<div id="prop:newtons-formula-for-powers" class="proposition">
-<p><strong>Proposition 12</strong> (Newton’s formula for powers).
-<em>For integers <span class="math inline">\(n,m \geq 0\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span>, <span
-class="math display">\[\begin{align*}
-    n^m = \sum_{k=0}^{m} \frac{(n-t)^{[k]}}{k!} \delta^{k} t^m
-\end{align*}\]</span></em></p>
-</div>
-<p>Thus,</p>
-<div id="prop:powers-in-central-binomial-form" class="proposition">
-<p><strong>Proposition 13</strong> (Powers in central binomial form).
-<em>For integers <span class="math inline">\(n,t\)</span> and <span
-class="math inline">\(m \geq 0\)</span> <span
-class="math display">\[\begin{align*}
-    n^m
-    &amp;= \frac{(n-t)^{[0]}}{0!} \delta^{0} t^m
-    + \sum_{k=1}^{m} \frac{n-t}{k} \binom{n+t+\frac{k}{2}-1}{k-1}
-\delta^{k} t^m \\
-    &amp;= t^m + \sum_{k=1}^{m} (n-t) \binom{n-t+\frac{k}{2}-1}{k-1}
-\frac{\delta^{k} t^m}{k}
-\end{align*}\]</span></em></p>
-</div>
-<p>Now we expand the brackets in central binomial form above, <span
-class="math display">\[\begin{align*}
-  n^m
-  = t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
-  \left[ n \binom{n-t+\frac{k}{2}-1}{k-1} - t
-\binom{n-t+\frac{k}{2}-1}{k-1} \right].
-\end{align*}\]</span> Hence, we get the formula for ordinary sums of
-powers.</p>
-<div id="cor:centered-ordinary-sums-of-powers" class="corollary">
-<p><strong>Corollary 14</strong> (Centered ordinary sums of powers).
-<em>For integers <span class="math inline">\(t, \; m\geq 0, \; n \geq
-0\)</span>, <span class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{m}
-    = \sum_{j=1}^n t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
-    \left[ \sum_{j=1}^n j \binom{j-t+\frac{k}{2}-1}{k-1}
-    - t \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1} \right]
-\end{align*}\]</span></em></p>
-</div>
-<p>Now we notice that,</p>
-<div id="prop:binomial-decomposition" class="proposition">
-<p><strong>Proposition 15</strong> (Binomial decomposition). <em>For
-integers <span class="math inline">\(n\geq 0, \; r \geq 0, \; m\geq
-0\)</span>, <span class="math display">\[\begin{align*}
-    n \binom{n+r}{m} = (m+1) \binom{n+r}{m+1} - (r-m) \binom{n+r}{m}.
-\end{align*}\]</span></em></p>
-<div class="proof">
-<p><em><em>Proof.</em> By expanding the brackets yields, <span
-class="math display">\[\begin{align*}
-      &amp;n \tbinom{n+r}{m}
-      = (m+1) \tbinom{n+r}{m+1} - (r-m) \tbinom{n+r}{m} \\
-      &amp;= m \tbinom{n+r}{m+1} + \tbinom{n+r}{m+1} - r \tbinom{n+r}{m}
-      + m \tbinom{n+r}{m}.
-\end{align*}\]</span> Recall the extraction property of binomial
-coefficients, that is, <span class="math display">\[\begin{align*}
-      \tbinom{n}{k+1} = \tfrac{n-k}{k+1} \tbinom{n}{k}.
-\end{align*}\]</span> Now we can notice that, <span
-class="math display">\[\begin{align*}
-      \tbinom{n+r}{m+1} = \tfrac{n+r-m}{m+1} \tbinom{n+r}{m},
-\end{align*}\]</span> by extraction. Thus, <span
-class="math display">\[\begin{align*}
-      n \tbinom{n+r}{m}
-      &amp;= m \tfrac{n+r-m}{m+1} \tbinom{n+r}{m}
-      + \tfrac{n+r-m}{m+1} \tbinom{n+r}{m}
-      - r \tbinom{n+r}{m} + m \tbinom{n+r}{m}.
-\end{align*}\]</span> By moving binomial coefficient <span
-class="math inline">\(\binom{n+r}{m}\)</span> out of the brackets, we
-get, <span class="math display">\[\begin{align*}
-      n \tbinom{n+r}{m}
-      &amp;= \tbinom{n+r}{m} \left[ m \tfrac{n+r-m}{m+1} +
-\tfrac{n+r-m}{m+1} - r + m \right] \\
-      &amp;= \tbinom{n+r}{m} \left[ (m+1) \tfrac{n+r-m}{m+1} - r + m
-\right] \\
-      &amp;= n \tbinom{n+r}{m}.
-\end{align*}\]</span> This completes the proof. ◻</em></p>
-</div>
-</div>
-<p>Thus, by setting <span class="math inline">\(n=j\)</span>, and <span
-class="math inline">\(r=-t+\frac{k}{2} -1\)</span>, and <span
-class="math inline">\(m=k-1\)</span> into Proposition <a
-href="#prop:binomial-decomposition" data-reference-type="eqref"
-data-reference="prop:binomial-decomposition">[prop:binomial-decomposition]</a>
-yields central decomposition identity.</p>
-<div id="cor:central-binomial-decomposition" class="corollary">
-<p><strong>Corollary 16</strong> (Central binomial decomposition).
-<em>For integers <span class="math inline">\(j,t,k \geq 0\)</span>,
-<span class="math display">\[\begin{align*}
-    j \binom{j-t+\frac{k}{2} -1}{k-1}
-    = k \binom{j-t+\frac{k}{2}-1}{k}
-    + \left [t+\frac{k}{2} \right ]
-    \binom{j-t+\frac{k}{2}-1}{k-1}.
-\end{align*}\]</span></em></p>
-<div class="proof">
-<p><em><em>Proof.</em> By binomial decomposition <a
-href="#prop:binomial-decomposition" data-reference-type="eqref"
-data-reference="prop:binomial-decomposition">[prop:binomial-decomposition]</a>,
-we have, <span class="math display">\[\begin{align*}
-      j \tbinom{j-t+\frac{k}{2} -1}{k-1}
-      &amp;=
-      (k-1+1) \tbinom{j-t+\frac{k}{2} -1}{k-1+1}
-      - \left [-t+\tfrac{k}{2} -1-(k-1)\right ]
-      \tbinom{j-t+\frac{k}{2} -1}{k-1} \\
-      &amp;= k \tbinom{j-t+\frac{k}{2}-1}{k}
-      - \left [-t-\tfrac{k}{2} \right ]
-      \tbinom{j-t+\tfrac{k}{2}-1}{k-1} \\
-      &amp;= k \tbinom{j-t+\tfrac{k}{2}-1}{k}
-      + \left [t+\tfrac{k}{2} \right ]
-      \tbinom{j-t+\tfrac{k}{2}-1}{k-1}.
-\end{align*}\]</span> This completes the proof. ◻</em></p>
-</div>
-</div>
-<p>Thus, we have the relation for centered sums of powers, <span
-class="math display">\[\begin{align*}
-  \Sigma^{1}\,{n}^{m}
-  &amp;= \sum_{j=1}^{n} t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
-  \Bigg [
-    \sum_{j=1}^{n} \left \{ k \binom{j-t+\frac{k}{2}-1}{k}
-      + \left [t+\frac{k}{2} \right ]
-    \binom{j-t+\frac{k}{2}-1}{k-1} \right \} \\
-    &amp;- t \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k-1}
-  \Bigg ].
-\end{align*}\]</span> By rearranging it, we get, <span
-class="math display">\[\begin{align*}
-  \Sigma^{1}\,{n}^{m}
-  &amp;= \sum_{j=1}^{n} t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
-  \Bigg [
-    \left \{ k \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
-      + \left [t+\frac{k}{2} \right ]
-    \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1} \right \} \\
-    &amp;- t \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k-1}
-  \Bigg ] \\
-  &amp;= \sum_{j=1}^{n} t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
-  \Bigg [
-    k \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
-    + \frac{k}{2}
-    \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1}
-  \Bigg ].
-\end{align*}\]</span> Therefore, formula for centered sums of powers
-follows.</p>
-<div id="prop:centered-decomposition-of-power-sums" class="proposition">
-<p><strong>Proposition 17</strong> (Centered decomposition of power
-sums). <em>For integers <span class="math inline">\(m,n \geq 0\)</span>,
-and an arbitrary integer <span class="math inline">\(t\)</span>, <span
-class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{m} = \sum_{j=1}^{n} t^m
-    + \sum_{k=1}^{m} \delta^{k} t^m
-    \left [
-      \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
-      + \frac{1}{2}
-      \sum_{j=1}^n \binom{j-t+\frac{k}{2}-1}{k-1}
-    \right ].
-\end{align*}\]</span></em></p>
-</div>
-<p>Let us recall generalized hockey stick identity. That is,</p>
-<div id="prop:generalized-hockey-stick-identity" class="proposition">
-<p><strong>Proposition 18</strong> (Generalized hockey-stick identity).
-<em>For integers <span class="math inline">\(a,b\)</span> and <span
+<p>We have</p>
+<div id="lem:generalized-hockey-stick-identity" class="lemma">
+<p><strong>Lemma 7</strong> (Generalized hockey-stick identity). <em>For
+arbitrary integers <span class="math inline">\(a,b\)</span> and <span
 class="math inline">\(j\)</span>, <span
 class="math display">\[\begin{align*}
     \sum_{k=a}^{b} \binom{k}{j} = \binom{b+1}{j+1} - \binom{a}{j+1}.
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em> We have, <span
-class="math inline">\(\sum_{k=a}^{b} \binom{k}{j} = \binom{a}{j} +
-\binom{a+1}{j} + \cdots + \binom{b}{j}\)</span>, which means that, <span
-class="math inline">\(\sum_{k=a}^{b} \binom{k}{j} =
-    \left( \sum_{k=0}^{b} \binom{k}{j} \right) - \left( \sum_{k=0}^{a-1}
-\binom{k}{j} \right)\)</span>. By hockey stick identity <span
-class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+class="math inline">\(\sum_{k=a}^{b} \binom{k}{j}
+    = \binom{a}{j} + \binom{a+1}{j} + \cdots + \binom{b}{j}
+    = \left( \sum_{k=0}^{b} \binom{k}{j} \right) - \left(
+\sum_{k=0}^{a-1} \binom{k}{j} \right)\)</span>. By hockey-stick identity
+<span class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
 \binom{n+1}{j+1}\)</span> yields, <span
 class="math display">\[\begin{align*}
       \mathop{\textstyle\sum}_{k=a}^{b} \tbinom{k}{j}
-      = \left( \mathop{\textstyle\sum}_{k=0}^{b} \binom{k}{j} \right) -
+      = \left( \mathop{\textstyle\sum}_{k=0}^{b} \tbinom{k}{j} \right) -
 \left( \mathop{\textstyle\sum}_{k=0}^{a-1} \tbinom{k}{j} \right)
       = \tbinom{b+1}{j+1} - \tbinom{a}{j+1}.
 \end{align*}\]</span> This completes the proof. ◻</em></p>
 </div>
 </div>
-<p>Therefore, by setting <span
-class="math inline">\(a=-t+\frac{k}{2}\)</span> and <span
-class="math inline">\(b=n-t-\frac{k}{2}-1\)</span> yields</p>
-<div id="prop:centered-hockey-stick-identity" class="proposition">
-<p><strong>Proposition 19</strong> (Centered hockey stick identity).
-<em>For integers <span class="math inline">\(n, j, t, k\)</span>, <span
+<p>We have</p>
+<div id="lem:centered-hockey-stick-identity" class="lemma">
+<p><strong>Lemma 8</strong> (Centered hockey-stick identity). <em>For
+integer <span class="math inline">\(n\geq1\)</span>, and arbitrary
+integers <span class="math inline">\(t,k,r\)</span> <span
 class="math display">\[\begin{align*}
-    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
-    = \sum_{a=-t+\frac{k}{2}}^{n-t-\frac{k}{2}-1} \binom{a}{k}
-    = \binom{n-t+\frac{k}{2}}{k+1} - \binom{-t+\frac{k}{2}}{k+1}
+    \sum_{j=1}^{n} \binom{j -t + \frac{k}{2} +r}{k}
+    = \binom{n -t + \frac{k}{2} + r +1}{k+1} - \binom{1 -t +
+\tfrac{k}{2} +r}{k+1}.
 \end{align*}\]</span></em></p>
-</div>
-<p>Thus, closed form of centered sums of powers yields</p>
-<div id="theorem:closed-form-of-centered-sums-of-powers"
-class="theorem">
-<p><strong>Theorem 20</strong> (Closed form of centered sums of powers).
-<em>For integers <span class="math inline">\(n\geq 0, \; m \geq
-0\)</span>, and arbitrary integer <span
-class="math inline">\(t\)</span>, <span
-class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{m}
-    &amp;= \sum_{j=1}^{n} t^m \\
-    &amp;+ \sum_{k=1}^{m} \delta^{k} t^m
-    \Bigg [
-      \left( \binom{n-t+\frac{k}{2}}{k+1} - \binom{-t+\frac{k}{2}}{k+1}
-\right)
-      + \frac{1}{2}
-      \left( \binom{n-t+\frac{k}{2}}{k} - \binom{-t+\frac{k}{2}}{k}
-\right)
-    \Bigg ].
-\end{align*}\]</span></em></p>
-</div>
-<p>Let <span class="math inline">\(a=n-t+\frac{k}{2}\)</span>, then,
-<span class="math display">\[\begin{align*}
-  &amp;\left( \binom{a}{k+1} - \binom{a-n}{k+1} \right)
-  + \frac{1}{2}
-  \left( \binom{a}{k} - \binom{a-n}{k} \right) \\
-  &amp;=\left(
-    \binom{a}{k+1} - \binom{a-n}{k+1}
-    + \frac{1}{2}
-    \binom{a}{k} - \frac{1}{2} \binom{a-n}{k}
-  \right) \\
-  &amp;=\frac{1}{2} \left(
-    2 \binom{a}{k+1} -  2 \binom{a-n}{k+1}
-    + \binom{a}{k} - \binom{a-n}{k}
-  \right) \\
-  &amp;=\frac{1}{2} \left(
-    \binom{a}{k+1} + \binom{a}{k+1} - \binom{a-n}{k+1} -
-\binom{a-n}{k+1}
-    + \binom{a}{k} - \binom{a-n}{k}
-  \right).
-\end{align*}\]</span> By binomial recurrence <span
-class="math inline">\(\binom{a+1}{k+1} = \binom{a}{k} +
-\binom{a}{k+1}\)</span> <span class="math display">\[\begin{align*}
-  &amp;\frac{1}{2} \left(
-    \binom{a}{k+1} + \binom{a}{k+1} - \binom{a-n}{k+1} -
-\binom{a-n}{k+1}
-    + \binom{a}{k} - \binom{a-n}{k}
-  \right) \\
-  &amp;= \frac{1}{2} \left(
-    \left[ \binom{a}{k+1} + \binom{a}{k} \right]
-    + \binom{a}{k+1} - \binom{a-n}{k+1}
-    - \left[ \binom{a-n}{k+1} - \binom{a-n}{k} \right]
-  \right) \\
-  &amp;= \frac{1}{2} \left(
-    \binom{a+1}{k+1}
-    + \binom{a}{k+1}
-    - \binom{a-n}{k+1}
-    - \binom{a-n+1}{k+1}
-  \right) \\
-  &amp;= \frac{1}{2} \left(
-    \left[ \binom{a+1}{k+1} + \binom{a}{k+1} \right]
-    - \left[ \binom{a-n}{k+1} + \binom{a-n+1}{k+1} \right]
-  \right)
-\end{align*}\]</span> Therefore, by setting <span
-class="math inline">\(a=n-t+\frac{k}{2}\)</span>, we get simplified
-formula for centered sum of powers.</p>
-<div id="prop:simplified-centered-sums-of-powers" class="proposition">
-<p><strong>Proposition 21</strong> (Simplified centered sums of powers).
-<em>For integers <span class="math inline">\(n\geq 0, \; m \geq
-0\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
-class="math display">\[\begin{align*}
-    \Sigma^{1}\,{n}^{m}
-    &amp;= \sum_{j=1}^{n} t^m \\
-    &amp;+ \sum_{k=1}^{m} \frac{\delta^{k} t^m}{2}
-    \left[
-      \left( \binom{n-t+\frac{k}{2}+1}{k+1} +
-\binom{n-t+\frac{k}{2}}{k+1} \right)
-      -
-      \left( \binom{-t+\frac{k}{2}}{k+1} + \binom{-t+\frac{k}{2}+1}{k+1}
-\right)
-    \right]
-\end{align*}\]</span></em></p>
-</div>
-<p>Continuing similarly, we can derive formulas for multifold sums of
-powers by using centered hockey stick identity <a
-href="#prop:centered-hockey-stick-identity" data-reference-type="eqref"
-data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a>
-repeatedly. For instance, for double sums of powers, we have <span
-class="math display">\[\begin{align*}
-  \Sigma^{2}\,{n}^{m}
-  &amp;=  t^m \Sigma^{2}\,{n}^{0} \\
-  &amp;+ \sum_{k=1}^{m} \frac{\delta^{k} t^m}{2}
-  \Bigg[
-    \sum_{j=1}^{n}
-    \left( \binom{j-t+\frac{k}{2}+1}{k+1} + \binom{j-t+\frac{k}{2}}{k+1}
-    \right) \\
-    &amp;-
-    \left(
-      \binom{-t+\frac{k}{2}}{k+1} \Sigma^{1}\,{n}^{0}
-      + \binom{-t+\frac{k}{2}+1}{k+1} \Sigma^{1}\,{n}^{0}
-    \right)
-  \Bigg]
-\end{align*}\]</span> Thus, by generalized hockey stick identity <a
-href="#prop:generalized-hockey-stick-identity"
+<div class="proof">
+<p><em><em>Proof.</em> By setting <span class="math inline">\(a=1 -t +
+\tfrac{k}{2} +r\)</span>, and <span class="math inline">\(b=n-t+
+\tfrac{k}{2} +r\)</span> into Lemma <a
+href="#lem:generalized-hockey-stick-identity"
 data-reference-type="eqref"
-data-reference="prop:generalized-hockey-stick-identity">[prop:generalized-hockey-stick-identity]</a>
-<span class="math display">\[\begin{align*}
-  \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}+1}{k+1}
-  &amp;= \binom{n-t+\frac{k}{2} + 2}{k+2} -
-\binom{-t+\frac{k}{2}+2}{k+2} \\
-  \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}}{k+1}
-  &amp;= \binom{n-t+\frac{k}{2} + 1}{k+2} -
-\binom{-t+\frac{k}{2}+1}{k+2}
-\end{align*}\]</span> By substituting closed forms above, we get <span
-class="math display">\[\begin{align*}
-  \Sigma^{2}\,{n}^{m}
-  &amp;=  t^m \Sigma^{2}\,{n}^{0} \\
-  &amp;+ \sum_{k=1}^{m} \frac{\delta^{k} t^m}{2}
-  \Bigg \{
-    \left[
-      \binom{n-t+\frac{k}{2} + 2}{k+2} - \binom{-t+\frac{k}{2}+2}{k+2}
-    \right] \\
-    &amp;+
-    \left[ \binom{n-t+\frac{k}{2} + 1}{k+2} -
-\binom{-t+\frac{k}{2}+1}{k+2}
-    \right] \\
-    &amp;-
-    \left[
-      \binom{-t+\frac{k}{2}}{k+1} \Sigma^{1}\,{n}^{0}
-      + \binom{-t+\frac{k}{2}+1}{k+1} \Sigma^{1}\,{n}^{0}
-    \right]
-  \Bigg \}
-\end{align*}\]</span> By combining the common terms yields <span
-class="math display">\[\begin{align*}
-  \Sigma^{2}\,{n}^{m}
-  &amp;=  t^m \Sigma^{2}\,{n}^{0}
-  + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{2}
-  \Bigg \{
-    \left[
-      \binom{n-t+\frac{k}{2} + 2}{k+2}
-      +
-      \binom{n-t+\frac{k}{2} + 1}{k+2}
-    \right] \\
-    &amp;-
-    \left[
-      \binom{-t+\frac{k}{2}+2}{k+2} \Sigma^{0}\,{n}^{0}
-      +
-      \binom{-t+\frac{k}{2} + 1}{k+2} \Sigma^{0}\,{n}^{0}
-    \right] \\
-    &amp;-
-    \left[
-      \binom{-t+\frac{k}{2}+1}{k+1} \Sigma^{1}\,{n}^{0}
-      +
-      \binom{-t+\frac{k}{2}+0}{k+1} \Sigma^{1}\,{n}^{0}
-    \right]
-  \Bigg \}
-\end{align*}\]</span> Thus, formula for double centered sums of powers
-follows</p>
-<div id="prop:double-centered-sums-of-powers" class="proposition">
-<p><strong>Proposition 22</strong> (Double centered sums of powers).
-<em>For integers <span class="math inline">\(n\geq 0, \; m \geq
-0\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
-class="math display">\[\begin{align*}
-    \Sigma^{2}\,{n}^{m}
-    &amp;=  t^m \Sigma^{2}\,{n}^{0}
-    + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{2}
-    \Bigg \{
-      \left[
-        \binom{n-t+\frac{k}{2} + 2}{k+2}
-        +
-        \binom{n-t+\frac{k}{2} + 1}{k+2}
-      \right] \\
-      &amp;-
-      \left[
-        \binom{-t+\frac{k}{2}+2}{k+2}
-        +
-        \binom{-t+\frac{k}{2} + 1}{k+2}
-      \right] \Sigma^{0}\,{n}^{0} \\
-      &amp;-
-      \left[
-        \binom{-t+\frac{k}{2}+1}{k+1}
-        +
-        \binom{-t+\frac{k}{2}+0}{k+1}
-      \right] \Sigma^{1}\,{n}^{0}
-    \Bigg \}.
-\end{align*}\]</span></em></p>
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>
+yields <span class="math display">\[\begin{align*}
+      \mathop{\textstyle\sum}_{j=1}^{n} \tbinom{j -t + \tfrac{k}{2}
++r}{k} =
+      \mathop{\textstyle\sum}_{j=1 -t + \tfrac{k}{2} +r}^{n -t +
+\tfrac{k}{2} +r} \tbinom{j}{k}
+      = \tbinom{n -t + \tfrac{k}{2} + r +1}{k+1} - \tbinom{1 -t +
+\tfrac{k}{2} +r}{k+1}.
+\end{align*}\]</span> This completes the proof. ◻</em></p>
 </div>
-<p>Therefore, by continuing similarly, we can derive formula for <span
-class="math inline">\(r-\)</span>fold sums of powers by using centered
-hockey stick identity <a href="#prop:centered-hockey-stick-identity"
-data-reference-type="eqref"
-data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a>
-repeatedly. We have</p>
-<div id="theorem:multifold-centered-sums-of-powers" class="theorem">
-<p><strong>Theorem 23</strong> (Multifold centered sums of powers).
-<em>For integers <span class="math inline">\(n\geq 0, \; m \geq
-0\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
-class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
-    &amp;= t^m \Sigma^{r}\,{n}^{0}
-    + \sum_{k=1}^{m} \frac{\delta^{k} t^{m}}{2}
-    \Bigg \{
-      \left[
-        \binom{n-t+\frac{k}{2}+r}{k+r}
-        +
-        \binom{n-t+\frac{k}{2}+r-1}{k+r}
-      \right] \\
-      &amp;-
-      \sum_{s=0}^{r-1}
-      \left[
-        \binom{-t+\frac{k}{2} + r -s}{k+r-s} +
-        \binom{-t+\frac{k}{2} + r -s-1}{k+r-s}
-      \right] \Sigma^{s}\,{n}^{0}
-    \Bigg \}.
-\end{align*}\]</span></em></p>
 </div>
-<p>Now we notice that</p>
-<div id="prop:multifold-sum-of-zero-powers" class="proposition">
-<p><strong>Proposition 24</strong> (Multifold sum of zero powers).
-<em>For integers <span class="math inline">\(r \geq 0\)</span> and <span
-class="math inline">\(n\geq 1\)</span> <span
+<p>We have</p>
+<div id="lem:multifold-sum-of-zero-powers" class="lemma">
+<p><strong>Lemma 9</strong> (Multifold sums of zero powers). <em>For
+non-negative integers <span class="math inline">\(r,n\)</span> <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{0} = \binom{r+n-1}{r}
+    \Sigma^{r}\,{n}^{0} = \binom{r+n-1}{r}.
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em></em></p>
 <ol>
-<li><p><em>Let <span class="math inline">\(r=0\)</span>, then <span
-class="math inline">\(\Sigma^{0}\,{n}^{0}=n^0=\binom{n-1}{0} =
-1\)</span>, by definition <a
-href="#prop:multifold-sums-of-powers-recurrence"
+<li><p><em>Let <span class="math inline">\(r=0\)</span>, then we have
+<span class="math inline">\(\Sigma^{0}\,{n}^{0} = 1\)</span>, by
+definition <a href="#def:multifold-sums-of-powers-recurrence"
 data-reference-type="eqref"
-data-reference="prop:multifold-sums-of-powers-recurrence">[prop:multifold-sums-of-powers-recurrence]</a>.</em></p></li>
-<li><p><em>Let <span class="math inline">\(r=1\)</span>, then <span
-class="math inline">\(\Sigma^{1}\,{n}^{0}
-        = \sum_{k=1}^{n} \binom{k-1}{0}
+data-reference="def:multifold-sums-of-powers-recurrence">[def:multifold-sums-of-powers-recurrence]</a>.</em></p></li>
+<li><p><em>Let <span class="math inline">\(r=1\)</span>, then we have
+<span class="math inline">\(\Sigma^{1}\,{n}^{0}
         = \sum_{k=1}^{n} 1 = \binom{n}{1}\)</span>.</em></p></li>
-<li><p><em>Let <span class="math inline">\(r=2\)</span>, then <span
-class="math inline">\(\Sigma^{2}\,{n}^{0}= \sum_{k=1}^{n} \binom{k}{1}
-        = \sum_{k=1}^{n} k = \binom{n+1}{2}\)</span>.</em></p></li>
-<li><p><em>Let <span class="math inline">\(r=3\)</span>, then <span
-class="math inline">\(\Sigma^{3}\,{n}^{0}
+<li><p><em>Let <span class="math inline">\(r=2\)</span>, then we have
+<span class="math inline">\(\Sigma^{2}\,{n}^{0}
+        = \sum_{k=1}^{n} \binom{k}{1}
+        = \binom{n+1}{2}\)</span>.</em></p></li>
+<li><p><em>Let <span class="math inline">\(r=3\)</span>, then we have
+<span class="math inline">\(\Sigma^{3}\,{n}^{0}
         = \sum_{k=1}^{n} \binom{k+1}{2}
         = \binom{n+2}{3}\)</span>.</em></p></li>
-<li><p><em>By induction over <span class="math inline">\(r\)</span> and
-hockey stick identity <span class="math inline">\(\sum_{k=r}^{n}
-\binom{k}{r} = \binom{n+1}{r+1}\)</span>, the claim follows <span
-class="math inline">\(\Sigma^{r}\,{n}^{0} =
-\binom{r+n-1}{r}\)</span>.</em></p></li>
+<li><p><em>Similarly, for arbitrary integer <span
+class="math inline">\(r\)</span>, by hockey-stick identity <span
+class="math inline">\(\sum_{k=1}^{n} \binom{k}{r} =
+\binom{n+1}{r+1}\)</span>, yields <span
+class="math inline">\(\Sigma^{r}\,{n}^{0}
+        =  \sum_{k=1}^{n} \Sigma^{r-1}\,{k}^{0}
+        =  \sum_{k=1}^{n} \binom{k+r-2}{r-1}
+        = \binom{r+n-1}{r}\)</span>.</em></p></li>
 </ol>
-<p><em> ◻</em></p>
+<p><em>This completes the proof. ◻</em></p>
 </div>
 </div>
-<p>Hence, by <a href="#theorem:multifold-centered-sums-of-powers"
-data-reference-type="eqref"
-data-reference="theorem:multifold-centered-sums-of-powers">[theorem:multifold-centered-sums-of-powers]</a>
-and <a href="#prop:multifold-sum-of-zero-powers"
-data-reference-type="eqref"
-data-reference="prop:multifold-sum-of-zero-powers">[prop:multifold-sum-of-zero-powers]</a>,
-binomial form of multifold sums of powers follows</p>
-<div id="prop:binomial-form-of-multifold-centered-sums-of-powers"
-class="proposition">
-<p><strong>Proposition 25</strong> (Binomial form of multifold centered
-sums of powers). <em>For integers <span class="math inline">\(n\geq 0,
-\; m \geq 0\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
+<p>We follow the convention</p>
+<div class="convention">
+<p><strong>Convention 10</strong>. <em>For all <span
+class="math inline">\(x\)</span> <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
-    &amp;= \binom{r+n-1}{r} t^m
-    + \sum_{k=1}^{m} \frac{\delta^{k} t^{m}}{2}
-    \Bigg \{
-      \left[
-        \binom{n-t+\frac{k}{2}+r}{k+r}
-        +
-        \binom{n-t+\frac{k}{2}+r-1}{k+r}
-      \right] \\
-      &amp;-
-      \sum_{s=0}^{r-1}
-      \left[
-        \binom{-t+\frac{k}{2} + r -s}{k+r-s} +
-        \binom{-t+\frac{k}{2} + r -s-1}{k+r-s}
-      \right] \binom{s+n-1}{s}
-    \Bigg \}.
+    x^0 = 1.
 \end{align*}\]</span></em></p>
 </div>
-<p>We may observe another remarkable result, by setting <span
-class="math inline">\(t \rightarrow -t\)</span> into formula above</p>
-<div id="prop:negated-binomial-centered-sums-of-powers"
-class="proposition">
-<p><strong>Proposition 26</strong> (Negated binomial centered sums of
-powers). <em>For integers <span class="math inline">\(n\geq 0, \; m \geq
-0\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
+<p>Donald Knuth give extensive discussion on the convention <span
+class="math inline">\(x^0=1\)</span> for all <span
+class="math inline">\(x\)</span>, including zero, in Concrete
+Mathematics <span class="citation"
+data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
+and Patashnik, Oren 1994, 162)</span>, and in <span class="citation"
+data-cites="knuth1992notesnotation">(Knuth 1992)</span>.</p>
+<h1 id="introduction">Introduction</h1>
+<p>In this manuscript, we derive formulas for sums of powers by
+combining central Newton’s interpolation formula for powers <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
+with hockey-stick identity <a href="#lem:centered-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>.
+We implement the algorithm for finding closed forms of sums of powers of
+integers, proposed in <span class="citation"
+data-cites="kolosov2026framework">(Kolosov 2026a, Alg. (11.2))</span>.
+More precisely, the main idea is to determine binomial basis of Newton’s
+formula, in terms of variants of difference operators, for example <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
-    &amp;= (-1)^{m} \binom{r+n-1}{r} t^m \\
-    &amp;+ (-1)^{m}\sum_{k=1}^{m} \frac{(-1)^{k} \delta^{k} t^{m}}{2}
-    \Bigg \{
-      \left[
-        \binom{n+t+\frac{k}{2}+r}{k+r}
-        +
-        \binom{n+t+\frac{k}{2}+r-1}{k+r}
-      \right] \\
-      &amp;-
-      \sum_{s=0}^{r-1}
-      \left[
-        \binom{t+\frac{k}{2} + r -s}{k+r-s} +
-        \binom{t+\frac{k}{2} + r -s-1}{k+r-s}
-      \right] \binom{s+n-1}{s}
-    \Bigg \}.
+  \begin{cases}
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^{[k]}}{k!} \delta^{k} f(a)
+    = \sum_{k=0}^{\infty} \frac{x-a}{k} \binom{x-a+\frac{k}{2}-1}{k-1}
+\delta^{k} f(a), \\
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{\left(x-a\right)_{k}}{k!} \Delta^k
+f(a)
+    = \sum_{k=0}^{\infty} \binom{x-a}{k} \Delta^k f(a), \\
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^{\left(k\right)}}{k!}
+\nabla^k f(a)
+    = \sum_{k=0}^{\infty} \binom{x-a+k-1}{k} \nabla^k f(a), \\
+    f(x)
+    &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^k}{k!} \frac{\mathrm{d}^{k}
+f(a)}{\mathrm{d} x^{k}}.
+  \end{cases}
+\end{align*}\]</span> We may observe that each variation of Newton’s
+formula above has its binomial basis <span
+class="math display">\[\begin{align*}
+  \begin{cases}
+    \frac{\left(x\right)_{n}}{n!}
+    &amp;= \frac{1}{n!} x(x-1)(x-2)\cdots(x-n+1) =\binom{x}{n}, \\
+    \frac{x^{\left(n\right)}}{n!}
+    &amp;= \frac{1}{n!} x(x+1)(x+2)\cdots(x+n-1)  =\binom{x+n-1}{n}, \\
+    \frac{x^{[n]}}{n!}
+    &amp;= \frac{1}{n!} \left( n + \frac{k}{2} -1 \right)
+    \left( n + \frac{k}{2} -2 \right)
+    \cdots \left( n - \frac{k}{2} +1 \right)
+    =\frac{x}{n} \binom{x+\frac{n}{2}-1}{n-1}.
+  \end{cases}
+\end{align*}\]</span> This allows us to successfully combine Newton’s
+formula with hockey-stick type identity, to find closed forms for sums
+of powers of integers. Thus, we focus on closed forms of powers sums, by
+utilizing central Newton’s formula, and hockey-stick identity <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>.</p>
+<h1 id="main-results">Main results</h1>
+<p>We start our discussion from Lemma <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>,
+which yields backward Newton’s interpolation formula for powers.
+Therefore, by applying Lemma <a
+href="#lem:central-factorials-binomial-form" data-reference-type="eqref"
+data-reference="lem:central-factorials-binomial-form">[lem:central-factorials-binomial-form]</a>
+to Newton’s interpolation formula <a
+href="#lem:central-newtons-formula-for-powers"
+data-reference-type="eqref"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>,
+for non-negative integers <span class="math inline">\(n,m\)</span> and
+an arbitrary integer <span class="math inline">\(t\)</span> yields <span
+class="math display">\[\begin{align*}
+  n^m
+  &amp;= \frac{(n-t)^{[0]}}{0!} \delta^{0} t^m
+  + \sum_{k=1}^{m} \frac{n-t}{k} \binom{n+t+\frac{k}{2}-1}{k-1}
+\delta^{k} t^m \\
+  &amp;= t^m + \sum_{k=1}^{m} (n-t) \binom{n-t+\frac{k}{2}-1}{k-1}
+\frac{\delta^{k} t^m}{k}.
+\end{align*}\]</span> Note that we isolate the term <span
+class="math inline">\(\frac{(n-t)^{[0]}}{0!} \delta^{0} t^m\)</span> to
+avoid division by zero. By expanding the brackets, we have <span
+class="math display">\[\begin{align*}
+  n^m
+  = t^m + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+  \left[
+    n\binom{n-t+\frac{k}{2}-1}{k-1}
+    -
+    t\binom{n-t+\frac{k}{2}-1}{k-1}
+  \right].
+\end{align*}\]</span> Now we notice that sum above has an additional
+factor <span class="math inline">\(n\)</span> in its binomial basis
+<span class="math inline">\(n\binom{n-t+\frac{k}{2}-1}{k-1}\)</span>,
+preventing us from using centered hockey-stick identity <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+for closed form. Thus, consider the following Lemma</p>
+<div id="lem:binomial-decomposition" class="lemma">
+<p><strong>Lemma 11</strong> (Binomial decomposition). <em>For
+non-negative integers <span class="math inline">\(r,n,m\)</span> <span
+class="math display">\[\begin{align*}
+    n \binom{n+r}{m} = (m+1) \binom{n+r}{m+1} - (r-m) \binom{n+r}{m}.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> We have <span class="math inline">\(\delta^{k}
-(-t)^{m} = (-1)^{m+k} \delta^{k} t^{m}\)</span>, and <span
-class="math inline">\((-t)^{m} = (-1)^{m} t^{m}\)</span>. Hence claim
-follows from <a
-href="#prop:binomial-form-of-multifold-centered-sums-of-powers"
-data-reference-type="eqref"
-data-reference="prop:binomial-form-of-multifold-centered-sums-of-powers">[prop:binomial-form-of-multifold-centered-sums-of-powers]</a>. ◻</em></p>
+<p><em><em>Proof.</em> By expanding the brackets yields, <span
+class="math display">\[\begin{align*}
+      n \binom{n+r}{m}
+      = m \binom{n+r}{m+1} + \binom{n+r}{m+1} - r \binom{n+r}{m}
+      + m \binom{n+r}{m}.
+\end{align*}\]</span> Recall the extraction property of binomial
+coefficients <span class="math inline">\(\binom{n}{k+1} =
+\frac{n-k}{k+1} \binom{n}{k}\)</span>. Therefore, by extraction property
+<span class="math display">\[\begin{align*}
+      \binom{n+r}{m+1} = \frac{n+r-m}{m+1} \binom{n+r}{m}.
+\end{align*}\]</span> Thus, <span class="math display">\[\begin{align*}
+      n \binom{n+r}{m}
+      &amp;= m \frac{n+r-m}{m+1} \binom{n+r}{m}
+      + \frac{n+r-m}{m+1} \binom{n+r}{m}
+      - r \binom{n+r}{m} + m \binom{n+r}{m}.
+\end{align*}\]</span> By factoring out binomial coefficient <span
+class="math inline">\(\binom{n+r}{m}\)</span> yields <span
+class="math display">\[\begin{align*}
+      n \binom{n+r}{m}
+      &amp;= \binom{n+r}{m} \left[ m \frac{n+r-m}{m+1} +
+\frac{n+r-m}{m+1} - r + m \right] \\
+      &amp;= \binom{n+r}{m} \left[ (m+1) \frac{n+r-m}{m+1} - r + m
+\right] \\
+      &amp;= \binom{n+r}{m}n.
+\end{align*}\]</span> This completes the proof. ◻</em></p>
 </div>
 </div>
-<h1 class="unnumbered" id="conclusions">Conclusions</h1>
-<p>In this manuscript, we derive formulas for multifold sums of powers
-<a href="#theorem:multifold-centered-sums-of-powers"
+<p>Hence, by setting <span class="math inline">\(r \rightarrow
+-t+\frac{k}{2} -1\)</span>, and <span class="math inline">\(m
+\rightarrow k-1\)</span> into Lemma <a
+href="#lem:binomial-decomposition" data-reference-type="eqref"
+data-reference="lem:binomial-decomposition">[lem:binomial-decomposition]</a>
+gives <span class="math display">\[\begin{align*}
+  n \binom{n-t+\frac{k}{2} -1}{k-1}
+  = k \binom{n-t+\frac{k}{2}-1}{k}
+  + \left [t+\frac{k}{2} \right ]
+  \binom{n-t+\frac{k}{2}-1}{k-1}.
+\end{align*}\]</span> Because, by binomial decomposition <a
+href="#lem:binomial-decomposition" data-reference-type="eqref"
+data-reference="lem:binomial-decomposition">[lem:binomial-decomposition]</a>,
+we have <span class="math display">\[\begin{align*}
+  n \tbinom{n-t+\frac{k}{2} -1}{k-1}
+  &amp;=
+  k \tbinom{n-t+\frac{k}{2} -1}{k-1+1}
+  - \left [-t+\tfrac{k}{2} -1-(k-1)\right ]
+  \tbinom{n-t+\frac{k}{2} -1}{k-1} \\
+  &amp;= k \tbinom{n-t+\frac{k}{2}-1}{k}
+  - \left [-t-\tfrac{k}{2} \right ]
+  \tbinom{n-t+\tfrac{k}{2}-1}{k-1} \\
+  &amp;= k \tbinom{n-t+\tfrac{k}{2}-1}{k}
+  + \left [t+\tfrac{k}{2} \right ]
+  \tbinom{n-t+\tfrac{k}{2}-1}{k-1}.
+\end{align*}\]</span> Thus, <span class="math display">\[\begin{align*}
+  n^m
+  = t^m
+  + \sum_{k=1}^{m} \frac{\delta^{k} t^m}{k}
+  \left[
+    k \binom{n-t+\frac{k}{2}-1}{k}
+    +
+    \left[t+\frac{k}{2} \right]
+    \binom{n-t+\frac{k}{2}-1}{k-1}
+    -
+    t \binom{n-t+\frac{k}{2}-1}{k-1}
+  \right].
+\end{align*}\]</span> By collapsing the terms <span
+class="math inline">\(t \binom{n-t+\frac{k}{2}-1}{k-1}\)</span>, and by
+simplifying the factors <span class="math inline">\(k\)</span> yields
+<span class="math display">\[\begin{align*}
+  n^m
+  = t^m
+  + \sum_{k=1}^{m}
+  \left[
+    \binom{n-t+\frac{k}{2}-1}{k}
+    +
+    \frac{1}{2}
+    \binom{n-t+\frac{k}{2}-1}{k-1}
+  \right] \delta^{k} t^m.
+\end{align*}\]</span> We move the term <span
+class="math inline">\(t^m\)</span> under the summation, thus <span
+class="math display">\[\begin{align*}
+  n^m
+  = \sum_{k=0}^{m}
+  \left[
+    \binom{n-t+\frac{k}{2}-1}{k}
+    +
+    \frac{1}{2}
+    \binom{n-t+\frac{k}{2}-1}{k-1}
+  \right] \delta^{k} t^m.
+\end{align*}\]</span> Now, we simplify the binomial basis <span
+class="math inline">\(\binom{n-t+\frac{k}{2}-1}{k}+\frac{1}{2}\binom{n-t+\frac{k}{2}-1}{k-1}\)</span>
+to get rid of fractions inside of it. Let <span
+class="math inline">\(a=n-t+\frac{k}{2}-1\)</span>, then <span
+class="math display">\[\begin{align*}
+  \binom{a}{k} + \frac{1}{2} \binom{a}{k-1}
+  = \frac{1}{2}
+  \left[
+    2 \binom{a}{k} + \binom{a}{k-1}
+  \right]
+  = \frac{1}{2}
+  \left[
+    \binom{a}{k} + \binom{a+1}{k}
+  \right].
+\end{align*}\]</span> Therefore, <span
+class="math display">\[\begin{align*}
+  n^m
+  = \frac{1}{2}
+  \sum_{k=0}^{m}
+  \left[
+    \binom{n-t+\frac{k}{2}-1}{k}
+    +
+    \binom{n-t+\frac{k}{2}}{k-1}
+  \right] \delta^{k} t^m.
+\end{align*}\]</span> Note that we do not bother ourselves about
+fractions in upper index of binomial coefficients <span
+class="math inline">\(\binom{n-t+\frac{k}{2}-1}{k}\)</span>, and <span
+class="math inline">\(\binom{n-t+\frac{k}{2}}{k-1}\)</span>, because
+binomial coefficient <span class="math inline">\(\binom{n}{k}\)</span>
+is a polynomial in <span class="math inline">\(n\)</span>. The
+well-known identity in unsigned Stirling numbers of the first kind <span
+class="math inline">\(\genfrac{[}{]}{0pt}{}{n}{k}\)</span> shows it
+explicitly <span class="math display">\[\begin{align*}
+  \binom{n}{k}
+  = \sum_{j=0}^{k} \frac{(-1)^{k-j}}{k!} \genfrac{[}{]}{0pt}{}{k}{j}
+n^j.
+\end{align*}\]</span> For example,</p>
+<div class="example">
+<p><strong>Example 12</strong>. <em>For integer <span
+class="math inline">\(0 \le t \le 3\)</span>, we have <span
+class="math display">\[\begin{align*}
+    t=0:\quad n^3
+    &amp;=
+    \bigl(1+\tbinom{n}{-1}\bigr)\cdot0
+    +\tfrac{1}{2}(1+2n)\cdot\tfrac{1}{4}
+    +\tfrac{1}{2}(2+n+n^2)\cdot0 \\
+    &amp;+\tfrac{1}{48}(21+46n+12n^2+8n^3)\cdot6,
+    \\
+    t=1:\quad n^3
+    &amp;=
+    \bigl(1+\tbinom{n-1}{-1}\bigr)\cdot1
+    +\tfrac{1}{2}(-1+2n)\cdot\tfrac{13}{4}
+    +\tfrac{1}{2}(2-n+n^2)\cdot6 \\
+    &amp;+\tfrac{1}{48}(-21+46n-12n^2+8n^3)\cdot6,
+    \\
+    t=2:\quad n^3
+    &amp;=
+    \bigl(1+\tbinom{n-2}{-1}\bigr)\cdot8
+    +\tfrac{1}{2}(-3+2n)\cdot\tfrac{49}{4}
+    +\tfrac{1}{2}(4-3n+n^2)\cdot12 \\
+    &amp;+\tfrac{1}{48}(-87+94n-36n^2+8n^3)\cdot6,
+    \\
+    t=3:\quad n^3
+    &amp;=
+    \bigl(1+\tbinom{n-3}{-1}\bigr)\cdot27
+    +\tfrac{1}{2}(-5+2n)\cdot\tfrac{109}{4}
+    +\tfrac{1}{2}(8-5n+n^2)\cdot18 \\
+    &amp;+\tfrac{1}{48}(-225+190n-60n^2+8n^3)\cdot6.
+\end{align*}\]</span></em></p>
+</div>
+<p>Hence, we can utilize centered hockey-stick identity <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+for closed formula for sums of powers, because <span
+class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{m}
+  = \frac{1}{2}
+  \sum_{k=0}^{m}
+  \left[
+    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k}
+    +
+    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}}{k-1}
+  \right] \delta^{k} t^m.
+\end{align*}\]</span> Therefore, by Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+<span class="math display">\[\begin{align*}
+  \begin{cases}
+    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}-1}{k} &amp;= \binom{n -t +
+\frac{k}{2} +0}{k+1} - \binom{0 -t + \tfrac{k}{2}}{k+1}, \\
+    \sum_{j=1}^{n} \binom{j-t+\frac{k}{2}}{k-1} &amp;= \binom{n -t +
+\frac{k}{2} +1}{k+1} - \binom{1 -t + \tfrac{k}{2}}{k+1}.
+  \end{cases}
+\end{align*}\]</span> Thus, closed formula for ordinary sums of powers
+follows</p>
+<div id="prop:ordinary-sums-of-powers" class="proposition">
+<p><strong>Proposition 13</strong> (Ordinary sums of powers). <em>For
+non-negative integers <span class="math inline">\(n,m\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m}
+    = \frac{1}{2}
+    \sum_{k=0}^{m}
+    \left[
+      \binom{n -t + \frac{k}{2} +0}{k+1} + \binom{n -t + \frac{k}{2}
++1}{k+1} - \binom{0 -t + \tfrac{k}{2}}{k+1}
+      - \binom{1 -t + \tfrac{k}{2}}{k+1}
+    \right] \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 14</strong>. <em>For integer <span
+class="math inline">\(0 \leq t \leq 4\)</span>, we have <span
+class="math display">\[\begin{align*}
+    t=0:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    2n\cdot0
+    +(n+n^2)\cdot\tfrac{1}{4}
+    +\tfrac{1}{6}(n+3n^2+2n^3)\cdot0 \\
+    &amp;+\tfrac{1}{24}(-n+n^2+4n^3+2n^4)\cdot6,
+    \\
+    t=1:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    2n\cdot1
+    +(-n+n^2)\cdot\tfrac{13}{4}
+    +\tfrac{1}{6}(n-3n^2+2n^3)\cdot6 \\
+    &amp;+\tfrac{1}{24}(n+n^2-4n^3+2n^4)\cdot6,
+    \\
+    t=2:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    2n\cdot8
+    +(-3n+n^2)\cdot\tfrac{49}{4}
+    +\tfrac{1}{6}(13n-9n^2+2n^3)\cdot12 \\
+    &amp;+\tfrac{1}{24}(-21n+25n^2-12n^3+2n^4)\cdot6,
+    \\
+    t=3:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    2n\cdot27
+    +(-5n+n^2)\cdot\tfrac{109}{4}
+    +\tfrac{1}{6}(37n-15n^2+2n^3)\cdot18 \\
+    &amp;+\tfrac{1}{24}(-115n+73n^2-20n^3+2n^4)\cdot6,
+    \\
+    t=4:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    2n\cdot64
+    +(-7n+n^2)\cdot\tfrac{193}{4}
+    +\tfrac{1}{6}(73n-21n^2+2n^3)\cdot24 \\
+    &amp;+\tfrac{1}{24}(-329n+145n^2-28n^3+2n^4)\cdot6.
+\end{align*}\]</span></em></p>
+</div>
+<p>Similarly, by setting <span class="math inline">\(r=0\)</span>, and
+<span class="math inline">\(r=1\)</span> into Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>,
+we have <span class="math display">\[\begin{align*}
+  \begin{cases}
+    \sum_{j=1}^{n} \binom{j -t + \frac{k}{2} +0}{k+1} &amp;= \binom{n -t
++ \frac{k}{2} +1}{k+2} - \binom{1 -t + \tfrac{k}{2}}{k+2}, \\
+    \sum_{j=1}^{n} \binom{j -t + \frac{k}{2} +1}{k+1} &amp;= \binom{n -t
++ \frac{k}{2} + 2}{k+2} - \binom{2 -t + \tfrac{k}{2}}{k+2}.
+  \end{cases}
+\end{align*}\]</span> Hence,</p>
+<div id="prop:double-sums-of-powers" class="proposition">
+<p><strong>Proposition 15</strong> (Double sums of powers). <em>For
+non-negative integers <span class="math inline">\(n,m\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{2}\,{n}^{m}
+    &amp;= \frac{1}{2}
+    \sum_{k=0}^{m}
+    \Bigg[
+      \binom{n -t + \frac{k}{2} +1}{k+2}
+      +\binom{n -t + \frac{k}{2} + 2}{k+2} \\
+      &amp;-
+      \Bigg(
+        \binom{0 -t + \tfrac{k}{2}}{k+1}
+        +\binom{1 -t + \tfrac{k}{2}}{k+1}
+      \Bigg) \Sigma^{1}\,{n}^{0} \\
+      &amp;-
+      \Bigg(
+        \binom{1 -t + \tfrac{k}{2}}{k+2}
+        +\binom{2 -t + \tfrac{k}{2}}{k+2}
+      \Bigg) \Sigma^{0}\,{n}^{0}
+    \Bigg] \delta^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 16</strong>. <em>For integer <span
+class="math inline">\(0 \le t \le 2\)</span>, we have <span
+class="math display">\[\begin{align*}
+    t=0:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{1}{2}(n+n^2)\cdot0
+    +\tfrac{1}{48}(-3-2n+12n^2+8n^3)\cdot\tfrac{1}{4} \\
+    &amp;+\tfrac{1}{24}(-2n-n^2+2n^3+n^4)\cdot0 \\
+    &amp;+\tfrac{1}{3840}(45+18n-200n^2-80n^3+80n^4+32n^5)\cdot6,
+    \\
+    t=1:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{1}{2}(-n+n^2)\cdot1
+    +\tfrac{1}{48}(3-2n-12n^2+8n^3)\cdot\tfrac{13}{4} \\
+    &amp;+\tfrac{1}{24}(2n-n^2-2n^3+n^4)\cdot6 \\
+    &amp;+\tfrac{1}{3840}(-45+18n+200n^2-80n^3-80n^4+32n^5)\cdot6,
+    \\
+    t=2:\quad \Sigma^{1}\,{n}^{3}
+    &amp;=
+    \tfrac{1}{2}(2-3n+n^2)\cdot8
+    +\tfrac{1}{48}(-15+46n-36n^2+8n^3)\cdot\tfrac{49}{4} \\
+    &amp;+\tfrac{1}{24}(-6n+11n^2-6n^3+n^4)\cdot12 \\
+    &amp;+\tfrac{1}{3840}(105-142n-360n^2+560n^3-240n^4+32n^5)\cdot6.
+\end{align*}\]</span></em></p>
+</div>
+<p>Thus, in general</p>
+<div id="thm:multifold-sums-of-powers" class="theorem">
+<p><strong>Theorem 17</strong> (Multifold sums of powers). <em>For
+non-negative integers <span class="math inline">\(r,n,m\)</span>, and an
+arbitrary integer <span class="math inline">\(t\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \frac{1}{2}
+    \sum_{k=0}^{m}
+    \Bigg[
+      \binom{n-t+\frac{k}{2}+r-1}{k+r}
+      +
+      \binom{n-t+\frac{k}{2}+r}{k+r} \\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \Bigg(
+        \binom{s-t+\frac{k}{2}}{k+s+1}
+        +
+        \binom{s-t+\frac{k}{2}+1}{k+s+1}
+      \Bigg) \Sigma^{r-1-s}\,{n}^{0}
+    \Bigg] \delta^{k} t^{m}.
+\end{align*}\]</span></em></p>
+</div>
+<p>By Lemma <a href="#lem:multifold-sum-of-zero-powers"
 data-reference-type="eqref"
-data-reference="theorem:multifold-centered-sums-of-powers">[theorem:multifold-centered-sums-of-powers]</a>,
-<a href="#prop:binomial-form-of-multifold-centered-sums-of-powers"
+data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>
+pure binomial form follows</p>
+<div id="prop:multifold-binomial-sums-of-powers" class="proposition">
+<p><strong>Proposition 18</strong> (Multifold Binomial sums of powers).
+<em>For non-negative integers <span
+class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    &amp;= \frac{1}{2}
+    \sum_{k=0}^{m}
+    \Bigg[
+      \binom{n-t+\frac{k}{2}+r-1}{k+r}
+      +
+      \binom{n-t+\frac{k}{2}+r}{k+r} \\
+      &amp;-
+      \sum_{s=0}^{r-1}
+      \Bigg(
+        \binom{s-t+\frac{k}{2}}{k+s+1}
+        +
+        \binom{s-t+\frac{k}{2}+1}{k+s+1}
+      \Bigg) \binom{r-s+n-2}{r-s-1}
+    \Bigg] \delta^{k} t^{m}.
+\end{align*}\]</span></em></p>
+</div>
+<p>Therefore, we have successfully derived multifold formulas for sums
+of powers, in closed form. The work <span class="citation"
+data-cites="kolosov2026interpolation">(Kolosov 2025)</span> provides
+implementation of algorithm proposed in <span class="citation"
+data-cites="kolosov2026framework">(Kolosov 2026a, Alg. (11.2))</span>,
+in terms of forward finite differences <span
+class="math inline">\(\Delta\)</span>, and Newton’s formula. Similarly,
+the work <span class="citation"
+data-cites="kolosov2026backward">(Kolosov 2026b)</span> discusses
+multifold formulas for sums of powers in terms of backward differences
+<span class="math inline">\(\nabla\)</span>, and Newton’s formula.</p>
+<h1 id="remark-on-knuths-formula">Remark on Knuth’s formula</h1>
+<p>In <span class="citation" data-cites="knuth1993johann">(Knuth, Donald
+E. 1993)</span> Donald Knuth provides a remarkable formula for sums of
+odd powers, in terms of central factorial numbers of the second kind
+<span class="math inline">\(T(n,k)\)</span></p>
+<div id="prop:knuth-odd-powers-sum" class="proposition">
+<p><strong>Proposition 19</strong> (Knuth’s odd powers sum). <em>For
+integers <span class="math inline">\(n \geq 0\)</span>, and <span
+class="math inline">\(m\geq 1\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)! \binom{n+k}{2k}
+T(2m,2k),
+\end{align*}\]</span> where <span
+class="math inline">\(T(2m,2k)\)</span> are central factorial numbers of
+the second kind.</em></p>
+</div>
+<p>See the sequence <a
+href="https://oeis.org/A008957"><code>A008957</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span> for central factorial numbers of the second
+kind. It is quite interesting to notice that Proposition <a
+href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
+originates from centered Newton’s formula for powers <a
+href="#lem:central-newtons-formula-for-powers"
 data-reference-type="eqref"
-data-reference="prop:binomial-form-of-multifold-centered-sums-of-powers">[prop:binomial-form-of-multifold-centered-sums-of-powers]</a>,
-<a href="#prop:negated-binomial-centered-sums-of-powers"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
+evaluated at zero. By central Newton’s formula, for <span
+class="math inline">\(m\geq 1\)</span>, we have <span
+class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{2m} \frac{n^{[k]}}{k!} \cdot \delta^{k} 0^{2m}
+\end{align*}\]</span> The iteration for <span
+class="math inline">\(k=0\)</span> can be omitted because <span
+class="math inline">\(\delta^{0} 0^{2m} = 0\)</span>. Now, we observe
+that central difference <span class="math inline">\(\delta^k
+0^m\)</span> satisfies the parity of arguments <span
+class="math inline">\(m\)</span> and <span
+class="math inline">\(k\)</span>, such that <span
+class="math display">\[\begin{align*}
+  \begin{cases}
+    \delta^{k} 0^m \neq 0, \quad &amp;\text{when} \quad m \equiv k
+\pmod{2}, \\
+    \delta^{k} 0^m = 0, \quad &amp;\text{when} \quad m \not\equiv k
+\pmod{2},
+  \end{cases}
+\end{align*}\]</span> meaning that <span
+class="math inline">\(\delta^{k} 0^m\)</span> is zero whether <span
+class="math inline">\(k,m\)</span> are odd and even, and vise versa.
+Note that the parity property holds only for central difference of
+powers evaluated at zero, by contrast <span
+class="math inline">\(\delta^{3} 1^{4} = 24  \neq 0\)</span>. Thus, the
+parity of <span class="math inline">\(\delta^{k} 0^{2m}\)</span> allows
+us to omit odd iterations of <span class="math inline">\(k\)</span>,
+because <span class="math inline">\(\delta^{k} 0^{2m}\)</span> is zero
+for odd <span class="math inline">\(k\)</span> <span
+class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} \frac{n^{[2k]}}{(2k)!} \cdot \delta^{2k}
+0^{2m}.
+\end{align*}\]</span> By definition of central factorial numbers of the
+second kind, yields <span class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} n^{[2k]} T(2m,2k).
+\end{align*}\]</span> Thus, <span class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} (2k)! \frac{n^{[2k]}}{(2k)!} T(2m,2k)
+\end{align*}\]</span> By simplifying <span
+class="math inline">\(\frac{n^{[2k]}}{(2k)!}\)</span> using Lemma <a
+href="#lem:central-factorials-binomial-form" data-reference-type="eqref"
+data-reference="lem:central-factorials-binomial-form">[lem:central-factorials-binomial-form]</a>,
+we get <span class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} (2k)!  \frac{n}{2k} \binom{n+k-1}{2k-1}
+T(2m,2k).
+\end{align*}\]</span> Therefore, <span
+class="math display">\[\begin{align*}
+  n^{2m} = \sum_{k=1}^{m} (2k-1)!  n \binom{n+k-1}{2k-1} T(2m,2k).
+\end{align*}\]</span> By factoring out <span
+class="math inline">\(n\)</span>, we obtain <span
+class="math display">\[\begin{align*}
+  n^{2m-1}
+  &amp;= \sum_{k=1}^{m} (2k-1)! \binom{n+k-1}{2k-1} T(2m,2k).
+\end{align*}\]</span> By using hockey-stick identity <span
+class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> yields <span
+class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{2m-1} = \sum_{k=1}^{m} (2k-1)! \binom{n+k}{2k}
+T(2m,2k).
+\end{align*}\]</span> The formula above matches the Proposition <a
+href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
+precisely. Clearly, the formula for sums of odd powers can be
+generalized to multifold case, by applying hockey-stick identity <span
+class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> repeatedly</p>
+<div id="prop:knuth-odd-powers-sum-multifold" class="proposition">
+<p><strong>Proposition 20</strong> (Knuth’s odd powers sum multifold).
+<em>For non-negative integers <span class="math inline">\(r,n\)</span>,
+and <span class="math inline">\(m \geq 1\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r+1}\,{n}^{2m-1}
+    = \sum_{k=1}^{m} (2k-1)! \binom{n+k+r}{2k+r} T(2m,2k),
+\end{align*}\]</span> where <span
+class="math inline">\(T(2m,2k)\)</span> are central factorial numbers of
+the second kind.</em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 21</strong>. <em>For non-negative integers <span
+class="math inline">\(n\)</span>, and <span
+class="math inline">\(r=1\)</span>, we have <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{1} &amp;= \tbinom{n+1}{2} 1, \\
+    \Sigma^{1}\,{n}^{3} &amp;= \tbinom{n+2}{4} 6    + \tbinom{n+1}{2} 1,
+\\
+    \Sigma^{1}\,{n}^{5} &amp;= \tbinom{n+3}{6} 120  + \tbinom{n+2}{4}
+30   + \tbinom{n+1}{2} 1, \\
+    \Sigma^{1}\,{n}^{7} &amp;= \tbinom{n+4}{8} 5040 + \tbinom{n+3}{6}
+1680 + \tbinom{n+2}{4} 126 + \tbinom{n+1}{2} 1.
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 22</strong>. <em>For non-negative integers <span
+class="math inline">\(r,n\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{1} &amp;= \tbinom{n+0+r}{1+r} 1, \\
+    \Sigma^{r}\,{n}^{3} &amp;= \tbinom{n+1+r}{3+r} 6    +
+\tbinom{n+0+r}{1+r} 1, \\
+    \Sigma^{r}\,{n}^{5} &amp;= \tbinom{n+2+r}{5+r} 120  +
+\tbinom{n+1+r}{3+r} 30   + \tbinom{n+0+r}{1+r} 1, \\
+    \Sigma^{r}\,{n}^{7} &amp;= \tbinom{n+3+r}{7+r} 5040 +
+\tbinom{n+3+r}{5+r} 1680 + \tbinom{n+1+r}{3+r} 126 + \tbinom{n+0+r}{1+r}
+1.
+\end{align*}\]</span></em></p>
+</div>
+<p>The coefficients <span class="math inline">\(1, 6, 1, 120, 30, 1,
+5040, 1680,\ldots\)</span> is the sequence <a
+href="https://oeis.org/A303675"><code>A303675</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. However, Proposition <a
+href="#prop:knuth-odd-powers-sum-multifold" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum-multifold">[prop:knuth-odd-powers-sum-multifold]</a>
+serves as the source of inspiration for one more remarkable identity. By
+Newton’s formula <a href="#lem:central-newtons-formula-for-powers"
 data-reference-type="eqref"
-data-reference="prop:negated-binomial-centered-sums-of-powers">[prop:negated-binomial-centered-sums-of-powers]</a>,
-and others, using Newton’s formula in central differences, evaluated at
-an arbitrary integer <span class="math inline">\(t\)</span>. We utilize
-hockey-stick identities for binomial coefficients, namely <a
-href="#prop:generalized-hockey-stick-identity"
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>,
+and by Lemma <a href="#lem:central-factorials-binomial-form"
 data-reference-type="eqref"
-data-reference="prop:generalized-hockey-stick-identity">[prop:generalized-hockey-stick-identity]</a>
-and <a href="#prop:centered-hockey-stick-identity"
+data-reference="lem:central-factorials-binomial-form">[lem:central-factorials-binomial-form]</a>,
+we have <span class="math display">\[\begin{align*}
+  n^m = \sum_{k=1}^{m} \frac{n}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\delta^{k} 0^m
+\end{align*}\]</span> By factoring out <span
+class="math inline">\(n\)</span> <span
+class="math display">\[\begin{align*}
+  n^{m-1} = \sum_{k=1}^{m} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\delta^{k} 0^m
+\end{align*}\]</span> By shifting <span
+class="math display">\[\begin{align*}
+  n^{m} = \sum_{k=1}^{m+1} \frac{1}{k} \binom{n+\frac{k}{2}-1}{k-1}
+\delta^{k} 0^{m+1}
+\end{align*}\]</span> By re-indexing <span
+class="math display">\[\begin{align}
+  \label{eq:power-identity-at-zero}
+  n^{m} = \sum_{k=0}^{m} \frac{1}{k+1}
+\binom{n+\frac{k}{2}-\frac{1}{2}}{k} \delta^{k+1} 0^{m+1}
+\end{align}\]</span> Thus, by setting <span
+class="math inline">\(r=0\)</span> and <span
+class="math inline">\(t=\frac{1}{2}\)</span> into Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>
+yields</p>
+<div id="prop:ordinary-sums-of-powers-at-zero" class="proposition">
+<p><strong>Proposition 23</strong> (Ordinary sums of powers at zero).
+<em>For non-negative integers <span class="math inline">\(n,m\)</span>
+<span class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m}
+    = \sum_{k=0}^{m} \frac{1}{k+1}
+    \left[ \binom{n+\frac{k}{2}+\frac{1}{2}}{k+1} -
+\binom{\frac{k}{2}+\frac{1}{2}}{k+1}\right]
+    \delta^{k+1} 0^{m+1}.
+\end{align*}\]</span></em></p>
+</div>
+<p>Which can also be rewritten in terms of central factorial numbers of
+the second kind <span class="math display">\[\begin{align*}
+  \Sigma^{1}\,{n}^{m}
+  = \sum_{k=0}^{m} k!
+  \left[ \binom{n+\frac{k}{2}+\frac{1}{2}}{k+1} -
+\binom{\frac{k}{2}+\frac{1}{2}}{k+1}\right]
+  T(k+1, m+1).
+\end{align*}\]</span> By setting <span
+class="math inline">\(r=1\)</span> and <span
+class="math inline">\(t=\frac{1}{2}\)</span> into Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>,
+we get formula for double sums of powers</p>
+<div id="prop:double-sums-of-powers-at-zero" class="proposition">
+<p><strong>Proposition 24</strong> (Double sums of powers at zero).
+<em>For non-negative integers <span class="math inline">\(n,m\)</span>
+<span class="math display">\[\begin{align*}
+    \Sigma^{2}\,{n}^{m}
+    = \sum_{k=0}^{m} \frac{1}{k+1}
+    \left[
+      \binom{n+\frac{k}{2}+\frac{3}{2}}{k+2}
+      - \binom{\frac{k}{2}+\frac{1}{2}}{k+1} \Sigma^{1}\,{n}^{0}
+      - \binom{\frac{k}{2}+\frac{3}{2}}{k+2} \Sigma^{0}\,{n}^{0}
+    \right]
+    \delta^{k+1} 0^{m+1}.
+\end{align*}\]</span></em></p>
+</div>
+<p>In general, we have</p>
+<div id="thm:multifold-sums-of-powers-at-zero" class="theorem">
+<p><strong>Theorem 25</strong> (Multifold sums of powers at zero).
+<em>For non-negative integers <span class="math inline">\(r,n,m\)</span>
+<span class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    =
+    \sum_{k=0}^{m}
+    \left[
+      \binom{n+\frac{k}{2}+\frac{2r-1}{2}}{k+r}
+      -
+      \sum_{s=0}^{r-1} \binom{\frac{k}{2} + \frac{2(r-s)-1}{2}}{k+r-s}
+      \Sigma^{s}\,{n}^{0}
+    \right] \frac{\delta^{k+1} 0^{m+1}}{k+1}.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> By repeatedly applied Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>,
+and Equation <a href="#eq:power-identity-at-zero"
 data-reference-type="eqref"
-data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a>,
-to compute closed forms of column sums of binomial coefficients. These
-closed forms are then used in the derivation of formulas for multifold
-sums of powers. Additionally, we show that Knuth’s formula for multifold
-sums of odd powers <span class="math inline">\(n^{2m-1}\)</span> <span
-class="citation" data-cites="knuth1993johann">(Knuth, Donald E.
-1993)</span> arises naturally from Newton’s formula in central
-differences, evaluated at <span class="math inline">\(t=0\)</span>. All
-main results of this manuscript are validated using programs written in
-Wolfram Mathematica; see Section <a href="#sec:mathematica"
+data-reference="eq:power-identity-at-zero">[eq:power-identity-at-zero]</a>. ◻</em></p>
+</div>
+</div>
+<p>By Lemma <a href="#lem:multifold-sum-of-zero-powers"
 data-reference-type="eqref"
-data-reference="sec:mathematica">[sec:mathematica]</a>.</p>
-<h1 id="sec:mathematica">Mathematica programs</h1>
-<p>Use the <em>Mathematica</em> package <span class="citation"
-data-cites="GitHubSourceCode">(Kolosov, Petro 2025)</span> to validate
-the results</p>
+data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
+from Theorem <a href="#thm:multifold-sums-of-powers-at-zero"
+data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers-at-zero">[thm:multifold-sums-of-powers-at-zero]</a>
+follows</p>
+<div id="prop:multifold-sums-of-powers-at-zero-binomial-form"
+class="proposition">
+<p><strong>Proposition 26</strong> (Multifold sums of powers at zero
+binomial form). <em>For non-negative integers <span
+class="math inline">\(r,n,m\)</span> <span
+class="math display">\[\begin{align*}
+    \Sigma^{r}\,{n}^{m}
+    =
+    \sum_{k=0}^{m}
+    \left[
+      \binom{n+\frac{k}{2}+\frac{2r-1}{2}}{k+r}
+      -
+      \sum_{s=0}^{r-1} \binom{\frac{k}{2} + \frac{2(r-s)-1}{2}}{k+r-s}
+      \binom{s+n-1}{s}
+    \right] \frac{\delta^{k+1} 0^{m+1}}{k+1}.
+\end{align*}\]</span></em></p>
+<div class="proof">
+<p><em><em>Proof.</em> By repeatedly applied Lemma <a
+href="#lem:centered-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:centered-hockey-stick-identity">[lem:centered-hockey-stick-identity]</a>,
+and Equation <a href="#eq:power-identity-at-zero"
+data-reference-type="eqref"
+data-reference="eq:power-identity-at-zero">[eq:power-identity-at-zero]</a>. ◻</em></p>
+</div>
+</div>
+<p>Which, as well, can be expressed in terms of central factorial
+numbers of the second kind <span class="math display">\[\begin{align*}
+  \Sigma^{r}\,{n}^{m}
+  =
+  \sum_{k=0}^{m}
+  \left[
+    \binom{n+\frac{k}{2}+\frac{2r-1}{2}}{k+r}
+    -
+    \sum_{s=0}^{r-1} \binom{\frac{k}{2} + \frac{2(r-s)-1}{2}}{k+r-s}
+    \binom{s+n-1}{s}
+  \right] k! T(k+1, m+1).
+\end{align*}\]</span> Thus, we have discussed quite remarkable results,
+that follow from centered Newton’s formula evaluated at zero.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p>In this manuscript, we derive closed formulas for multifold sums of
+powers of integers by combining the central Newton interpolation formula
+with hockey-stick identities for binomial coefficients. We further
+obtain representations of multifold sums of powers in terms of Stirling
+numbers of the second kind and Eulerian numbers. Finally, we provide
+Wolfram Mathematica programs for the efficient verification of the
+derived identities.</p>
+<h1 class="unnumbered" id="mathematica-programs">Mathematica
+programs</h1>
+<p>Use this <a
+href="https://github.com/kolosovpetro/SumsOfPowersViaCentralFiniteDifferencesAndNewtonFormula/tree/main/mathematica"><code>GitHub</code></a>
+repository to validate the results using Mathematica programs.<br />
+</p>
 <div class="center">
 <table>
 <thead>
@@ -1082,172 +1210,61 @@ the results</p>
 <tbody>
 <tr>
 <td
-style="text-align: left;"><code>MultifoldSumOfPowersRecurrence[r, n, m]</code></td>
-<td style="text-align: left;">Computes <span
-class="math inline">\(\Sigma^{r}\,{n}^{m}\)</span></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateCentralFactorialsInTermsOfFalling[10]</code></td>
+style="text-align: left;"><code>ValidateOrdinarySumsOfPowers.txt</code></td>
 <td style="text-align: left;">Validates Prop. <a
-href="#prop:central-factorials-in-terms-of-falling"
-data-reference-type="eqref"
-data-reference="prop:central-factorials-in-terms-of-falling">[prop:central-factorials-in-terms-of-falling]</a></td>
+href="#prop:ordinary-sums-of-powers" data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers">[prop:ordinary-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateBinomialFormOfCentralFactorials[10]</code></td>
+style="text-align: left;"><code>ValidateDoubleSumsOfPowers.txt</code></td>
 <td style="text-align: left;">Validates Prop. <a
-href="#prop:binomial-form-of-central-factorials"
-data-reference-type="eqref"
-data-reference="prop:binomial-form-of-central-factorials">[prop:binomial-form-of-central-factorials]</a></td>
+href="#prop:double-sums-of-powers" data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers">[prop:double-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateNewtonsFormulaForPowersInZero[20]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:newtons-formula-for-powers-in-zero"
-data-reference-type="eqref"
-data-reference="prop:newtons-formula-for-powers-in-zero">[prop:newtons-formula-for-powers-in-zero]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateOrdinarySumsOfOddPowersInCentralDifferences[20]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:ordinary-sums-of-odd-powers-in-central-differences"
-data-reference-type="eqref"
-data-reference="prop:ordinary-sums-of-odd-powers-in-central-differences">[prop:ordinary-sums-of-odd-powers-in-central-differences]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateMultifoldSumsOfOddPowersInCentralDifferences[5]</code></td>
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowers.txt</code></td>
 <td style="text-align: left;">Validates Thm. <a
-href="#theorem:multifold-sums-of-odd-powers-in-central-differences"
+href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldBinomialSumsOfPowers.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:multifold-binomial-sums-of-powers"
 data-reference-type="eqref"
-data-reference="theorem:multifold-sums-of-odd-powers-in-central-differences">[theorem:multifold-sums-of-odd-powers-in-central-differences]</a></td>
+data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateNewtonsFormulaForPowers[10]</code></td>
+style="text-align: left;"><code>ValidateOrdinarySumsOfPowersAtZero.txt</code></td>
 <td style="text-align: left;">Validates Prop. <a
-href="#prop:newtons-formula-for-powers" data-reference-type="eqref"
-data-reference="prop:newtons-formula-for-powers">[prop:newtons-formula-for-powers]</a></td>
+href="#prop:ordinary-sums-of-powers-at-zero" data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-at-zero">[prop:ordinary-sums-of-powers-at-zero]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidatePowersInCentralBinomialForm[10]</code></td>
+style="text-align: left;"><code>ValidateDoubleSumsOfPowersAtZero.txt</code></td>
 <td style="text-align: left;">Validates Prop. <a
-href="#prop:powers-in-central-binomial-form" data-reference-type="eqref"
-data-reference="prop:powers-in-central-binomial-form">[prop:powers-in-central-binomial-form]</a></td>
+href="#prop:double-sums-of-powers-at-zero" data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers-at-zero">[prop:double-sums-of-powers-at-zero]</a></td>
 </tr>
 <tr>
 <td
-style="text-align: left;"><code>ValidateCenteredOrdinarySumsOfPowers[10]</code></td>
-<td style="text-align: left;">Validates Cor. <a
-href="#cor:centered-ordinary-sums-of-powers" data-reference-type="eqref"
-data-reference="cor:centered-ordinary-sums-of-powers">[cor:centered-ordinary-sums-of-powers]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateBinomialDecomposition[5]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:binomial-decomposition" data-reference-type="eqref"
-data-reference="prop:binomial-decomposition">[prop:binomial-decomposition]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateCentralBinomialDecomposition[5]</code></td>
-<td style="text-align: left;">Validates Cor. <a
-href="#cor:central-binomial-decomposition" data-reference-type="eqref"
-data-reference="cor:central-binomial-decomposition">[cor:central-binomial-decomposition]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateCenteredDecompositionOfPowerSums[10]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:centered-decomposition-of-power-sums"
-data-reference-type="eqref"
-data-reference="prop:centered-decomposition-of-power-sums">[prop:centered-decomposition-of-power-sums]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity[10]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:centered-hockey-stick-identity" data-reference-type="eqref"
-data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateCenteredHockeyStickIdentity[10]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:centered-hockey-stick-identity" data-reference-type="eqref"
-data-reference="prop:centered-hockey-stick-identity">[prop:centered-hockey-stick-identity]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateClosedFormOfCenteredSumsOfPowers[10]</code></td>
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowersAtZero.txt</code></td>
 <td style="text-align: left;">Validates Thm. <a
-href="#theorem:closed-form-of-centered-sums-of-powers"
+href="#thm:multifold-sums-of-powers-at-zero" data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers-at-zero">[thm:multifold-sums-of-powers-at-zero]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowersAtZeroBinomialForm.txt</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#prop:multifold-sums-of-powers-at-zero-binomial-form"
 data-reference-type="eqref"
-data-reference="theorem:closed-form-of-centered-sums-of-powers">[theorem:closed-form-of-centered-sums-of-powers]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateSimplifiedCenteredSumsOfPowers[10]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:simplified-centered-sums-of-powers"
-data-reference-type="eqref"
-data-reference="prop:simplified-centered-sums-of-powers">[prop:simplified-centered-sums-of-powers]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateDoubleCenteredSumsOfPowers[10]</code></td>
-<td style="text-align: left;">Validates Prop. <a
-href="#prop:double-centered-sums-of-powers" data-reference-type="eqref"
-data-reference="prop:double-centered-sums-of-powers">[prop:double-centered-sums-of-powers]</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="center">
-<table>
-<thead>
-<tr>
-<th style="text-align: left;"><strong>Mathematica Function</strong></th>
-<th style="text-align: left;"><strong>Validates / Prints</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td
-style="text-align: left;"><code>ValidateMultifoldCenteredSumsOfPowers[5]</code></td>
-<td style="text-align: left;">Validates Theorem <a
-href="#theorem:multifold-centered-sums-of-powers"
-data-reference-type="eqref"
-data-reference="theorem:multifold-centered-sums-of-powers">[theorem:multifold-centered-sums-of-powers]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateMultifoldSumOfZeroPowers[10]</code></td>
-<td style="text-align: left;">Validates Proposition <a
-href="#prop:multifold-sum-of-zero-powers" data-reference-type="eqref"
-data-reference="prop:multifold-sum-of-zero-powers">[prop:multifold-sum-of-zero-powers]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateBinomialMultifoldCenteredSumsOfPowers[5]</code></td>
-<td style="text-align: left;">Validates Proposition <a
-href="#prop:binomial-form-of-multifold-centered-sums-of-powers"
-data-reference-type="eqref"
-data-reference="prop:binomial-form-of-multifold-centered-sums-of-powers">[prop:binomial-form-of-multifold-centered-sums-of-powers]</a></td>
-</tr>
-<tr>
-<td
-style="text-align: left;"><code>ValidateNegatedBinomialCenteredSumOfPowers[5]</code></td>
-<td style="text-align: left;">Validates Proposition <a
-href="#prop:negated-binomial-centered-sums-of-powers"
-data-reference-type="eqref"
-data-reference="prop:negated-binomial-centered-sums-of-powers">[prop:negated-binomial-centered-sums-of-powers]</a></td>
+data-reference="prop:multifold-sums-of-powers-at-zero-binomial-form">[prop:multifold-sums-of-powers-at-zero-binomial-form]</a></td>
 </tr>
 </tbody>
 </table>
@@ -1255,9 +1272,9 @@ data-reference="prop:negated-binomial-centered-sums-of-powers">[prop:negated-bin
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> January 3, 2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-01-24.</p></li>
+<li><p><strong>Current release date:</strong> 2026-07-01.</p></li>
 <li><p><strong>Version:</strong>
-<code>1.6.3+main.6426a1c</code></p></li>
+<code>2.0.0+main.e74dacb</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83.</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
@@ -1287,11 +1304,17 @@ Applications.”</span> <em>Numerical Functional Analysis and
 Optimization</em> 10 (5-6): 419–88. <a
 href="https://doi.org/10.1080/01630568908816313">https://doi.org/10.1080/01630568908816313</a>.
 </div>
-<div id="ref-carlitz1963divided" class="csl-entry" role="listitem">
-Carlitz, L., and John Riordan. 1963. <span>“The Divided Central
-Differences of Zero.”</span> <em><span class="nocase">Canadian Journal
-of Mathematics</span></em> 15: 94–100. <a
-href="https://doi.org/10.4153/CJM-1963-010-8">https://doi.org/10.4153/CJM-1963-010-8</a>.
+<div id="ref-graham1994concrete" class="csl-entry" role="listitem">
+Graham, Ronald L. and Knuth, Donald E. and Patashnik, Oren. 1994.
+<em><span class="nocase">Concrete mathematics: A foundation for computer
+science (second edition)</span></em>. <a
+href="https://archive.org/details/concrete-mathematics"
+class="uri">Https://archive.org/details/concrete-mathematics</a>;
+<span>Addison-Wesley Publishing Company, Inc.</span>
+</div>
+<div id="ref-knuth1992notesnotation" class="csl-entry" role="listitem">
+Knuth, Donald E. 1992. <em>Two Notes on Notation</em>. <a
+href="https://arxiv.org/abs/math/9205211">https://arxiv.org/abs/math/9205211</a>.
 </div>
 <div id="ref-knuth1993johann" class="csl-entry" role="listitem">
 Knuth, Donald E. 1993. <span>“<span class="nocase">Johann Faulhaber and
@@ -1299,29 +1322,21 @@ sums of powers</span>.”</span> <em><span class="nocase">Mathematics of
 Computation</span></em> 61 (203): 277–94. <a
 href="https://arxiv.org/abs/math/9207222">https://arxiv.org/abs/math/9207222</a>.
 </div>
-<div id="ref-GitHubSourceCode" class="csl-entry" role="listitem">
-Kolosov, Petro. 2025. <em><span class="nocase">Source code for Central
-Finite Differences and Newton Formula manuscript</span></em>. <a
-href="https://github.com/kolosovpetro/SumsOfPowersViaCentralFiniteDifferencesAndNewtonFormula"
-class="uri">Https://github.com/kolosovpetro/SumsOfPowersViaCentralFiniteDifferencesAndNewtonFormula</a>.
-</div>
-<div id="ref-kolosov_2026_18135998" class="csl-entry" role="listitem">
-Kolosov, Petro. 2026a. <em>Newton’s Interpolation Formula and Sums of
-Powers</em>. Zenodo. <a
+<div id="ref-kolosov2026interpolation" class="csl-entry"
+role="listitem">
+Kolosov, Petro. 2025. <em><span class="nocase">Newton’s interpolation
+formula and sums of powers</span></em>. Zenodo. <a
 href="https://doi.org/10.5281/zenodo.18040979">https://doi.org/10.5281/zenodo.18040979</a>.
 </div>
-<div id="ref-kolosov_2026_18136163" class="csl-entry" role="listitem">
-Kolosov, Petro. 2026b. <em>Sums of Powers via Backward Finite
-Differences and Newton’s Formula</em>. Zenodo. <a
-href="https://doi.org/10.5281/zenodo.18118011">https://doi.org/10.5281/zenodo.18118011</a>.
+<div id="ref-kolosov2026framework" class="csl-entry" role="listitem">
+Kolosov, Petro. 2026a. <em>Sums of Powers of Integers: A Complete
+Framework for Closed Formulas</em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.20548019">https://doi.org/10.5281/zenodo.20548019</a>.
 </div>
-<div id="ref-newton1850newton" class="csl-entry" role="listitem">
-Newton, Isaac and Chittenden, N.W. 1850. <em><span
-class="nocase">Newton’s Principia: the mathematical principles of
-natural philosophy</span></em>. <a
-href="https://archive.org/details/bub_gb_KaAIAAAAIAAJ/page/466/mode/2up"
-class="uri">Https://archive.org/details/bub_gb_KaAIAAAAIAAJ/page/466/mode/2up</a>;
-<span>New-York, D. Adee</span>.
+<div id="ref-kolosov2026backward" class="csl-entry" role="listitem">
+Kolosov, Petro. 2026b. <em><span class="nocase">Sums of powers via
+backward finite differences and Newton’s formula</span></em>. Zenodo. <a
+href="https://doi.org/10.5281/zenodo.18118011">https://doi.org/10.5281/zenodo.18118011</a>.
 </div>
 <div id="ref-riordan1968combinatorial" class="csl-entry"
 role="listitem">
@@ -1335,6 +1350,13 @@ Sloane, Neil J.A. and others. 2003. <em><span class="nocase">The on-line
 encyclopedia of integer sequences</span></em>. <a
 href="https://oeis.org/" class="uri">Https://oeis.org/</a>.
 </div>
+<div id="ref-steffensen1933definition" class="csl-entry"
+role="listitem">
+Steffensen, J. F. 1933. <span>“ON THE DEFINITION OF THE CENTRAL
+FACTORIAL.”</span> <em>Journal of the Institute of Actuaries
+(1886-1994)</em> 64 (2): 165–68. <a
+href="http://www.jstor.org/stable/41137516">http://www.jstor.org/stable/41137516</a>.
+</div>
 <div id="ref-steffensen1927interpolation" class="csl-entry"
 role="listitem">
 Steffensen, Johan Frederik. 1927. <em>Interpolation</em>. <a
@@ -1343,15 +1365,6 @@ class="uri">Https://www.amazon.com/-/de/Interpolation-Second-Dover-Books-Mathema
 <span>Williams &amp; Wilkins</span>.
 </div>
 </div>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1"><p>DOI: <a href="https://doi.org/10.5281/zenodo.18096789"
-class="uri">https://doi.org/10.5281/zenodo.18096789</a><a href="#fnref1"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 </body>
 </html>
 
