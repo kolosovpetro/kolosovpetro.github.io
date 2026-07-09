@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-07-01" />
+  <meta name="dcterms.date" content="2026-07-09" />
   <title>Sums of powers via central finite differences and Newton’s formula</title>
   <style>
     /* Default styles provided by pandoc.
@@ -214,7 +214,7 @@
 <h1 class="title">Sums of powers via central finite differences and
 Newton’s formula</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-07-01</p>
+<p class="date">2026-07-09</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>In this manuscript, we derive closed formulas for multifold sums of
@@ -923,11 +923,124 @@ T(2m,2k),
 class="math inline">\(T(2m,2k)\)</span> are central factorial numbers of
 the second kind.</em></p>
 </div>
-<p>See the sequence <a
-href="https://oeis.org/A008957"><code>A008957</code></a> in the
+<p>See the sequences <a
+href="https://oeis.org/A008957"><code>A008957</code></a>, and <a
+href="https://oeis.org/A036969"><code>A036969</code></a>, and <a
+href="https://oeis.org/A269945"><code>A269945</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span> for central factorial numbers of the second
-kind. It is quite interesting to notice that Proposition <a
+kind <span class="math inline">\(T(n,k)\)</span>. For example,</p>
+<div class="center">
+<table id="tab:central-factorial-numbers-t0-even">
+<caption>Central factorial numbers of the second kind <span
+class="math inline">\(T(2n,2k)\)</span>.</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(n/k\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">147</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">341</td>
+<td style="text-align: center;">1408</td>
+<td style="text-align: center;">627</td>
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1365</td>
+<td style="text-align: center;">13013</td>
+<td style="text-align: center;">11440</td>
+<td style="text-align: center;">2002</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>It is quite interesting to notice that Proposition <a
 href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
 data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
 originates from centered Newton’s formula for powers <a
@@ -940,10 +1053,10 @@ class="math display">\[\begin{align*}
   n^{2m} = \sum_{k=1}^{2m} \frac{n^{[k]}}{k!} \cdot \delta^{k} 0^{2m}
 \end{align*}\]</span> The iteration for <span
 class="math inline">\(k=0\)</span> can be omitted because <span
-class="math inline">\(\delta^{0} 0^{2m} = 0\)</span>. Now, we observe
-that central difference <span class="math inline">\(\delta^k
-0^m\)</span> satisfies the parity of arguments <span
-class="math inline">\(m\)</span> and <span
+class="math inline">\(\delta^{0} 0^{2m} = 0\)</span>, for <span
+class="math inline">\(m \geq 1\)</span>. Now, we observe that central
+difference <span class="math inline">\(\delta^k 0^m\)</span> satisfies
+the parity of arguments <span class="math inline">\(m\)</span> and <span
 class="math inline">\(k\)</span>, such that <span
 class="math display">\[\begin{align*}
   \begin{cases}
@@ -1182,7 +1295,149 @@ numbers of the second kind <span class="math display">\[\begin{align*}
     \binom{s+n-1}{s}
   \right] k! T(k+1, m+1).
 \end{align*}\]</span> Thus, we have discussed quite remarkable results,
-that follow from centered Newton’s formula evaluated at zero.</p>
+that follow from centered Newton’s formula evaluated at zero. For
+example,</p>
+<div class="center">
+<table id="tab:central-factorial-numbers-t0">
+<caption>Central factorial numbers of the second kind <span
+class="math inline">\(T(n,k)\)</span>. See also the sequences <a
+href="https://oeis.org/A395862"><code>A395862</code></a>, and <a
+href="https://oeis.org/A370703"><code>A370703</code></a> in the
+OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
+J.A. and others 2003)</span>. </caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(n/k\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1}{4}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1}{16}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{5}{2}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{1}{64}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{91}{16}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">\(\tfrac{35}{4}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h1 id="conclusions">Conclusions</h1>
 <p>In this manuscript, we derive closed formulas for multifold sums of
 powers of integers by combining the central Newton interpolation formula
@@ -1270,9 +1525,9 @@ data-reference="prop:multifold-sums-of-powers-at-zero-binomial-form">[prop:multi
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> January 3, 2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-07-01.</p></li>
+<li><p><strong>Current release date:</strong> 2026-07-09.</p></li>
 <li><p><strong>Version:</strong>
-<code>2.0.1+main.ea8e19c</code></p></li>
+<code>2.1.0+main.89d531d</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83.</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
