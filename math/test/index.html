@@ -2,13 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <link rel="canonical" href="https://kolosovpetro.github.io/math/test/" />
-  <meta name="keywords" content="sums of powers, Newton interpolation formula, finite differences, binomial coefficients, Faulhaber's formula, Bernoulli numbers, Bernoulli polynomials, interpolation, discrete convolution, combinatorics, polynomial identities, Stirling numbers of the second kind, Eulerian numbers, Worpitzky identity, Pascal's triangle, OEIS" />
-  <meta name="description" content="LaTeX template for GitHub including general CI/CD actions and Mathematica templates." />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-02-05" />
+  <meta name="dcterms.date" content="2026-07-12" />
   <title>LaTeX Template for GitHub</title>
   <style>
     /* Default styles provided by pandoc.
@@ -107,6 +104,7 @@
       margin-bottom: 0.5em;
     }
     code {
+      white-space: pre-wrap;
       font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
@@ -170,10 +168,13 @@
     #TOC a:not(:hover) {
       text-decoration: none;
     }
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -205,14 +206,14 @@
       margin-left: 2em;
     }  </style>
   <script defer=""
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
   type="text/javascript"></script>
 </head>
 <body>
 <header id="title-block-header">
 <h1 class="title">LaTeX Template for GitHub</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-02-05</p>
+<p class="date">2026-07-12</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>Your abstract here.</p>
@@ -237,8 +238,7 @@ style="width:100.0%" alt="image" />  </p>
 <figcaption>Image example (from caption).</figcaption>
 </figure>
 <div class="center">
-<div id="tab:table_of_coefficients_a">
-<table>
+<table id="tab:table_of_coefficients_a">
 <caption>Coefficients <span
 class="math inline">\({\mathbf{A}}_{m,r}\)</span>. See OEIS sequences
  <span class="citation"
@@ -350,14 +350,6 @@ class="math inline">\(m/r\)</span></th>
 </tbody>
 </table>
 </div>
-</div>
-<p><span class="math display">\[\begin{equation*}
-  \left\lceil\kern-3.5pt\left\lceil\genfrac{}{}{0pt}{}{a}{b}
-\right\rfloor\kern-3.5pt\right\rfloor_{m}
-\end{equation*}\]</span> <span class="math display">\[\begin{equation*}
-  \left\lceil\kern-3.5pt\left\lceil\genfrac{}{}{0pt}{}{a}{b}
-\right\rfloor\kern-3.5pt\right\rfloor_{m}
-\end{equation*}\]</span></p>
 <p>And for any natural <span class="math inline">\(m\)</span> we have
 polynomial identity <span class="math display">\[\begin{equation}
   x^m = \sum_{k=1}^{m} T(m, k) x^{[k]}
@@ -457,13 +449,88 @@ class="math display">\[\begin{align*}
 <h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
 <p>The author is grateful to [Full Name] for his valuable contribution
 [contribution] about the fact that [interesting claim].</p>
+<h1 class="unnumbered" id="mathematica">Mathematica</h1>
+<p>Use this <a
+href="https://github.com/kolosovpetro/SumsOfPowersViaCentralFiniteDifferencesAndNewtonFormula/tree/main/mathematica"><code>GitHub</code></a>
+repository to validate the results using Mathematica programs.<br />
+</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Mathematica Function</strong></th>
+<th style="text-align: left;"><strong>Validates / Prints</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: left;"><code>ValidateOrdinarySumsOfPowers.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:ordinary-sums-of-powers" data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers">[prop:ordinary-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateDoubleSumsOfPowers.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:double-sums-of-powers" data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers">[prop:double-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowers.txt</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldBinomialSumsOfPowers.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:multifold-binomial-sums-of-powers"
+data-reference-type="eqref"
+data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateOrdinarySumsOfPowersAtZero.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:ordinary-sums-of-powers-at-zero" data-reference-type="eqref"
+data-reference="prop:ordinary-sums-of-powers-at-zero">[prop:ordinary-sums-of-powers-at-zero]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateDoubleSumsOfPowersAtZero.txt</code></td>
+<td style="text-align: left;">Validates Prop. <a
+href="#prop:double-sums-of-powers-at-zero" data-reference-type="eqref"
+data-reference="prop:double-sums-of-powers-at-zero">[prop:double-sums-of-powers-at-zero]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowersAtZero.txt</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#thm:multifold-sums-of-powers-at-zero" data-reference-type="eqref"
+data-reference="thm:multifold-sums-of-powers-at-zero">[thm:multifold-sums-of-powers-at-zero]</a></td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><code>ValidateMultifoldSumsOfPowersAtZeroBinomialForm.txt</code></td>
+<td style="text-align: left;">Validates Thm. <a
+href="#prop:multifold-sums-of-powers-at-zero-binomial-form"
+data-reference-type="eqref"
+data-reference="prop:multifold-sums-of-powers-at-zero-binomial-form">[prop:multifold-sums-of-powers-at-zero-binomial-form]</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> December 24,
 2025.</p></li>
-<li><p><strong>Current release date:</strong> 2026-02-05.</p></li>
+<li><p><strong>Current release date:</strong> 2026-07-12.</p></li>
 <li><p><strong>Version:</strong>
-<code>1.5.1-5+main.d2cfd97</code></p></li>
+<code>1.5.1-MATH-90.1+MATH-90.c19f554</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 41A15, 11B68, 11B73,
 11B83</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
