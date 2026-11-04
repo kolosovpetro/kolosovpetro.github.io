@@ -602,7 +602,13 @@ class="math display">\[\begin{align*}
     -
     t\binom{n-t+\frac{k}{2}-1}{k-1}
   \right].
-\end{align*}\]</span> The binomial decomposition in Lemma <a
+\end{align*}\]</span> Notice that the factor <span
+class="math inline">\(n\binom{n-t+\frac{k}{2}-1}{k-1}\)</span> prevents
+us from direct use of hockey-stick identity <a
+href="#lem:generalized-hockey-stick-identity"
+data-reference-type="eqref"
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>.
+The binomial decomposition in Lemma <a
 href="#lem:binomial-decomposition" data-reference-type="eqref"
 data-reference="lem:binomial-decomposition">[lem:binomial-decomposition]</a>
 handles this factor. Substituting <span
@@ -889,20 +895,20 @@ class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span> be nonnegative integers, and let <span
 class="math inline">\(t\)</span> be an arbitrary integer. <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     &amp;= \frac{1}{2}
     \sum_{k=0}^{m}
     \Bigg[
-      \binom{n-t+\frac{k}{2}+r-1}{k+r}
+      \binom{n-t+\frac{k}{2}+r}{k+r+1}
       +
-      \binom{n-t+\frac{k}{2}+r}{k+r} \\
+      \binom{n-t+\frac{k}{2}+r+1}{k+r+1} \\
       &amp;-
-      \sum_{s=0}^{r-1}
+      \sum_{s=0}^{r}
       \Bigg(
         \binom{s-t+\frac{k}{2}}{k+s+1}
         +
         \binom{s-t+\frac{k}{2}+1}{k+s+1}
-      \Bigg) \Sigma^{r-1-s}\,{n}^{0}
+      \Bigg) \Sigma^{r-s}\,{n}^{0}
     \Bigg] \delta^{k} t^{m}.
 \end{align*}\]</span></em></p>
 </div>
@@ -917,20 +923,20 @@ class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span> be nonnegative integers, and let <span
 class="math inline">\(t\)</span> be an arbitrary integer. <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     &amp;= \frac{1}{2}
     \sum_{k=0}^{m}
     \Bigg[
-      \binom{n-t+\frac{k}{2}+r-1}{k+r}
+      \binom{n-t+\frac{k}{2}+r}{k+r+1}
       +
-      \binom{n-t+\frac{k}{2}+r}{k+r} \\
+      \binom{n-t+\frac{k}{2}+r+1}{k+r+1} \\
       &amp;-
-      \sum_{s=0}^{r-1}
+      \sum_{s=0}^{r}
       \Bigg(
         \binom{s-t+\frac{k}{2}}{k+s+1}
         +
         \binom{s-t+\frac{k}{2}+1}{k+s+1}
-      \Bigg) \binom{r-s+n-2}{r-s-1}
+      \Bigg) \binom{r-s+n-1}{r-s}
     \Bigg] \delta^{k} t^{m}.
 \end{align*}\]</span></em></p>
 </div>
@@ -1081,14 +1087,15 @@ class="math inline">\(n/k\)</span></th>
 </tbody>
 </table>
 </div>
-<p>Evaluating Lemma <a href="#lem:central-newtons-formula-for-powers"
+<p>It is interesting to notice that Proposition <a
+href="#prop:knuth-odd-powers-sum" data-reference-type="eqref"
+data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>
+directly follows from Central Newton’s Formula in Lemma <a
+href="#lem:central-newtons-formula-for-powers"
 data-reference-type="eqref"
-data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>
-at zero yields Proposition <a href="#prop:knuth-odd-powers-sum"
-data-reference-type="eqref"
-data-reference="prop:knuth-odd-powers-sum">[prop:knuth-odd-powers-sum]</a>.
-For <span class="math inline">\(m\geq 1\)</span>, the formula gives
-<span class="math display">\[\begin{align*}
+data-reference="lem:central-newtons-formula-for-powers">[lem:central-newtons-formula-for-powers]</a>,
+evaluated at zero. For <span class="math inline">\(m\geq 1\)</span>, the
+formula gives <span class="math display">\[\begin{align*}
   n^{2m} = \sum_{k=1}^{2m} \frac{n^{[k]}}{k!} \cdot \delta^{k} 0^{2m}.
 \end{align*}\]</span> The term for <span
 class="math inline">\(k=0\)</span> vanishes because <span
@@ -1242,10 +1249,10 @@ gives the following proposition.</p>
 class="math inline">\(m\)</span> be nonnegative integers. <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{m}
-    = \sum_{k=0}^{m} \frac{1}{k+1}
+    = \sum_{k=0}^{m}
     \left[ \binom{n+\frac{k}{2}+\frac{1}{2}}{k+1} -
 \binom{\frac{k}{2}+\frac{1}{2}}{k+1}\right]
-    \delta^{k+1} 0^{m+1}.
+    \frac{\delta^{k+1} 0^{m+1}}{k+1}.
 \end{align*}\]</span></em></p>
 </div>
 <p>The formula can also be written in terms of central factorial numbers
@@ -1266,13 +1273,13 @@ gives a formula for double sums of powers.</p>
 class="math inline">\(m\)</span> be nonnegative integers. <span
 class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{m}
-    = \sum_{k=0}^{m} \frac{1}{k+1}
+    = \sum_{k=0}^{m}
     \left[
       \binom{n+\frac{k}{2}+\frac{3}{2}}{k+2}
       - \binom{\frac{k}{2}+\frac{1}{2}}{k+1} \Sigma^{1}\,{n}^{0}
       - \binom{\frac{k}{2}+\frac{3}{2}}{k+2} \Sigma^{0}\,{n}^{0}
     \right]
-    \delta^{k+1} 0^{m+1}.
+    \frac{\delta^{k+1} 0^{m+1}}{k+1}.
 \end{align*}\]</span></em></p>
 </div>
 <p>The general formula is as follows.</p>
@@ -1577,7 +1584,7 @@ data-reference="prop:multifold-sums-of-powers-at-zero-binomial-form">[prop:multi
 <li><p><strong>Initial release date:</strong> January 3, 2026.</p></li>
 <li><p><strong>Current release date:</strong> 2026-11-04.</p></li>
 <li><p><strong>Version:</strong>
-<code>2.2.0+main.abb9d4d</code></p></li>
+<code>2.2.1+main.5f0cb12</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83.</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
