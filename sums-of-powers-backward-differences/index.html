@@ -3,56 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
-  <link rel="canonical" href="https://kolosovpetro.github.io/math/test" />
-  <meta name="description" content="LaTeX template for GitHub, including general CI/CD workflows and Mathematica templates." />
-  <meta name="keywords" content="Sums of powers, Power sums, Polynomials, Power function, Polynomial identities, Newton's interpolation formula, Finite differences, Interpolation, Approximation, Binomial coefficients, Multinomial coefficients, Binomial theorem, Faulhaber's formula, Bernoulli numbers, Bernoulli polynomials, Derivatives, Differential calculus, Partial differential equations, Discrete convolution, Sums of convolved powers, Convolved power sums, Combinatorics, Central factorial numbers, Stirling numbers, Eulerian numbers, Worpitzky identity, Pascal's triangle, Dynamic systems, Time scales, OEIS" />
+  <link rel="canonical" href="https://kolosovpetro.github.io/sums-of-powers-backward-differences/" />
+  <meta name="description" content="In this manuscript, we derive closed formulas for multifold sums of powers of integers by combining the backward Newton interpolation formula with hockey-stick identities for binomial coefficients. We further obtain representations of multifold sums of powers in terms of Stirling numbers of the second kind and Eulerian numbers. Finally, we provide Wolfram Mathematica programs for the efficient verification of the derived identities." />
+  <meta name="keywords" content="Sums of powers, Newton's interpolation formula, Finite differences, Binomial coefficients, Faulhaber's formula, Bernoulli numbers, Bernoulli polynomials, Interpolation, Approximation, Discrete convolution, Combinatorics, Polynomial identities, Central factorial numbers, Stirling numbers, Eulerian numbers, Worpitzky identity, Pascal's triangle, OEIS" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="LaTeX Template for GitHub" />
-  <meta property="og:description" content="LaTeX template for GitHub, including general CI/CD workflows and Mathematica templates." />
-  <meta property="og:url" content="https://kolosovpetro.github.io/math/test" />
+  <meta property="og:title" content="Sums of Powers via Backward Finite Differences and Newton's Formula" />
+  <meta property="og:description" content="In this manuscript, we derive closed formulas for multifold sums of powers of integers by combining the backward Newton interpolation formula with hockey-stick identities for binomial coefficients. We further obtain representations of multifold sums of powers in terms of Stirling numbers of the second kind and Eulerian numbers. Finally, we provide Wolfram Mathematica programs for the efficient verification of the derived identities." />
+  <meta property="og:url" content="https://kolosovpetro.github.io/sums-of-powers-backward-differences/" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="LaTeX Template for GitHub" />
-  <meta name="twitter:description" content="LaTeX template for GitHub, including general CI/CD workflows and Mathematica templates." />
-  <meta name="citation_title" content="LaTeX Template for GitHub" />
+  <meta name="twitter:title" content="Sums of Powers via Backward Finite Differences and Newton's Formula" />
+  <meta name="twitter:description" content="In this manuscript, we derive closed formulas for multifold sums of powers of integers by combining the backward Newton interpolation formula with hockey-stick identities for binomial coefficients. We further obtain representations of multifold sums of powers in terms of Stirling numbers of the second kind and Eulerian numbers. Finally, we provide Wolfram Mathematica programs for the efficient verification of the derived identities." />
+  <meta name="citation_title" content="Sums of Powers via Backward Finite Differences and Newton's Formula" />
   <meta name="citation_author" content="Kolosov, Petro" />
-  <meta name="citation_publication_date" content="2025/12/24" />
-  <meta name="citation_doi" content="10.5281/zenodo.18040979" />
-  <meta name="citation_public_url" content="https://kolosovpetro.github.io/math/test" />
-  <meta name="citation_abstract" content="LaTeX template for GitHub including general CI/CD workflows and Mathematica templates." />
+  <meta name="citation_publication_date" content="2026/01/01" />
+  <meta name="citation_doi" content="10.5281/zenodo.18118011" />
+  <meta name="citation_public_url" content="https://kolosovpetro.github.io/sums-of-powers-backward-differences/" />
+  <meta name="citation_abstract" content="In this manuscript, we derive closed formulas for multifold sums of powers of integers by combining the backward Newton interpolation formula with hockey-stick identities for binomial coefficients. We further obtain representations of multifold sums of powers in terms of Stirling numbers of the second kind and Eulerian numbers. Finally, we provide Wolfram Mathematica programs for the efficient verification of the derived identities." />
   <meta name="citation_keywords" content="Sums of powers" />
-  <meta name="citation_keywords" content="Power sums" />
-  <meta name="citation_keywords" content="Polynomials" />
-  <meta name="citation_keywords" content="Power function" />
-  <meta name="citation_keywords" content="Polynomial identities" />
   <meta name="citation_keywords" content="Newton's interpolation formula" />
   <meta name="citation_keywords" content="Finite differences" />
-  <meta name="citation_keywords" content="Interpolation" />
-  <meta name="citation_keywords" content="Approximation" />
   <meta name="citation_keywords" content="Binomial coefficients" />
-  <meta name="citation_keywords" content="Multinomial coefficients" />
-  <meta name="citation_keywords" content="Binomial theorem" />
   <meta name="citation_keywords" content="Faulhaber's formula" />
   <meta name="citation_keywords" content="Bernoulli numbers" />
   <meta name="citation_keywords" content="Bernoulli polynomials" />
-  <meta name="citation_keywords" content="Derivatives" />
-  <meta name="citation_keywords" content="Differential calculus" />
-  <meta name="citation_keywords" content="Partial differential equations" />
+  <meta name="citation_keywords" content="Interpolation" />
+  <meta name="citation_keywords" content="Approximation" />
   <meta name="citation_keywords" content="Discrete convolution" />
-  <meta name="citation_keywords" content="Sums of convolved powers" />
-  <meta name="citation_keywords" content="Convolved power sums" />
   <meta name="citation_keywords" content="Combinatorics" />
+  <meta name="citation_keywords" content="Polynomial identities" />
   <meta name="citation_keywords" content="Central factorial numbers" />
   <meta name="citation_keywords" content="Stirling numbers" />
   <meta name="citation_keywords" content="Eulerian numbers" />
   <meta name="citation_keywords" content="Worpitzky identity" />
   <meta name="citation_keywords" content="Pascal's triangle" />
-  <meta name="citation_keywords" content="Dynamic systems" />
-  <meta name="citation_keywords" content="Time scales" />
   <meta name="citation_keywords" content="OEIS" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-11-05" />
-  <title>Sums of powers via backward finite differences and Newton’s formula</title>
+  <meta name="dcterms.date" content="2026-11-06" />
+  <title>Sums of Powers via Backward Finite Differences and Newton’s Formula</title>
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -264,10 +252,10 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Sums of powers via backward finite differences and
-Newton’s formula</h1>
+<h1 class="title">Sums of Powers via Backward Finite Differences and
+Newton’s Formula</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-11-05</p>
+<p class="date">2026-11-06</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>In this manuscript, we derive closed formulas for multifold sums of
@@ -279,17 +267,19 @@ provide Wolfram Mathematica programs for the efficient verification of
 the derived identities.</p>
 </div>
 </header>
-<h1 id="auxiliary-lemmas">Auxiliary lemmas</h1>
-<p>In this section, allow us to define a few lemmas, definitions, and
-conventions that serve as foundation for main results of this
+<h1 id="auxiliary-lemmas">Auxiliary Lemmas</h1>
+<p>In this section, we introduce several lemmas, definitions, and
+conventions that serve as the foundation for the main results of this
 manuscript. For multifold sums of powers, we use the notation provided
 by Donald Knuth in <span class="citation"
-data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span>, because it
-is simple and beautiful</p>
+data-cites="knuth1993johann">(Knuth, Donald E. 1993)</span>, which is
+concise and useful.</p>
 <div id="def:multifold-sums-of-powers-recurrence" class="definition">
-<p><strong>Definition 1</strong> (Multifold sums of powers). <em>For
-non-negative integers <span class="math inline">\(r,n,m\)</span> <span
-class="math display">\[\begin{align*}
+<p><strong>Definition 1</strong> (Multifold Sums of Powers). <em>For
+non-negative integers <span class="math inline">\(r\)</span>, <span
+class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, the multifold sums are defined
+recursively by <span class="math display">\[\begin{align*}
     \Sigma^{0}\,{n}^{m}   &amp;= n^m, \\
     \Sigma^{1}\,{n}^{m}   &amp;= \Sigma^{0}\,{1}^{m}
     + \Sigma^{0}\,{2}^{m} + \cdots + \Sigma^{0}\,{n}^{m}, \\
@@ -297,21 +287,22 @@ class="math display">\[\begin{align*}
     + \Sigma^{r}\,{2}^{m} + \cdots + \Sigma^{r}\,{n}^{m}.
 \end{align*}\]</span></em></p>
 </div>
-<p>We utilize the following notation for rising factorials</p>
+<p>We use the following notation for rising factorials.</p>
 <div id="def:rising-factorials" class="definition">
-<p><strong>Definition 2</strong> (Rising factorials). <em>For integers
-<span class="math inline">\(n,k\)</span> <span
+<p><strong>Definition 2</strong> (Rising Factorials). <em>For integers
+<span class="math inline">\(n\)</span> and <span
+class="math inline">\(k\)</span>, define the rising factorial by <span
 class="math display">\[\begin{align*}
     n^{\left(k\right)} =
     \begin{cases}
       0, \quad &amp; \mathrm{if \; } k &lt; 0, \\
       1, \quad &amp; \mathrm{if \; } k = 0, \\
       \prod_{j=0}^{k-1} (n+j), \quad &amp; \mathrm{if \; } k&gt;0.
-    \end{cases}
+    \end{cases}.
 \end{align*}\]</span></em></p>
 </div>
-<p>We encourage the audience to read J. F. Steffensen’s work on the
-definition of generalized factorials <span class="citation"
+<p>For further discussion of generalized factorials, see J. F.
+Steffensen <span class="citation"
 data-cites="steffensen1933definition">(Steffensen 1933)</span>.</p>
 <div id="lem:backward-newtons-formula" class="lemma">
 <p><strong>Lemma 3</strong> (Backward Newton’s formula). <em>Let <span
@@ -323,54 +314,56 @@ Then, for all <span class="math inline">\(n \in \mathbb{Z}\)</span>,
     = \sum_{k=0}^{\infty} \frac{(n-t)^{\left(k\right)}}{k!} \nabla^{k}
 f(t)
     = \sum_{k=0}^{\infty} \binom{n-t+k-1}{k} \nabla^{k} f(t),
-\end{align*}\]</span> where <span class="math inline">\(\nabla^{k}
-f(t)\)</span> is the <span class="math inline">\(k\)</span>-th backward
-difference of <span class="math inline">\(f\)</span> evaluated at <span
-class="math inline">\(t\)</span> <span
+\end{align*}\]</span> Here, <span class="math inline">\(\nabla^{k}
+f(t)\)</span> denotes the <span class="math inline">\(k\)</span>-th
+backward difference of <span class="math inline">\(f\)</span> evaluated
+at <span class="math inline">\(t\)</span> <span
 class="math display">\[\begin{align*}
     \nabla^{k} t^{m} = \mathop{\textstyle\sum}_{j=0}^{k} (-1)^j
 \tbinom{k}{j} (t-j)^m.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> Originally revealed by Sir Isaac Newton in <span
-class="citation" data-cites="newton1850newton">(Newton, Isaac and
-Chittenden, N.W. 1850)</span>. Expressed in modern mathematical notation
-by J. F. Steffensen in <span class="citation"
+<p><em><em>Proof.</em> Sir Isaac Newton originally presented this
+formula in <span class="citation" data-cites="newton1850newton">(Newton,
+Isaac and Chittenden, N.W. 1850)</span>. J. F. Steffensen expressed it
+in modern mathematical notation in <span class="citation"
 data-cites="steffensen1927interpolation">(Steffensen, Johan Frederik
-1927, sec. 2, eq. (19))</span>. By using identity <span
+1927, sec. 2, Equation (19))</span>. The identity <span
 class="math inline">\(\frac{(n-t)^{\left(k\right)}}{k!} =
-\binom{n-t+k-1}{k}\)</span>, we get binomial form. ◻</em></p>
+\binom{n-t+k-1}{k}\)</span> gives the binomial form. ◻</em></p>
 </div>
 </div>
 <div id="lem:backward-newtons-formula-for-powers" class="lemma">
 <p><strong>Lemma 4</strong> (Backward Newton’s formula for powers).
-<em>For non-negative integers <span class="math inline">\(n,m\)</span>,
-and an arbitrary integer <span class="math inline">\(t\)</span> <span
+<em>For non-negative integers <span class="math inline">\(n\)</span> and
+<span class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     n^m = \sum_{k=0}^{m} \binom{n-t+k-1}{k} \nabla^{k} t^m.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> Special case of Lemma <a
+<p><em><em>Proof.</em> This is the special case of Lemma <a
 href="#lem:backward-newtons-formula" data-reference-type="eqref"
 data-reference="lem:backward-newtons-formula">[lem:backward-newtons-formula]</a>
 for powers. ◻</em></p>
 </div>
 </div>
 <div id="lem:generalized-hockey-stick-identity" class="lemma">
-<p><strong>Lemma 5</strong> (Generalized hockey-stick identity). <em>For
-arbitrary integers <span class="math inline">\(a,b\)</span> and <span
-class="math inline">\(j\)</span>, <span
+<p><strong>Lemma 5</strong> (Generalized Hockey-Stick Identity). <em>For
+arbitrary integers <span class="math inline">\(a\)</span>, <span
+class="math inline">\(b\)</span>, and <span
+class="math inline">\(j\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \sum_{k=a}^{b} \binom{k}{j} = \binom{b+1}{j+1} - \binom{a}{j+1}.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> We have, <span
+<p><em><em>Proof.</em> We have <span
 class="math inline">\(\sum_{k=a}^{b} \binom{k}{j}
     = \binom{a}{j} + \binom{a+1}{j} + \cdots + \binom{b}{j}
     = \left( \sum_{k=0}^{b} \binom{k}{j} \right) - \left(
-\sum_{k=0}^{a-1} \binom{k}{j} \right)\)</span>. By hockey-stick identity
-<span class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
-\binom{n+1}{j+1}\)</span> yields, <span
+\sum_{k=0}^{a-1} \binom{k}{j} \right)\)</span>. The hockey-stick
+identity <span class="math inline">\(\sum_{k=0}^{n} \binom{k}{j} =
+\binom{n+1}{j+1}\)</span> therefore gives <span
 class="math display">\[\begin{align*}
       \mathop{\textstyle\sum}_{k=a}^{b} \tbinom{k}{j}
       = \left( \mathop{\textstyle\sum}_{k=0}^{b} \tbinom{k}{j} \right) -
@@ -380,100 +373,107 @@ class="math display">\[\begin{align*}
 </div>
 </div>
 <div id="lem:backward-hockey-stick-identity" class="lemma">
-<p><strong>Lemma 6</strong> (Backward hockey-stick identity). <em>For
-integer <span class="math inline">\(n\geq1\)</span>, and arbitrary
-integers <span class="math inline">\(t,k,r\)</span> <span
+<p><strong>Lemma 6</strong> (Backward Hockey-Stick Identity). <em>For an
+integer <span class="math inline">\(n\geq1\)</span> and arbitrary
+integers <span class="math inline">\(t\)</span>, <span
+class="math inline">\(k\)</span>, and <span
+class="math inline">\(r\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \sum_{j=1}^{n} \binom{j-t+k-1+r}{k+r}
     = \binom{n-t+k+r}{k+r+1} - \binom{k-t+r}{k+r+1}.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> By setting <span
-class="math inline">\(a=k-t+r\)</span>, and <span
-class="math inline">\(b=n-t+k-1+r\)</span> into Lemma <a
+<p><em><em>Proof.</em> Setting <span
+class="math inline">\(a=k-t+r\)</span> and <span
+class="math inline">\(b=n-t+k-1+r\)</span> in Lemma <a
 href="#lem:generalized-hockey-stick-identity"
 data-reference-type="eqref"
-data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>. ◻</em></p>
+data-reference="lem:generalized-hockey-stick-identity">[lem:generalized-hockey-stick-identity]</a>
+gives the result. ◻</em></p>
 </div>
 </div>
 <div id="lem:multifold-sum-of-zero-powers" class="lemma">
-<p><strong>Lemma 7</strong> (Multifold sums of zero powers). <em>For
-non-negative integers <span class="math inline">\(r,n\)</span> <span
+<p><strong>Lemma 7</strong> (Multifold Sums of Zero Powers). <em>For
+non-negative integers <span class="math inline">\(r\)</span> and <span
+class="math inline">\(n\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{0} = \binom{r+n-1}{r}.
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em></em></p>
 <ol>
-<li><p><em>Let <span class="math inline">\(r=0\)</span>, then we have
-<span class="math inline">\(\Sigma^{0}\,{n}^{0} = 1\)</span>, by
-definition <a href="#def:multifold-sums-of-powers-recurrence"
-data-reference-type="eqref"
-data-reference="def:multifold-sums-of-powers-recurrence">[def:multifold-sums-of-powers-recurrence]</a>.</em></p></li>
-<li><p><em>Let <span class="math inline">\(r=1\)</span>, then we have
-<span class="math inline">\(\Sigma^{1}\,{n}^{0}
+<li><p><em>When <span class="math inline">\(r=0\)</span>, Definition <a
+href="#def:multifold-sums-of-powers-recurrence"
+data-reference-type="ref"
+data-reference="def:multifold-sums-of-powers-recurrence">1</a> gives
+<span class="math inline">\(\Sigma^{0}\,{n}^{0} =
+1\)</span>.</em></p></li>
+<li><p><em>When <span class="math inline">\(r=1\)</span>, we have <span
+class="math inline">\(\Sigma^{1}\,{n}^{0}
         = \sum_{k=1}^{n} 1 = \binom{n}{1}\)</span>.</em></p></li>
-<li><p><em>Let <span class="math inline">\(r=2\)</span>, then we have
-<span class="math inline">\(\Sigma^{2}\,{n}^{0}
+<li><p><em>When <span class="math inline">\(r=2\)</span>, we have <span
+class="math inline">\(\Sigma^{2}\,{n}^{0}
         = \sum_{k=1}^{n} \binom{k}{1}
         = \binom{n+1}{2}\)</span>.</em></p></li>
-<li><p><em>Let <span class="math inline">\(r=3\)</span>, then we have
-<span class="math inline">\(\Sigma^{3}\,{n}^{0}
+<li><p><em>When <span class="math inline">\(r=3\)</span>, we have <span
+class="math inline">\(\Sigma^{3}\,{n}^{0}
         = \sum_{k=1}^{n} \binom{k+1}{2}
         = \binom{n+2}{3}\)</span>.</em></p></li>
-<li><p><em>Similarly, for arbitrary integer <span
-class="math inline">\(r\)</span>, by hockey-stick identity <span
-class="math inline">\(\sum_{k=1}^{n} \binom{k}{r} =
-\binom{n+1}{r+1}\)</span>, yields <span
-class="math inline">\(\Sigma^{r}\,{n}^{0}
-        =  \sum_{k=1}^{n} \Sigma^{r-1}\,{k}^{0}
-        =  \sum_{k=1}^{n} \binom{k+r-2}{r-1}
-        = \binom{r+n-1}{r}\)</span>.</em></p></li>
+<li><p><em>For arbitrary non-negative integer <span
+class="math inline">\(r\)</span>, iterating the definition and applying
+the hockey-stick identity gives <span
+class="math display">\[\begin{align*}
+          \Sigma^{r}\,{n}^{0}
+          &amp;= \sum_{k=1}^{n} \Sigma^{r-1}\,{k}^{0} \\
+          &amp;= \sum_{k=1}^{n} \binom{k+r-2}{r-1} \\
+          &amp;= \binom{r+n-1}{r}.
+\end{align*}\]</span></em></p></li>
 </ol>
 <p><em>This completes the proof. ◻</em></p>
 </div>
 </div>
 <div id="lem:upper-binomial-negation" class="lemma">
-<p><strong>Lemma 8</strong> (Upper Binomial negation). <em>For integers
-<span class="math inline">\(n,k\)</span> <span
+<p><strong>Lemma 8</strong> (Upper Binomial Negation). <em>For integers
+<span class="math inline">\(n\)</span> and <span
+class="math inline">\(k\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \binom{-n}{k} = (-1)^{k} \binom{k+n-1}{k}
+    \binom{-n}{k} = (-1)^{k} \binom{k+n-1}{k}.
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em> See <span class="citation"
 data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
-and Patashnik, Oren 1994, 164, eq. (5.14))</span>. ◻</em></p>
+and Patashnik, Oren 1994, 164, Equation (5.14))</span>. ◻</em></p>
 </div>
 </div>
 <div class="convention">
-<p><strong>Convention 9</strong>. <em>For all <span
-class="math inline">\(x\)</span> <span
+<p><strong>Convention 9</strong>. <em>For every <span
+class="math inline">\(x\)</span>, we use the convention <span
 class="math display">\[\begin{align*}
     x^0 = 1.
 \end{align*}\]</span></em></p>
 </div>
-<p>Donald Knuth give extensive discussion on the convention <span
+<p>Donald Knuth gives an extensive discussion of the convention <span
 class="math inline">\(x^0=1\)</span> for all <span
 class="math inline">\(x\)</span>, including zero, in Concrete
 Mathematics <span class="citation"
 data-cites="graham1994concrete">(Graham, Ronald L. and Knuth, Donald E.
-and Patashnik, Oren 1994, 162)</span>, and in <span class="citation"
+and Patashnik, Oren 1994, 162)</span> and in <span class="citation"
 data-cites="knuth1992notesnotation">(Knuth 1992)</span>.</p>
 <h1 id="introduction">Introduction</h1>
 <p>In this manuscript, we derive formulas for sums of powers by
-combining backward Newton’s interpolation formula for powers <a
+combining backward Newton’s interpolation formula for powers in Lemma <a
 href="#lem:backward-newtons-formula-for-powers"
 data-reference-type="eqref"
 data-reference="lem:backward-newtons-formula-for-powers">[lem:backward-newtons-formula-for-powers]</a>
-with hockey-stick identity <a href="#lem:backward-hockey-stick-identity"
-data-reference-type="eqref"
+with the hockey-stick identity in Lemma <a
+href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>.
 We implement the algorithm for finding closed forms of sums of powers of
 integers, proposed in <span class="citation"
 data-cites="kolosov2026framework">(Kolosov 2026, Alg. (11.2))</span>.
-More precisely, the main idea is to determine binomial basis of Newton’s
-formula, in terms of variants of difference operators, for example <span
-class="math display">\[\begin{align*}
+More precisely, the main idea is to identify the binomial basis of
+Newton’s formula for several difference operators. The corresponding
+variants are <span class="math display">\[\begin{align*}
   \begin{cases}
     f(x)
     &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^{[k]}}{k!} \delta^{k} f(a)
@@ -490,10 +490,9 @@ f(a)
     f(x)
     &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^k}{k!} \frac{\mathrm{d}^{k}
 f(a)}{\mathrm{d} x^{k}}.
-  \end{cases}
-\end{align*}\]</span> We may observe that each variation of Newton’s
-formula above has its binomial basis <span
-class="math display">\[\begin{align*}
+  \end{cases}.
+\end{align*}\]</span> Each variation of Newton’s formula above has its
+binomial basis: <span class="math display">\[\begin{align*}
   \begin{cases}
     \frac{\left(x\right)_{n}}{n!} &amp;= \frac{1}{n!}
 x(x-1)(x-2)\cdots(x-n+1) =\binom{x}{n}, \\
@@ -503,20 +502,21 @@ x(x+1)(x+2)\cdots(x+n-1)  =\binom{x+n-1}{n}, \\
 \right)\left( n + \frac{k}{2} -2 \right)
     \cdots \left( n - \frac{k}{2} +1 \right)  =\frac{x}{n}
 \binom{x+\frac{n}{2}-1}{n-1}.
-  \end{cases}
-\end{align*}\]</span> This allows us to successfully combine Newton’s
-formula with hockey-stick type identity, to find closed forms for sums
-of powers of integers. Thus, we focus on closed forms of powers sums, by
-utilizing backward Newton’s formula, and hockey-stick identity <a
+  \end{cases}.
+\end{align*}\]</span> These bases allow us to combine Newton’s formula
+with hockey-stick-type identities to find closed forms for sums of
+powers of integers. Accordingly, the main results use backward Newton’s
+formula and the hockey-stick identity in Lemma <a
 href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>.</p>
-<h1 id="main-results">Main results</h1>
-<p>We start our discussion from Lemma <a
+<h1 id="main-results">Main Results</h1>
+<p>We begin with Lemma <a
 href="#lem:backward-newtons-formula-for-powers"
 data-reference-type="eqref"
 data-reference="lem:backward-newtons-formula-for-powers">[lem:backward-newtons-formula-for-powers]</a>,
-which yields backward Newton’s interpolation formula for powers. For
-example, <span class="math display">\[\begin{align*}
+which gives backward Newton’s interpolation formula for powers. For
+example, the formula gives the following expansions for cubes: <span
+class="math display">\[\begin{align*}
   n^3
   &amp;= 0 \tbinom{n-1}{0} + 1 \tbinom{n}{1} - 6 \tbinom{n+1}{2} + 6
 \tbinom{n+2}{3}, \\
@@ -530,20 +530,22 @@ example, <span class="math display">\[\begin{align*}
   &amp;= 27 \tbinom{n-4}{0} + 19 \tbinom{n-3}{1} + 12 \tbinom{n-2}{2} +
 6 \tbinom{n-1}{3}.
 \end{align*}\]</span></p>
-<p>Thus, the transition to formula for sums of powers is quite
-straightforward, <span class="math display">\[\begin{align*}
+<p>The transition to a formula for sums of powers is straightforward:
+<span class="math display">\[\begin{align*}
   \Sigma^{1}\,{n}^{m}
-  = \sum_{k=0}^{m} \left[ \sum_{j=1}^{n} \binom{j-t+k-1}{k} \right]
+    = \sum_{k=0}^{m} \left[ \sum_{j=1}^{n} \binom{j-t+k-1}{k} \right]
 \nabla^{k} t^m.
-\end{align*}\]</span> Therefore, by setting <span
-class="math inline">\(r=0\)</span> into Lemma <a
-href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
+\end{align*}\]</span> Setting <span class="math inline">\(r=0\)</span>
+in Lemma <a href="#lem:backward-hockey-stick-identity"
+data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>
-yields closed form of ordinary sums of powers</p>
+therefore gives the following closed form for ordinary sums of
+powers.</p>
 <div id="prop:ordinary-sums-of-powers" class="proposition">
-<p><strong>Proposition 10</strong> (Ordinary sums of powers). <em>For
-non-negative integers <span class="math inline">\(n,m\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span> <span
+<p><strong>Proposition 10</strong> (Ordinary Sums of Powers). <em>For
+non-negative integers <span class="math inline">\(n\)</span> and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{m}
     = \sum_{k=0}^{m}
@@ -552,18 +554,17 @@ class="math display">\[\begin{align*}
     \right] \nabla^{k} t^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>We may see that the basis <span
-class="math inline">\(\binom{j-t+k-1+r}{k+r}\)</span> for repeatedly
-applied Lemma <a href="#lem:backward-hockey-stick-identity"
-data-reference-type="eqref"
-data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>
-was indeed chosen correctly, because we derived closed form for sums of
-powers with ease, simply setting parameter for <span
-class="math inline">\(r\)</span>. For example,</p>
+<p>The basis <span class="math inline">\(\binom{j-t+k-1+r}{k+r}\)</span>
+is well suited to repeated applications of Lemma <a
+href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
+data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>.
+Indeed, setting the parameter <span class="math inline">\(r\)</span>
+gives a closed form for sums of powers. For example, the case of cubes
+is as follows:</p>
 <div class="example">
-<p><strong>Example 11</strong>. <em>For integer <span
-class="math inline">\(0 \le t \le 3\)</span>, we have <span
-class="math display">\[\begin{align*}
+<p><strong>Example 11</strong>. <em>For integers <span
+class="math inline">\(t\)</span> with <span class="math inline">\(0 \le
+t \le 3\)</span>, we have <span class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{3}
     &amp;= 0\!\left[\tbinom{n}{1}-\tbinom{0}{1}\right]
     + 1\!\left[\tbinom{n+1}{2}-\tbinom{1}{2}\right]
@@ -589,96 +590,97 @@ class="math display">\[\begin{align*}
     + 6\!\left[\tbinom{n}{4}-\tbinom{0}{4}\right].
 \end{align*}\]</span></em></p>
 </div>
-<p>From example above, we may observe binomial coefficients of negative
-upper index, which may looking unfamiliar. However, there is no reason
-to be afraid of, because negative upper index binomial coefficients are
-completely deterministic, because <span
+<p>In the preceding example, some binomial coefficients have negative
+upper indices, which may look unfamiliar. These coefficients are well
+defined because negative upper-index binomial coefficients satisfy <span
 class="math inline">\(\binom{-n}{k} = (-1)^{k}
-\binom{k+n-1}{k}\)</span>. Moreover, binomial coefficient <span
+\binom{k+n-1}{k}\)</span>. Moreover, the binomial coefficient <span
 class="math inline">\(\binom{n}{k}\)</span> is a polynomial in <span
-class="math inline">\(n\)</span>, thus accepting even fraction values in
-its upper index. Therefore, Proposition <a
+class="math inline">\(n\)</span> and therefore accepts fractional values
+in its upper index. Consequently, the expression in Proposition <a
 href="#prop:ordinary-sums-of-powers" data-reference-type="eqref"
 data-reference="prop:ordinary-sums-of-powers">[prop:ordinary-sums-of-powers]</a>
-is also a polynomial in <span class="math inline">\(n\)</span>. For
-example,</p>
+is also a polynomial in <span class="math inline">\(n\)</span>. The
+following example illustrates the polynomial form of the formula.</p>
 <div class="example">
-<p><strong>Example 12</strong>. <em>For integer <span
-class="math inline">\(0 \leq t \leq 4\)</span>, we have <span
-class="math display">\[\begin{align*}
-    t=0:\quad \Sigma^{1}\,{n}^{3}
+<p><strong>Example 12</strong>. <em>For integers <span
+class="math inline">\(t\)</span> with <span class="math inline">\(0 \leq
+t \leq 4\)</span>, we have <span class="math display">\[\begin{align*}
+    t=0, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot 0
-    + \tfrac{1}{2}(n+n^2)\cdot 1
-    + \tfrac{1}{6}(2n+3n^2+n^3)\cdot(-6)
-    + \tfrac{1}{24}(6n+11n^2+6n^3+n^4)\cdot 6,
+    + \tfrac{1}{2}(n+n^2)\cdot 1 \\
+    &amp;+ \tfrac{1}{6}(2n+3n^2+n^3)\cdot(-6) \\
+    &amp;+ \tfrac{1}{24}(6n+11n^2+6n^3+n^4)\cdot 6,
     \\
-    t=1:\quad \Sigma^{1}\,{n}^{3}
+    t=1, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot 1
-    + \tfrac{1}{2}(-n+n^2)\cdot 1
-    + \tfrac{1}{6}(-n+n^3)\cdot 0
-    + \tfrac{1}{24}(-2n-n^2+2n^3+n^4)\cdot 6,
+    + \tfrac{1}{2}(-n+n^2)\cdot 1 \\
+    &amp;+ \tfrac{1}{6}(-n+n^3)\cdot 0 \\
+    &amp;+ \tfrac{1}{24}(-2n-n^2+2n^3+n^4)\cdot 6,
     \\
-    t=2:\quad \Sigma^{1}\,{n}^{3}
+    t=2, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot 8
-    + \tfrac{1}{2}(-3n+n^2)\cdot 7
-    + \tfrac{1}{6}(2n-3n^2+n^3)\cdot 6
-    + \tfrac{1}{24}(2n-n^2-2n^3+n^4)\cdot 6,
+    + \tfrac{1}{2}(-3n+n^2)\cdot 7 \\
+    &amp;+ \tfrac{1}{6}(2n-3n^2+n^3)\cdot 6 \\
+    &amp;+ \tfrac{1}{24}(2n-n^2-2n^3+n^4)\cdot 6,
     \\
-    t=3:\quad \Sigma^{1}\,{n}^{3}
+    t=3, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot 27
-    + \tfrac{1}{2}(-5n+n^2)\cdot 19
-    + \tfrac{1}{6}(11n-6n^2+n^3)\cdot 12 \\
+    + \tfrac{1}{2}(-5n+n^2)\cdot 19 \\
+    &amp;+ \tfrac{1}{6}(11n-6n^2+n^3)\cdot 12 \\
     &amp;+ \tfrac{1}{24}(-6n+11n^2-6n^3+n^4)\cdot 6,
     \\
-    t=4:\quad \Sigma^{1}\,{n}^{3}
+    t=4, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot 64
-    + \tfrac{1}{2}(-7n+n^2)\cdot 37
-    + \tfrac{1}{6}(26n-9n^2+n^3)\cdot 18 \\
+    + \tfrac{1}{2}(-7n+n^2)\cdot 37 \\
+    &amp;+ \tfrac{1}{6}(26n-9n^2+n^3)\cdot 18 \\
     &amp;+ \tfrac{1}{24}(-50n+35n^2-10n^3+n^4)\cdot 6.
 \end{align*}\]</span></em></p>
 </div>
-<p>Where the coefficients</p>
+<p>The coefficients for the indicated values of <span
+class="math inline">\(t\)</span> form the following OEIS sequences:</p>
 <ul>
-<li><p>For <span class="math inline">\(t=0\)</span> are <span
-class="math inline">\(0, 1, -6, 6\)</span> belong to sequence <a
+<li><p>For <span class="math inline">\(t=0\)</span>, the coefficients
+<span class="math inline">\(0, 1, -6, 6\)</span> form sequence <a
 href="https://oeis.org/A278075"><code>A278075</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p></li>
-<li><p>For <span class="math inline">\(t=1\)</span> are <span
-class="math inline">\(1, 1, 0, 6\)</span> belong to sequence <a
+<li><p>For <span class="math inline">\(t=1\)</span>, the coefficients
+<span class="math inline">\(1, 1, 0, 6\)</span> form sequence <a
 href="https://oeis.org/A389570"><code>A389570</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p></li>
-<li><p>For <span class="math inline">\(t=2\)</span> are <span
-class="math inline">\(8, 7, 6, 6\)</span> belong to sequence <a
+<li><p>For <span class="math inline">\(t=2\)</span>, the coefficients
+<span class="math inline">\(8, 7, 6, 6\)</span> form sequence <a
 href="https://oeis.org/A391068"><code>A391068</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p></li>
-<li><p>For <span class="math inline">\(t=3\)</span> are <span
-class="math inline">\(27, 19, 12, 6\)</span> belong to sequence <a
+<li><p>For <span class="math inline">\(t=3\)</span>, the coefficients
+<span class="math inline">\(27, 19, 12, 6\)</span> form sequence <a
 href="https://oeis.org/A391210"><code>A391210</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p></li>
-<li><p>For <span class="math inline">\(t=4\)</span> are <span
-class="math inline">\(64, 37, 18, 6\)</span> belong to sequence <a
+<li><p>For <span class="math inline">\(t=4\)</span>, the coefficients
+<span class="math inline">\(64, 37, 18, 6\)</span> form sequence <a
 href="https://oeis.org/A395604"><code>A395604</code></a> in the
 OEIS <span class="citation" data-cites="sloane2003line">(Sloane, Neil
 J.A. and others 2003)</span>.</p></li>
 </ul>
-<p>Formula for double sums of powers could be derivate similarly, by
-setting <span class="math inline">\(r=1\)</span> into Lemma <a
+<p>We derive a formula for double sums of powers similarly. Setting
+<span class="math inline">\(r=1\)</span> in Lemma <a
 href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>
-which yields</p>
+yields the following result.</p>
 <div id="prop:double-sums-of-powers" class="proposition">
-<p><strong>Proposition 13</strong> (Double sums of powers). <em>For
-non-negative integers <span class="math inline">\(n,m\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span> <span
+<p><strong>Proposition 13</strong> (Double Sums of Powers). <em>For
+non-negative integers <span class="math inline">\(n\)</span> and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{2}\,{n}^{m}
     = \sum_{k=0}^{m}
@@ -689,29 +691,29 @@ class="math display">\[\begin{align*}
     \right] \nabla^{k} t^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>Note that we added correction terms <span
-class="math inline">\(\Sigma^{r}\,{n}^{0}\)</span>, which are <span
-class="math inline">\(\Sigma^{0}\,{n}^{0}=1\)</span>, and <span
-class="math inline">\(\Sigma^{1}\,{n}^{0}=n\)</span>. For example,</p>
+<p>The formula includes the correction terms <span
+class="math inline">\(\Sigma^{0}\,{n}^{0}=1\)</span> and <span
+class="math inline">\(\Sigma^{1}\,{n}^{0}=n\)</span>. The next example
+gives a formula for double sums of powers.</p>
 <div class="example">
-<p><strong>Example 14</strong>. <em>For integer <span
-class="math inline">\(0 \leq t \leq 2\)</span>, we have <span
-class="math display">\[\begin{align*}
-    t=0:\quad \Sigma^{2}\,{n}^{3}
+<p><strong>Example 14</strong>. <em>For integers <span
+class="math inline">\(t\)</span> with <span class="math inline">\(0 \leq
+t \leq 2\)</span>, we have <span class="math display">\[\begin{align*}
+    t=0, \quad \Sigma^{2}\,{n}^{3}
     &amp;=
     \tfrac{1}{2}(n+n^2)\cdot0
     +\tfrac{1}{6}(2n+3n^2+n^3)\cdot1
     +\tfrac{1}{24}(6n+11n^2+6n^3+n^4)\cdot(-6) \\
     &amp;+\tfrac{1}{120}(24n+50n^2+35n^3+10n^4+n^5)\cdot6,
     \\
-    t=1:\quad \Sigma^{2}\,{n}^{3}
+    t=1, \quad \Sigma^{2}\,{n}^{3}
     &amp;=
     \tfrac{1}{2}(n+n^2)\cdot1
     +\tfrac{1}{6}(-n+n^3)\cdot1
     +\tfrac{1}{24}(-2n-n^2+2n^3+n^4)\cdot0 \\
     &amp;+\tfrac{1}{120}(-6n-5n^2+5n^3+5n^4+n^5)\cdot6,
     \\
-    t=2:\quad \Sigma^{2}\,{n}^{3}
+    t=2, \quad \Sigma^{2}\,{n}^{3}
     &amp;=
     \tfrac{1}{2}(n+n^2)\cdot8
     +\tfrac{1}{6}(-4n-3n^2+n^3)\cdot7
@@ -719,15 +721,16 @@ class="math display">\[\begin{align*}
     &amp;+\tfrac{1}{120}(4n-5n^3+n^5)\cdot6.
 \end{align*}\]</span></em></p>
 </div>
-<p>Similarly, we obtain closed formula for multifold sums of powers, by
-using Lemma <a href="#lem:backward-hockey-stick-identity"
-data-reference-type="eqref"
+<p>Similarly, repeated application of Lemma <a
+href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>
-repeatedly. Thus,</p>
+yields a closed formula for multifold sums of powers.</p>
 <div id="thm:multifold-sums-of-powers" class="theorem">
-<p><strong>Theorem 15</strong> (Multifold sums of powers). <em>For
-non-negative integers <span class="math inline">\(r,n,m\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span> <span
+<p><strong>Theorem 15</strong> (Multifold Sums of Powers). <em>For
+non-negative integers <span class="math inline">\(r\)</span>, <span
+class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     =
@@ -740,10 +743,12 @@ class="math display">\[\begin{align*}
     \right] \nabla^{k} t^{m}.
 \end{align*}\]</span></em></p>
 </div>
-<p>For example,</p>
+<p>The following example illustrates the multifold formula.</p>
 <div class="example">
 <p><strong>Example 16</strong>. <em>For non-negative integers <span
-class="math inline">\(r,n,m\)</span> we have <span
+class="math inline">\(r\)</span>, <span
+class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, we have <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     &amp;=
@@ -794,17 +799,18 @@ class="math display">\[\begin{align*}
     \nabla^k 3^m.
 \end{align*}\]</span></em></p>
 </div>
-<p>By using Lemma <a href="#lem:multifold-sum-of-zero-powers"
+<p>Using Lemma <a href="#lem:multifold-sum-of-zero-powers"
 data-reference-type="eqref"
 data-reference="lem:multifold-sum-of-zero-powers">[lem:multifold-sum-of-zero-powers]</a>,
-we get pure binomial version of Theorem <a
+we obtain the following binomial form of Theorem <a
 href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
-data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></p>
+data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>.</p>
 <div id="prop:multifold-binomial-sums-of-powers" class="proposition">
-<p><strong>Proposition 17</strong> (Multifold Binomial sums of powers).
-<em>For non-negative integers <span
-class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
+<p><strong>Proposition 17</strong> (Multifold Binomial Sums of Powers).
+<em>For non-negative integers <span class="math inline">\(r\)</span>,
+<span class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     =
@@ -817,15 +823,17 @@ class="math display">\[\begin{align*}
     \right] \nabla^{k} t^{m}.
 \end{align*}\]</span></em></p>
 </div>
-<p>By setting <span class="math inline">\(t \rightarrow -t\)</span>
-yields another remarkable formula for multifold sums of powers of
-integers. Therefore,</p>
+<p>Replacing <span class="math inline">\(t\)</span> with <span
+class="math inline">\(-t\)</span> yields another formula for multifold
+sums of powers.</p>
 <div id="prop:multifold-binomial-sums-of-powers-negated"
 class="proposition">
-<p><strong>Proposition 18</strong> (Multifold Binomial sums of powers
-negated). <em>For non-negative integers <span
-class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
+<p><strong>Proposition 18</strong> (Multifold Binomial Sums of Powers
+Negated). <em>For non-negative integers <span
+class="math inline">\(r\)</span>, <span
+class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     =
@@ -838,33 +846,35 @@ class="math display">\[\begin{align*}
     \right] \nabla^{k} (-t)^{m}.
 \end{align*}\]</span></em></p>
 </div>
-<p>For example,</p>
+<p>The next example illustrates the formula after replacing <span
+class="math inline">\(t\)</span> with <span
+class="math inline">\(-t\)</span>.</p>
 <div class="example">
-<p><strong>Example 19</strong>. <em>For integer <span
-class="math inline">\(1 \leq t \leq 4\)</span>, we have <span
-class="math display">\[\begin{align*}
-    t=1:\quad \Sigma^{1}\,{n}^{3}
+<p><strong>Example 19</strong>. <em>For integers <span
+class="math inline">\(t\)</span> with <span class="math inline">\(1 \leq
+t \leq 4\)</span>, we have <span class="math display">\[\begin{align*}
+    t=1, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot (-1)
     + \tfrac{1}{2}(3n+n^2)\cdot 7
     + \tfrac{1}{6}(11n+6n^2+n^3)\cdot (-12) \\
     &amp;+ \tfrac{1}{24}(50n+35n^2+10n^3+n^4)\cdot 6,
     \\
-    t=2:\quad \Sigma^{1}\,{n}^{3}
+    t=2, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot (-8)
     + \tfrac{1}{2}(5n+n^2)\cdot 19
     + \tfrac{1}{6}(26n+9n^2+n^3)\cdot (-18) \\
     &amp;+ \tfrac{1}{24}(154n+71n^2+14n^3+n^4)\cdot 6,
     \\
-    t=3:\quad \Sigma^{1}\,{n}^{3}
+    t=3, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot (-27)
     + \tfrac{1}{2}(7n+n^2)\cdot 37
     + \tfrac{1}{6}(47n+12n^2+n^3)\cdot (-24) \\
     &amp;+ \tfrac{1}{24}(342n+119n^2+18n^3+n^4)\cdot 6,
     \\
-    t=4:\quad \Sigma^{1}\,{n}^{3}
+    t=4, \quad \Sigma^{1}\,{n}^{3}
     &amp;=
     n \cdot (-64)
     + \tfrac{1}{2}(9n+n^2)\cdot 61
@@ -872,33 +882,35 @@ class="math display">\[\begin{align*}
     &amp;+ \tfrac{1}{24}(638n+179n^2+22n^3+n^4)\cdot 6.
 \end{align*}\]</span></em></p>
 </div>
-<h1 id="stirling-form">Stirling form</h1>
-<p>We have Lemma which connects Stirling numbers of the second kind
-<span class="math inline">\(\genfrac{\{}{\}}{0pt}{}{n}{k}\)</span> with
-backward differences of powers <span class="math inline">\(\nabla^{k}
-t^{m}\)</span></p>
+<h1 id="stirling-form">Stirling Form</h1>
+<p>The following lemma relates Stirling numbers of the second kind <span
+class="math inline">\(\genfrac{\{}{\}}{0pt}{}{n}{k}\)</span> to backward
+differences of powers <span class="math inline">\(\nabla^{k}
+t^{m}\)</span>.</p>
 <div id="lem:stirling-backward-differencess" class="lemma">
-<p><strong>Lemma 20</strong> (Stirling Backward differences). <em>For
-non-negative integers <span class="math inline">\(m,k\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span> <span
+<p><strong>Lemma 20</strong> (Stirling Backward Differences). <em>For
+non-negative integers <span class="math inline">\(m\)</span> and <span
+class="math inline">\(k\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \nabla^{k} t^{m} = \sum_{j=k}^{m} \binom{t-k}{j-k}
-\genfrac{\{}{\}}{0pt}{}{m}{j} j!
+\genfrac{\{}{\}}{0pt}{}{m}{j} j!.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> By the identity <span
-class="math inline">\(t^m  = \sum_{k=0}^{m} \binom{t}{k}
-\genfrac{\{}{\}}{0pt}{}{m}{k} k!\)</span>, and by using binomial
-recurrence <span class="math inline">\(\binom{n+1}{k} = \binom{n}{k} +
-\binom{n}{k-1}\)</span>. ◻</em></p>
+<p><em><em>Proof.</em> The identity <span class="math inline">\(t^m  =
+\sum_{k=0}^{m} \binom{t}{k} \genfrac{\{}{\}}{0pt}{}{m}{k} k!\)</span>,
+together with the binomial recurrence <span
+class="math inline">\(\binom{n+1}{k} = \binom{n}{k} +
+\binom{n}{k-1}\)</span>, gives the result. ◻</em></p>
 </div>
 </div>
-<p>Therefore,</p>
+<p>The lemma gives the following representation.</p>
 <div id="prop:multifold-stirling-sums-of-powers" class="proposition">
-<p><strong>Proposition 21</strong> (Multifold Stirling sums of powers).
-<em>For non-negative integers <span
-class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
+<p><strong>Proposition 21</strong> (Multifold Stirling Sums of Powers).
+<em>For non-negative integers <span class="math inline">\(r\)</span>,
+<span class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     =
@@ -909,37 +921,40 @@ class="math display">\[\begin{align*}
       -
       \sum_{s=0}^{r-1}
       \tbinom{k-t+r-1-s}{k+r-s} \tbinom{s+n-1}{s}
-    \right] \binom{t-k}{j-k} \genfrac{\{}{\}}{0pt}{}{m}{j} j!
+    \right] \binom{t-k}{j-k} \genfrac{\{}{\}}{0pt}{}{m}{j} j!.
 \end{align*}\]</span></em></p>
 </div>
-<h1 id="eulerian-form">Eulerian form</h1>
-<p>We have Lemma which connects Eulerian numbers <span
+<h1 id="eulerian-form">Eulerian Form</h1>
+<p>The following lemma relates Eulerian numbers <span
 class="math inline">\(\genfrac{\langle}{\rangle}{0pt}{}{n}{k}\)</span>
-with backward differences of powers <span
-class="math inline">\(\nabla^{k} t^{m}\)</span></p>
+to backward differences of powers <span class="math inline">\(\nabla^{k}
+t^{m}\)</span>.</p>
 <div id="lem:eulerian-backward-differences" class="lemma">
-<p><strong>Lemma 22</strong> (Eulerian Backward differences). <em>For
-non-negative integers <span class="math inline">\(m,k\)</span>, and an
-arbitrary integer <span class="math inline">\(t\)</span> <span
+<p><strong>Lemma 22</strong> (Eulerian Backward Differences). <em>For
+non-negative integers <span class="math inline">\(m\)</span> and <span
+class="math inline">\(k\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \nabla^{k} t^{m} = \sum_{j=0}^{m} \binom{t+j-k}{m-k}
 \genfrac{\langle}{\rangle}{0pt}{}{m}{j}.
 \end{align*}\]</span></em></p>
 <div class="proof">
-<p><em><em>Proof.</em> By Worpitzky identity <span
+<p><em><em>Proof.</em> Worpitzky’s identity <span
 class="math inline">\(t^{m} = \sum_{k=0}^{m} \binom{t+k}{m}
-\genfrac{\langle}{\rangle}{0pt}{}{m}{k}\)</span>, and by binomial
-recurrence <span class="math inline">\(\binom{n+1}{k} = \binom{n}{k} +
-\binom{n}{k-1}\)</span>, see <span class="citation"
-data-cites="Worpitzky1883">(Worpitzky 1883)</span>. ◻</em></p>
+\genfrac{\langle}{\rangle}{0pt}{}{m}{k}\)</span>, together with the
+binomial recurrence <span class="math inline">\(\binom{n+1}{k} =
+\binom{n}{k} + \binom{n}{k-1}\)</span>, gives the result. See <span
+class="citation" data-cites="Worpitzky1883">(Worpitzky
+1883)</span>. ◻</em></p>
 </div>
 </div>
-<p>Therefore,</p>
+<p>The lemma gives the following representation.</p>
 <div id="prop:multifold-eulerian-sums-of-powers" class="proposition">
-<p><strong>Proposition 23</strong> (Multifold Eulerian sums of powers).
-<em>For non-negative integers <span
-class="math inline">\(r,n,m\)</span>, and an arbitrary integer <span
-class="math inline">\(t\)</span> <span
+<p><strong>Proposition 23</strong> (Multifold Eulerian Sums of Powers).
+<em>For non-negative integers <span class="math inline">\(r\)</span>,
+<span class="math inline">\(n\)</span>, and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
     \Sigma^{r}\,{n}^{m}
     =
@@ -962,24 +977,26 @@ Stirling numbers of the second kind and Eulerian numbers. Finally, we
 provide Wolfram Mathematica programs for the efficient verification of
 the derived identities.</p>
 <h1 class="unnumbered" id="mathematica-programs">Mathematica
-programs</h1>
-<p>Use this <a
+Programs</h1>
+<p>Use the <a
 href="https://github.com/kolosovpetro/SumsOfPowersViaBackwardFiniteDifferencesAndNewtonFormula/tree/main/mathematica"><code>GitHub</code></a>
-repository to validate the results using Mathematica programs.<br />
-</p>
-<div class="center">
-<table>
+repository to validate the results using Mathematica programs. Table <a
+href="#tab:mathematica-validation" data-reference-type="ref"
+data-reference="tab:mathematica-validation">1</a> lists the programs and
+the results they validate.</p>
+<table id="tab:mathematica-validation">
+<caption>Mathematica programs and the results they validate.</caption>
 <thead>
 <tr>
-<th style="text-align: left;"><strong>Mathematica Function</strong></th>
-<th style="text-align: left;"><strong>Validates / Prints</strong></th>
+<th style="text-align: left;">Mathematica Function</th>
+<th style="text-align: left;">Validates or Prints</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td
 style="text-align: left;"><code>ValidateBackwardNewtonsFormulaForPowers.txt</code></td>
-<td style="text-align: left;">Validates Lem. <a
+<td style="text-align: left;">Validates Lemma <a
 href="#lem:backward-newtons-formula-for-powers"
 data-reference-type="eqref"
 data-reference="lem:backward-newtons-formula-for-powers">[lem:backward-newtons-formula-for-powers]</a></td>
@@ -987,28 +1004,28 @@ data-reference="lem:backward-newtons-formula-for-powers">[lem:backward-newtons-f
 <tr>
 <td
 style="text-align: left;"><code>ValidateOrdinarySumsOfPowers.txt</code></td>
-<td style="text-align: left;">Validates Prop. <a
+<td style="text-align: left;">Validates Proposition <a
 href="#prop:ordinary-sums-of-powers" data-reference-type="eqref"
 data-reference="prop:ordinary-sums-of-powers">[prop:ordinary-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
 style="text-align: left;"><code>ValidateDoubleSumsOfPowers.txt</code></td>
-<td style="text-align: left;">Validates Prop. <a
+<td style="text-align: left;">Validates Proposition <a
 href="#prop:double-sums-of-powers" data-reference-type="eqref"
 data-reference="prop:double-sums-of-powers">[prop:double-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
 style="text-align: left;"><code>ValidateMultifoldSumsOfPowers.txt</code></td>
-<td style="text-align: left;">Validates Thm. <a
+<td style="text-align: left;">Validates Theorem <a
 href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
 data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a></td>
 </tr>
 <tr>
 <td
 style="text-align: left;"><code>ValidateMultifoldBinomialSumsOfPowers.txt</code></td>
-<td style="text-align: left;">Validates Prop. <a
+<td style="text-align: left;">Validates Proposition <a
 href="#prop:multifold-binomial-sums-of-powers"
 data-reference-type="eqref"
 data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial-sums-of-powers]</a></td>
@@ -1016,7 +1033,7 @@ data-reference="prop:multifold-binomial-sums-of-powers">[prop:multifold-binomial
 <tr>
 <td
 style="text-align: left;"><code>ValidateMultifoldBinomialSumsOfPowersNegated.txt</code></td>
-<td style="text-align: left;">Validates Prop. <a
+<td style="text-align: left;">Validates Proposition <a
 href="#prop:multifold-binomial-sums-of-powers-negated"
 data-reference-type="eqref"
 data-reference="prop:multifold-binomial-sums-of-powers-negated">[prop:multifold-binomial-sums-of-powers-negated]</a></td>
@@ -1024,7 +1041,7 @@ data-reference="prop:multifold-binomial-sums-of-powers-negated">[prop:multifold-
 <tr>
 <td
 style="text-align: left;"><code>ValidateMultifoldEulerianSumsOfPowers.txt</code></td>
-<td style="text-align: left;">Validates Prop. <a
+<td style="text-align: left;">Validates Proposition <a
 href="#prop:multifold-eulerian-sums-of-powers"
 data-reference-type="eqref"
 data-reference="prop:multifold-eulerian-sums-of-powers">[prop:multifold-eulerian-sums-of-powers]</a></td>
@@ -1032,20 +1049,19 @@ data-reference="prop:multifold-eulerian-sums-of-powers">[prop:multifold-eulerian
 <tr>
 <td
 style="text-align: left;"><code>ValidateMultifoldStirlingSumsOfPowers.txt</code></td>
-<td style="text-align: left;">Validates Prop. <a
+<td style="text-align: left;">Validates Proposition <a
 href="#prop:multifold-stirling-sums-of-powers"
 data-reference-type="eqref"
 data-reference="prop:multifold-stirling-sums-of-powers">[prop:multifold-stirling-sums-of-powers]</a></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> January 1, 2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-11-05.</p></li>
+<li><p><strong>Current release date:</strong> 2026-11-06.</p></li>
 <li><p><strong>Version:</strong>
-<code>2.0.1-MATH-142.1+MATH-142.ba0461c</code></p></li>
+<code>2.1.0+main.ebec1f9</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83 .</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
