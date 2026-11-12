@@ -39,7 +39,7 @@
   <meta name="citation_keywords" content="OEIS" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Petro Kolosov" />
-  <meta name="dcterms.date" content="2026-11-07" />
+  <meta name="dcterms.date" content="2026-11-12" />
   <title>Sums of Powers via Backward Finite Differences and Newton’s Formula</title>
   <style>
     /* Default styles provided by pandoc.
@@ -255,7 +255,7 @@
 <h1 class="title">Sums of Powers via Backward Finite Differences and
 Newton’s Formula</h1>
 <p class="author">Petro Kolosov</p>
-<p class="date">2026-11-07</p>
+<p class="date">2026-11-12</p>
 <div class="abstract">
 <div class="abstract-title">Abstract</div>
 <p>In this manuscript, we derive closed formulas for multifold sums of
@@ -267,7 +267,7 @@ provide Wolfram Mathematica programs for the efficient verification of
 the derived identities.</p>
 </div>
 </header>
-<h1 id="auxiliary-lemmas">Auxiliary Lemmas</h1>
+<h1 id="preliminaries">Preliminaries</h1>
 <p>In this section, we introduce several lemmas, definitions, and
 conventions that serve as the foundation for the main results of this
 manuscript. For multifold sums of powers, we use the notation provided
@@ -298,7 +298,7 @@ class="math display">\[\begin{align*}
       0, \quad &amp; \mathrm{if \; } k &lt; 0, \\
       1, \quad &amp; \mathrm{if \; } k = 0, \\
       \prod_{j=0}^{k-1} (n+j), \quad &amp; \mathrm{if \; } k&gt;0.
-    \end{cases}.
+    \end{cases}
 \end{align*}\]</span></em></p>
 </div>
 <p>For further discussion of generalized factorials, see J. F.
@@ -424,9 +424,9 @@ class="math inline">\(r\)</span>, iterating the definition and applying
 the hockey-stick identity gives <span
 class="math display">\[\begin{align*}
           \Sigma^{r}\,{n}^{0}
-          &amp;= \sum_{k=1}^{n} \Sigma^{r-1}\,{k}^{0} \\
-          &amp;= \sum_{k=1}^{n} \binom{k+r-2}{r-1} \\
-          &amp;= \binom{r+n-1}{r}.
+          &amp;= \sum_{k=1}^{n} \Sigma^{r-1}\,{k}^{0}
+          = \sum_{k=1}^{n} \binom{k+r-2}{r-1}
+          = \binom{r+n-1}{r}.
 \end{align*}\]</span></em></p></li>
 </ol>
 <p><em>This completes the proof. ◻</em></p>
@@ -437,7 +437,8 @@ class="math display">\[\begin{align*}
 <span class="math inline">\(n\)</span> and <span
 class="math inline">\(k\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \binom{-n}{k} = (-1)^{k} \binom{k+n-1}{k}.
+    \binom{n}{k} &amp;= (-1)^{k} \binom{k-n-1}{k}, \\
+    \binom{-n}{k} &amp;= (-1)^{k} \binom{k+n-1}{k}.
 \end{align*}\]</span></em></p>
 <div class="proof">
 <p><em><em>Proof.</em> See <span class="citation"
@@ -468,7 +469,7 @@ data-reference="lem:backward-newtons-formula-for-powers">[lem:backward-newtons-f
 with the hockey-stick identity in Lemma <a
 href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>.
-We implement the algorithm for finding closed forms of sums of powers of
+We apply the algorithm for finding closed forms of sums of powers of
 integers, proposed in <span class="citation"
 data-cites="kolosov2026framework">(Kolosov 2026, Alg. (11.2))</span>.
 More precisely, the main idea is to identify the binomial basis of
@@ -490,7 +491,7 @@ f(a)
     f(x)
     &amp;= \sum_{k=0}^{\infty} \frac{(x-a)^k}{k!} \frac{\mathrm{d}^{k}
 f(a)}{\mathrm{d} x^{k}}.
-  \end{cases}.
+  \end{cases}
 \end{align*}\]</span> Each variation of Newton’s formula above has its
 binomial basis: <span class="math display">\[\begin{align*}
   \begin{cases}
@@ -502,7 +503,7 @@ x(x+1)(x+2)\cdots(x+n-1)  =\binom{x+n-1}{n}, \\
 \right)\left( n + \frac{k}{2} -2 \right)
     \cdots \left( n - \frac{k}{2} +1 \right)  =\frac{x}{n}
 \binom{x+\frac{n}{2}-1}{n-1}.
-  \end{cases}.
+  \end{cases}
 \end{align*}\]</span> These bases allow us to combine Newton’s formula
 with hockey-stick-type identities to find closed forms for sums of
 powers of integers. Accordingly, the main results use backward Newton’s
@@ -517,15 +518,19 @@ data-reference="lem:backward-newtons-formula-for-powers">[lem:backward-newtons-f
 which gives backward Newton’s interpolation formula for powers. For
 example, the formula gives the following expansions for cubes: <span
 class="math display">\[\begin{align*}
+  t=0, \quad
   n^3
   &amp;= 0 \tbinom{n-1}{0} + 1 \tbinom{n}{1} - 6 \tbinom{n+1}{2} + 6
 \tbinom{n+2}{3}, \\
+  t=1, \quad
   n^3
   &amp;= 1 \tbinom{n-2}{0} + 1 \tbinom{n-1}{1} + 0 \tbinom{n}{2} + 6
 \tbinom{n+1}{3}, \\
+  t=2, \quad
   n^3
   &amp;= 8 \tbinom{n-3}{0} + 7 \tbinom{n-2}{1} + 6 \tbinom{n-1}{2} + 6
 \tbinom{n}{3}, \\
+  t=3, \quad
   n^3
   &amp;= 27 \tbinom{n-4}{0} + 19 \tbinom{n-3}{1} + 12 \tbinom{n-2}{2} +
 6 \tbinom{n-1}{3}.
@@ -533,7 +538,7 @@ class="math display">\[\begin{align*}
 <p>The transition to a formula for sums of powers is straightforward:
 <span class="math display">\[\begin{align*}
   \Sigma^{1}\,{n}^{m}
-    = \sum_{k=0}^{m} \left[ \sum_{j=1}^{n} \binom{j-t+k-1}{k} \right]
+  = \sum_{k=0}^{m} \left[ \sum_{j=1}^{n} \binom{j-t+k-1}{k} \right]
 \nabla^{k} t^m.
 \end{align*}\]</span> Setting <span class="math inline">\(r=0\)</span>
 in Lemma <a href="#lem:backward-hockey-stick-identity"
@@ -564,37 +569,141 @@ is as follows:</p>
 <div class="example">
 <p><strong>Example 11</strong>. <em>For integers <span
 class="math inline">\(t\)</span> with <span class="math inline">\(0 \le
-t \le 3\)</span>, we have <span class="math display">\[\begin{align*}
+t \le 7\)</span>, we have <span class="math display">\[\begin{align*}
     \Sigma^{1}\,{n}^{3}
-    &amp;= 0\!\left[\tbinom{n}{1}-\tbinom{0}{1}\right]
-    + 1\!\left[\tbinom{n+1}{2}-\tbinom{1}{2}\right]
-    - 6\!\left[\tbinom{n+2}{3}-\tbinom{2}{3}\right]
-    + 6\!\left[\tbinom{n+3}{4}-\tbinom{3}{4}\right], \\
+    &amp;= 0 \cdot \!\left[\tbinom{n}{1}-\tbinom{0}{1}\right]
+    + 1 \cdot \!\left[\tbinom{n+1}{2}-\tbinom{1}{2}\right]
+    - 6 \cdot \!\left[\tbinom{n+2}{3}-\tbinom{2}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n+3}{4}-\tbinom{3}{4}\right], \\
     %
     \Sigma^{1}\,{n}^{3}
-    &amp;= 1\!\left[\tbinom{n-1}{1}-\tbinom{-1}{1}\right]
-    + 1\!\left[\tbinom{n}{2}-\tbinom{0}{2}\right]
-    + 0\!\left[\tbinom{n+1}{3}-\tbinom{1}{3}\right]
-    + 6\!\left[\tbinom{n+2}{4}-\tbinom{2}{4}\right], \\
+    &amp;= 1 \cdot \!\left[\tbinom{n-1}{1}-\tbinom{-1}{1}\right]
+    + 1 \cdot \!\left[\tbinom{n}{2}-\tbinom{0}{2}\right]
+    + 0 \cdot \!\left[\tbinom{n+1}{3}-\tbinom{1}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n+2}{4}-\tbinom{2}{4}\right], \\
     %
     \Sigma^{1}\,{n}^{3}
-    &amp;= 8\!\left[\tbinom{n-2}{1}-\tbinom{-2}{1}\right]
-    + 7\!\left[\tbinom{n-1}{2}-\tbinom{-1}{2}\right]
-    + 6\!\left[\tbinom{n}{3}-\tbinom{0}{3}\right]
-    + 6\!\left[\tbinom{n+1}{4}-\tbinom{1}{4}\right], \\
+    &amp;= 8 \cdot \!\left[\tbinom{n-2}{1}-\tbinom{-2}{1}\right]
+    + 7 \cdot \!\left[\tbinom{n-1}{2}-\tbinom{-1}{2}\right]
+    + 6 \cdot \!\left[\tbinom{n}{3}-\tbinom{0}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n+1}{4}-\tbinom{1}{4}\right], \\
     %
     \Sigma^{1}\,{n}^{3}
-    &amp;= 27\!\left[\tbinom{n-3}{1}-\tbinom{-3}{1}\right]
-    + 19\!\left[\tbinom{n-2}{2}-\tbinom{-2}{2}\right]
-    + 12\!\left[\tbinom{n-1}{3}-\tbinom{-1}{3}\right]
-    + 6\!\left[\tbinom{n}{4}-\tbinom{0}{4}\right].
+    &amp;= 27 \cdot \!\left[\tbinom{n-3}{1}-\tbinom{-3}{1}\right]
+    + 19 \cdot \!\left[\tbinom{n-2}{2}-\tbinom{-2}{2}\right]
+    + 12 \cdot \!\left[\tbinom{n-1}{3}-\tbinom{-1}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n}{4}-\tbinom{0}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 64 \cdot \!\left[\tbinom{n-4}{1}-\tbinom{-4}{1}\right]
+    + 37 \cdot \!\left[\tbinom{n-3}{2}-\tbinom{-3}{2}\right]
+    + 18 \cdot \!\left[\tbinom{n-2}{3}-\tbinom{-2}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-1}{4}-\tbinom{-1}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 125 \cdot \!\left[\tbinom{n-5}{1}-\tbinom{-5}{1}\right]
+    + 61 \cdot \!\left[\tbinom{n-4}{2}-\tbinom{-4}{2}\right]
+    + 24 \cdot \!\left[\tbinom{n-3}{3}-\tbinom{-3}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-2}{4}-\tbinom{-2}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 216 \cdot \!\left[\tbinom{n-6}{1}-\tbinom{-6}{1}\right]
+    + 91 \cdot \!\left[\tbinom{n-5}{2}-\tbinom{-5}{2}\right]
+    + 30 \cdot \!\left[\tbinom{n-4}{3}-\tbinom{-4}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-3}{4}-\tbinom{-3}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 343 \cdot \!\left[\tbinom{n-7}{1}-\tbinom{-7}{1}\right]
+    + 127 \cdot \!\left[\tbinom{n-6}{2}-\tbinom{-6}{2}\right]
+    + 36 \cdot \!\left[\tbinom{n-5}{3}-\tbinom{-5}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-4}{4}-\tbinom{-4}{4}\right].
 \end{align*}\]</span></em></p>
 </div>
 <p>In the preceding example, some binomial coefficients have negative
 upper indices, which may look unfamiliar. These coefficients are well
-defined because negative upper-index binomial coefficients satisfy <span
-class="math inline">\(\binom{-n}{k} = (-1)^{k}
-\binom{k+n-1}{k}\)</span>. Moreover, the binomial coefficient <span
+defined because they satisfy the upper negation identity for binomial
+coefficients <span class="math inline">\(\binom{-n}{k} = (-1)^{k}
+\binom{k+n-1}{k}\)</span> in Lemma <a
+href="#lem:upper-binomial-negation" data-reference-type="eqref"
+data-reference="lem:upper-binomial-negation">[lem:upper-binomial-negation]</a>.
+Thus, <span class="math display">\[\begin{align*}
+  \binom{k-t}{k+1} = \binom{-(t+k)}{k+1}
+  = (-1)^{k+1} \binom{(k+1)+(t-k)-1}{k+1}
+  = (-1)^{k+1} \binom{t}{k+1}
+\end{align*}\]</span></p>
+<div id="cor:ordinary-sums-of-powers-upper-negation" class="corollary">
+<p><strong>Corollary 12</strong> (Ordinary Sums of Powers). <em>For
+non-negative integers <span class="math inline">\(n\)</span> and <span
+class="math inline">\(m\)</span>, and an arbitrary integer <span
+class="math inline">\(t\)</span>, the following identity holds <span
+class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{m}
+    &amp;= \sum_{k=0}^{m}
+    \left[
+      \binom{n-t+k}{k+1} + (-1)^{k+2} \binom{t}{k+1}
+    \right] \nabla^{k} t^m
+    \\
+    &amp;= \sum_{k=0}^{m}
+    \left[
+      \binom{n-t+k}{k+1} + (-1)^{k} \binom{t}{k+1}
+    \right] \nabla^{k} t^m.
+\end{align*}\]</span></em></p>
+</div>
+<p>For example,</p>
+<div class="example">
+<p><strong>Example 13</strong>. <em>For integers <span
+class="math inline">\(t\)</span> with <span class="math inline">\(0 \le
+t \le 7\)</span>, we have <span class="math display">\[\begin{align*}
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 0 \cdot \!\left[\tbinom{n}{1}+\tbinom{0}{1}\right]
+    + 1 \cdot \!\left[\tbinom{n+1}{2}-\tbinom{0}{2}\right]
+    + 6 \cdot \!\left[\tbinom{n+2}{3}+\tbinom{0}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n+3}{4}-\tbinom{0}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 1 \cdot \!\left[\tbinom{n-1}{1}+\tbinom{1}{1}\right]
+    + 1 \cdot \!\left[\tbinom{n-0}{2}-\tbinom{1}{2}\right]
+    + 0 \cdot \!\left[\tbinom{n+1}{3}+\tbinom{1}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n+2}{4}-\tbinom{1}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 8 \cdot \!\left[\tbinom{n-2}{1}+\tbinom{2}{1}\right]
+    + 7 \cdot \!\left[\tbinom{n-1}{2}-\tbinom{2}{2}\right]
+    + 6 \cdot \!\left[\tbinom{n-0}{3}+\tbinom{2}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n+1}{4}-\tbinom{2}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 27 \cdot \!\left[\tbinom{n-3}{1}+\tbinom{3}{1}\right]
+    + 19 \cdot \!\left[\tbinom{n-2}{2}-\tbinom{3}{2}\right]
+    + 12 \cdot \!\left[\tbinom{n-1}{3}+\tbinom{3}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-0}{4}-\tbinom{3}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 64 \cdot \!\left[\tbinom{n-4}{1}+\tbinom{4}{1}\right]
+    + 37 \cdot \!\left[\tbinom{n-3}{2}-\tbinom{4}{2}\right]
+    + 18 \cdot \!\left[\tbinom{n-2}{3}+\tbinom{4}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-1}{4}-\tbinom{4}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 125 \cdot \!\left[\tbinom{n-5}{1}+\tbinom{5}{1}\right]
+    + 61 \cdot \!\left[\tbinom{n-4}{2}-\tbinom{5}{2}\right]
+    + 24 \cdot \!\left[\tbinom{n-3}{3}+\tbinom{5}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-2}{4}-\tbinom{5}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 216 \cdot \!\left[\tbinom{n-6}{1}+\tbinom{6}{1}\right]
+    + 91 \cdot \!\left[\tbinom{n-5}{2}-\tbinom{6}{2}\right]
+    + 30 \cdot \!\left[\tbinom{n-4}{3}+\tbinom{6}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-3}{4}-\tbinom{6}{4}\right], \\
+    %
+    \Sigma^{1}\,{n}^{3}
+    &amp;= 343 \cdot \!\left[\tbinom{n-7}{1}+\tbinom{7}{1}\right]
+    + 127 \cdot \!\left[\tbinom{n-6}{2}-\tbinom{7}{2}\right]
+    + 36 \cdot \!\left[\tbinom{n-5}{3}+\tbinom{7}{3}\right]
+    + 6 \cdot \!\left[\tbinom{n-4}{4}-\tbinom{7}{4}\right].
+\end{align*}\]</span></em></p>
+</div>
+<p>Moreover, the binomial coefficient <span
 class="math inline">\(\binom{n}{k}\)</span> is a polynomial in <span
 class="math inline">\(n\)</span> and therefore accepts fractional values
 in its upper index. Consequently, the expression in Proposition <a
@@ -603,7 +712,7 @@ data-reference="prop:ordinary-sums-of-powers">[prop:ordinary-sums-of-powers]</a>
 is also a polynomial in <span class="math inline">\(n\)</span>. The
 following example illustrates the polynomial form of the formula.</p>
 <div class="example">
-<p><strong>Example 12</strong>. <em>For integers <span
+<p><strong>Example 14</strong>. <em>For integers <span
 class="math inline">\(t\)</span> with <span class="math inline">\(0 \leq
 t \leq 4\)</span>, we have <span class="math display">\[\begin{align*}
     t=0, \quad \Sigma^{1}\,{n}^{3}
@@ -677,7 +786,7 @@ href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>
 yields the following result.</p>
 <div id="prop:double-sums-of-powers" class="proposition">
-<p><strong>Proposition 13</strong> (Double Sums of Powers). <em>For
+<p><strong>Proposition 15</strong> (Double Sums of Powers). <em>For
 non-negative integers <span class="math inline">\(n\)</span> and <span
 class="math inline">\(m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
@@ -696,7 +805,7 @@ class="math inline">\(\Sigma^{0}\,{n}^{0}=1\)</span> and <span
 class="math inline">\(\Sigma^{1}\,{n}^{0}=n\)</span>. The next example
 gives a formula for double sums of powers.</p>
 <div class="example">
-<p><strong>Example 14</strong>. <em>For integers <span
+<p><strong>Example 16</strong>. <em>For integers <span
 class="math inline">\(t\)</span> with <span class="math inline">\(0 \leq
 t \leq 2\)</span>, we have <span class="math display">\[\begin{align*}
     t=0, \quad \Sigma^{2}\,{n}^{3}
@@ -726,77 +835,79 @@ href="#lem:backward-hockey-stick-identity" data-reference-type="eqref"
 data-reference="lem:backward-hockey-stick-identity">[lem:backward-hockey-stick-identity]</a>
 yields a closed formula for multifold sums of powers.</p>
 <div id="thm:multifold-sums-of-powers" class="theorem">
-<p><strong>Theorem 15</strong> (Multifold Sums of Powers). <em>For
+<p><strong>Theorem 17</strong> (Multifold Sums of Powers). <em>For
 non-negative integers <span class="math inline">\(r\)</span>, <span
 class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     =
     \sum_{k=0}^{m}
     \left[
-      \binom{n-t+k+r-1}{k+r}
+      \binom{n+k+r-t}{k+r+1}
       -
-      \sum_{s=0}^{r-1}
-      \binom{k-t+r-1-s}{k+r-s} \Sigma^{s}\,{n}^{0}
+      \sum_{s=0}^{r}
+      \binom{k-s+r-t}{k-s+r+1} \Sigma^{s}\,{n}^{0}
     \right] \nabla^{k} t^{m}.
 \end{align*}\]</span></em></p>
 </div>
 <p>The following example illustrates the multifold formula.</p>
 <div class="example">
-<p><strong>Example 16</strong>. <em>For non-negative integers <span
+<p><strong>Example 18</strong>. <em>For non-negative integers <span
 class="math inline">\(r\)</span>, <span
 class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span>, we have <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     &amp;=
     \mathop{\textstyle\sum}_{k=0}^{m}
     \left[
-      \tbinom{n+k+r-1}{k+r}
+      \tbinom{n+k+r-0}{k+r+1}
       -
-      \mathop{\textstyle\sum}_{s=0}^{r-1}
-      \tbinom{k+r-1-s}{k+r-s}
-      \Sigma^{s}\,{n}^{0}
-    \right]
-    \nabla^k 0^m,
+      \mathop{\textstyle\sum}_{s=0}^{r}
+      \tbinom{k-s+r-0}{k-s+r+1} \Sigma^{s}\,{n}^{0}
+    \right] \nabla^{k} 0^{m},
     \\
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     &amp;=
     \mathop{\textstyle\sum}_{k=0}^{m}
     \left[
-      \tbinom{n+k+r-2}{k+r}
+      \tbinom{n+k+r-1}{k+r+1}
       -
-      \mathop{\textstyle\sum}_{s=0}^{r-1}
-      \tbinom{k+r-2-s}{k+r-s}
-      \Sigma^{s}\,{n}^{0}
-    \right]
-    \nabla^k 1^m,
+      \mathop{\textstyle\sum}_{s=0}^{r}
+      \tbinom{k-s+r-1}{k-s+r+1} \Sigma^{s}\,{n}^{0}
+    \right] \nabla^{k} 1^{m},
     \\
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     &amp;=
     \mathop{\textstyle\sum}_{k=0}^{m}
     \left[
-      \tbinom{n+k+r-3}{k+r}
+      \tbinom{n+k+r-2}{k+r+1}
       -
-      \mathop{\textstyle\sum}_{s=0}^{r-1}
-      \tbinom{k+r-3-s}{k+r-s}
-      \Sigma^{s}\,{n}^{0}
-    \right]
-    \nabla^k 2^m,
+      \mathop{\textstyle\sum}_{s=0}^{r}
+      \tbinom{k-s+r-2}{k-s+r+1} \Sigma^{s}\,{n}^{0}
+    \right] \nabla^{k} 2^{m},
     \\
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     &amp;=
     \mathop{\textstyle\sum}_{k=0}^{m}
     \left[
-      \tbinom{n+k+r-4}{k+r}
+      \tbinom{n+k+r-3}{k+r+1}
       -
-      \mathop{\textstyle\sum}_{s=0}^{r-1}
-      \tbinom{k+r-4-s}{k+r-s}
-      \Sigma^{s}\,{n}^{0}
-    \right]
-    \nabla^k 3^m.
+      \mathop{\textstyle\sum}_{s=0}^{r}
+      \tbinom{k-s+r-3}{k-s+r+1} \Sigma^{s}\,{n}^{0}
+    \right] \nabla^{k} 3^{m},
+    \\
+    \Sigma^{r+1}\,{n}^{m}
+    &amp;=
+    \mathop{\textstyle\sum}_{k=0}^{m}
+    \left[
+      \tbinom{n+k+r-4}{k+r+1}
+      -
+      \mathop{\textstyle\sum}_{s=0}^{r}
+      \tbinom{k-s+r-4}{k-s+r+1} \Sigma^{s}\,{n}^{0}
+    \right] \nabla^{k} 4^{m}.
 \end{align*}\]</span></em></p>
 </div>
 <p>Using Lemma <a href="#lem:multifold-sum-of-zero-powers"
@@ -806,20 +917,20 @@ we obtain the following binomial form of Theorem <a
 href="#thm:multifold-sums-of-powers" data-reference-type="eqref"
 data-reference="thm:multifold-sums-of-powers">[thm:multifold-sums-of-powers]</a>.</p>
 <div id="prop:multifold-binomial-sums-of-powers" class="proposition">
-<p><strong>Proposition 17</strong> (Multifold Binomial Sums of Powers).
+<p><strong>Proposition 19</strong> (Multifold Binomial Sums of Powers).
 <em>For non-negative integers <span class="math inline">\(r\)</span>,
 <span class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     =
     \sum_{k=0}^{m}
     \left[
-      \binom{n-t+k+r-1}{k+r}
+      \binom{n+k+r-t}{k+r+1}
       -
-      \sum_{s=0}^{r-1}
-      \binom{k-t+r-1-s}{k+r-s} \binom{s+n-1}{s}
+      \sum_{s=0}^{r}
+      \binom{k-s+r-t}{k-s+r+1} \binom{s+n-1}{s}
     \right] \nabla^{k} t^{m}.
 \end{align*}\]</span></em></p>
 </div>
@@ -828,21 +939,21 @@ class="math inline">\(-t\)</span> yields another formula for multifold
 sums of powers.</p>
 <div id="prop:multifold-binomial-sums-of-powers-negated"
 class="proposition">
-<p><strong>Proposition 18</strong> (Multifold Binomial Sums of Powers
+<p><strong>Proposition 20</strong> (Multifold Binomial Sums of Powers
 Negated). <em>For non-negative integers <span
 class="math inline">\(r\)</span>, <span
 class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     =
     \sum_{k=0}^{m}
     \left[
-      \binom{n+t+k+r-1}{k+r}
+      \binom{n+k+r+t}{k+r+1}
       -
-      \sum_{s=0}^{r-1}
-      \binom{k+t+r-1-s}{k+r-s} \binom{s+n-1}{s}
+      \sum_{s=0}^{r}
+      \binom{k-s+r+t}{k-s+r+1} \binom{s+n-1}{s}
     \right] \nabla^{k} (-t)^{m}.
 \end{align*}\]</span></em></p>
 </div>
@@ -850,7 +961,7 @@ class="math display">\[\begin{align*}
 class="math inline">\(t\)</span> with <span
 class="math inline">\(-t\)</span>.</p>
 <div class="example">
-<p><strong>Example 19</strong>. <em>For integers <span
+<p><strong>Example 21</strong>. <em>For integers <span
 class="math inline">\(t\)</span> with <span class="math inline">\(1 \leq
 t \leq 4\)</span>, we have <span class="math display">\[\begin{align*}
     t=1, \quad \Sigma^{1}\,{n}^{3}
@@ -888,7 +999,7 @@ class="math inline">\(\genfrac{\{}{\}}{0pt}{}{n}{k}\)</span> to backward
 differences of powers <span class="math inline">\(\nabla^{k}
 t^{m}\)</span>.</p>
 <div id="lem:stirling-backward-differencess" class="lemma">
-<p><strong>Lemma 20</strong> (Stirling Backward Differences). <em>For
+<p><strong>Lemma 22</strong> (Stirling Backward Differences). <em>For
 non-negative integers <span class="math inline">\(m\)</span> and <span
 class="math inline">\(k\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
@@ -906,22 +1017,22 @@ class="math inline">\(\binom{n+1}{k} = \binom{n}{k} +
 </div>
 <p>The lemma gives the following representation.</p>
 <div id="prop:multifold-stirling-sums-of-powers" class="proposition">
-<p><strong>Proposition 21</strong> (Multifold Stirling Sums of Powers).
+<p><strong>Proposition 23</strong> (Multifold Stirling Sums of Powers).
 <em>For non-negative integers <span class="math inline">\(r\)</span>,
 <span class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     =
     \sum_{k=0}^{m}
     \sum_{j=k}^{m}
     \left[
-      \binom{n-t+k+r-1}{k+r}
+      \binom{n+k+r-t}{k+r+1}
       -
-      \sum_{s=0}^{r-1}
-      \tbinom{k-t+r-1-s}{k+r-s} \tbinom{s+n-1}{s}
-    \right] \binom{t-k}{j-k} \genfrac{\{}{\}}{0pt}{}{m}{j} j!.
+      \sum_{s=0}^{r}
+      \binom{k-s+r-t}{k-s+r+1} \binom{s+n-1}{s}
+    \right] \binom{t-k}{j-k} \genfrac{\{}{\}}{0pt}{}{m}{j} j!
 \end{align*}\]</span></em></p>
 </div>
 <h1 id="eulerian-form">Eulerian Form</h1>
@@ -930,7 +1041,7 @@ class="math inline">\(\genfrac{\langle}{\rangle}{0pt}{}{n}{k}\)</span>
 to backward differences of powers <span class="math inline">\(\nabla^{k}
 t^{m}\)</span>.</p>
 <div id="lem:eulerian-backward-differences" class="lemma">
-<p><strong>Lemma 22</strong> (Eulerian Backward Differences). <em>For
+<p><strong>Lemma 24</strong> (Eulerian Backward Differences). <em>For
 non-negative integers <span class="math inline">\(m\)</span> and <span
 class="math inline">\(k\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
@@ -950,22 +1061,23 @@ class="citation" data-cites="Worpitzky1883">(Worpitzky
 </div>
 <p>The lemma gives the following representation.</p>
 <div id="prop:multifold-eulerian-sums-of-powers" class="proposition">
-<p><strong>Proposition 23</strong> (Multifold Eulerian Sums of Powers).
+<p><strong>Proposition 25</strong> (Multifold Eulerian Sums of Powers).
 <em>For non-negative integers <span class="math inline">\(r\)</span>,
 <span class="math inline">\(n\)</span>, and <span
 class="math inline">\(m\)</span>, and an arbitrary integer <span
 class="math inline">\(t\)</span>, the following identity holds <span
 class="math display">\[\begin{align*}
-    \Sigma^{r}\,{n}^{m}
+    \Sigma^{r+1}\,{n}^{m}
     =
-    \sum_{k=0}^{m}
     \sum_{j=0}^{m}
+    \sum_{k=0}^{m}
     \left[
-      \binom{n-t+k+r-1}{k+r}
+      \binom{n+k+r-t}{k+r+1}
       -
-      \sum_{s=0}^{r-1}
-      \tbinom{k-t+r-1-s}{k+r-s} \tbinom{s+n-1}{s}
-    \right] \binom{t+j-k}{m-k} \genfrac{\langle}{\rangle}{0pt}{}{m}{j}.
+      \sum_{s=0}^{r}
+      \binom{k-s+r-t}{k-s+r+1} \binom{s+n-1}{s}
+    \right]
+    \binom{t+j-k}{m-k} \genfrac{\langle}{\rangle}{0pt}{}{m}{j}.
 \end{align*}\]</span></em></p>
 </div>
 <h1 id="conclusions">Conclusions</h1>
@@ -1059,9 +1171,9 @@ data-reference="prop:multifold-stirling-sums-of-powers">[prop:multifold-stirling
 <p><span><strong>Metadata</strong></span></p>
 <ul>
 <li><p><strong>Initial release date:</strong> January 1, 2026.</p></li>
-<li><p><strong>Current release date:</strong> 2026-11-07.</p></li>
+<li><p><strong>Current release date:</strong> 2026-11-12.</p></li>
 <li><p><strong>Version:</strong>
-<code>2.1.0+main.ebec1f9</code></p></li>
+<code>2.2.0+main.173b9e9</code></p></li>
 <li><p><strong>MSC2010:</strong> 05A19, 05A10, 11B73, 11B83 .</p></li>
 <li><p><strong>Keywords:</strong> Sums of powers, Newton’s interpolation
 formula, Finite differences, Binomial coefficients, Faulhaber’s formula,
